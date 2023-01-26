@@ -1,5 +1,5 @@
 <template>
-    <div class="front-page__platforms-container">
+    <div class="pa--xl front-page__platforms-container">
       <router-link to = "/nez">
         <div class="front-page__platform front-page__platform--nez">
           <img src="../assets/nez.png" alt="NEZ">
@@ -35,10 +35,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background: red; */
+  /* padding: 10; */
 }
 .front-page__platform {
   background: white;
-  --size: 150px;
+  --size: 200px;
   width: var(--size);
   height: var(--size);
   border-radius: 100%;
@@ -50,6 +52,7 @@
   cursor: pointer;
 }
 .front-page__platform img{
- width: 120px;
+ width: 150px;
+ min-width: 60px;
 }
 </style>

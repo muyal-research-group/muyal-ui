@@ -36,20 +36,22 @@ export default {
     justify-content: center;
     padding:20px;
     width:100%;
+    min-width: 1500px;
 
 }
 .section__body__text{
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     text-align: justify;
     color: var(--text-color);
 }
 
 .section__header__title {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .section{
   width: 100%;
+  min-width: 1500px;
   /* height: 100vh; */
   background: var(--section-bg-color);
   /* display: flex; */
