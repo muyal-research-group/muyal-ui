@@ -1,55 +1,99 @@
-
 <template>
-  <!-- <router-view></router-view> -->
-  <div class ="front-page">
 
-    <div class="front-page__container">
-      <div class="front-page__logo">
-        <img src="../assets/muyal-white.png" alt="MUYAL_LOGO">
-      </div>
-      <div class="front-page__text-container">
-      <p class="front-page__text">
-        Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
-      </p>
-      </div>
-      <div class="front-page__project-number">
-        <p>Proyecto numero: <b>41756</b></p>
-      </div>
-    <PlatformsNav></PlatformsNav>
+    <div class="global_wrapper">
+
+    <div class ="front-page">
+        <div class="front-page__container">
+            <div class="front-page__logo">
+                <img src="../assets/muyal-white.png" alt="MUYAL_LOGO">
+            </div>
+            <div class="front-page__text-container">
+            <p class="front-page__text">
+                Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
+            </p>
+            </div>
+            <div class="front-page__project-number">
+                <p>Proyecto numero: <b>41756</b></p>
+            </div>
+            <PlatformsNav></PlatformsNav>
+        </div>
+        <div class="separator"></div>
     </div>
-    <div class="separator"></div>
-  </div>
-    
-    <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
-        <div class="pa--lg flex justify-content--center align-items--center">
-            <div class="pa--md">
-                <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
+        
+        <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
+            <div class="pa--lg flex justify-content--center align-items--center">
+                <div class="pa--md">
+                    <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
+                </div>
+                <div>
+                <img width="600" src="../assets/muyal_steps.png" alt="">
+                </div>
             </div>
-            <div>
-            <img width="600" src="../assets/muyal_steps.png" alt="">
+        </Section>
+
+        <Section title = "Plataformas" color="bg--black" >
+            <div class="pa--xl flex jutify-content--center">
+                <div class="feature-boxes-wrapper">
+                    <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+                </div>
             </div>
-        </div>
-    </Section>
-    <Section title = "Plataformas" color="bg--black" >
-        <div class="pa--xl flex jutify-content--center">
-            <div class="feature-boxes-wrapper">
-                <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+        </Section>
+
+        <Section title ="Pasos para la creacion de sistemas de e-Salud" color ="bg--black">
+            <div class="flex justify-content--center">
+            <div class="steps-wrapper">
+
+                <div class="steps__item">
+                    <div class="step__header">
+                        <h3 class="step__header__title">1. Crea sistemas de e-Salud</h3>
+                    </div>
+                    
+                    <div class="step__description">
+                        <div class="step">
+                            <img class="step__img" src="" alt="">
+                            <h4 class="step__title">1. Elige tus componentes</h4>
+                            <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="steps__item">
+                    <div class="step__header">
+                        <h3 class="step__header__title">2. Asegura tus datos</h3>
+                    </div>
+                    <div class="steps_descriptions">
+                        <div class="step__description">
+                            <div class="step">
+                                <img class="step__img" src="" alt="">
+                                <h4 class="step__title">1. Elige tus componentes</h4>
+                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-        </div>
-    </Section>
+            </div>
+        </Section>
 
 
-    <Section  :title = "sections.resume.title" :color="sections.resume.color" >
-        <div class ="pa--md">
-            <p class="text-align--justify text-color--default text-size--md">{{ sections.resume.body_text }}</p>
-        </div>
-    </Section>
-    <Section  :title = "sections.motivacion.title" :color="sections.motivacion.color" >
-        <div class ="pa--md">
-            <p class="text-align--justify text-color--default text-size--md">{{ sections.motivacion.body_text }}</p>
-        </div>
-    </Section>
+        <Section  :title = "sections.resume.title" :color="sections.resume.color" >
+            <div class ="pa--md">
+                <p class="text-align--justify text-color--default text-size--md">{{ sections.resume.body_text }}</p>
+            </div>
+        </Section>
+
+        <Section  :title = "sections.motivacion.title" :color="sections.motivacion.color" >
+            <div class ="pa--md">
+                <p class="text-align--justify text-color--default text-size--md">{{ sections.motivacion.body_text }}</p>
+            </div>
+        </Section>
+
+    </div>
+
 </template>
+
 <script>
 import FeatureBox from '../components/FeatureBox.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
@@ -144,33 +188,34 @@ export default {
 }
 </script>
 <style scoped>
+.global-wrapper{
+    width: 100px !important; 
+    height: 100px;
+}
+.steps-wrapper{
+    /* width: yellow; */
+    background: yellow;
+    width: 80vw;
+}
+.step__header{
+    background: red;
+    /* width: 1000px; */
+}
+.step__header__title{
+    font-size: 1.1rem;
+}
 .feature-boxes-wrapper{
     display: grid;
-    /* width: 100%; */
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: 350px 350px 350px;
-    /* grid-auto-rows: minmax(100px, auto); */
     grid-gap:10px;
-    /* column-gap:10px; */
-    /* row-gap:50px; */
-    /* background: yellow; */
     width: fit-content;
+    max-width: fit-content;
 }
-/* .feature-boxes-wrapper div:nth-child(1n) {
-    margin-bottom: 10px;
-    /* margin-left: 0; */
-    /* flex-basis: 100%; */
-/* }
-.feature-boxes-wrapper div:nth-child(3n) {
-    margin-bottom: 10px;
-    /* margin-left: 0; */
-    /* flex-basis: 100%; */
-/* } */
 
 .separator{
     background:#2F2F2F;
     width:100%;
-    --size: 20px;
+    --size: 10px;
     height: var(--size);
     position: absolute;
     top:calc(100% - var(--size));
@@ -180,7 +225,10 @@ export default {
 .front-page {
   position: relative;
   width: 100%;
-  height: 130vh;
+  min-width: 1500px;
+  /* min-width: 100vw; */
+  /* max-width: 100vw; */
+  height: 100%;
   background: var(--color-black);
   color:var(--color-white);
   display: flex;
@@ -194,7 +242,7 @@ export default {
   flex-direction: column;
   align-items: center;
   /* background: yellowgreen; */
-  width: 80%;
+  width: 50%;
   /* justify-content: center; */
 }
 .front-page__logo{
