@@ -35,11 +35,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background: red; */
   /* padding: 10; */
 }
 .front-page__platform {
   background: white;
-  --size: 150px;
+  --size: 200px;
   width: var(--size);
   height: var(--size);
   border-radius: 100%;
@@ -51,7 +52,7 @@
   cursor: pointer;
 }
 .front-page__platform img{
- width: 120px;
+ width: 150px;
  min-width: 60px;
 }
 </style>

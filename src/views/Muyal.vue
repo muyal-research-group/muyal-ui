@@ -188,10 +188,10 @@ export default {
 }
 </script>
 <style scoped>
-.global-wrapper{
+/* .global-wrapper{
     width: 100px !important; 
     height: 100px;
-}
+} */
 .steps-wrapper{
     /* width: yellow; */
     background: yellow;
@@ -229,6 +229,7 @@ export default {
   /* min-width: 100vw; */
   /* max-width: 100vw; */
   height: 100%;
+  
   background: var(--color-black);
   color:var(--color-white);
   display: flex;
@@ -242,7 +243,8 @@ export default {
   flex-direction: column;
   align-items: center;
   /* background: yellowgreen; */
-  width: 50%;
+  width: 70%;
+
   /* justify-content: center; */
 }
 .front-page__logo{
