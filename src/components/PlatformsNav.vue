@@ -1,4 +1,5 @@
 <template>
+    <div class="flex flex-direction--column align-items--center pa--xl">
     <div class="pa--xl front-page__platforms-container">
       <router-link to = "/nez">
         <div class="front-page__platform front-page__platform--nez">
@@ -26,6 +27,8 @@
         </div>
       </router-link>
     </div>
+        <p>Clic para ver mas información</p>
+    </div>
 </template>
 
 <style scoped>
@@ -47,9 +50,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 15px;
 }
 .front-page__platform:hover {
   cursor: pointer;
+    transform: scale(1.1);
+    transition: transform ease-in 300ms;
 }
 .front-page__platform img{
  width: 150px;
