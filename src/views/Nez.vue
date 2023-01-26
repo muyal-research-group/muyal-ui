@@ -91,14 +91,29 @@
     <div class="header">
       <h2>Repositorio de aplicaciones y servicios</h2>
     </div>
-    <Carrousel ></Carrousel>
+    <Carrousel
+      :paths="['/src/assets/nez_assets/fig1.png',
+      '/src/assets/nez_assets/ani-inter.gif',
+      '/src/assets/nez_assets/ani-intra.gif']"
+    ></Carrousel>
+  </div>
+  <div class="section">
+    <div class="header">
+      <h2>Software y productos</h2>
+    </div>
+    <card
+      color="#397DFF"
+      title="hola"
+      content="mundo"
+    ></card>
   </div>
   <footerMuyual></footerMuyual>
 </template>
 
 <script setup>
-  import Carrousel from "../components/carrousel.vue";
-  import footerMuyual from "../components/footer.vue"
+  import Carrousel from "../components/Carrousel.vue";
+  import footerMuyual from "../components/Footer.vue"
+  import card from "../components/Card.vue"
 </script>
 
 <style >
@@ -151,6 +166,7 @@
     align-self: center;
     justify-content: space-between;
     column-gap: 20px;
+    padding: 10px;
   }
   .container .icon{
     height: 100px;
