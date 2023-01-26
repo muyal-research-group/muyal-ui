@@ -1,5 +1,80 @@
 @import './base.css';
 
+
+.bg--black {
+  background: var(--color-black) !important;
+}
+.bg--white {
+  background: var(--color-white) !important;
+}
+.bg--nez-primary-color{
+  background: var(--nez-primary-color) !important;
+}
+.bg--nez-primary-dark-color {
+  background: var(--nez-primary-dark-color) !important;
+}
+.bg--chimalli-primary-color{
+  background: var(--chimalli-primary-color) !important;
+}
+.bg--chimalli-primary-dark-color {
+  background: var(--chimalli-primary-dark-color) !important;
+}
+.bg--painal-primary-color{
+  background: var(--painal-primary-color) !important;
+}
+.bg--painal-primary-dark-color {
+  background: var(--painal-primary-dark-color) !important;
+}
+.bg--xelhua-primary-color{
+  background: var(--xelhua-primary-color) !important;
+}
+.bg--xelhua-primary-dark-color {
+  background: var(--xelhua-primary-dark-color) !important;
+}
+.bg--alwa-primary-color{
+  background: var(--alwa-primary-color) !important;
+}
+.bg--xelhua-primary-dark-color {
+  background: var(--alwa-primary-dark-color) !important;
+}
+.bg--section{
+  background-color: var(--section-bg-color) !important;
+}
+
+.text-color--default {
+  color: var(--text-color) !important; 
+}
+
+.text-size--xs {
+  font-size: .5rem ;
+}
+.text-size--sm {
+  font-size: 1rem ;
+}
+.text-size--md {
+  font-size: 1.5rem ;
+}
+.text-size--lg {
+  font-size: 2rem ;
+}
+.text-align--justify {
+  text-align: justify;
+}
+.text-align--center{
+  text-align: center;
+}
+
+/*  */
+.pa--xs{
+  padding: 10px;
+}
+.pa--sm{
+  padding: 15px;
+}
+.pa--md{
+  padding: 20px;
+}
+
 /* #app {
   max-width: 1280px;
   margin: 0 auto;
