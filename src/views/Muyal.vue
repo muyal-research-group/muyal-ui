@@ -47,21 +47,9 @@
                     <div class="step__header">
                         <h3 class="step__header__title">1. Crea sistemas de e-Salud</h3>
                     </div>
-                    
-                    <div class="step__description">
-                        <div class="step">
-                            <img class="step__img" src="" alt="">
-                            <h4 class="step__title">1. Elige tus componentes</h4>
-                            <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="steps__item">
-                    <div class="step__header">
-                        <h3 class="step__header__title">2. Asegura tus datos</h3>
-                    </div>
                     <div class="steps_descriptions">
+                        <div class ="steps_descriptions-inner">
                         <div class="step__description">
                             <div class="step">
                                 <img class="step__img" src="" alt="">
@@ -69,11 +57,36 @@
                                 <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="step__description">
+                            <div class="step">
+                                <img class="step__img" src="" alt="">
+                                <h4 class="step__title">2. Elige tus componentes</h4>
+                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            </div>
+                        </div>
+
+                        <div class="step__description">
+                            <div class="step">
+                                <img class="step__img" src="" alt="">
+                                <h4 class="step__title">3. Elige tus componentes</h4>
+                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            </div>
+                        </div>
+
+                        <div class="step__description">
+                            <div class="step">
+                                <img class="step__img" src="" alt="">
+                                <h4 class="step__title">4. Elige tus componentes</h4>
+                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
             </div>
         </Section>
 
@@ -187,15 +200,32 @@ export default {
     components: { PlatformsNav, FeatureBox }
 }
 </script>
+
+
 <style scoped>
-/* .global-wrapper{
-    width: 100px !important; 
-    height: 100px;
-} */
+/* __________________________ */
 .steps-wrapper{
-    /* width: yellow; */
     background: yellow;
     width: 80vw;
+
+
+}
+.steps_descriptions {
+    display: flex;
+    justify-content: center;
+}
+.steps_descriptions-inner{
+
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:10px;
+    width: 50vw;
+}
+
+.step__description{
+    background: white;
+    height: 300px;
+    border-radius: 10px;
 }
 .step__header{
     background: red;
@@ -204,6 +234,7 @@ export default {
 .step__header__title{
     font-size: 1.1rem;
 }
+/* ________________________ */
 .feature-boxes-wrapper{
     display: grid;
     grid-template-columns: 350px 350px 350px;
