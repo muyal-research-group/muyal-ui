@@ -1,5 +1,5 @@
 <script>
-    let contador=1;
+    let contador=0;
     let url='';
     export default{
         props:{
