@@ -33,37 +33,44 @@
         <div class="column">
           <h3> </h3>
           <Circle title="1" :color="color" />
-          <card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></card>
-          <card :color="color" title="Producto 2 - P2" content="mundo"></card>
+          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
+          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
+          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
         </div>
         <div class="column">
           <h3> </h3>
           <Circle title="2" :color="color" />
-          <card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></card>
-          <card :color="color" title="Producto 2 - P2" content="mundo"></card>
+          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
+          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
+          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
         </div>
       </div>
       <div class="column">
         <h3> </h3>
         <Circle title="3" :color="color" />
-        <card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></card>
-        <card :color="color" title="Producto 2 - P2" content="mundo"></card>
+        <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
+          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
+        <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
       </div>
     </div>
   </Section>
-  <footerMuyual></footerMuyual>
+  <Footer></Footer>
 </template>
 
-<script setup>
+<script>
 import Carrousel from "../components/Carrousel.vue";
-import footerMuyual from "../components/Footer.vue"
-import card from "../components/Card.vue"
+import Footer from "../components/Footer.vue"
+import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
-const color = "bg--alwa-primary-color";
+export default {
+  components: [Carrousel,Footer,Card],
+  data(){
+    return {
+        color : "bg--alwa-primary-color"
+    }
+  }
+}
 </script>
 
 <style >
