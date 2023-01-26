@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import Section from "./components/Section.vue";
+import PlatformsNav from "./components/PlatformsNav.vue";
 
 import App from './App.vue'
 import router from './router'
@@ -10,5 +12,8 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+//  Component registration
+app.component("Section",Section);
+app.component("PlatformsNav",PlatformsNav);
 
 app.mount('#app')
