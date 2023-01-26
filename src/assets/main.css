@@ -75,6 +75,62 @@
   padding: 20px;
 }
 
+.pa--lg{
+  padding: 30px;
+}
+
+.pa--xl{
+  padding: 40px;
+}
+
+/* Flexbox */
+.flex {
+  display: flex !important;
+}
+.flex-direction--row{
+  flex-direction:row;
+}
+
+.flex-direction--column{
+  flex-direction:column;
+}
+
+.flex-direction--column-reverse{
+  flex-direction:column-reverse;
+}
+
+.flex-direction--row-reverse{
+  flex-direction:row-reverse;
+}
+
+.jutify-content--center {
+  justify-content: center;
+}
+.jutify-content--space-between {
+  justify-content: space-between;
+}
+.jutify-content--space-around {
+  justify-content: space-around;
+}
+.jutify-content--space-evenly{
+  justify-content: space-evenly;
+}
+.align-items--center{
+  align-items: center;
+}
+
+.align-items--end{
+  align-items: flex-end;
+}
+.align-items--start{
+  align-items: flex-start;
+}
+
+.align-items--stretch{
+  align-items: stretch;
+}
+
+
 /* #app {
   max-width: 1280px;
   margin: 0 auto;

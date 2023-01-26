@@ -21,8 +21,24 @@
   </div>
     
     <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
-        <img src="../assets/muyal_steps.png" alt="">
+        <div class="pa--lg flex justify-content--center align-items--center">
+            <div class="pa--md">
+                <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
+            </div>
+            <div>
+            <img width="600" src="../assets/muyal_steps.png" alt="">
+            </div>
+        </div>
     </Section>
+    <Section title = "Plataformas" color="bg--black" >
+        <div class="pa--xl flex jutify-content--center">
+            <div class="feature-boxes-wrapper">
+                <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+            </div>
+        </div>
+    </Section>
+
+
     <Section  :title = "sections.resume.title" :color="sections.resume.color" >
         <div class ="pa--md">
             <p class="text-align--justify text-color--default text-size--md">{{ sections.resume.body_text }}</p>
@@ -35,11 +51,77 @@
     </Section>
 </template>
 <script>
+import FeatureBox from '../components/FeatureBox.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 
 export default {
     data() {
         return {
+            feature_boxes:[
+                {
+                    title:"Nez: Servicio de consutrccion de sistemas e-Salud",
+                    items:[
+                        "Construye, configura y ejecuta sistemas de e-Salud en minutos.",
+                        "Crea sistemas flexibles, portables, y modulares.",
+                        "Tecnología propia e indepentiende del proveedor de hardware y software.",
+                        "Usar los recursos de tu computadora al máximo.",
+                        "Servicios de conexión con Alwa, Zamná y Tekanaktli."
+                    ],
+                    image:"nez.png",
+                    hover_color:"#397DFF"
+                },
+                {
+                    title:"Chimalli: Servicio de acceso a servicios de e-salud y/o sistemas de analítica",
+                    items:[
+                        "Agrega seguridad a sistemas de e-Salud en forma automática.",
+                        "Cumplé con las normas internacionales de manera automática y transparente.",
+                        "Asegurar la confidencialidad de tus datos en cualquier lugar y momento.",
+                        "Registra eficientemente las operaciones realizadas en la blockchain.",
+                        "Servicios de conexión con Tekanaktli y Alwa."
+                    ],
+                    image:"chimalli.png",
+                    hover_color:"#48D951"
+                },
+                {
+                    title:"Painal: Servicio para el transporte y almacenamiento de datos médicos",
+                    items:[
+                        "Publica tu datos a diferentes niveles (intra o inter institucional).",
+                        "Almacena tus datos de forma eficiente y con tolerancia a fallos.",
+                        "Distribuye datos sensibles de forma segura.",
+                        "Comparte tus datos con múltiples usuarios.",
+                        "Servicios de conexión con Alwa."
+                    ],
+                    image:"painal.png",
+                    hover_color:"#A465FA"
+                },
+
+                {
+                    title:"Xelhua: Servicio de analitica y estadistica de datos",
+                    items:[
+                        "Crea automáticamente servicios de análisis y estadística de datos.",
+                        "No requieres programas las aplicaciones, solo utilizar alguna disponible en el catálogo de servicios.",
+                        "Combina diferentes servicios de preparación, análisis y visualización de datos.",
+                        "Despliega aplicaciones de análisis de datos tolerantes a fallos.",
+                        "Servicios de conexión con Alwa, Zamná y Tekanaktli."
+                    ],
+                    image:"xelhua.png",
+                    hover_color: "#F25362"
+                },
+
+                {
+                    title:"Alwa: Base de datos producidas por e-Salud",
+                    items:[
+                        "Servicios de deposito en repositorios FAIR.",
+                        "Base anónima de datos clínicos y de imágenes radiológicas (INR-PACS).",
+                        "Base de datos generados a partir del análisis de los datos.",
+                        "Aplicaciones de seguridad, analítica, procesamiento y acceso a datos.",
+                        "Base de datos a-Prevenir.",
+                        "Servicios de conexión con Xelhua, Zamná y Tekanaktli.",
+                    ],
+                    image:"alwa.png",
+                    hover_color: "#FF9237"
+                }
+            ],
             sections: {
                 whatis: {
                     title: "¿Qué es Muyal-ilal?",
@@ -58,10 +140,33 @@ export default {
             }
         };
     },
-    components: { PlatformsNav }
+    components: { PlatformsNav, FeatureBox }
 }
 </script>
 <style scoped>
+.feature-boxes-wrapper{
+    display: grid;
+    /* width: 100%; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: 350px 350px 350px;
+    /* grid-auto-rows: minmax(100px, auto); */
+    grid-gap:10px;
+    /* column-gap:10px; */
+    /* row-gap:50px; */
+    /* background: yellow; */
+    width: fit-content;
+}
+/* .feature-boxes-wrapper div:nth-child(1n) {
+    margin-bottom: 10px;
+    /* margin-left: 0; */
+    /* flex-basis: 100%; */
+/* }
+.feature-boxes-wrapper div:nth-child(3n) {
+    margin-bottom: 10px;
+    /* margin-left: 0; */
+    /* flex-basis: 100%; */
+/* } */
+
 .separator{
     background:#2F2F2F;
     width:100%;
