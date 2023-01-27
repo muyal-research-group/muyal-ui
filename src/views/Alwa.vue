@@ -24,7 +24,6 @@
   
   <Section title="tittle" :color="color">
     <div class="pa--md">
-      <Carrousel :paths="['src/assets/chimalli_assets/Zamna_SegInfo-4.png']" />
     </div>
   </Section>
   <Section title="Software y productos" :color="color">
@@ -58,13 +57,13 @@
 </template>
 
 <script>
-import Carrousel from "../components/Carrousel.vue";
+
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
 export default {
-  components: [Carrousel,Footer,Card],
+  components: [Footer,Card],
   data(){
     return {
         color : "bg--alwa-primary-color"
