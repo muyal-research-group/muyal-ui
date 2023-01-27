@@ -17,7 +17,7 @@
   <div class="separador"></div>
   <Section title="Gestión y creación autómatica de cripto-contenedores para mantener seguros tus datos" :color="color">
     <div class="pa--md">
-      <Carrousel :paths="['/src/assets/xelhua_assets/xelhua_ejemplo_gif.gif']" />
+      
     </div>
   </Section>
   <Section title="Servicio de analítica/estadística de datos para acceder automáticamente a datos publicados por instituciones de salud y/o por investigadores autorizados." :color="color">
@@ -50,13 +50,13 @@
 </template>
 
 <script>
-import Carrousel from "../components/Carrousel.vue";
+
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
 export default {
-  components:[Carrousel,Footer,Card,Section,Circle],
+  components:[Footer,Card,Section,Circle],
   data(){
     return {
       color : "bg--xelhua-primary-color"
