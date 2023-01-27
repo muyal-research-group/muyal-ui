@@ -6,6 +6,7 @@ import FeatureBox from "./components/FeatureBox.vue";
 import Footer from "./components/Footer.vue";
 import Card from "./components/Card.vue";
 import PortionSection from "./components/PortionSection.vue";
+import IconCard from "./components/IconCard.vue"
 
 import App from './App.vue';
 import router from './router';
@@ -23,5 +24,6 @@ app.component("FeatureBox",FeatureBox);
 app.component("Footer",Footer);
 app.component("Card",Card);
 app.component("PortionSection",PortionSection);
+app.component("IconCard",IconCard);
 
 app.mount('#app')

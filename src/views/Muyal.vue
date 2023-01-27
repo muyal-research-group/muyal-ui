@@ -60,305 +60,29 @@
         <Section title ="Pasos para la creacion de sistemas de e-Salud" color ="bg--black">
             <div class="pa--xl flex flex-direction--column justify-content--center">
                 <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">1. Crea sistemas de e-Salud</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
+                        <div v-for="(value,key,index) in steps_descriptions" class="steps__item" :key="key">
+                            <div class="step__header">
+                                <h3 class="step__header__title">{{value.title}}</h3>
                             </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                            <div class="steps_descriptions">
+                                <div class ="steps_descriptions-inner">
+                                    <IconCard v-for="step in value.steps" :title ="step.title" :text = "step.text" :image = "step.image"  :key="step.title"/>
                                 </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
                             </div>
                         </div>
-                    </div>
-
                 </div>
-
-                <!--PASO 2-->
-                <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">2. Asegura tus datos</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--PASO 4-->
-                <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">3. Asegura tus datos</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!--PASO 4-->
-                <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">4. Comparte tus datos</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            
-                <!--PASO 5-->
-                <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">5. Entrega de datos</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <!--PASO 6-->
-                <div class="steps-wrapper">
-                    <div class="steps__item">
-                        <div class="step__header">
-                            <h3 class="step__header__title">6. Deposito en repositorios</h3>
-                        </div>
-
-                        <div class="steps_descriptions">
-                            <div class ="steps_descriptions-inner">
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">1. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">2. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">3. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-
-                            <div class="step__description">
-                                <div class="step">
-                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
-                                    <h4 class="step__title">4. Elige tus componentes</h4>
-                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
         </Section>
 
 
-        <!-- <Section  :title = "sections.resume.title" :color="sections.resume.color" >
-
-            <div class ="flex pa--md">
-                <p style="width:50%;" class="text-align--justify text-color--default text-size--sm">{{ sections.resume.body_text }}</p>
-                <img src="@/assets/idea.png" width="200" alt="">
-            </div>
-        </Section> -->
-        <!-- 
-
-        <Section  :title = "sections.motivacion.title" :color="sections.motivacion.color" >
-            <div class ="pa--md">
-                <p class="text-align--justify text-color--default text-size--md">{{ sections.motivacion.body_text }}</p>
-            </div>
-        </Section> -->
-    <!-- </div> -->
     <Footer></Footer>
+
 
 </template>
 
 <script>
 import FeatureBox from '../components/FeatureBox.vue';
+import IconCard from '../components/IconCard.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 import PortionSection from '../components/PortionSection.vue';
 
@@ -437,10 +161,167 @@ export default {
                     text: "Crea  sistemas de  analítica  (big  data)  basados  en  inteligencia  artificial  para  convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de  decisiones  o  asistencia  a  diagnósticos. ",
                     image:"muyal_steps.png"
                 }
+            },
+            steps_descriptions:{
+                step1:{
+                    title:"1. Crea sistemas e-Salud",
+                    steps:[
+                        {
+                            title:"1.1 Elije tus componentes",
+                            text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+
+                        {
+                            title:"1.2 Integra los componentes",
+                            text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"1.3 Despliega el sistema",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"1.4 Procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+
+                    ]
+                },
+                step2:{
+                    title:"2. Analiza tus datos",
+                    steps:[
+                        {
+                            title:"2.1 Explora y procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"2.2 Diseña",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"2.3 Analiza resultados",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"2.4 Comparte",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        }
+                    ]
+                },
+                step3:{
+                    title:"3. Asegura tus datos",
+                    steps:[
+                        {
+                            title:"3.1 Explora y procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"3.2 Diseña",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"3.3 Analiza resultados",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"3.4 Comparte",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        }
+                    ]
+                },
+
+                step4:{
+                    title:"4. Comparte tus datos",
+                    steps:[
+                        {
+                            title:"4.1 Explora y procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"4.2 Diseña",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"4.3 Analiza resultados",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"4.4 Comparte",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        }
+                    ]
+                },
+
+                step5:{
+                    title:"5. Entrega tus datos",
+                    steps:[
+                        {
+                            title:"5.1 Explora y procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"5.2 Diseña",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"5.3 Analiza resultados",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"5.4 Comparte",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        }
+                    ]
+                },
+
+                step6:{
+                    title:"6. Deposita en repositorios",
+                    steps:[
+                        {
+                            title:"6.1 Explora y procesa",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"6.2 Diseña",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"6.3 Analiza resultados",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        },
+                        {
+                            title:"6.4 Comparte",
+                            text:"lorem ipsum dolor sit amet consectetur adipisicing elit. qui eius rerum saepe repellat ullam consequatur tempore temporibus asperiores maiores doloremque, harum distinctio, sequi nihil voluptas laborum debitis, ipsa sunt similique!",
+                            image:"step-00.svg"
+                        }
+                    ]
+                }
             }
         };
     },
-    components: { PlatformsNav, FeatureBox, PortionSection }
+    components: { PlatformsNav, FeatureBox, PortionSection, IconCard }
 }
 </script>
 
@@ -454,25 +335,6 @@ export default {
 /* .step__header__title{ */
     /* font-size: 4rem; */
 /* } */
-.step{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60px;
-}
-.step__img{
-    width: 50px;
-    /* margin-bottom: 30px; */
-}
-.step__title{
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-.step__text {
-    font-size: 1.2rem;
-    color:#565656;
-    text-align: justify;
-}
 .steps_descriptions {
     display: flex;
     justify-content: center;
