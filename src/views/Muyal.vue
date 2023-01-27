@@ -1,7 +1,8 @@
 <template>
 
-    <div class="global_wrapper">
+    <!-- <div class="global_wrapper"> -->
 
+    <div class="flex justify-content--center front-page-wrapper">
     <div class ="front-page">
         <div class="front-page__container">
             <div class="front-page__logo">
@@ -17,10 +18,26 @@
             </div>
             <PlatformsNav></PlatformsNav>
         </div>
-        <div class="separator"></div>
+        <!-- <div class="separator"></div> -->
     </div>
+    </div>
+    <PortionSection :title="sections.resume.title" :text ="sections.resume.text"  :image="sections.resume.image"  image_width="700" />
         
-        <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
+
+<!--         
+        <div class=" sectionv2-wrapper">
+            <div class="flex sectionv2-container">
+                <div class="sectionv2-2">
+                    <img width="500" src="@/assets/muyal-color.png" alt="">
+                </div>
+                <div class="flex flex-direction--column align-items--center sectionv2-title-wrapper sectionv2-1">
+                    <h1 class="sectionv2-title">{{ sections.resume.title }}</h1>
+                    <p class="text-size--md text-align--justify">
+                    </p>
+                </div>
+            </div>
+        </div> -->
+        <!-- <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
             <div class="pa--lg flex justify-content--center align-items--center">
                 <div class="pa--md">
                     <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
@@ -29,9 +46,10 @@
                 <img width="600" src="../assets/muyal_steps.png" alt="">
                 </div>
             </div>
-        </Section>
+        </Section> -->
 
         <Section title = "Plataformas" color="bg--black" >
+            <p class="pa--xl text-size--md">Muyal esta conformado de cinco plataformas que proporcionan servicios entre los cuales se encuentran creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).</p>
             <div class="pa--xl flex jutify-content--center">
                 <div class="feature-boxes-wrapper">
                     <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
@@ -40,76 +58,310 @@
         </Section>
 
         <Section title ="Pasos para la creacion de sistemas de e-Salud" color ="bg--black">
-            <div class="flex justify-content--center">
-            <div class="steps-wrapper">
+            <div class="pa--xl flex flex-direction--column justify-content--center">
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">1. Crea sistemas de e-Salud</h3>
+                        </div>
 
-                <div class="steps__item">
-                    <div class="step__header">
-                        <h3 class="step__header__title">1. Crea sistemas de e-Salud</h3>
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="steps_descriptions">
-                        <div class ="steps_descriptions-inner">
-                        <div class="step__description">
-                            <div class="step">
-                                <img class="step__img" src="" alt="">
-                                <h4 class="step__title">1. Elige tus componentes</h4>
-                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
-                            </div>
+                </div>
+
+                <!--PASO 2-->
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">2. Asegura tus datos</h3>
                         </div>
 
-                        <div class="step__description">
-                            <div class="step">
-                                <img class="step__img" src="" alt="">
-                                <h4 class="step__title">2. Elige tus componentes</h4>
-                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="step__description">
-                            <div class="step">
-                                <img class="step__img" src="" alt="">
-                                <h4 class="step__title">3. Elige tus componentes</h4>
-                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="step__description">
-                            <div class="step">
-                                <img class="step__img" src="" alt="">
-                                <h4 class="step__title">4. Elige tus componentes</h4>
-                                <p class ="step__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, cumque.</p>
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+                <!--PASO 4-->
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">3. Asegura tus datos</h3>
+                        </div>
+
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--PASO 4-->
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">4. Comparte tus datos</h3>
+                        </div>
+
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+                <!--PASO 5-->
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">5. Entrega de datos</h3>
+                        </div>
+
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!--PASO 6-->
+                <div class="steps-wrapper">
+                    <div class="steps__item">
+                        <div class="step__header">
+                            <h3 class="step__header__title">6. Deposito en repositorios</h3>
+                        </div>
+
+                        <div class="steps_descriptions">
+                            <div class ="steps_descriptions-inner">
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">1. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">2. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">3. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+
+                            <div class="step__description">
+                                <div class="step">
+                                    <img class="step__img" src="@/assets/step-00.svg" alt="">
+                                    <h4 class="step__title">4. Elige tus componentes</h4>
+                                    <p class ="step__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae odit non dolorem inventore voluptatibus fugit dolorum sit facilis consequatur nostrum odio suscipit atque numquam accusantium aut, architecto eum autem..</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-
-            </div>
         </Section>
 
 
-        <Section  :title = "sections.resume.title" :color="sections.resume.color" >
-            <div class ="pa--md">
-                <p class="text-align--justify text-color--default text-size--md">{{ sections.resume.body_text }}</p>
+        <!-- <Section  :title = "sections.resume.title" :color="sections.resume.color" >
+
+            <div class ="flex pa--md">
+                <p style="width:50%;" class="text-align--justify text-color--default text-size--sm">{{ sections.resume.body_text }}</p>
+                <img src="@/assets/idea.png" width="200" alt="">
             </div>
-        </Section>
+        </Section> -->
+        <!-- 
 
         <Section  :title = "sections.motivacion.title" :color="sections.motivacion.color" >
             <div class ="pa--md">
                 <p class="text-align--justify text-color--default text-size--md">{{ sections.motivacion.body_text }}</p>
             </div>
-        </Section>
-
-    </div>
+        </Section> -->
+    <!-- </div> -->
+    <Footer></Footer>
 
 </template>
 
 <script>
 import FeatureBox from '../components/FeatureBox.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
+import PortionSection from '../components/PortionSection.vue';
+
 
 export default {
     data() {
@@ -180,24 +432,15 @@ export default {
                 }
             ],
             sections: {
-                whatis: {
+                resume:{
                     title: "¿Qué es Muyal-ilal?",
-                    color: "bg--black"
-                },
-                resume: {
-                    title: "Resume",
-                    color: "bg--black",
-                    body_text: "En este proyecto multidisciplinario se desarrolla Muyal-Ilal, una plataforma de servicios en la nube para la gestión, aseguramiento, intercambio, procesamiento, análisis y preservación de grandes volúmenes de datos médicos. Muyal-Nez crea sistemas eficientes e-salud para el procesamiento y manejo de datosmédicos. Muyal-Xelhua crea sistemas de analítica (big data) basados en inteligencia artificial para convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de decisiones o asistencia a diagnósticos. Estos sistemas son portables, pueden incluir y/o acoplarse con sistemas existentes y se pueden transferir fácilmente a otras instituciones, lo cual reduce costos de desarrollo y resuelve la dependencia tecnológica entre instituciones y proveedores de software y servicios. Muyal-Zamnaasegura y verifica que los datos manejados por los sistemas creados en Muyal cumplan, en forma automática y transparente, las normas nacionales (NOM-024-SSA3-2010 y NOM-004-SSA3-2012) e internacionales (ISO-270001-13, COBIT5, NIST) referentes a tolerancia a fallas de servicios/servidores, privacidad, confidencialidad, integridad, disponibilidad y trazabilidad de los datos médicos. Zamnacrea reportes sobre cumplimiento de cada norma incluyendo guías para mejorar incumplimiento. Muyal-Tekanaktli construye sistemas de almacenamiento y distribución de datos/contenidos para que las instituciones soporten escenarios de intercambio ininterrumpido de catálogos de bases de datos, resultados/información y/o sistemas e-Salud a través de intra/internet. Muyal-Alwa crea servicios de repositorios (estandarizados y FAIR) para facilitar el acceso a catálogos publicados por instituciones de salud. En Muyal se construyen sistemas e-salud de inteligencia artificial para diagnóstico asistido de cáncer de hueso largo y pulmones, estudios espaciotemporales de enfermedades de alta prevalencia con georreferenciación, calculadoras de medición de riesgo de enfermedades cardiovasculares que producirán bases de datos y repositorios para la comunidad científica y las instituciones de salud.",
-                },
-                motivacion: {
-                    title: "Motivacion",
-                    color: "bg--black",
-                    body_text: "La atención médica en México es crucial para mejorar el bienestar de los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos, etc.) que deben ser procesados rápidamente (velocidad) por un conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan información útil a diferentes repositorios de datos (veracidad-valor). El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y PemexLa atención médica en México es crucial para mejorar el bienestar de los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos, etc.) que deben ser procesados rápidamente (velocidad) por un conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan información útil a diferentes repositorios de datos (veracidad-valor). El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y Pemex”."
+                    text: "Crea  sistemas de  analítica  (big  data)  basados  en  inteligencia  artificial  para  convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de  decisiones  o  asistencia  a  diagnósticos. ",
+                    image:"muyal_steps.png"
                 }
             }
         };
     },
-    components: { PlatformsNav, FeatureBox }
+    components: { PlatformsNav, FeatureBox, PortionSection }
 }
 </script>
 
@@ -205,17 +448,36 @@ export default {
 <style scoped>
 /* __________________________ */
 .steps-wrapper{
-    background: yellow;
+    /* background: yellow; */
     width: 80vw;
-
-
+}
+/* .step__header__title{ */
+    /* font-size: 4rem; */
+/* } */
+.step{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+.step__img{
+    width: 50px;
+    /* margin-bottom: 30px; */
+}
+.step__title{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.step__text {
+    font-size: 1.2rem;
+    color:#565656;
+    text-align: justify;
 }
 .steps_descriptions {
     display: flex;
     justify-content: center;
 }
 .steps_descriptions-inner{
-
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:10px;
@@ -224,15 +486,17 @@ export default {
 
 .step__description{
     background: white;
-    height: 300px;
+    height: 400px;
     border-radius: 10px;
 }
 .step__header{
-    background: red;
+    /* background: red; */
+    padding: 40px;
     /* width: 1000px; */
 }
 .step__header__title{
-    font-size: 1.1rem;
+    font-size: 2rem;
+    text-align: center;
 }
 /* ________________________ */
 .feature-boxes-wrapper{
