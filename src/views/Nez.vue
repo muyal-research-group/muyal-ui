@@ -67,7 +67,7 @@
   </Section>
   <Section title="Principales características" :color="color">
     <div class="pa--md">
-      <Carrousel :paths="['/src/assets/nez_assets/fig4-Repositorio-servicios.png']" />
+      
     </div>
   </Section>
   <Section title="Software y productos" :color="color">
@@ -101,13 +101,12 @@
 </template>
 
 <script>
-import Carrousel from "../components/Carrousel.vue";
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
 export default {
-  components: [Carrousel,Footer,Card,Section,Circle],
+  components: [Footer,Card,Section,Circle],
   data(){
     return {
         color:"bg--nez-primary-color"
