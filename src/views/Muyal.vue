@@ -50,11 +50,20 @@
 
         <Section title = "Plataformas" color="bg--black" >
             <p class="pa--xl text-size--md">Muyal esta conformado de cinco plataformas que proporcionan servicios entre los cuales se encuentran creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).</p>
-            <div class="pa--xl flex jutify-content--center">
+             <carousel :items-to-show="items_to_show">
+                <slide v-for="fb in feature_boxes" :key="fb.title">
+                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+                </slide>
+                <template #addons>
+                    <navigation />
+                    <pagination />
+                </template>
+            </carousel>
+            <!-- <div class="pa--xl flex jutify-content--center">
                 <div class="feature-boxes-wrapper">
                     <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
                 </div>
-            </div>
+            </div> -->
         </Section>
 
         <Section title ="Pasos para la creacion de sistemas de e-Salud" color ="bg--black">
@@ -85,9 +94,47 @@ import FeatureBox from '../components/FeatureBox.vue';
 import IconCard from '../components/IconCard.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 import PortionSection from '../components/PortionSection.vue';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import useBreakpoints from "vue-next-breakpoints";
+
+
+// import { Glide, GlideSlide } from 'vue-glide-js'
+
+// import VueSlickCarousel from 'vue-slick-carousel'
+// import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// optional style for arrows & dots
+// import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 
 
 export default {
+    setup(){
+        const breakpoints = useBreakpoints({
+            mobile: 600, // max-width: 600px
+            desktop: [601] // min-width: 601px
+        });
+
+        return {
+            // If you want to use different key, feel free do do so, e.g.:
+            // mediaqueries: breakpoints
+            // and then use mediaqueries.desktop.matches etc.
+            breakpoints
+        };
+    },
+    created(){
+            this.breakpoints.mobile.on("enter", (mq) => {
+                console.log("Entered mobile breakpoint");
+                console.log("Media Query", mq);
+                this.items_to_show = 2
+            });
+
+            this.breakpoints.mobile.on("leave", (mq) => {
+                console.log("Left mobile breakpoint");
+                console.log("Media Query", mq);
+                this.items_to_show = 4
+            });
+    },
     data() {
         return {
             feature_boxes:[
@@ -318,16 +365,33 @@ export default {
                         }
                     ]
                 }
-            }
+            },
+            items_to_show:4,
+            
         };
     },
-    components: { PlatformsNav, FeatureBox, PortionSection, IconCard }
+    components: {
+        PlatformsNav,
+        FeatureBox,
+        PortionSection,
+        IconCard,
+        // ____
+        Carousel,
+        Slide,
+        Pagination,
+        Navigation,
+        // [Glide.name]: Glide,
+        // [GlideSlide.name]: GlideSlide
+    }
 }
 </script>
 
 
 <style scoped>
 /* __________________________ */
+/* .carousel{
+    width: 600px !important;
+} */
 .steps-wrapper{
     /* background: yellow; */
     width: 80vw;
