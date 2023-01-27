@@ -136,6 +136,23 @@ p {
   column-gap: 20px;
 }
 
+.section-title img {
+  align-self: center;
+  /* height: 50%; */
+  width: 30%;
+}
+
+.section-title h2 {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  margin: 20px;
+}
+
+.section-title span {
+  text-align: center;
+  color: white;
+}
 .row {
   display: flex;
   align-content: center;
@@ -156,22 +173,6 @@ p {
   width: 100%;
 }
 
-.section-title img {
-  align-self: center;
-  height: 50%;
-  width: 45%;
-}
-
-.section-title h2 {
-  color: white;
-  text-align: center;
-  margin: 20px;
-}
-
-.section-title span {
-  text-align: center;
-  color: white;
-}
 
 .icon {
   height: 100px;
