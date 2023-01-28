@@ -19,7 +19,7 @@
               <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
                 <Slide key ="1"> 
                   <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/lego.png" alt="NEZ_1" width="400">
+                    <img src="@/assets/nez_assets/bloques.png" alt="NEZ_1" width="400">
                   <!-- </div> -->
                 </Slide>
                 <Slide key ="2"> 
