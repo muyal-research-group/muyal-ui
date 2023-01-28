@@ -3,16 +3,17 @@
 </template>
 
 <script >
+
     export default{
         props:{
             title: String,
             color: String,
-            ref: String,
+            dark_color:String
         },
         methods:{
             press(){
-                console.log("presioanado")
-                window.location.href=ref
+                console.log("CLICK")
+                // return new URL(ref).href
             }
         }
     }
@@ -21,11 +22,15 @@
 <style>
     .btn{
         border-radius: 10%;
-        width: auto;
-        cursor: pointer;
+
+        padding: 10px 20px;
+        color:white;
+        border-radius: 50px;
+        /* background: red !important; */
+        /* width: auto; */
     }
     .btn:hover{
-        background-color: rgb(193, 194, 248);
+        cursor: pointer;
     }
     .btn p{
         color: white;
