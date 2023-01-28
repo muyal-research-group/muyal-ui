@@ -1,11 +1,8 @@
 <template>
-    <div @click="press()" :class="'btn bg--nez-primary-dark-color'">
-        {{ title }} 
-    </div>
+    <div @click="press()" :class="color +' btn'"> <h2>{{ title }}</h2> </div>
 </template>
 
 <script >
-// import { ref } from 'vue';
 
     export default{
         props:{
@@ -25,6 +22,7 @@
 <style>
     .btn{
         border-radius: 10%;
+
         padding: 10px 20px;
         color:white;
         border-radius: 50px;
@@ -33,5 +31,9 @@
     }
     .btn:hover{
         cursor: pointer;
+    }
+    .btn p{
+        color: white;
+        text-align: center;
     }
 </style>
