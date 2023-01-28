@@ -44,11 +44,8 @@
       <p>Obtenido</p>
     </div>
     <div class="row">
-      <button>Poster cualitativo</button>
-      <button>Poster cuantitativo</button>
-      <button>Software</button>
-      <button>Infografia tecnica</button>
-      <button>Infografia general</button>
+      <Btvue title="Poster cualitativo" :color="colorDark" ref="/nez"> </Btvue>
+      
     </div>
   </div> -->
   <!-- <div class="separador"></div> -->
@@ -141,6 +138,7 @@
 </template>
 
 <script>
+import Btvue from "../components/Button.vue"
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"

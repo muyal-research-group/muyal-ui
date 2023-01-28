@@ -1,3 +1,6 @@
+<script>
+
+</script>
 <template>
     <div class="block"><p>hola</p></div>
     <div class="footer">
@@ -6,18 +9,20 @@
         
         <div class="social-icon">
             <a href="https://www.facebook.com/cinvestav.lti" target="_blank">
-                <img src="../assets/facebook-icon-1.svg"></a>
+               <div class="circle"> 
+                    <img src="../assets/facebook-icon-1.svg"> 
+                </div> 
+            </a>
             <a href="#">
-                <img src="../assets/instagram-glyph-1.svg"></a>
+                <div class="circle">
+                <img src="../assets/instagram-glyph-1.svg"></div></a>
             <a href="#">
-                <img src="../assets/twitter-6.svg"></a>
+                <div class="circle"><img src="../assets/twitter-6.svg">
+                </div></a>
         </div>
         <p>© Copyright 2020 - E-Salud by Cinvestav Tamaulipas</p>
     </div>
 </template>
-
-<!-- <script setup>
-</script> -->
 
 <style>
     .footer{
@@ -30,10 +35,14 @@
     .block{
         width: 100%;
         height: 40%;
-        background-color: var(--color-black);
+        background-color: black;
     }
     .footer p{
         text-align: center;
+        justify-content: center;
+        width: auto;
+        min-width: 400px;
+        max-width: 1050px;
     }
     .footer img{
         height: 10%;
@@ -41,10 +50,16 @@
     }
     .social-icon{
         align-self: center;
+        display: flex;
     }
     .social-icon img{
         width: 30px;
         height: 30px;
+        margin: 10px;
+        filter: invert();
+    }
+    .social-icon .circle{
+        background-color: black;
         margin: 10px;
     }
 </style>
