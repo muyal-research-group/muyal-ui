@@ -21,7 +21,19 @@
         <!-- <div class="separator"></div> -->
     </div>
     </div>
-    <PortionSection :title="sections.resume.title" :text ="sections.resume.text"  :image="sections.resume.image"  image_width="700" />
+    <PortionSection part1_width ="60" part2_width="40">
+        <template v-slot:part1>
+            <div class ="flex justify-content--center">
+                <img src="@/assets/muyal_steps.png" alt="STEPS" width="600">
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div>
+                <h2 class="text-size--xl">{{ sections.resume.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.resume.text }}</p> 
+            </div>
+        </template>
+    </PortionSection>
         
 
 <!--         
@@ -380,8 +392,6 @@ export default {
         Slide,
         Pagination,
         Navigation,
-        // [Glide.name]: Glide,
-        // [GlideSlide.name]: GlideSlide
     }
 }
 </script>
@@ -447,8 +457,6 @@ export default {
   position: relative;
   width: 100%;
   min-width: 1500px;
-  /* min-width: 100vw; */
-  /* max-width: 100vw; */
   height: 100%;
   
   background: var(--color-black);
@@ -463,10 +471,7 @@ export default {
   margin-top: 30px;
   flex-direction: column;
   align-items: center;
-  /* background: yellowgreen; */
   width: 70%;
-
-  /* justify-content: center; */
 }
 .front-page__logo{
     margin-bottom: 50px;

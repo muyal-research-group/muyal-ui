@@ -1,19 +1,22 @@
 <template>
-    <div @click="press()" :class="color +' btn'">{{ title }} </div>
+    <div @click="press()" :class="'btn bg--nez-primary-dark-color'">
+        {{ title }} 
+    </div>
 </template>
 
 <script >
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
     export default{
         props:{
             title: String,
-            color: string,
-            ref: string,
+            color: String,
+            dark_color:String
         },
         methods:{
             press(){
-                return new URL(ref).href
+                console.log("CLICK")
+                // return new URL(ref).href
             }
         }
     }
@@ -22,9 +25,13 @@ import { ref } from 'vue';
 <style>
     .btn{
         border-radius: 10%;
-        width: auto;
+        padding: 10px 20px;
+        color:white;
+        border-radius: 50px;
+        /* background: red !important; */
+        /* width: auto; */
     }
     .btn:hover{
-        background-color: rgb(193, 194, 248);
+        cursor: pointer;
     }
 </style>
