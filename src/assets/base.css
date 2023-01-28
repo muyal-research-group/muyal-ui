@@ -19,6 +19,10 @@
   /* Alwa */
   --alwa-primary-color: #FF9237;
   --alwa-primary-color-dark: #A65511;
+  --vc-pgn-height:10px;
+  --vc-pgn-width:10px;
+  --vc-pgn-border-radius:50px;
+  
 
 }
 
