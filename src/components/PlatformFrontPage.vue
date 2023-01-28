@@ -14,8 +14,8 @@
             <Button title="Poster cualitativo" :color="color" :dark_color="dark_color"/>
             <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color"/>
             <Button title="Software" :color="color" :dark_color="dark_color"/>
-            <Button title="Infofrafia tecnica" :color="color" :dark_color="dark_color"/>
-            <Button title="Infofrafia general" :color="color" :dark_color="dark_color"/>
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color"/>
+            <Button title="Infografia general" :color="color" :dark_color="dark_color"/>
           </div>
       </div>
     
@@ -44,7 +44,7 @@ export default {
 .front-page{
   /* background: red; */
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   /* height: 100vh; */
   align-content: center;

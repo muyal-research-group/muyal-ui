@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import Btvue from "../components/Button.vue"
+import Button from "../components/Button.vue"
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
@@ -161,7 +161,7 @@ export default {
             }
         };
     },
-    components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,
+    components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,Button,
       Carousel,Slide,Pagination,Navigation
     }
 }

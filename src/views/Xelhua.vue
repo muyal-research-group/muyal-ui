@@ -1,7 +1,44 @@
 <template>
-  <div class="section-title bg--xelhua-primary-color">
+  <PlatformFrontPage 
+    title ="Servicio de analítica/estadística de datos"
+    image="xelhua.png"
+    index="4"
+    color ="xelhua-primary-color"
+    dark_color ="xelhua-primary-dark-color"
+  />
+
+    <PortionSection part1_width ="40" part2_width="60">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.resume.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.resume.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide key ="1"> 
+                  <!-- <div class="bg--black"> -->
+                    <img src="@/assets/nez_assets/bloques.png" alt="NEZ_1" width="400">
+                  <!-- </div> -->
+                </Slide>
+                <Slide key ="2"> 
+                  <!-- <div class="bg--black"> -->
+                    <img src="@/assets/nez_assets/build.png" alt="NEZ_2" width="400">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+  <!-- <div class="section-title bg--xelhua-primary-color">
     <img src="../assets/xelhua.png" alt="NEZ_LOGO">
-    <h2>Servicio de analítica/estadística de datos</h2>
+    <h2>
+    </h2>
     <span>Entregable 4</span>
     <div class="resaltar">
       <p>Obtenido</p>
@@ -45,7 +82,7 @@
         </div>
       </div>
      </div>
-  </Section>
+  </Section> -->
   <Footer></Footer>
 </template>
 
@@ -55,13 +92,29 @@ import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 export default {
-  components:[Footer,Card,Section,Circle],
-  data(){
-    return {
-      color : "bg--xelhua-primary-color"
-    }
-  }
+  components:{Footer,Card,Section,Circle,Carousel, Slide, Pagination, Navigation ,PlatformFrontPage},
+  data() {
+      return {
+            sections:{
+              resume:{
+                title:"Servicio de analítica/estadística de datos para acceder automáticamente a datos publicados por instituciones de salud y/o por investigadores autorizados",
+                text:"Xelhua es una plataforma para la construcción de sistemas de ciencia de datos estructurados bajo demanda, sin amplios conocimientos en programación y orientada al diseño. Permite utilizar aplicativos para la preparación de datos, análisis y visualización de datos, acoplarlos unos con otros y crear flujos de trabajo personalizados. Los datos se procesan por cada una de las aplicaciones (encapsuladas en microservicios) que el usuario selecciona, generando nuevos productos derivados, cómo lo pueden ser datos transformados, gráficas, mapas, estadísticos, o cualquier producto accionable que permita realizar observaciones sobre los datos, o bien, permita tomar una decisión."
+                // text: "Es un servicio de construcción de sistemas e-salud para el procesamiento de datos no-estructurados de forma inter e intra institucional.",
+                
+              }
+            },
+        color : "bg--xelhua-primary-color"
+      };
+  },
+
+  // data(){
+  //   return {
+  //   }
+  // }
 }
 </script>
 
@@ -179,6 +232,15 @@ button:hover {
   text-align: center;
   color: white;
   font-style: normal;
+}
+.carousel__slide {
+  padding: 10px;
+  /* width: 300px !important; */
+  /* background: red; */
+}
+.carousel__viewport{
+  width: 500px;
+  /* height: 600px; */
 }
 
 </style>

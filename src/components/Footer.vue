@@ -10,14 +10,14 @@
         <div class="social-icon">
             <a href="https://www.facebook.com/cinvestav.lti" target="_blank">
                <div class="circle"> 
-                    <img src="../assets/facebook-icon-1.svg"> 
+                    <img src="@/assets/facebook-icon-1.svg"> 
                 </div> 
             </a>
             <a href="#">
                 <div class="circle">
-                <img src="../assets/instagram-glyph-1.svg"></div></a>
+                <img src="@/assets/instagram-glyph-1.svg"></div></a>
             <a href="#">
-                <div class="circle"><img src="../assets/twitter-6.svg">
+                <div class="circle"><img src="@/assets/twitter-6.svg">
                 </div></a>
         </div>
         <p>© Copyright 2020 - E-Salud by Cinvestav Tamaulipas</p>
