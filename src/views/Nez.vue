@@ -19,7 +19,7 @@
               <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
                 <Slide key ="1"> 
                   <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/lego.png" alt="NEZ_1" width="400">
+                    <img src="@/assets/nez_assets/bloques.png" alt="NEZ_1" width="400">
                   <!-- </div> -->
                 </Slide>
                 <Slide key ="2"> 
@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import Btvue from "../components/Button.vue"
+import Button from "../components/Button.vue"
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
@@ -161,7 +161,7 @@ export default {
             }
         };
     },
-    components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,
+    components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,Button,
       Carousel,Slide,Pagination,Navigation
     }
 }

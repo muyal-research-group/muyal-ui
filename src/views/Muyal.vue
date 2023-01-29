@@ -378,7 +378,7 @@ export default {
             
         };
     },
-    components: {
+   components: {
         PlatformsNav,
         FeatureBox,
         PortionSection,

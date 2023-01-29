@@ -1,5 +1,5 @@
 <template>
-    <div @click="press()" :class="color +' btn'"> <h2>{{ title }}</h2> </div>
+    <div @click="press()" :class="'bg--'+dark_color +' btn'"> <span >{{ title }}</span> </div>
 </template>
 
 <script >
@@ -31,9 +31,11 @@
     }
     .btn:hover{
         cursor: pointer;
+        /* background: red; */
     }
-    .btn p{
+    .btn span{
         color: white;
         text-align: center;
+        font-weight: bold;
     }
 </style>
