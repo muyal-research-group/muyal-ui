@@ -3,37 +3,39 @@
     <!-- <div class="global_wrapper"> -->
 
     <div class="flex justify-content--center front-page-wrapper">
-    <div class ="front-page">
-        <div class="front-page__container">
-            <div class="front-page__logo">
-                <img src="../assets/muyal-white.png" alt="MUYAL_LOGO">
+        <div class ="front-page">
+            <div class="front-page__container">
+                <div class="front-page__logo">
+                    <img src="../assets/images/muyal/muyal-white.png" alt="MUYAL_LOGO">
+                </div>
+                <div class="front-page__text-container">
+                <p class="front-page__text">
+                    Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
+                </p>
+                </div>
+                <div class="front-page__project-number">
+                    <p>Proyecto numero: <b>41756</b></p>
+                </div>
+                <PlatformsNav></PlatformsNav>
             </div>
-            <div class="front-page__text-container">
-            <p class="front-page__text">
-                Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
-            </p>
-            </div>
-            <div class="front-page__project-number">
-                <p>Proyecto numero: <b>41756</b></p>
-            </div>
-            <PlatformsNav></PlatformsNav>
+            <!-- <div class="separator"></div> -->
         </div>
-        <!-- <div class="separator"></div> -->
     </div>
-    </div>
-    <PortionSection part1_width ="60" part2_width="40">
-        <template v-slot:part1>
-            <div class ="flex justify-content--center">
-                <img src="@/assets/muyal_steps.png" alt="STEPS" width="600">
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div>
-                <h2 class="text-size--xl">{{ sections.resume.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.resume.text }}</p> 
-            </div>
-        </template>
-    </PortionSection>
+    
+    <div class="sections-wrapper">
+        <PortionSection part1_width ="60" part2_width="40">
+            <template v-slot:part1>
+                <div class ="flex justify-content--center">
+                    <img :src="$resolve_image(sections.section_0.images[0].src)" :alt="sections.section_0.images[0].alt" :width="sections.section_0.images[0].width">
+                </div>
+            </template>
+            <template v-slot:part2>
+                <div>
+                    <h2 class="text-size--xl">{{ sections.section_0.title }}</h2>
+                    <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+                </div>
+            </template>
+        </PortionSection>
         
 
 <!--         
@@ -60,8 +62,8 @@
             </div>
         </Section> -->
 
-        <Section title = "Plataformas" color="bg--black" >
-            <p class="pa--xl text-size--md">Muyal esta conformado de cinco plataformas que proporcionan servicios entre los cuales se encuentran creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).</p>
+        <Section :title = "sections.section_1.title" color="bg--black" >
+            <p class="pa--xl text-size--md">{{ sections.section_1.text }}</p>
              <carousel :items-to-show="items_to_show">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
                     <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
@@ -78,7 +80,7 @@
             </div> -->
         </Section>
 
-        <Section title ="Pasos para la creacion de sistemas de e-Salud" color ="bg--black">
+        <Section :title ="sections.section_2.title" color ="bg--black">
             <div class="pa--xl flex flex-direction--column justify-content--center">
                 <div class="steps-wrapper">
                         <div v-for="(value,key,index) in steps_descriptions" class="steps__item" :key="key">
@@ -94,6 +96,8 @@
                 </div>
             </div>
         </Section>
+    </div>
+    
 
 
     <Footer></Footer>
@@ -159,7 +163,7 @@ export default {
                         "Usar los recursos de tu computadora al máximo.",
                         "Servicios de conexión con Alwa, Zamná y Tekanaktli."
                     ],
-                    image:"nez.png",
+                    image:"assets/images/nez/nez.png",
                     hover_color:"#397DFF"
                 },
                 {
@@ -171,7 +175,7 @@ export default {
                         "Registra eficientemente las operaciones realizadas en la blockchain.",
                         "Servicios de conexión con Tekanaktli y Alwa."
                     ],
-                    image:"chimalli.png",
+                    image:"assets/images/chimalli/chimalli.png",
                     hover_color:"#48D951"
                 },
                 {
@@ -183,7 +187,7 @@ export default {
                         "Comparte tus datos con múltiples usuarios.",
                         "Servicios de conexión con Alwa."
                     ],
-                    image:"painal.png",
+                    image:"assets/images/painal/painal.png",
                     hover_color:"#A465FA"
                 },
 
@@ -196,7 +200,7 @@ export default {
                         "Despliega aplicaciones de análisis de datos tolerantes a fallos.",
                         "Servicios de conexión con Alwa, Zamná y Tekanaktli."
                     ],
-                    image:"xelhua.png",
+                    image:"assets/images/xelhua/xelhua.png",
                     hover_color: "#F25362"
                 },
 
@@ -210,15 +214,31 @@ export default {
                         "Base de datos a-Prevenir.",
                         "Servicios de conexión con Xelhua, Zamná y Tekanaktli.",
                     ],
-                    image:"alwa.png",
+                    image:"assets/images/alwa/alwa.png",
                     hover_color: "#FF9237"
                 }
             ],
             sections: {
-                resume:{
+                section_0:{
                     title: "¿Qué es Muyal-ilal?",
                     text: "Crea  sistemas de  analítica  (big  data)  basados  en  inteligencia  artificial  para  convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de  decisiones  o  asistencia  a  diagnósticos. ",
-                    image:"muyal_steps.png"
+                    images:[
+                        {
+                            src:"assets/images/muyal/section_0_0.png",
+                            alt:"MUYAL_0",
+                            width:"600"
+                        }
+                    ]
+                },
+                section_1:{
+                    title:"Plataformas",
+                    text:"Muyal esta conformado de cinco plataformas que proporcionan servicios entre los cuales se encuentran creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).",
+                    images:[]
+                },
+                section_2:{
+                    title:"Pasos para la creacion de sistemas de e-Salud",
+                    text:"",
+                    images:[]
                 }
             },
             steps_descriptions:{
@@ -228,23 +248,23 @@ export default {
                         {
                             title:"1. Elige los componentes de tu flujo de datos",
                             text:"Descubrimiento y reusabilidad de servicios de ciencia de datos disponibles en Muyal-Nez",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
 
                         {
                             title:"2. Integra los componentes",
                             text:"Integración de software automática e instalación en Muyal-Nez inmediata.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Despliega el sistema",
                             text:"Nez permite la creación de sistemas de ciencia de datos no estructurados orientada al diseño funcional.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"4. Procesa datos",
                             text:"Recibe cualquier tipo de dato no estructurado. Ciencia de datos como servicio, y construcción de sistemas paso a paso en la nube.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
 
                     ]
@@ -255,22 +275,22 @@ export default {
                         {
                             title:"1. Explora y procesa datos estructurados",
                             text:"Recibe cualquier tipo de dato estructurado y lo conecta automáticamente con servicios de analítica.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"2. Diseña tus flujos de datos",
                             text:"Xelhua cuenta con un catálogo de servicios para aprendizaje maquina previamente configurados. Además, es posible utilizar aplicaciones de fusión e integración de datos",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Analiza resultados",
                             text:"Xelhua proporciona soporte para visualizar datos en mapas de manera sencilla.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"4. Comparte",
                             text:"Xelhua te permite compartir los flujos de datos que has diseñado, así como los resultados que has obtenido.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         }
                     ]
                 },
@@ -280,22 +300,22 @@ export default {
                         {
                             title:"1. Control de acesso",
                             text:"Chimalli permite el manejo automático de llaves  y huellas criptográficas.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"2. Privacidad",
                             text:"Integra a tus sistemas los servicios criptográficos de Chimalli. Chimalli asegura el anonimato de los datos, así como la confidencialidad mediante el cifrado de los datos entrantes y salientes de los sistemas de e-Salud. Además, permite detectar alteraciones en los datos.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Confiabilidad",
                             text:"Chimalli también provee confiabilidad, la cual se consigue mediante mecanismos de tolerancia a fallos. La confiabilidad se aplica para mitigar los problemas causados por las deficiencias de la infraestructura donde se procesan y almacenan los datos.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"4. Trazabilidad",
                             text:"Creación automática de una red blockchain para cada sistema de ciencia de datos. Chimalli permite la gestión automática de contratos inteligentes, la gestión automática de transacciones y la verificabilidad de transacciones de forma confidencial.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         }
                     ]
                 },
@@ -306,22 +326,22 @@ export default {
                         {
                             title:"1. Comparte",
                             text:"Painal cuenta con esquemas de publicación y suscripción de catálogos (fuentes de datos, información y conocimiento).",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"2. Almacena",
                             text:"Painal cuenta con un sistema de almacenamiento en la nube tolerante a fallos.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Transporte de datos",
                             text:"Crea sistemas intra e inter institucionales. Painal te permite compartir datos de forma interna y externa, es decir, dentro de una misma instirución y hacia otras.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"4. Distribuye",
                             text:"Los servicios de logística de Painal permiten realizar el intercambio de datos de un sistema de ciencia de datos.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         }
                     ]
                 },
@@ -332,17 +352,17 @@ export default {
                         {
                             title:"1. Descarga y desempaca",
                             text:"Chimalli hacen factible que las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica pueda acceder a servicios de e-salud y/o sistemas de analítica.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"2. Consume",
                             text:"Chimalli te permite obtener información útil (sin comprometer la seguridad de los datos) que ayude a mejorar la toma de decisiones en escenarios de cuidado de la salud.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Verifica",
                             text:"Chimalli permite detectar alteraciones en los datos. Todo esto se consigue mediante esquemas de criptografía de siguiente generación, lo que permite el manejo de datos como objetos seguros.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                     
                     ]
@@ -354,22 +374,24 @@ export default {
                         {
                             title:"1. Descarga",
                             text:"Aplicativos de seguridad para proporcionar integridad, tolerancia a fallas, trazabilidad, entre otros. Aplicativos analítica para machine o deep learning, estadística y mining. Aplicativos de procesamiento para realizar correcciones, 3dmesh, codificadores. Fuentesde datos como data lakes, warehouse, cvs.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"2. Usa",
                             text:"Patrones de publicación y subscripción, API para programadores, Interfaces para productores/consumidores, Carpetas de diseño, Código fuente de algoritmos de integración.",
-                            image:"step-00.svg"
+
+
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"3. Comparte",
                             text:"Comparte tus resultados, flujos de ciencia de datos, aplicaciones y software de manera fácil y sencilla.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         },
                         {
                             title:"4. Visualiza",
                             text:"Visualiza tus recursos y resultados fácilmente.",
-                            image:"step-00.svg"
+                            image:"assets/images/icons/step-00.svg"
                         }
                     ]
                 }
@@ -395,16 +417,13 @@ export default {
 
 <style scoped>
 /* __________________________ */
-/* .carousel{
-    width: 600px !important;
-} */
-.steps-wrapper{
+.sections-wrapper{
+    width: 100vw;
     /* background: yellow; */
+}
+.steps-wrapper{
     width: 80vw;
 }
-/* .step__header__title{ */
-    /* font-size: 4rem; */
-/* } */
 .steps_descriptions {
     display: flex;
     justify-content: center;
@@ -449,6 +468,10 @@ export default {
     left:0;
 }
 
+.front-page-wrapper{
+    background: red;
+    width: 100vw;
+}
 .front-page {
   position: relative;
   width: 100%;

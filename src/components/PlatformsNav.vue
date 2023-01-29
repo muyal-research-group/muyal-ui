@@ -3,27 +3,27 @@
     <div class="pa--xl front-page__platforms-container">
       <router-link to = "/nez">
         <div class="front-page__platform front-page__platform--nez">
-          <img src="../assets/nez.png" alt="NEZ">
+          <img src="../assets/images/nez/nez.png" alt="NEZ">
         </div>
       </router-link>
       <router-link to = "/chimalli">
         <div class="front-page__platform front-page__platform--chimalli">
-            <img src="../assets/chimalli.png" alt="CHIMALLI">
+            <img src="../assets/images/chimalli/chimalli.png" alt="CHIMALLI">
         </div>
       </router-link>
       <router-link to = "/painal">
         <div class="front-page__platform front-page__platform--painal">
-            <img src="../assets/painal.png" alt="PAINAL">
+            <img src="../assets/images/painal/painal.png" alt="PAINAL">
         </div>
       </router-link>
       <router-link to = "/xelhua">
         <div class="front-page__platform front-page__platform--xelhua">
-            <img src="../assets/xelhua.png" alt="XELHUA">
+            <img src="../assets/images/xelhua/xelhua.png" alt="XELHUA">
         </div>
       </router-link>
       <router-link to = "/alwa">
         <div class="front-page__platform front-page__platform--alwa">
-            <img src="../assets/alwa.png" alt="ALWA">
+            <img src="../assets/images/alwa/alwa.png" alt="ALWA">
         </div>
       </router-link>
     </div>

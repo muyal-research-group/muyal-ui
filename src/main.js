@@ -16,11 +16,20 @@ import Button from "./components/Button.vue";
 
 import App from './App.vue';
 import router from './router';
-
+// import Vue from "vue";
 import './assets/main.css';
 
 const app = createApp(App);
 
+const MyPlugin = {
+  install(app, options) {
+    app.config.globalProperties.$resolve_image = (x) => {
+        const url  = new URL(x,import.meta.url).href
+        return url
+    }
+  },
+}
+app.use(MyPlugin)
 app.use(createPinia());
 app.use(router);
 // app.use(VueCarousel)

@@ -35,8 +35,8 @@ export default {
     display: flex;
     justify-content: center;
     padding:20px;
-    width:100%;
-    min-width: 1500px;
+    /* width:100%; */
+    /* min-width: 1000px; */
 
 }
 .section__body__text{
@@ -51,7 +51,7 @@ export default {
 
 .section{
   width: 100%;
-  min-width: 1500px;
+  /* min-width: 1000px; */
   /* height: 100vh; */
   background: var(--section-bg-color);
   /* display: flex; */
@@ -64,7 +64,7 @@ export default {
 }
 
 .section__body{
-  width: 80%;
+  width: 90%;
   /* background: ; */
   /* height:100vh; */
 

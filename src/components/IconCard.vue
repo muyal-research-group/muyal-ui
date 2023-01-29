@@ -1,7 +1,7 @@
 <template>
     <div class="step__description">
         <div class="step">
-            <img class="step__img" :src="image_url" :alt="title">
+            <img class="step__img" :src="$resolve_image(image)" :alt="title">
             <h4 class="step__title">{{ title }}</h4>
             <p class ="step__text">{{ text }}</p>
         </div>
@@ -10,11 +10,11 @@
 <script>
 export default {
     props:["title","text","image"],
-    computed:{
-        image_url(){
-            return new URL("../assets/"+this.image,import.meta.url).href
-        }
-    }
+    // computed:{
+        // image_url(){
+        //     return new URL("../assets/"+this.image,import.meta.url).href
+        // }
+    // }
 }
 </script>
 <style scoped>
