@@ -1,10 +1,13 @@
 <template>
+    <!-- title ="Servicio de analítica/estadística de datos" -->
   <PlatformFrontPage 
-    title ="Servicio de analítica/estadística de datos"
+    title ="Sistema agnóstico en la nube para la construcción de soluciones de big data basada en el diseño de servicios de ciencia de datos de alta disponibilidad y tolerante a fallos"
     image="xelhua.png"
     index="4"
     color ="xelhua-primary-color"
     dark_color ="xelhua-primary-dark-color"
+    title_size ="text-size--lg"
+    
   />
 
     <PortionSection part1_width ="40" part2_width="60">

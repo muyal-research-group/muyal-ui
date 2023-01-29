@@ -1,7 +1,7 @@
 <template>
     <div :style="styleObject" class="pa--md flex flex-direction--column align-items--center feature-box">
         <div class="feature-box__image-wrapper">
-            <img class="feature-box__image" width="150" :src="image_url" :alt="title">
+            <img class="feature-box__image" width="150" :src="$resolve_image(image)" :alt="title">
         </div>
         <div class="feature-box__title-wrapper">
             <h2 class="feature-box__title">{{ title }}</h2>
@@ -21,9 +21,9 @@ export default {
                 "--hover-color":this.hover_color
             }
         },
-        image_url(){
-            return new URL("../assets/"+this.image,import.meta.url).href
-        }
+        // image_url(){
+        //     return new URL("../assets/"+this.image,import.meta.url).href
+        // }
     }
 }
 </script>

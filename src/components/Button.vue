@@ -1,5 +1,5 @@
 <template>
-    <div @click="press()" :class="'bg--'+dark_color +' btn'"> <span >{{ title }}</span> </div>
+    <div @click="press()" :class="'bg--'+dark_color +' btn mb--sm'"> <span >{{ title }}</span> </div>
 </template>
 
 <script >
@@ -22,10 +22,13 @@
 <style>
     .btn{
         border-radius: 10%;
-
         padding: 10px 20px;
         color:white;
         border-radius: 50px;
+        min-width: 150px;
+        width: 200px;
+        display: flex;
+        justify-content: center;
         /* background: red !important; */
         /* width: auto; */
     }
@@ -37,5 +40,6 @@
         color: white;
         text-align: center;
         font-weight: bold;
+        min-width: 150px;
     }
 </style>
