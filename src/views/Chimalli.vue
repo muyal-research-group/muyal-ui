@@ -1,5 +1,4 @@
 <template>
-  
   <PlatformFrontPage 
     title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
     image="chimalli.png"
@@ -9,6 +8,8 @@
   />
 
     <PortionSection part1_width ="40" part2_width="60">
+      
+    
         <template v-slot:part1>
             <div>
                 <h2 class="text-size--lg mb--md">{{ sections.resume.title }}</h2>
@@ -105,6 +106,8 @@
         </div>
     </div>
   </Section> -->
+  <Navbar :color="color" :dark_color="dark_color">
+  </Navbar>
   <Footer></Footer>
 </template>
 
@@ -119,10 +122,9 @@ import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import Navbar from "../components/Navbar.vue"
 export default {
-  components:{Footer,Card,Section,Circle,PortionSection,PlatformFrontPage,
-  Carousel, Slide, Pagination, Navigation 
-  },
+  components:{ Footer, Card, Section, Circle, PortionSection, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar },
 
   data() {
         return {
@@ -134,7 +136,8 @@ export default {
                 
               }
             },
-        color : "bg--chimalli-primary-color"
+        color : "chimalli-primary-color"
+        ,dark_color:"chimalli-primary-dark-color"
         };
   },
   // data(){
