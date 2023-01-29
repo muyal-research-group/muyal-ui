@@ -228,23 +228,23 @@ export default {
                         {
                             title:"1. Elige los componentes de tu flujo de datos",
                             text:"Descubrimiento y reusabilidad de servicios de ciencia de datos disponibles en Muyal-Nez",
-                            image:"step-00.svg"
+                            image:"elige.svg"
                         },
 
                         {
                             title:"2. Integra los componentes",
                             text:"Integración de software automática e instalación en Muyal-Nez inmediata.",
-                            image:"step-00.svg"
+                            image:"savefile.svg"
                         },
                         {
                             title:"3. Despliega el sistema",
                             text:"Nez permite la creación de sistemas de ciencia de datos no estructurados orientada al diseño funcional.",
-                            image:"step-00.svg"
+                            image:"rocket.svg"
                         },
                         {
                             title:"4. Procesa datos",
                             text:"Recibe cualquier tipo de dato no estructurado. Ciencia de datos como servicio, y construcción de sistemas paso a paso en la nube.",
-                            image:"step-00.svg"
+                            image:"engrane.svg"
                         },
 
                     ]
@@ -255,22 +255,22 @@ export default {
                         {
                             title:"1. Explora y procesa datos estructurados",
                             text:"Recibe cualquier tipo de dato estructurado y lo conecta automáticamente con servicios de analítica.",
-                            image:"step-00.svg"
+                            image:"search_folder.svg"
                         },
                         {
                             title:"2. Diseña tus flujos de datos",
                             text:"Xelhua cuenta con un catálogo de servicios para aprendizaje maquina previamente configurados. Además, es posible utilizar aplicaciones de fusión e integración de datos",
-                            image:"step-00.svg"
+                            image:"elige.svg"
                         },
                         {
                             title:"3. Analiza resultados",
                             text:"Xelhua proporciona soporte para visualizar datos en mapas de manera sencilla.",
-                            image:"step-00.svg"
+                            image:"Diagrama.svg"
                         },
                         {
                             title:"4. Comparte",
                             text:"Xelhua te permite compartir los flujos de datos que has diseñado, así como los resultados que has obtenido.",
-                            image:"step-00.svg"
+                            image:"share.svg"
                         }
                     ]
                 },
@@ -280,22 +280,22 @@ export default {
                         {
                             title:"1. Control de acesso",
                             text:"Chimalli permite el manejo automático de llaves  y huellas criptográficas.",
-                            image:"step-00.svg"
+                            image:"access.svg"
                         },
                         {
                             title:"2. Privacidad",
                             text:"Integra a tus sistemas los servicios criptográficos de Chimalli. Chimalli asegura el anonimato de los datos, así como la confidencialidad mediante el cifrado de los datos entrantes y salientes de los sistemas de e-Salud. Además, permite detectar alteraciones en los datos.",
-                            image:"step-00.svg"
+                            image:"laptop_segura.svg"
                         },
                         {
                             title:"3. Confiabilidad",
                             text:"Chimalli también provee confiabilidad, la cual se consigue mediante mecanismos de tolerancia a fallos. La confiabilidad se aplica para mitigar los problemas causados por las deficiencias de la infraestructura donde se procesan y almacenan los datos.",
-                            image:"step-00.svg"
+                            image:"desktop.svg"
                         },
                         {
                             title:"4. Trazabilidad",
                             text:"Creación automática de una red blockchain para cada sistema de ciencia de datos. Chimalli permite la gestión automática de contratos inteligentes, la gestión automática de transacciones y la verificabilidad de transacciones de forma confidencial.",
-                            image:"step-00.svg"
+                            image:"red.svg"
                         }
                     ]
                 },
@@ -306,22 +306,22 @@ export default {
                         {
                             title:"1. Comparte",
                             text:"Painal cuenta con esquemas de publicación y suscripción de catálogos (fuentes de datos, información y conocimiento).",
-                            image:"step-00.svg"
+                            image:"uploap_document_green.svg"
                         },
                         {
                             title:"2. Almacena",
                             text:"Painal cuenta con un sistema de almacenamiento en la nube tolerante a fallos.",
-                            image:"step-00.svg"
+                            image:"guardar.svg"
                         },
                         {
                             title:"3. Transporte de datos",
                             text:"Crea sistemas intra e inter institucionales. Painal te permite compartir datos de forma interna y externa, es decir, dentro de una misma instirución y hacia otras.",
-                            image:"step-00.svg"
+                            image:"mails.svg"
                         },
                         {
                             title:"4. Distribuye",
                             text:"Los servicios de logística de Painal permiten realizar el intercambio de datos de un sistema de ciencia de datos.",
-                            image:"step-00.svg"
+                            image:"folder-yellow-open.svg"
                         }
                     ]
                 },
@@ -332,17 +332,17 @@ export default {
                         {
                             title:"1. Descarga y desempaca",
                             text:"Chimalli hacen factible que las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica pueda acceder a servicios de e-salud y/o sistemas de analítica.",
-                            image:"step-00.svg"
+                            image:"download_document_green.svg"
                         },
                         {
                             title:"2. Consume",
                             text:"Chimalli te permite obtener información útil (sin comprometer la seguridad de los datos) que ayude a mejorar la toma de decisiones en escenarios de cuidado de la salud.",
-                            image:"step-00.svg"
+                            image:"document_encrypted.svg"
                         },
                         {
                             title:"3. Verifica",
                             text:"Chimalli permite detectar alteraciones en los datos. Todo esto se consigue mediante esquemas de criptografía de siguiente generación, lo que permite el manejo de datos como objetos seguros.",
-                            image:"step-00.svg"
+                            image:"access.svg"
                         },
                     
                     ]
@@ -354,22 +354,22 @@ export default {
                         {
                             title:"1. Descarga",
                             text:"Aplicativos de seguridad para proporcionar integridad, tolerancia a fallas, trazabilidad, entre otros. Aplicativos analítica para machine o deep learning, estadística y mining. Aplicativos de procesamiento para realizar correcciones, 3dmesh, codificadores. Fuentesde datos como data lakes, warehouse, cvs.",
-                            image:"step-00.svg"
+                            image:"document-save-as.svg"
                         },
                         {
                             title:"2. Usa",
                             text:"Patrones de publicación y subscripción, API para programadores, Interfaces para productores/consumidores, Carpetas de diseño, Código fuente de algoritmos de integración.",
-                            image:"step-00.svg"
+                            image:"folder-yellow-open.svg"
                         },
                         {
                             title:"3. Comparte",
                             text:"Comparte tus resultados, flujos de ciencia de datos, aplicaciones y software de manera fácil y sencilla.",
-                            image:"step-00.svg"
+                            image:"share.svg"
                         },
                         {
                             title:"4. Visualiza",
                             text:"Visualiza tus recursos y resultados fácilmente.",
-                            image:"step-00.svg"
+                            image:"desktop.svg"
                         }
                     ]
                 }
