@@ -35,6 +35,16 @@ const router = createRouter({
       name: 'alwa',
       component: () => import('../views/Alwa.vue')
     },
+    {
+      path: '/resources',
+      name: 'resources',
+      component: () => import('../views/Resources.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/About.vue')
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top

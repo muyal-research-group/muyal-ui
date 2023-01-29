@@ -62,7 +62,7 @@
             </div>
         </Section> -->
 
-        <Section :title = "sections.section_1.title" color="bg--black" >
+        <Section :title = "sections.section_1.title" color="black" >
             <p class="pa--xl text-size--md">{{ sections.section_1.text }}</p>
              <carousel :items-to-show="items_to_show">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
@@ -80,7 +80,7 @@
             </div> -->
         </Section>
 
-        <Section :title ="sections.section_2.title" color ="bg--black">
+        <Section :title ="sections.section_2.title" color ="black">
             <div class="pa--xl flex flex-direction--column justify-content--center">
                 <div class="steps-wrapper">
                         <div v-for="(value,key,index) in steps_descriptions" class="steps__item" :key="key">

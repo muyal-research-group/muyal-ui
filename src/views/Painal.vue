@@ -1,97 +1,19 @@
 <template>
   
+  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio para el transporte y almacenamiento de datos médicos"
-    image="painal.png"
+    image="images/painal/painal.png"
     index="3"
     color ="painal-primary-color"
     dark_color ="painal-primary-dark-color"
   />
 
-    <PortionSection part1_width ="40" part2_width="60">
-        <template v-slot:part1>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.resume.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.resume.text }}</p> 
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
-                <Slide key ="1"> 
-                  <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/bloques.png" alt="NEZ_1" width="400">
-                  <!-- </div> -->
-                </Slide>
-                <Slide key ="2"> 
-                  <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/build.png" alt="NEZ_2" width="400">
-                  <!-- </div> -->
-                </Slide>
-                <template #addons>
-                  <Navigation/>
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-    </PortionSection>
-  <!-- <div class="section-title bg--painal-primary-color">
-    <img src="../assets/painal.png" alt="PAINAL_LOGO">
-    <h2>
-
-    </h2>
-    <span>Entregable 3</span>
-    <div class="resaltar">
-      <p>Obtenido</p>
-    </div>
-    <div class="row">
-      <button>Poster cualitativo</button>
-      <button>Poster cuantitativo</button>
-      <button>Software</button>
-      <button>Infografia tecnica</button>
-      <button>Infografia general</button>
-    </div>
-  </div>
-  <div class="separador"></div>
-
-  <Section title="Transporte autómatico, seguro y eficiente de datos entre organizaciones" :color="color">
-    <div class="pa--md">
-     <p>Sistema de almacenamiento eficiente y tolerante a fallos.</p>
-    </div>
-  </Section>
-  <Section title="Software y productos" :color="color">
-    <div class="pa--md">
-      <div class="row">
-        <div class="column">
-          <h3> </h3>
-          <Circle title="1" :color="color" />
-          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
-          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
-        </div>
-        <div class="column">
-          <h3> </h3>
-          <Circle title="2" :color="color" />
-          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
-          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
-        </div>
-      </div>
-      <div class="column">
-        <h3> </h3>
-        <Circle title="3" :color="color" />
-        <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
-        <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
-      </div>
-    </div>
-  </Section> -->
   <Footer></Footer>
 </template>
 
 <script>
-// import Carrousel from "../components/Carrousel.vue";
+import Navbar from '../components/Navbar.vue';
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
@@ -101,7 +23,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 export default {
   components:{Footer,Card,Section,Circle,PlatformFrontPage,
-  Carousel, Slide, Pagination, Navigation 
+  Carousel, Slide, Pagination, Navigation ,Navbar
   },
   data() {
       return {
@@ -113,7 +35,8 @@ export default {
                 
               }
             },
-          color :"bg--painal-primary-color"
+          color :"painal-primary-color",
+          dark_color :"painal-primary-color-dark"
         // color : "bg--chimalli-primary-color"
       };
   },

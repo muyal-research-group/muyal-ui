@@ -1,3 +1,46 @@
+
+<template >
+    <div :class="{'navbar':true, 'pa--lg':true,'bg--white':is_scrolled,'elevated':is_scrolled,['bg--'+color]:!is_scrolled}">
+        <router-link to="/"> 
+            <img 
+                :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' :'assets/images/muyal/muyal-white.png')" 
+                id="navbar__logo" 
+                :class="{'navbar__logo':true}"
+            >
+        </router-link>
+
+        <div class="navbar__items active">
+            <ul class="navbar__items__ul">
+                <li :class="{'navbar__item':true}">
+                    <router-link to="/"> 
+                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Inicio</span>
+                    </router-link>
+                </li>
+                <li class="navbar__dropdown dropdown">
+                    <span :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
+                    <div class="navbar__dropdown-content dropdown-content">
+                        <router-link to="/nez">Nez</router-link>
+                        <router-link to="/chimalli">Chimalli</router-link>
+                        <router-link to="/painal">Painal</router-link>
+                        <router-link to="/xelhua">Xelhua</router-link>
+                        <router-link to="/alwa">Alwa</router-link>
+                    </div>
+                </li>
+                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">
+                    <router-link to="/resources">
+                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Recursos</span>
+                    </router-link>
+                </li>
+                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
+                    <router-link to="/about">
+                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Acerca de</span>
+                    </router-link>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</template>
 <script>
 import Button from "../components/Button.vue"
 export default {
@@ -8,106 +51,104 @@ export default {
     , components: {
         Button
     },
+    // computed :{
+        // is_scrolled(){
+        //     const x = window.scrollY > 0;
+        //     console.log("IS_SCROLLED",x)
+        //     return x
+        // }
+    // },
+    data(){
+        return {is_scrolled:false}
+    },
     methods: {
-        showNavbar: function () {
-            var nav = document.querySelector(".navbar")
-            var nodes= nav.childNodes
-            var image=document.querySelector("#icon")
-            if (window.scrollY > 0) {
-                nav.style.backgroundColor="white";
-                nodes[1].classList.remove("active")
-                image.style.filter="invert()"
-            
-            } else {
-                nav.style.removeProperty("background-color");
-                nodes[1].classList.add("active")
-                image.style.removeProperty("filter");
-            }
-
+        show_navbar: function () {
+            this.is_scrolled = window.scrollY >0
         }
     },
     mounted() {
-        document.addEventListener('scroll', this.showNavbar)
+        document.addEventListener('scroll', this.show_navbar)
     }
 }
 
 </script>
 
-<template >
-    <div class="navbar ">
-        <a href="/"> <img src="../assets/muyal-white.png" id="icon" class="icon"></a>
-        <div class="items active">
-            <ul>
-                <li><a href="/"> Inicio</a></li>
-                <li class="dropdown">
-                    <a class="dropbtn">Plataformas</a>
-                    <div class="dropdown-content">
-                        <a href="/nez">Nez</a>
-                        <a href="/chimalli">Chimalli</a>
-                        <a href="/painal">Painal</a>
-                        <a href="/xelhua">Xelhua</a>
-                        <a href="/alwa">Alwa</a>
-                    </div>
-                </li>
-                <li> <a href="#">Recursos</a></li>
-                <li> <a href="#">Acerca de</a></li>
-            </ul>
-        </div>
-    </div>
-
-</template>
 <style scoped>
+/* router-link{
+    text-decoration: none;
+} */
 .navbar {
-    height: 80px;
+    height: 100px;
     display: flex;
+    align-items: center;
     position: fixed;
+    /* position: absolute; */
     top: 0;
     width: 100%;
+    z-index: 1000;
+    /* padding: 20px; */
+    /* padding: 60px; */
+    /* background: red; */
 }
 
-.icon {
-    height: 90px;
-    width: 90px;
-    float: left;
+.navbar__logo {
+    --size:60px;
+    height: var(--size);
+    width: var(--size);
+    /* margin-left: 20px; */
+    /* float: left; */
+}
+.elevated{
+    box-shadow: 0px 5px 5px 2px rgba(0,0,0,.1);
 }
 
-.items {
+.navbar__items {
     margin: auto;
     align-content: center;
 
 }
-.items li a{
-    color: black;
+.navbar__items__ul {
+    list-style-type: none;
+    /* list-style: none; */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    color:white;
+    /* background: red; */
 }
+.navbar__item {
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.navbar__item:hover{
+    background: white;
+    border-radius: 50px;
+    color: black !important;
+}
+.navbar__item:hover span{
+    color:black !important;
+    /* background: red !important; */
+}
+
+/* .navbar__items li a, .dropbtn {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+} */
+
+/* li a:hover,
+.dropdown:hover .dropbtn {
+    background-color: rgb(228, 211, 211);
+    border-radius: 10px;
+}  */
 .active li a{
     color: white;
 }
 .active .dropdown-content a{
     color: black;
-}
-.items ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.items li {
-    float: left;
-    
-}
-
-.items li a, .dropbtn {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover,
-.dropdown:hover .dropbtn {
-    background-color: rgb(228, 211, 211);
-    border-radius: 10px;
 }
 
 li .dropdown {

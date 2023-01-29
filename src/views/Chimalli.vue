@@ -1,4 +1,5 @@
 <template>
+  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
     image="images/chimalli/chimalli.png"
@@ -7,7 +8,6 @@
     dark_color ="chimalli-primary-dark-color"
   />
 
- <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <Footer></Footer>
 </template>
 
@@ -42,8 +42,8 @@ export default {
                 
               }
             },
-        color : "chimalli-primary-color"
-        ,dark_color:"chimalli-primary-dark-color"
+            color : "chimalli-primary-color",
+            dark_color:"chimalli-primary-dark-color"
         };
   },
   // data(){

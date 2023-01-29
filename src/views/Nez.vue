@@ -1,4 +1,6 @@
 <template>
+
+  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
     image="images/nez/nez.png"
@@ -175,6 +177,7 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar.vue';
 import Button from "../components/Button.vue"
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
@@ -225,7 +228,7 @@ export default {
     data() {
         return {
             // is_mobile:true,
-            color: "bg--nez-primary-color",
+            color: "nez-primary-color",
             sections:{
               section_0:{
                 title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
@@ -389,11 +392,12 @@ export default {
                   },
                 ]
               }
-          },
+            },
+            dark_color:"chimalli-primary-dark-color"
         };
     },
     components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,Button,
-      Carousel,Slide,Pagination,Navigation
+      Carousel,Slide,Pagination,Navigation, Navbar
     }
 }
 </script>

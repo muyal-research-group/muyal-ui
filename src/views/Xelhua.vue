@@ -1,96 +1,20 @@
 <template>
-    <!-- title ="Servicio de analítica/estadística de datos" -->
+  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Sistema agnóstico en la nube para la construcción de soluciones de big data basada en el diseño de servicios de ciencia de datos de alta disponibilidad y tolerante a fallos"
-    image="xelhua.png"
+    image="images/xelhua/xelhua.png"
     index="4"
     color ="xelhua-primary-color"
     dark_color ="xelhua-primary-dark-color"
     title_size ="text-size--lg"
     
   />
-
-    <PortionSection part1_width ="40" part2_width="60">
-        <template v-slot:part1>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.resume.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.resume.text }}</p> 
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
-                <Slide key ="1"> 
-                  <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/bloques.png" alt="NEZ_1" width="400">
-                  <!-- </div> -->
-                </Slide>
-                <Slide key ="2"> 
-                  <!-- <div class="bg--black"> -->
-                    <img src="@/assets/nez_assets/build.png" alt="NEZ_2" width="400">
-                  <!-- </div> -->
-                </Slide>
-                <template #addons>
-                  <Navigation/>
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-    </PortionSection>
-  <!-- <div class="section-title bg--xelhua-primary-color">
-    <img src="../assets/xelhua.png" alt="NEZ_LOGO">
-    <h2>
-    </h2>
-    <span>Entregable 4</span>
-    <div class="resaltar">
-      <p>Obtenido</p>
-    </div>
-    <div class="row">
-      <button>Poster cualitativo</button>
-      <button>Poster cuantitativo</button>
-      <button>Software</button>
-      <button>Infografia tecnica</button>
-      <button>Infografia general</button>
-    </div>
-  </div>
-  <div class="separador"></div>
-  <Section title="Gestión y creación autómatica de cripto-contenedores para mantener seguros tus datos" :color="color">
-    <div class="pa--md">
-      
-    </div>
-  </Section>
-  <Section title="Servicio de analítica/estadística de datos para acceder automáticamente a datos publicados por instituciones de salud y/o por investigadores autorizados." :color="color">
-    <div class="pa--md">
-      <p>Estos servicios permitirán a las instituciones de salud anonimizar, minar y preparar los datos disponibles en las bases de datos de la plataforma. </p>
-      <img src="../assets/xelhua_assets/manager_worker.gif" class="image">
-    </div>
-  </Section>
-  <Section title="Software y productos" :color="color">
-    <div class="pa--md">
-      <div class="row">
-        <div class="column">
-          <h3> </h3>
-          <Circle title="1" :color="color" />
-          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
-          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
-        </div>
-        <div class="column">
-          <h3> </h3>
-          <Circle title="2" :color="color" />
-          <Card :color="color" title="Producto 1 - P1" content="Un esquema de bloques de construcción de flujos de trabajo y 
-          servicios de e-Salud basado en mapas de microservicios y nanoservicios."></Card>
-          <Card :color="color" title="Producto 2 - P2" content="mundo"></Card>
-        </div>
-      </div>
-     </div>
-  </Section> -->
   <Footer></Footer>
 </template>
 
 <script>
 
+import Navbar from '../components/Navbar.vue';
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
@@ -99,7 +23,7 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 export default {
-  components:{Footer,Card,Section,Circle,Carousel, Slide, Pagination, Navigation ,PlatformFrontPage},
+  components:{Footer,Card,Section,Circle,Carousel, Slide, Pagination, Navigation ,PlatformFrontPage,Navbar},
   data() {
       return {
             sections:{
@@ -110,7 +34,8 @@ export default {
                 
               }
             },
-        color : "bg--xelhua-primary-color"
+        color : "xelhua-primary-color",
+        dark_color : "xelhua-primary-color-dark"
       };
   },
 
