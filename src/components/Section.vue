@@ -1,6 +1,6 @@
 <template>
   <section class ="section">
-    <header :class ="color+' section__header'">
+    <header :class ="'bg--'+color+' section__header'">
         <h2 class="section__header__title">
             {{ title }}
         </h2>

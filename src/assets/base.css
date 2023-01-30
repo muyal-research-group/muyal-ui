@@ -65,7 +65,10 @@ img {
   max-height:100%;
   /* width: 100%; */
 }
-
+a{
+  text-decoration: none;
+  color: inherit;
+}
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops

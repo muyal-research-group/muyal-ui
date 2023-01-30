@@ -1,5 +1,5 @@
 <template>
-
+  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Bases de datos producidad por sistemas de e-Salud"
     image="images/alwa/alwa.png"
@@ -12,6 +12,7 @@
 
 <script>
 
+import Navbar from '../components/Navbar.vue';
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 
@@ -20,7 +21,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 export default {
   components: {Footer,Card,PlatformFrontPage,
-    Carousel, Slide, Pagination, Navigation 
+    Carousel, Slide, Pagination, Navigation , Navbar
   },
   data() {
       return {
@@ -39,7 +40,8 @@ export default {
               }
             },
           // color :"bg--painal-primary-color"
-        color : "bg--alwa-primary-color"
+        color : "alwa-primary-color",
+        dark_color : "alwa-primary-color-dark"
         // color : "bg--chimalli-primary-color"
       };
   },

@@ -41,6 +41,7 @@ export default {
   display: flex;
   justify-content: center;
   padding: 50px;
+  margin-top: 100px;
 }
 .front-page{
   /* background: red; */
