@@ -36,14 +36,24 @@ const router = createRouter({
       component: () => import('../views/Alwa.vue')
     },
     {
-      path: '/resources',
-      name: 'resources',
-      component: () => import('../views/Resources.vue')
+      path: '/resources/publications',
+      name: 'resources-publications',
+      component: () => import('../views/Publications.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/About.vue')
+      path: '/resources/workshops',
+      name: 'resources-workshops',
+      component: () => import('../views/Workshops.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/Contact.vue')
+    },
+    {
+      path: '/use-case',
+      name: 'use-case',
+      component: () => import('../views/UseCase.vue')
     },
   ],
   scrollBehavior(to, from, savedPosition) {

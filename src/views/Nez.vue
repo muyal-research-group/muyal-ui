@@ -3,11 +3,26 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
-    image="images/nez/nez.png"
+    image="assets/images/nez/nez.png"
     index="1"
     color ="nez-primary-color"
     dark_color ="nez-primary-dark-color"
-  />
+    image_width = "500"
+  >
+  <template v-slot:footer>
+          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+            Obtenido
+          </div>
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Software" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+          </div>
+  </template>
+</PlatformFrontPage>
 
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
@@ -229,6 +244,7 @@ export default {
         return {
             // is_mobile:true,
             color: "nez-primary-color",
+            dark_color:"nez-primary-dark-color",
             sections:{
               section_0:{
                 title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
@@ -393,7 +409,6 @@ export default {
                 ]
               }
             },
-            dark_color:"chimalli-primary-dark-color"
         };
     },
     components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,Button,

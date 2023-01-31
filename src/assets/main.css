@@ -14,6 +14,62 @@
 .text-color--white{
   color: var(--color-white) !important;
 }
+
+
+
+/*  */
+.bg--contact-primary-color{
+  background: var(--contact-primary-color) !important;
+}
+.text-color--contact-primary-color {
+  color: var(--contact-primary-color) !important;
+}
+.bg--contact-primary-dark-color {
+  background: var(--contact-primary-color-dark) !important;
+}
+.text-color--contact-primary-dark-color {
+  color: var(--contact-primary-color-dark) !important;
+}
+/*  */
+.bg--workshops-primary-color{
+  background: var(--workshops-primary-color) !important;
+}
+.text-color--workshops-primary-color {
+  color: var(--workshops-primary-color) !important;
+}
+.bg--workshops-primary-dark-color {
+  background: var(--workshops-primary-color-dark) !important;
+}
+.text-color--workshops-primary-dark-color {
+  color: var(--workshops-primary-color-dark) !important;
+}
+/*  */
+.bg--publications-primary-color{
+  background: var(--publications-primary-color) !important;
+}
+.text-color--publications-primary-color {
+  color: var(--use-case-primary-color) !important;
+}
+.bg--publications-primary-dark-color {
+  background: var(--publications-primary-color-dark) !important;
+}
+.text-color--publications-primary-dark-color {
+  color: var(--publications-primary-color-dark) !important;
+}
+/* ____________________________________ */
+.bg--use-case-primary-color{
+  background: var(--use-case-primary-color) !important;
+}
+.text-color--use-case-primary-color {
+  color: var(--use-case-primary-color) !important;
+}
+/*  */
+.bg--use-case-primary-dark-color {
+  background: var(--use-case-primary-color-dark) !important;
+}
+.text-color--use-case-primary-dark-color {
+  color: var(--use-case-primary-color-dark) !important;
+}
 /* ____________________________________ */
 
 .bg--nez-primary-color{

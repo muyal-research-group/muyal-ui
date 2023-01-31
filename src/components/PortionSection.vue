@@ -7,7 +7,7 @@
                 </div>
                 <!-- <div :class="'w-'+part2_width"> -->
                 <!-- <div class="flex flex-direction--column align-items--center sectionv2-title-wrapper sectionv2-1"> -->
-                <div :class="'w-'+part2_width">
+                <div :class="{['w-'+part2_width]:true, 'flex':true,'align-items--center':true,'justify-content--center':true}">
                     <slot :name="'part2'"></slot>
                     <!-- <h1 class="sectionv2-title">{{ title }}</h1>
                     <p class="text-size--md text-align--justify">{{ text }}</p> -->

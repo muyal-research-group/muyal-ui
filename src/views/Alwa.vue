@@ -2,11 +2,27 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Bases de datos producidad por sistemas de e-Salud"
-    image="images/alwa/alwa.png"
+    image="assets/images/alwa/alwa.png"
     index="5"
     color ="alwa-primary-color"
     dark_color ="alwa-primary-dark-color"
-  />
+    image_width = "500"
+  >
+  
+  <template v-slot:footer>
+          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+            Obtenido
+          </div>
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Software" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+          </div>
+  </template>
+</PlatformFrontPage>
   <Footer></Footer>
 </template>
 
@@ -41,7 +57,7 @@ export default {
             },
           // color :"bg--painal-primary-color"
         color : "alwa-primary-color",
-        dark_color : "alwa-primary-color-dark"
+        dark_color : "alwa-primary-dark-color"
         // color : "bg--chimalli-primary-color"
       };
   },

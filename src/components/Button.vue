@@ -1,5 +1,5 @@
 <template>
-    <div @click="press()" :class="'bg--'+dark_color +' btn mb--sm'"> <span >{{ title }}</span> </div>
+    <div @click="$emit('on_click')" :class="'bg--'+dark_color +' btn mb--sm'"> <span >{{ title }}</span> </div>
 </template>
 
 <script >

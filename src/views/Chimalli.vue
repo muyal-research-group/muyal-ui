@@ -2,12 +2,93 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
-    image="images/chimalli/chimalli.png"
+    image="assets/images/chimalli/chimalli.png"
     index="2"
     color ="chimalli-primary-color"
     dark_color ="chimalli-primary-dark-color"
-  />
+    image_width = "500"
+  >
+  <template v-slot:footer>
 
+          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+            Obtenido
+          </div>
+
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Software" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+          </div>
+  </template>
+</PlatformFrontPage>
+
+    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
+                  <!-- <div class="bg--black"> -->
+                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+
+    <Section  :title="sections.section_1.title" :color="color">
+      <div class="pa--xl">
+        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+        <div class="flex justify-content--center">
+          <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+        </div>
+      </div>
+    </Section>
+    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
+                  <!-- <div class="bg--black"> -->
+                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+
+    <Section  :title="sections.section_3.title" :color="color">
+      <div class="pa--xl">
+        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_3.text }}</p>
+        <div class="flex justify-content--center">
+          <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.alt"  :width="sections.section_3.images[0].width">
+        </div>
+      </div>
+    </Section>
   <Footer></Footer>
 </template>
 
@@ -29,15 +110,64 @@ export default {
   data() {
         return {
             sections:{
-              resume:{
-                title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
-                text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sed repellat mollitia illum dolorum in corrupti ipsum voluptate possimus veniam, ut, voluptatem minima iste quo pariatur, est molestias quidem fugit ea molestiae amet suscipit? Obcaecati libero, non, vero, corporis tempore quidem sint consequuntur nesciunt quas aliquam aliquid molestias et distinctio! Quidem quaerat sint doloremque itaque quisquam mollitia aut perferendis iusto?",
+              section_0:{
+                title:"Servicio para el acceso seguro y confiable a datos sensibles",
+                text:"Chimalli se encuentra compuesto por un conjunto de servicios para el acceso, manejo, preparación, transporte, y recuperación de datos médicos. Estos servicios permiten a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder a los datos de forma segura a través de servicios de e-salud y/o sistemas de analítica para obtener información útil que ayude a mejorar la toma de decisiones en escenarios de salud.",
                 images:[
                   {
-                    src:"",
-                    alt:"",
-                    width:""
+                    src:"assets/images/chimalli/section_0_0.png",
+                    alt:"CHIMALLI_0",
+                    width:"400"
+                  },
+                  {
+                    src:"assets/images/chimalli/section_0_1.png",
+                    alt:"CHIMALLI_1",
+                    width:"400"
                   }
+                ]
+                
+              },
+
+              section_1:{
+                title:"Servicio para el acceso seguro y confiable a datos sensibles",
+                text:"Chimalli se encuentra compuesto por un conjunto de servicios para el acceso, manejo, preparación, transporte, y recuperación de datos médicos. Estos servicios permiten a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder a los datos de forma segura a través de servicios de e-salud y/o sistemas de analítica para obtener información útil que ayude a mejorar la toma de decisiones en escenarios de salud.",
+                images:[
+                  {
+                    src:"assets/images/chimalli/section_1_0.png",
+                    alt:"CHIMALLI_0",
+                    width:"1200"
+                  }
+                ]
+                
+              },
+
+              section_2:{
+                title:"Las principales características que provee Muyal-Chimalli a los datos",
+                text:"Confiabilidad y disponibilidad: garantiza el acceso a los datos, así como a los sistemas de e-salud y analítica en escenarios de fallas de servidores y almacenamiento de datos, así como apagones en los centros de datos. Muyal-Chimalli permite configurar los servicios de confiabilidad y disponibilidad de acuerdo con los recursos disponibles en la organización.",
+                images:[
+                  {
+                    src:"assets/images/chimalli/section_2_0.png",
+                    alt:"CHIMALLI_0",
+                    width:"400"
+                  },
+                  {
+                    src:"assets/images/chimalli/section_2_1.png",
+                    alt:"CHIMALLI_0",
+                    width:"400"
+                  }
+                ]
+                
+              },
+
+              section_3:{
+                title:"Servicios de preparación y recuperación de datos médicos configurables",
+                text:"Es un servicio que permite a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder de forma segura a datos sensibles a través de servicios de e-salud y/o sistemas de analítica. Para este fin, Muyal-Chimalli cuenta con esquemas que permiten la preparación y recuperación de los datos, así como mecanismos de control de acceso. En escenarios reales de gestión de datos sensibles, es necesario contar con mecanismos que provean requisitos no funcionales (un requisito que especifica los criterios que se pueden utilizar para juzgar el funcionamiento de un sistema, en lugar de comportamientos específicos), tales como seguridad, eficiencia y confiablidad. Estos requisitos son necesarios debido a las normas de gestión de datos sensibles (por ejemplo, las normas oficiales mexicanas NOM-024-SSA3-2010 y NOM-004-SSA3-2012), y a las leyes impuestas por los gobiernos y organizaciones.",
+                images:[
+                  {
+                    src:"assets/images/chimalli/section_3_0.png",
+                    alt:"CHIMALLI_0",
+                    width:"1000"
+                  },
                 ]
                 
               }

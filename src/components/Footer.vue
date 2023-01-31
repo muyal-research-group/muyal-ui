@@ -25,7 +25,7 @@
                     <!-- </div> -->
                 </a>
             </div>
-            <p>© Copyright 2020 - E-Salud by Cinvestav Tamaulipas</p>
+            <p class="footer__copyright">© Copyright 2020 - E-Salud by Cinvestav Tamaulipas</p>
         </div>
     </div>
 </template>
@@ -56,6 +56,10 @@
         min-width: 400px;
         max-width: 1050px;
         margin-bottom: 20px;
+    }
+    .footer__copyright{
+     font-size: 12px;   
+     color: gray;
     }
     .footer img{
         /* width: 10px; */

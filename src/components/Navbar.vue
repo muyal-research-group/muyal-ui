@@ -26,14 +26,27 @@
                         <router-link to="/alwa">Alwa</router-link>
                     </div>
                 </li>
-                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">
+                
+                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
+                    <router-link to="/use-case">
+                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Caso de uso</span>
+                    </router-link>
+                </li>
+                <li class="navbar__dropdown dropdown">
+                    <span :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
+                    <div class="navbar__dropdown-content dropdown-content">
+                        <router-link to="/resources/publications">Publicaciones</router-link>
+                        <router-link to="/resources/workshops">Tallares</router-link>
+                    </div>
+                </li>
+                <!-- <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">
                     <router-link to="/resources">
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Recursos</span>
                     </router-link>
-                </li>
+                </li> -->
                 <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
-                    <router-link to="/about">
-                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Acerca de</span>
+                    <router-link to="/contact">
+                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Conctacto</span>
                     </router-link>
                 </li>
             </ul>
@@ -42,28 +55,21 @@
 
 </template>
 <script>
-import Button from "../components/Button.vue"
+// import Button from "../components/Button.vue"
 export default {
     props: {
         color: String,
         dark_color: String
-    }
-    , components: {
-        Button
     },
-    // computed :{
-        // is_scrolled(){
-        //     const x = window.scrollY > 0;
-        //     console.log("IS_SCROLLED",x)
-        //     return x
-        // }
+    // , components: {
+    //     Button
     // },
     data(){
         return {is_scrolled:false}
     },
     methods: {
         show_navbar: function () {
-            this.is_scrolled = window.scrollY >0
+            this.is_scrolled = window.scrollY > 0
         }
     },
     mounted() {

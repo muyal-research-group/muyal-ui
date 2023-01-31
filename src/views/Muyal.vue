@@ -2,6 +2,7 @@
 
     <!-- <div class="global_wrapper"> -->
 
+    <Navbar/>
     <div class="flex justify-content--center front-page-wrapper">
         <div class ="front-page">
             <div class="front-page__container">
@@ -16,7 +17,7 @@
                 <div class="front-page__project-number">
                     <p>Proyecto numero: <b>41756</b></p>
                 </div>
-                <PlatformsNav></PlatformsNav>
+                <!-- <PlatformsNav></PlatformsNav> -->
             </div>
             <!-- <div class="separator"></div> -->
         </div>
@@ -113,6 +114,7 @@ import PortionSection from '../components/PortionSection.vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import useBreakpoints from "vue-next-breakpoints";
+import Navbar from '../components/Navbar.vue';
 
 
 // import { Glide, GlideSlide } from 'vue-glide-js'
@@ -408,6 +410,7 @@ export default {
         Slide,
         Pagination,
         Navigation,
+        Navbar
     }
 }
 </script>
@@ -467,8 +470,9 @@ export default {
 }
 
 .front-page-wrapper{
-    background: red;
+    /* background: red; */
     width: 100vw;
+    height: 100vh;
 }
 .front-page {
   position: relative;
@@ -485,7 +489,7 @@ export default {
 
 .front-page__container {
   display: flex;
-  margin-top: 30px;
+  margin-top: 100px;
   flex-direction: column;
   align-items: center;
   width: 70%;
