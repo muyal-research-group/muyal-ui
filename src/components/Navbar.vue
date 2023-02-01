@@ -1,9 +1,10 @@
 
 <template >
+                <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
     <div :class="{'navbar':true, 'pa--lg':true,'bg--white':is_scrolled,'elevated':is_scrolled,['bg--'+color]:!is_scrolled}">
         <router-link to="/"> 
             <img 
-                :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' :'assets/images/muyal/muyal-white.png')" 
+                :src="is_scrolled ? '/images/muyal/muyal-black.png' : '/images/muyal/muyal-white.png'" 
                 id="navbar__logo" 
                 :class="{'navbar__logo':true}"
             >
@@ -12,12 +13,12 @@
         <div class="navbar__items active">
             <ul class="navbar__items__ul">
                 <li :class="{'navbar__item':true}">
-                    <router-link to="/"> 
+                    <router-link class="navbar__link" to="/"> 
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Inicio</span>
                     </router-link>
                 </li>
                 <li class="navbar__dropdown dropdown">
-                    <span :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
                     <div class="navbar__dropdown-content dropdown-content">
                         <router-link to="/nez">Nez</router-link>
                         <router-link to="/chimalli">Chimalli</router-link>
@@ -28,12 +29,12 @@
                 </li>
                 
                 <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
-                    <router-link to="/use-case">
+                    <router-link class="navbar__link" to="/use-case">
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Caso de uso</span>
                     </router-link>
                 </li>
                 <li class="navbar__dropdown dropdown">
-                    <span :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
                     <div class="navbar__dropdown-content dropdown-content">
                         <router-link to="/resources/publications">Publicaciones</router-link>
                         <router-link to="/resources/workshops">Tallares</router-link>
@@ -45,7 +46,7 @@
                     </router-link>
                 </li> -->
                 <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
-                    <router-link to="/contact">
+                    <router-link class="navbar__link" to="/contact">
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Conctacto</span>
                     </router-link>
                 </li>
@@ -125,13 +126,33 @@ export default {
 }
 .navbar__item {
     display: block;
+    /* padding: 10px 25px; */
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    /* background: yellow; */
+}
+.navbar__link {
+    display: block;
     padding: 10px 25px;
     text-decoration: none;
     cursor: pointer;
+    position: relative;
+    /* position: absolute; */
+    /* top:50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%,-50%); */
+    /* background: red; */
+    display: block;
+    /* width: 100%; */
+    /* height: 100%; */
 }
+    /* position: absolute; */
+    /* display: block; */
+    /* width: 100%; */
 .navbar__item:hover{
     background: white;
-    border-radius: 50px;
+    /* border-radius: 5; */
     color: black !important;
 }
 .navbar__item:hover span{

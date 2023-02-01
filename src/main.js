@@ -27,6 +27,12 @@ const MyPlugin = {
         const url  = new URL(x,import.meta.url).href
         return url
     }
+
+    app.config.globalProperties.$resolve_img = (x) => {
+        // const url  = new URL(x,import.meta.url).href
+        // return url
+        return x
+    }
   },
 }
 app.use(MyPlugin)

@@ -2,7 +2,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Publicaciones"
-    image="assets/images/publications/publications.png"
+    image="/images/publications/publications.png"
     index="6"
     :color ="color"
     :dark_color ="dark_color"
@@ -22,7 +22,18 @@
           </div> -->
   </template>
 </PlatformFrontPage>
-  <Footer></Footer>
+  <div class="pa--xl publications-wrapper">
+    <div v-for="publication in publications" :class="{'pa--md':true, 'publication':true, 'w-100':is_mobile}" @click="on_click(publication)">
+      <div class="publication__img-wrapper">
+          <img class="publication__img" src="/images/publications/publication.png" alt="">
+      </div>
+      <div class="publication__desc">
+          <h2 class="publication__title">{{ publication.title }}</h2>
+          <span class="publication__subtitle">{{ publication.subtitle }}</span>
+      </div>
+    </div>
+  </div>
+  <Footer/>
 </template>
 
 <script>
@@ -35,33 +46,117 @@ import Button from '../components/Button.vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
+import useBreakpoints from "vue-next-breakpoints";
 export default {
+  setup(){
+      const breakpoints = useBreakpoints({
+          mobile:[320,768], // max-width: 600px
+          table:[768,1024],
+          desktop: [1281] // min-width: 601px
+      });
+
+      return {
+          // If you want to use different key, feel free do do so, e.g.:
+          // mediaqueries: breakpoints
+          // and then use mediaqueries.desktop.matches etc.
+          breakpoints
+      };
+  },
+  computed:{
+    is_mobile(){
+      return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+    }
+  },
   components: {Footer,Card,PlatformFrontPage,
     Carousel, Slide, Pagination, Navigation , Navbar,Button
   },
+
+  methods:{
+    on_click: function(publication){
+      console.log("CLICK ON", publication)
+    }
+  },
   data() {
       return {
-            sections:{
-              section_0:{
-                title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
-                text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sed repellat mollitia illum dolorum in corrupti ipsum voluptate possimus veniam, ut, voluptatem minima iste quo pariatur, est molestias quidem fugit ea molestiae amet suscipit? Obcaecati libero, non, vero, corporis tempore quidem sint consequuntur nesciunt quas aliquam aliquid molestias et distinctio! Quidem quaerat sint doloremque itaque quisquam mollitia aut perferendis iusto?",
-                images:[
-                  {
-                    src:"",
-                    alt:"",
-                    width:""
-                  }
-                ]
-                
-              }
-            },
-          color :"publications-primary-color",
-          dark_color :"publications-primary-dark-color",
+            publications:[
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+              {
+                title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+              },
+            ],
+            color :"publications-primary-color",
+            dark_color :"publications-primary-dark-color",
         // color : "bg--chimalli-primary-color"
       };
   },
 }
 </script>
+<style scoped>
+.publications-wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* padding: ; */
+}
+.publication{
+  background: #f3f3f3;
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  width: 50%;
+  margin-bottom: 10px;
+}
+.publication:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform ease-out 400ms;
+}
+.publication__title{
+  font-size: 22px;
+}
+.publication__subtitle{
+  font-size: 14px;
+  color: #7e7e7e;
+}
+
+.publication__img-wrapper {
+  /* background: red; */
+  padding: 5px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-right: 20px;
+
+}
+.publication__img {
+  width:80px;
+}
+
+</style>
 <!-- <template>
     <h1>PUBLICATIONS</h1>
 </template>

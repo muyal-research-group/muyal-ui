@@ -2,7 +2,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Talleres"
-    image="assets/images/workshops/workshops.png"
+    image="/images/workshops/workshops.png"
     index="6"
     :color ="color"
     :dark_color ="dark_color"

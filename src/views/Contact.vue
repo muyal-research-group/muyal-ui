@@ -2,7 +2,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Contacto"
-    image="assets/images/contact/contact.png"
+    image="/images/contact/contact.png"
     index="6"
     :color ="color"
     :dark_color ="dark_color"

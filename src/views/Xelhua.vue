@@ -2,7 +2,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Sistema agnóstico en la nube para la construcción de soluciones de big data basada en el diseño de servicios de ciencia de datos de alta disponibilidad y tolerante a fallos"
-    image="assets/images/xelhua/xelhua.png"
+    image="/images/xelhua/xelhua.png"
     index="4"
     color ="xelhua-primary-color"
     dark_color ="xelhua-primary-dark-color"
@@ -188,12 +188,12 @@ export default {
               text:"Xelhua es una plataforma para la construcción de sistemas de ciencia de datos estructurados bajo demanda, sin amplios conocimientos en programación y orientada al diseño. Permite utilizar aplicativos para la preparación de datos, análisis y visualización de datos, acoplarlos unos con otros y crear flujos de trabajo personalizados. Los datos se procesan por cada una de las aplicaciones (encapsuladas en microservicios) que el usuario selecciona, generando nuevos productos derivados, cómo lo pueden ser datos transformados, gráficas, mapas, estadísticos, o cualquier producto accionable que permita realizar observaciones sobre los datos, o bien, permita tomar una decisión.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_0_0.png",
+                  src:"/images/xelhua/section_0_0.png",
                   alt:"XELHUA_0",
                   width:"400"
                 },
                 {
-                  src:"assets/images/xelhua/section_0_1.png",
+                  src:"/images/xelhua/section_0_1.png",
                   alt:"XELHUA_1",
                   width:"400"
                 }
@@ -204,7 +204,7 @@ export default {
               text:"El sistema Xelhua permite construir soluciones de alto nivel a través de un esquema impulsado por el diseño, convirtiendo automáticamente los diseños de pipelines en servicios de ciencia de datos agnósticos y de alta disponibilidad en la nube, desplegables en múltiples infraestructuras para hacer frente a los efectos secundarios del bloqueo del proveedor. En tiempo de ejecución, un motor de orquestación crea flujos de datos continuos, mientras que un modelo descentralizado garantiza las operaciones continuas de estos servicios de big data enmascarando los fallos detectados, como la indisponibilidad de aplicaciones y datos.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_1_0.png",
+                  src:"/images/xelhua/section_1_0.png",
                   alt:"XELHUA_0",
                   width:"800"
                 },
@@ -215,12 +215,12 @@ export default {
               text:"El sistema Xelhua define y está basado en la estructura lógica denominada Agnostic Box (ABox), inspirada en la tecnología de contenedores de software, considerados el estándar para el despliegue de microservicios y aplicaciones en la nube. Una estructura ABox representa una aplicación analítica a través de la metainformación descriptiva del servicio proporcionado por dicha aplicación. La estructura ABox, al ser un contenedor de software, proporciona los componentes de software necesarios para la ejecución de la aplicación analítica, así como la configuración necesaria para el correcto despliegue del servicio proporcionado.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_2_0.png",
+                  src:"/images/xelhua/section_2_0.png",
                   alt:"XELHUA_0",
                   width:"400"
                 },
                 {
-                  src:"assets/images/xelhua/section_2_1.png",
+                  src:"/images/xelhua/section_2_1.png",
                   alt:"XELHUA_0",
                   width:"400"
                 },
@@ -231,7 +231,7 @@ export default {
               text:"El sistema Xelhua proporciona diferentes aplicaciones analíticas para big data a través de la publicación de diferentes servicios. Los servicios proporcionados están contenidos en unas estructuras ABox, disponibles en un repositorio (R), basada en la tecnología de contenedores de software con las características de conectividad, manejabilidad, portabilidad y usabilidad. A continuación, se detalla cada una de estas características, utilizadas para la construcción de la malla de servicios.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_3_0.png",
+                  src:"/images/xelhua/section_3_0.png",
                   alt:"XELHUA_0",
                   width:"400"
                 }
@@ -242,12 +242,12 @@ export default {
               text:"En los escenarios del mundo real, varios usuarios pueden hacer peticiones a un conjunto de servicios para procesar datos. En este contexto, si uno de los servicios falla, los usuarios no pueden acceder a él. Una solución a este problema es utilizar la redundancia de servicios.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_4_0.png",
+                  src:"/images/xelhua/section_4_0.png",
                   alt:"XELHUA_0",
                   width:"400"
                 },
                 {
-                  src:"assets/images/xelhua/section_4_1.png",
+                  src:"/images/xelhua/section_4_1.png",
                   alt:"XELHUA_0",
                   width:"400"
                 }
@@ -259,7 +259,7 @@ export default {
               text:"El acoplamiento de las estructuras ABox en el sistema Xelhua se realiza a través de redes P2P descentralizadas. El esquema descentralizado no sólo permite a las estructuras ABox establecer un consenso entre las entidades participantes de una red de servicios P2P, sino que también mantiene un grado de tolerancia a los fallos a través de la redundancia del servicio, así como el control del intercambio de datos entre las estructuras ABox. En el esquema descentralizado, se utilizan entidades con diferentes roles como nodos, proponentes, aceptantes y aprendices. El rol de nodo realiza tareas de equilibrio de carga, asignación y distribución de la carga de trabajo. Los proponentes procesan cada solicitud que llega a un servicio (SV). Los aceptadores reciben y procesan cada solicitud y finalmente responden afirmativa o negativamente a los proponentes. Cuando los aceptadores reciben una solicitud, la envían a los aprendices, que, por consenso, deciden reenviar la solicitud a la estructura ABox correspondiente. El protocolo permite que, aunque fallen algunas entidades, las peticiones puedan ser atendidas por el resto de las entidades disponibles sin interrumpir la funcionalidad del servicio de big data. Siguiendo este mismo proceso, los nodos permiten establecer controles sobre las réplicas de las estructuras ABox. Esto significa que en escenarios de fallos de una estructura ABox, los nodos realizan interacciones entre las estructuras ABox disponibles.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_5_0.png",
+                  src:"/images/xelhua/section_5_0.png",
                   alt:"XELHUA_0",
                   width:"800"
                 }
@@ -271,12 +271,12 @@ export default {
               text:"Xelhua permite desplegar servicios mediante el uso de sus estructuras ABox que facilitan el proceso de despliegue. Las cuales son definidas en un JSON que contiene los metadatos de una esturctura ABox.",
               images:[
                 {
-                  src:"assets/images/xelhua/section_6_0.png",
+                  src:"/images/xelhua/section_6_0.png",
                   alt:"XELHUA_0",
                   width:"400"
                 },
                 {
-                  src:"assets/images/xelhua/section_6_1.png",
+                  src:"/images/xelhua/section_6_1.png",
                   alt:"XELHUA_0",
                   width:"400"
                 }
@@ -287,7 +287,7 @@ export default {
               text:"Un ejemplo de los servicios desplegados en diferentes infraestructuras utilizando el prototipo del sistema Xelhua. Se muestran un conjunto de servicios y réplicas montados en un clúster local y un conjunto de réplicas existentes en nodos del servidor de Amazon. En este contexto, un usuario envía peticiones al AG, que las redirige a los correspondientes servicios disponibles, generando así un flujo de datos (denotado por los números).",
               images:[
                 {
-                  src:"assets/images/xelhua/section_7_0.png",
+                  src:"/images/xelhua/section_7_0.png",
                   alt:"XELHUA_0",
                   width:"800"
                 }

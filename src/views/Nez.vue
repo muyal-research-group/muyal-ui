@@ -3,7 +3,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
-    image="assets/images/nez/nez.png"
+    image="/images/nez/nez.png"
     index="1"
     color ="nez-primary-color"
     dark_color ="nez-primary-dark-color"
@@ -251,17 +251,17 @@ export default {
                 text:"Es un framework que permite la construcción de sistemas de ciencia de datos en e-salud. Muyal-Nez y las soluciones generadas con este tienen la característica de que son agnósticos de la infraestructura, por lo tanto, permiten a las organizaciones interconectar las diferentes aplicaciones consideradas en el manejo del ciclo de vida de sus datos, y desplegarlas en diferentes infraestructuras para generar flujos intra e interinstitucionales.",
                 images:[
                   {
-                    src:"assets/images/nez/section_0_0.png",
+                    src:"/images/nez/section_0_0.png",
                     alt:"NEZ_0",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_0_1.png",
+                    src:"/images/nez/section_0_1.png",
                     alt:"NEZ_2",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_0_2.png",
+                    src:"/images/nez/section_0_2.png",
                     alt:"NEZ_2x",
                     width:"400"
                   }
@@ -273,7 +273,7 @@ export default {
                 text:"En Muyal-Nez la unidad básica de construcción de un sistema de ciencia de datos de salud es una abstracción llamada bloque de construcción (BC). Un BC es un componente de software genérico y agnóstico de la infraestructura, el cual es construido en la forma de un contenedor virtual que encapsula una aplicación para procesar y manejar datos médicos. En este sentido, un BC incluye el código o binario de la aplicación, sus librerías y bibliotecas, archivos de configuración, así como una versión reducida del sistema operativo que la aplicación requiere para funcionar. En la Fig. 5 se muestra la representación conceptual de un BC utilizado en Muyal-Nez para el manejo de las aplicaciones. Como se puede observar, los BC pueden ser conectados con una fuente y destino de datos utilizando sus interfaces de entrada y salida.", 
                 images:[
                   {
-                    src:"assets/images/nez/section_1_0.png",
+                    src:"/images/nez/section_1_0.png",
                     alt:"NEZ_3",
                     width:"600"
                   }
@@ -284,12 +284,12 @@ export default {
                 text:"Los BC pueden ser desplegados en diferentes infraestructuras disponibles, por ejemplo, en una computadora personal, un servidor, un clúster de computadoras o en una máquina virtual en la nube. En tiempo de ejecución, este bloque de construcción es manejado como un microservicio, el cual implementa interfaces de entrada y salida que permiten el intercambio de datos con otros microservicios e incluso con aplicaciones externas o manejadas por terceros.",
                 images:[
                     {
-                      src:"assets/images/nez/section_2_0.png",
+                      src:"/images/nez/section_2_0.png",
                       alt:"NEZ_1",
                       width:"400"
                     },
                     {
-                      src:"assets/images/nez/section_2_1.png",
+                      src:"/images/nez/section_2_1.png",
                       alt:"NEZ_5",
                       width:"400"
                     },
@@ -300,7 +300,7 @@ export default {
                 text:"Los bloques de construcción diseñados en Muyal-Nez pueden ser interconectados entre sí para crear estructuras más complejas tales como servicios de ciencia de datos que permitan el manejo y procesamiento de datos a través de su ciclo de vida, desde su adquisición hasta hacerlos disponibles a tomadores de decisiones (e.g., médicos o enfermeras). En este sentido, la construcción de un servicio de ciencia de datos con Muyal-Nez, es realizada mediante la unión lógica de diferentes BC, los cuales pueden estar desplegados en múltiples infraestructuras. Esto es similar a armar un rompecabezas, donde diferentes bloques más pequeños se unen para formar una estructura más compleja.",
                 images:[
                   {
-                    src:"assets/images/nez/section_3_0.png",
+                    src:"/images/nez/section_3_0.png",
                     alt:"NEZ_4",
                     width:"1000"
                   }
@@ -311,12 +311,12 @@ export default {
                 text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos.",
                 images:[
                   {
-                    src:"assets/images/nez/section_4_0.png",
+                    src:"/images/nez/section_4_0.png",
                     alt:"NEZ_4",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_4_1.png",
+                    src:"/images/nez/section_4_1.png",
                     alt:"NEZ_4",
                     width:"400"
                   }
@@ -328,7 +328,7 @@ export default {
                 text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos. Se presenta un ejemplo de un sistema de ciencia de datos construido con Muyal-Nez, el cual incluye un patrón manejador/trabajador. En este patrón el BC para la detección de tumores es replicado tres veces y se agrega una entidad llamada manejador, la cual se encarga de distribuir los datos de entrada, producidos por el BC de conversión de imágenes a RGB, entre los trabajadores disponibles.",
                 images:[
                   {
-                    src:"assets/images/nez/section_5_0.png",
+                    src:"/images/nez/section_5_0.png",
                     alt:"NEZ_5",
                     width:"600"
                   }
@@ -339,12 +339,12 @@ export default {
                 text:"Nez permite la creación de dos tipos de flujo de datos: intra e interinstitucionales. Los flujos de datos intrainstitucionales permiten la interconexión de diferentes participantes dentro de un hospital u organización. Por ejemplo, un departamento de radiología enviando tomografías a un oncólogo. Estos servicios automáticamente realizan el manejo, entrega y procesamiento de los datos al interior de la organización.",
                 images:[
                   {
-                    src:"assets/images/nez/section_6_0.png",
+                    src:"/images/nez/section_6_0.png",
                     alt:"NEZ_6",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_6_1.png",
+                    src:"/images/nez/section_6_1.png",
                     alt:"NEZ_7",
                     width:"400"
                   }
@@ -355,7 +355,7 @@ export default {
                 text:"Se muestra un ejemplo de un flujo de datos intrainstitucional, el cual interconecta un departamento de radiología con uno de oncología. Como se puede observar, los datos son asegurados con Muyal-Chimalli y transportados con Muyal-Painal. Además, las imágenes adquiridas son procesadas con BC de Muyal-Nez, los cuales incluyen aplicaciones para la anonimización de las imágenes y la reconstrucción 3D de las mismas.",
                 images:[
                   {
-                    src:"assets/images/nez/section_7_0.png",
+                    src:"/images/nez/section_7_0.png",
                     alt:"NEZ_6",
                     width:"1000"
                   },
@@ -366,7 +366,7 @@ export default {
                 text:"Se muestra un ejemplo de un flujo interinstitucional. En este ejemplo un radiólogo de un hospital captura imágenes de rayos X a los pacientes, y las envía a un oncólogo en otro hospital para su análisis y un diagnóstico. Durante el transporte de las imágenes, estas son procesadas por un servicio de ciencia de datos para identificar tumores en las imágenes. Además, se incluyen BC que cuentan con mecanismos para asegurar la integridad y confidencialidad de los datos, garantizando que terceros no puedan acceder a las imágenes médicas durante su transporte y almacenamiento.",
                 images:[
                   {
-                    src:"assets/images/nez/section_8_0.png",
+                    src:"/images/nez/section_8_0.png",
                     alt:"NEZ_8",
                     width:"1000"
                   },
@@ -377,32 +377,32 @@ export default {
                 text:"Las caracteristicas principales de Nez son 1) encapsulamiento de aplicaciones que permite a los usaurios crear soluciones que puedan ser portables en diferentes entornos computacionales; 2) La integracion de multiples aplicaciones; 3) La creacion de servicios de e-Salud mediante bloques de consutrcciones 4) La entrega automatica de resultados; 5) ",
                 images:[
                   {
-                    src:"assets/images/nez/section_9_0.png",
+                    src:"/images/nez/section_9_0.png",
                     alt:"NEZ_8",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_9_1.png",
+                    src:"/images/nez/section_9_1.png",
                     alt:"NEZ_8",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_9_2.png",
+                    src:"/images/nez/section_9_2.png",
                     alt:"NEZ_8",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_9_3.png",
+                    src:"/images/nez/section_9_3.png",
                     alt:"NEZ_8",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_9_4.png",
+                    src:"/images/nez/section_9_4.png",
                     alt:"NEZ_8",
                     width:"400"
                   },
                   {
-                    src:"assets/images/nez/section_9_5.png",
+                    src:"/images/nez/section_9_5.png",
                     alt:"NEZ_8",
                     width:"400"
                   },

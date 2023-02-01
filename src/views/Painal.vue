@@ -3,7 +3,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio para el transporte y almacenamiento de datos médicos"
-    image="assets/images/painal/painal.png"
+    image="/images/painal/painal.png"
     index="3"
     color ="painal-primary-color"
     dark_color ="painal-primary-dark-color"
@@ -104,12 +104,12 @@ export default {
                 text:"Painal es un conjunto de servicios y sistemas desarrollados para que las organizaciones de salud y la comunidad científica puedan i) almacenar, distribuir y localizar sistemas o servicios de procesamiento a través de catálogos de servicios ii) generar soluciones que permitan brindar usabilidad costo-beneficio del almacenamiento y transporte de datos y iii) almacenar, publicar y transmitir repositorios de datos de manera local (intrainstitucional) y federada (interinstitucional) utilizando un modelo de publicación/suscripción.",
                 images:[
                   {
-                    src:"assets/images/painal/section_0_0.png",
+                    src:"/images/painal/section_0_0.png",
                     alt:"PAINAL_0",
                     width:"400"
                   },
                   {
-                    src:"assets/images/painal/section_0_1.png",
+                    src:"/images/painal/section_0_1.png",
                     alt:"PAINAL_0",
                     width:"400"
                   }
@@ -120,7 +120,7 @@ export default {
                 text:"Un sistema de distribución de contenidos federado (FCDS, por sus siglas en inglés) desarrollado para Painal y empleado para crear servicios de sincronización de datos médicos que son tecnológicamente agnósticos de la infraestructura, lo cual permite a las organizaciones desplegar sus servicios en cualquier nube privada, pública o híbrida.",
                 images:[
                   {
-                    src:"assets/images/painal/section_1_0.png",
+                    src:"/images/painal/section_1_0.png",
                     alt:"PAINAL_0",
                     width:"1000"
                   },
@@ -131,12 +131,12 @@ export default {
                 text:"Se presentan la arquitectura y los principales componentes del sistema, así como los esquemas basados en patrones paralelos en contenedores para preparar/recuperar los datos cuando se cargan/descargan a través del FCDS de Painal. Estos esquemas gestionan los requisitos no funcionales requeridos por las organizaciones para cumplir con las regulaciones impuestas por las organizaciones y los gobiernos.",
                 images:[
                   {
-                    src:"assets/images/painal/section_2_1.png",
+                    src:"/images/painal/section_2_1.png",
                     alt:"PAINAL_0",
                     width:"400"
                   },
                   {
-                    src:"assets/images/painal/section_2_0.png",
+                    src:"/images/painal/section_2_0.png",
                     alt:"PAINAL_0",
                     width:"400"
                   },

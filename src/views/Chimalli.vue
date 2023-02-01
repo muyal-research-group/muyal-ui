@@ -2,7 +2,7 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
-    image="assets/images/chimalli/chimalli.png"
+    image="/images/chimalli/chimalli.png"
     index="2"
     color ="chimalli-primary-color"
     dark_color ="chimalli-primary-dark-color"
@@ -115,12 +115,12 @@ export default {
                 text:"Chimalli se encuentra compuesto por un conjunto de servicios para el acceso, manejo, preparación, transporte, y recuperación de datos médicos. Estos servicios permiten a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder a los datos de forma segura a través de servicios de e-salud y/o sistemas de analítica para obtener información útil que ayude a mejorar la toma de decisiones en escenarios de salud.",
                 images:[
                   {
-                    src:"assets/images/chimalli/section_0_0.png",
+                    src:"/images/chimalli/section_0_0.png",
                     alt:"CHIMALLI_0",
                     width:"400"
                   },
                   {
-                    src:"assets/images/chimalli/section_0_1.png",
+                    src:"/images/chimalli/section_0_1.png",
                     alt:"CHIMALLI_1",
                     width:"400"
                   }
@@ -133,7 +133,7 @@ export default {
                 text:"Chimalli se encuentra compuesto por un conjunto de servicios para el acceso, manejo, preparación, transporte, y recuperación de datos médicos. Estos servicios permiten a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder a los datos de forma segura a través de servicios de e-salud y/o sistemas de analítica para obtener información útil que ayude a mejorar la toma de decisiones en escenarios de salud.",
                 images:[
                   {
-                    src:"assets/images/chimalli/section_1_0.png",
+                    src:"/images/chimalli/section_1_0.png",
                     alt:"CHIMALLI_0",
                     width:"1200"
                   }
@@ -146,12 +146,12 @@ export default {
                 text:"Confiabilidad y disponibilidad: garantiza el acceso a los datos, así como a los sistemas de e-salud y analítica en escenarios de fallas de servidores y almacenamiento de datos, así como apagones en los centros de datos. Muyal-Chimalli permite configurar los servicios de confiabilidad y disponibilidad de acuerdo con los recursos disponibles en la organización.",
                 images:[
                   {
-                    src:"assets/images/chimalli/section_2_0.png",
+                    src:"/images/chimalli/section_2_0.png",
                     alt:"CHIMALLI_0",
                     width:"400"
                   },
                   {
-                    src:"assets/images/chimalli/section_2_1.png",
+                    src:"/images/chimalli/section_2_1.png",
                     alt:"CHIMALLI_0",
                     width:"400"
                   }
@@ -164,7 +164,7 @@ export default {
                 text:"Es un servicio que permite a las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica acceder de forma segura a datos sensibles a través de servicios de e-salud y/o sistemas de analítica. Para este fin, Muyal-Chimalli cuenta con esquemas que permiten la preparación y recuperación de los datos, así como mecanismos de control de acceso. En escenarios reales de gestión de datos sensibles, es necesario contar con mecanismos que provean requisitos no funcionales (un requisito que especifica los criterios que se pueden utilizar para juzgar el funcionamiento de un sistema, en lugar de comportamientos específicos), tales como seguridad, eficiencia y confiablidad. Estos requisitos son necesarios debido a las normas de gestión de datos sensibles (por ejemplo, las normas oficiales mexicanas NOM-024-SSA3-2010 y NOM-004-SSA3-2012), y a las leyes impuestas por los gobiernos y organizaciones.",
                 images:[
                   {
-                    src:"assets/images/chimalli/section_3_0.png",
+                    src:"/images/chimalli/section_3_0.png",
                     alt:"CHIMALLI_0",
                     width:"1000"
                   },
