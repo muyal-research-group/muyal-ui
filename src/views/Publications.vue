@@ -34,6 +34,7 @@
     </div>
   </div>
   <Footer/>
+  
 </template>
 
 <script>
@@ -73,7 +74,8 @@ export default {
 
   methods:{
     on_click: function(publication){
-      console.log("CLICK ON", publication)
+      // console.log("CLICK ON", publication)
+      window.open(publication.url,"_blank")
     }
   },
   data() {
@@ -81,27 +83,33 @@ export default {
             publications:[
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
               {
                 title:"A Federated Content Distribution System to Build Health Data Synchronization Services.",
-                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)"
+                subtitle:"2021 29th Euromicro International Conference on Parallel, Distributed and Network-Based Processing (PDP)",
+                url:"http://www.google.com"
               },
             ],
             color :"publications-primary-color",

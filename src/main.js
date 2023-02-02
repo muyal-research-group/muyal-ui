@@ -7,12 +7,8 @@ import Footer from "./components/Footer.vue";
 import Card from "./components/Card.vue";
 import PortionSection from "./components/PortionSection.vue";
 import IconCard from "./components/IconCard.vue"
-// import Carousel from 'vue-owl-carousel/src/Carousel.vue'
-// import VueCarousel from 'vue-carousel';
-
 import Button from "./components/Button.vue";
-// import VueGlide from 'vue-glide-js'
-// import 'vue-glide-js/dist/vue-glide.css'
+import ImageBanner from './components/ImageBanner.vue';
 
 import App from './App.vue';
 import router from './router';
@@ -49,6 +45,7 @@ app.component("Card",Card);
 app.component("PortionSection",PortionSection);
 app.component("IconCard",IconCard);
 app.component("Button",Button)
+app.component("ImageBanenr",ImageBanner);
 // app.component("Carrousel",Carousel)
 
 app.mount('#app')
