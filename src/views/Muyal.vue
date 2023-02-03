@@ -1,28 +1,45 @@
 <template>
-
-    <!-- <div class="global_wrapper"> -->
-
-    <Navbar/>
-    <div class="flex justify-content--center front-page-wrapper">
+    <Navbar :color="color" :dark_color="dark_color"/>
+    <PlatformFrontPage 
+        title ="Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud."
+        image="/images/muyal/muyal-white.png"
+        index="1"
+        color ="black"
+        dark_color ="white"
+        image_width = "500"
+        title_size ="lg"
+    >
+    <template v-slot:footer>
+            <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
+            <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+                Obtenido
+            </div> -->
+            <!-- <div class="mb--md front-page__buttons flex-wrap">
+                <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+                <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+                <Button title="Software" :color="color" :dark_color="dark_color" />
+                <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+                <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+            </div> -->
+    </template>
+    </PlatformFrontPage>
+    <!-- 
+        <div class="flex justify-content--center front-page-wrapper">
         <div class ="front-page">
             <div class="front-page__container">
                 <div class="front-page__logo">
-                    <img src="/images/muyal/muyal-white.png" alt="MUYAL_LOGO">
+                    <img src="" alt="MUYAL_LOGO">
                 </div>
                 <div class="front-page__text-container">
                 <p class="front-page__text">
-                    Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
                 </p>
                 </div>
                 <div class="front-page__project-number">
                     <p>Proyecto numero: <b>41756</b></p>
                 </div>
-                <!-- <PlatformsNav></PlatformsNav> -->
             </div>
-            <!-- <div class="separator"></div> -->
         </div>
-    </div>
-    
+    </div> -->
     <div class="sections-wrapper">
         <PortionSection part1_width ="60" part2_width="40">
             <template v-slot:part1>
@@ -38,36 +55,11 @@
             </template>
         </PortionSection>
         
-
-<!--         
-        <div class=" sectionv2-wrapper">
-            <div class="flex sectionv2-container">
-                <div class="sectionv2-2">
-                    <img width="500" src="@//muyal-color.png" alt="">
-                </div>
-                <div class="flex flex-direction--column align-items--center sectionv2-title-wrapper sectionv2-1">
-                    <h1 class="sectionv2-title">{{ sections.resume.title }}</h1>
-                    <p class="text-size--md text-align--justify">
-                    </p>
-                </div>
-            </div>
-        </div> -->
-        <!-- <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
-            <div class="pa--lg flex justify-content--center align-items--center">
-                <div class="pa--md">
-                    <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
-                </div>
-                <div>
-                <img width="600" src="..//muyal_steps.png" alt="">
-                </div>
-            </div>
-        </Section> -->
-
         <Section :title = "sections.section_1.title" color="black" >
             <p class="pa--xl text-size--md">{{ sections.section_1.text }}</p>
-             <carousel :items-to-show="items_to_show">
+             <carousel :breakpoints = "breakpoints">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
-                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
                 <template #addons>
                     <navigation />
@@ -101,7 +93,7 @@
     
 
 
-    <Footer></Footer>
+    <Footer/>
 
 
 </template>
@@ -111,6 +103,7 @@ import FeatureBox from '../components/FeatureBox.vue';
 import IconCard from '../components/IconCard.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 import PortionSection from '../components/PortionSection.vue';
+import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import useBreakpoints from "vue-next-breakpoints";
@@ -155,6 +148,8 @@ export default {
     },
     data() {
         return {
+            color:"black",
+            dark_color:"white",
             feature_boxes:[
                 {
                     title:"Nez: Servicio de consutrccion de sistemas e-Salud",
@@ -397,6 +392,24 @@ export default {
                 }
             },
             items_to_show:4,
+
+            breakpoints: {
+                // 700px and up
+                320: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                620: {
+                    itemsToShow: 3,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1420: {
+                    itemsToShow: 4,
+                    snapAlign: 'center',
+                },
+            }
+
             
         };
     },
@@ -410,7 +423,8 @@ export default {
         Slide,
         Pagination,
         Navigation,
-        Navbar
+        Navbar,
+        PlatformFrontPage
     }
 }
 </script>
@@ -459,7 +473,7 @@ export default {
     max-width: fit-content;
 }
 
-.separator{
+/* .separator{
     background:#2F2F2F;
     width:100%;
     --size: 10px;
@@ -467,7 +481,7 @@ export default {
     position: absolute;
     top:calc(100% - var(--size));
     left:0;
-}
+} */
 
 .front-page-wrapper{
     /* background: red; */

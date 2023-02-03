@@ -14,11 +14,11 @@
   <div v-for="(workshop,index) in workshops" :class="{'sectionv3':true, 'active':!hides[index]}">
     <ImageBanner @click="on_click(index,workshop)" :title ="workshop.title" :image ="workshop.image.src"/>
     <div :class="{'sectionv3-body':true,'hide':hides[index],'flex':true,'flex-direction--column':true,'align-items--center':true }">
-      <div v-for="(subsection,subindex) in workshop.subsections" :class="{'flex':true, 'sectionv3__subsection':true,'flex-direction--row-reverse':!((subindex)%2 == 0), 'hide':hides[index]  }">
+      <div v-for="(subsection,subindex) in workshop.subsections" :class="{'flex':true,'sectionv3__subsection':true,'flex-direction--row-reverse':!((subindex)%2 == 0), 'hide':hides[index]  }">
           <img :class="{'sectionv3__subsection__img':true,'hide':hides[index],'mr--sm':(subindex%2 == 0),'ml--sm': !(subindex%2 == 0)}" :src="subsection.image" :alt="workshop.image.alt">
-          <div :class="{'flex':true,'flex-direction--column':true,'sectionv3__subsection__content':true}">
+          <div :class="{'flex':true,'flex-direction--column':true,'sectionv3__subsection__content':true,'hide':hides[index]}">
             <h3 :class="{'text-align--center':true,'sectionv3__subsection__title':true,'hide':hides[index]}">{{ subsection.title }}</h3>
-            <p :class ="{'sectionv3__subsection__text':true,'hide':hides[index]}">{{ subsection.text }}</p>
+            <p :class ="{'sectionv3__subsection__text':true,'hide':hides[index], 'text-align--justify':true}">{{ subsection.text }}</p>
           </div>
       </div>
           <iframe :class="{'sectionv3__subsection__video':true,'mt--md':true,'hide':hides[index]}" width="820" height="420" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
@@ -61,14 +61,24 @@ export default {
                 },
                 subsections:[
                   {
-                    title:"Subsection 1",
+                    title:"Ciencia y salud",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/monterrey/01.jpg"
+                    image:"/images/workshops/monterrey/01.png"
                   },
                   {
-                    title:"Subsection 2",
+                    title:"Nez un servicio para la construcción de sistemas de ciencia de datos",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/monterrey/01.jpg"
+                    image:"/images/workshops/monterrey/02.png"
+                  },
+                  {
+                    title:"Chimalli un servicio para el cumplimiento de normas en el intercambio de datos",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/monterrey/03.png"
+                  },
+                  {
+                    title:"Xelhua un sevicio para creacion de sistemas de ciencia de datos estructurados",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/monterrey/04.png"
                   }
                 ]
               },
@@ -83,8 +93,24 @@ export default {
                   {
                     title:"Subsection 1",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/mexico/01.jpg"
+                    image:"/images/workshops/mexico/1.jpg"
 
+                  },
+                  {
+                    title:"Subsection 2",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/mexico/02.jpg"
+                  },
+                  {
+                    title:"Subsection 3",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/mexico/03.jpg"
+
+                  },
+                  {
+                    title:"Subsection 4",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/mexico/4.jpg"
                   }
                 ]
               },
@@ -99,9 +125,25 @@ export default {
                   {
                     title:"Subsection 1",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/puebla/01.jpg"
+                    image:"/images/workshops/puebla/1.jpg"
 
+                  },
+                  {
+                    title:"Subsection 2",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/puebla/02.jpg"
+                  },
+                  {
+                    title:"Subsection 3",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/puebla/03.jpg"
+                  },
+                  {
+                    title:"Subsection 4",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/puebla/04.jpg"
                   }
+
                 ]
               },
               {
@@ -117,6 +159,22 @@ export default {
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
                     image:"/images/workshops/merida/01.jpg"
 
+                  },
+
+                  {
+                    title:"Subsection 2",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/merida/01.jpg"
+                  },
+                  {
+                    title:"Subsection 3",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/merida/01.jpg"
+                  },
+                  {
+                    title:"Subsection 4",
+                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    image:"/images/workshops/merida/01.jpg"
                   }
                 ]
               }
@@ -135,7 +193,9 @@ export default {
   /* width: 80vw; */
 }
 .sectionv3-body.hide{
-  height: 0 !important;
+  /* max-height: 0 !important; */
+  height: 0;
+  overflow: hidden;
   /* opacity: 0; */
   /* overflow: hidden; */
   /* position: absolute; */
@@ -164,7 +224,9 @@ export default {
 /* } */
 .sectionv3-body{
   display: block;
-  height: 100vw;
+  height: 240vh;
+  /* overflow-y:scroll; */
+  /* max-height: 300vh; */
   /* height: auto; */
   /* min-height: 50vh; */
   /* max-height:100vh; */
@@ -187,7 +249,7 @@ export default {
 
 .sectionv3__subsection__img{
   width: 30%;
-  border-radius: 50px;
+  border-radius: 10px;
   /* margin-right: 20px; */
   transition: opacity ease 500ms;
 }

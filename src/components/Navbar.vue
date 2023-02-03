@@ -1,7 +1,7 @@
 
 <template >
                 <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
-    <div :class="{'navbar':true, 'pa--lg':true,'bg--white':is_scrolled,'elevated':is_scrolled,['bg--'+color]:!is_scrolled}">
+    <div :class="{'navbar':true, 'pa--lg':true,'bg--white':is_scrolled,'elevated':is_scrolled,['bg--'+color]:!is_scrolled, 'justify-content--space-between':is_mobile}">
         <router-link to="/"> 
             <img 
                 :src="is_scrolled ? '/images/muyal/muyal-black.png' : '/images/muyal/muyal-white.png'" 
@@ -10,16 +10,16 @@
             >
         </router-link>
 
-        <div class="navbar__items active">
+        <div :class="{'navbar__items':true,'hide':is_mobile}">
             <ul class="navbar__items__ul">
                 <li :class="{'navbar__item':true}">
                     <router-link class="navbar__link" to="/"> 
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Inicio</span>
                     </router-link>
                 </li>
-                <li class="navbar__dropdown dropdown">
+                <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
                     <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
-                    <div class="navbar__dropdown-content dropdown-content">
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
                         <router-link to="/nez">Nez</router-link>
                         <router-link to="/chimalli">Chimalli</router-link>
                         <router-link to="/painal">Painal</router-link>
@@ -33,11 +33,11 @@
                         <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Caso de uso</span>
                     </router-link>
                 </li>
-                <li class="navbar__dropdown dropdown">
+                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(1)"  @mouseleave="on_leave(1)" >
                     <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
-                    <div class="navbar__dropdown-content dropdown-content">
-                        <router-link to="/resources/publications">Publicaciones</router-link>
-                        <router-link to="/resources/workshops">Tallares</router-link>
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}">
+                        <router-link to="/resources/publications"  >Publicaciones</router-link >
+                        <router-link to="/resources/workshops" >Tallares</router-link>
                     </div>
                 </li>
                 <!-- <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">
@@ -52,25 +52,71 @@
                 </li>
             </ul>
         </div>
+
+        <div v-if="is_mobile" :class="{'menu__bars':true}" @click ="on_click_bars">
+            <div v-for="i in [0,1,2]" :class ="{'bar':true, ['bg--'+dark_color]:!is_scrolled, ['bg--'+color]:is_scrolled}"></div>
+        </div>
+    
+    </div>
+        
+    <div class="navbar-wrapper">
+        <div :class ="{'overlay':true,'show':show_side_menu}" @click="on_click_bars">
+            <nav :class ="{'side_menu':true, 'show':show_side_menu}">
+                    <ul class="side_menu__items">
+                        <li class="side_menu__item">ITEM 1</li>
+                        <li class="side_menu__item">ITEM 2</li>
+                        <li class="side_menu__item">ITEM 3</li>
+                        <li class="side_menu__item">ITEM 4</li>
+                    </ul>
+            </nav>
+        </div>
     </div>
 
 </template>
 <script>
+import useBreakpoints from "vue-next-breakpoints";
 // import Button from "../components/Button.vue"
 export default {
     props: {
         color: String,
         dark_color: String
     },
+  setup(){
+      const breakpoints = useBreakpoints({
+          mobile:[320,768], // max-width: 600px
+          table:[768,1024],
+          desktop: [1281] // min-width: 601px
+      });
+
+      return {
+          breakpoints
+      };
+  },
+  computed:{
+    is_mobile(){
+      return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+    }
+  },
     // , components: {
     //     Button
     // },
     data(){
-        return {is_scrolled:false}
+        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false]}
     },
     methods: {
         show_navbar: function () {
             this.is_scrolled = window.scrollY > 0
+        }, 
+        on_click_bars(){
+            this.show_side_menu = !this.show_side_menu;
+        },
+        on_hover(index){
+            this.dropdowns_hover[index] = true;
+        //  alert("HOVER ON: "+index)
+        },
+        on_leave(index){
+            console.log("LEAVE "+index)
+            this.dropdowns_hover[index] = false;
         }
     },
     mounted() {
@@ -81,9 +127,70 @@ export default {
 </script>
 
 <style scoped>
+.navbar-wrapper{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    /* z-index: 100; */
+    /* background: red; */
+}
+.overlay {
+    background: rgba(0,0,0,0.5);
+    /* background: red; */
+    position: absolute;
+    top:0;
+    z-index: 1000;
+    /* right: 10px; */
+    /* right: 1000px; */
+    /* transform: right ease 400ms, opacity ease 400ms; */
+    /* opacity: 1; */
+    /* position: -100%; */
+    /* display: none; */
+}
+.overlay.show{
+    width: 100vw;
+    height: 100vh;
+}
+.side_menu{
+    position: absolute;
+    /* top:0; */
+    /* left: 0; */
+    height: 100vh;
+    width: 400px;
+    background-color: white;
+    left:-1000px;
+    transition: left ease-in-out 700ms;
+    /* right: 10px; */
+}
+.side_menu.show {
+    left:0;
+}
+.side_menu__items{
+    /* background: red; */
+}
+.side_menu__item{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-decoration: none;
+    list-style: none;
+}
+
+/* __________________ */
 /* router-link{
     text-decoration: none;
 } */
+.menu__bars{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.bar{
+    width: 50px;
+    height: 8px;
+    margin-bottom: 5px;
+    /* background: red; */
+    border-radius: 5px;
+}
 .navbar {
     height: 100px;
     display: flex;
@@ -92,14 +199,19 @@ export default {
     /* position: absolute; */
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
+    /* background: red; */
     /* padding: 20px; */
     /* padding: 60px; */
     /* background: red; */
 }
+.navbar__items.hide{
+    opacity: 0;
+    display: none;
+}
 
 .navbar__logo {
-    --size:60px;
+    --size:50px;
     height: var(--size);
     width: var(--size);
     /* margin-left: 20px; */
@@ -138,18 +250,8 @@ export default {
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    /* position: absolute; */
-    /* top:50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%,-50%); */
-    /* background: red; */
     display: block;
-    /* width: 100%; */
-    /* height: 100%; */
 }
-    /* position: absolute; */
-    /* display: block; */
-    /* width: 100%; */
 .navbar__item:hover{
     background: white;
     /* border-radius: 5; */
@@ -160,51 +262,60 @@ export default {
     /* background: red !important; */
 }
 
-/* .navbar__items li a, .dropbtn {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 16px;
-} */
-
-/* li a:hover,
-.dropdown:hover .dropbtn {
-    background-color: rgb(228, 211, 211);
-    border-radius: 10px;
-}  */
-.active li a{
+/* .active li a{
     color: white;
 }
-.active .dropdown-content a{
+.active .navbar__dropdown-content a{
     color: black;
-}
+} */
 
-li .dropdown {
+/* li .navbar__dropdown {
     display: inline-block;
-}
+} */
 
-.dropdown .dropdown-content {
+/* .navbar__dropdown{ */
+    /* background: red !important; */
+/* } */
+.navbar__dropdown .navbar__dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border-radius: 0 0 10px 10px;
+    /* border-radius: 0 0 10px 10px; */
+    /* z-index: 10000; */
 }
 
-.dropdown-content a {
+.navbar__dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
+    transition: background-color ease 700ms, box-shadow ease 700ms;
 }
 
-.dropdown-content a:hover {
+.navbar__dropdown-content a:hover {
     background-color: #f1f1f1;
+    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.5);
+}
+.navbar__dropdown-content a:last-child:hover {
+    background-color: #f1f1f1;
+    box-shadow: none;
 }
 
-.dropdown:hover .dropdown-content {
+
+.navbar__dropdown-content{
+    /* height: 400px; */
+    /* position: relative; */
+    z-index: 1000;
+} 
+.navbar__dropdown-content.show{
     display: block;
+    /* background: red; */
 }
+/* .navbar__dropdown:hover .navbar__dropdown-content {
+    display: block;
+} */
 </style>

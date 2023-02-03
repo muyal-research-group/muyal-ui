@@ -213,9 +213,6 @@ export default {
         });
 
         return {
-            // If you want to use different key, feel free do do so, e.g.:
-            // mediaqueries: breakpoints
-            // and then use mediaqueries.desktop.matches etc.
             breakpoints
         };
     },
@@ -223,17 +220,6 @@ export default {
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
       }
-            // this.breakpoints.mobile.on("enter", (mq) => {
-            //     console.log("Entered mobile breakpoint");
-            //     console.log("Media Query", mq);
-            //     this.is_
-            // });
-
-            // this.breakpoints.mobile.on("leave", (mq) => {
-            //     console.log("Left mobile breakpoint");
-            //     console.log("Media Query", mq);
-            //     this.items_to_show = 4
-            // });
     },
     methods:{
       to_image(x){

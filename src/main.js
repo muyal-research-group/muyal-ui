@@ -9,6 +9,7 @@ import PortionSection from "./components/PortionSection.vue";
 import IconCard from "./components/IconCard.vue"
 import Button from "./components/Button.vue";
 import ImageBanner from './components/ImageBanner.vue';
+import ContactCard from "./components/ContactCard.vue"
 
 import App from './App.vue';
 import router from './router';
@@ -46,6 +47,7 @@ app.component("PortionSection",PortionSection);
 app.component("IconCard",IconCard);
 app.component("Button",Button)
 app.component("ImageBanenr",ImageBanner);
+app.component("ContactCard",ContactCard)
 // app.component("Carrousel",Carousel)
 
 app.mount('#app')

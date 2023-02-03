@@ -2,7 +2,7 @@
   <div :class=" 'bg--'+color+' front-page-wrapper'">
     <div class ="front-page">
         <img class="front-page__img" :src="$resolve_image(image)" :alt="title" :width="image_width">
-        <h2 :class="title_size+' front-page__title text-color--'+text_color">{{ title }}</h2>
+        <h2 :class="'text-size--'+title_size+' front-page__title text-color--'+text_color">{{ title }}</h2>
 
         <div class="front-page__container">
           <slot name ="footer"></slot>
