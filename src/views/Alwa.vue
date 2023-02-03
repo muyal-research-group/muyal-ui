@@ -2,12 +2,61 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Bases de datos producidad por sistemas de e-Salud"
-    image="images/alwa/alwa.png"
+    image="/images/alwa/alwa.png"
     index="5"
     color ="alwa-primary-color"
     dark_color ="alwa-primary-dark-color"
-  />
-  <Footer></Footer>
+    image_width = "500"
+  >
+  
+  <template v-slot:footer>
+          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+            Obtenido
+          </div>
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Software" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+          </div>
+  </template>
+</PlatformFrontPage>
+
+    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
+                  <!-- <div class="bg--black"> -->
+                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+
+    <Section  :title="sections.section_1.title" :color="color">
+      <div class="pa--xl">
+        <p class="text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+        <div class="flex justify-content--center">
+          <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+        </div>
+      </div>
+    </Section>
+  <Footer/>
 </template>
 
 <script>
@@ -26,22 +75,45 @@ export default {
   data() {
       return {
             sections:{
-              resume:{
-                title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
-                text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sed repellat mollitia illum dolorum in corrupti ipsum voluptate possimus veniam, ut, voluptatem minima iste quo pariatur, est molestias quidem fugit ea molestiae amet suscipit? Obcaecati libero, non, vero, corporis tempore quidem sint consequuntur nesciunt quas aliquam aliquid molestias et distinctio! Quidem quaerat sint doloremque itaque quisquam mollitia aut perferendis iusto?",
+              section_0:{
+                title:"La investigacion y la gestion de datos",
+                text:"La gestión de datos de investigación es el proceso activo de manejo de datos generados en una investigación. Esta gestión se realiza en forma continua y cubre todas las decisiones relacionadas con la gestión de datos a largo de su ciclo de vida, comenzando con la etapa de planificación de la investigación y abarcando su ejecución, la diseminación de los resultados y la preservación de los conjuntos de datos de forma que estos datos sea auténticos, precisos, completos y fiables, y se mantengan accesibles y reutilizables a lo largo del tiempo.",
                 images:[
                   {
-                    src:"",
-                    alt:"",
-                    width:""
+                    src:"/images/alwa/section_0_0.png",
+                    alt:"ALWA_0",
+                    width:"400"
+                  },
+                  {
+                    src:"/images/alwa/section_0_1.png",
+                    alt:"ALWA_1",
+                    width:"400"
                   }
                 ]
                 
-              }
+              },
+              section_1:{
+                title:"La investigacion y la gestion de datos",
+                text:"La gestión de datos de investigación es el proceso activo de manejo de datos generados en una investigación. Esta gestión se realiza en forma continua y cubre todas las decisiones relacionadas con la gestión de datos a largo de su ciclo de vida, comenzando con la etapa de planificación de la investigación y abarcando su ejecución, la diseminación de los resultados y la preservación de los conjuntos de datos de forma que estos datos sea auténticos, precisos, completos y fiables, y se mantengan accesibles y reutilizables a lo largo del tiempo.",
+                images:[
+                  {
+                    src:"/images/alwa/section_0_0.png",
+                    alt:"ALWA_0",
+                    width:"400"
+                  },
+                  {
+                    src:"/images/alwa/section_0_1.png",
+                    alt:"ALWA_1",
+                    width:"400"
+                  }
+                ]
+                
+              },
+
             },
           // color :"bg--painal-primary-color"
         color : "alwa-primary-color",
-        dark_color : "alwa-primary-color-dark"
+        dark_color : "alwa-primary-dark-color"
         // color : "bg--chimalli-primary-color"
       };
   },

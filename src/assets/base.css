@@ -4,7 +4,20 @@
   --color-black: #000;
   --text-color: #605F5F;
   --section-bg-color: #EEEEEE;
+  /* USE CASE */
+  --use-case-primary-color: #242424;
+  --use-case-primary-color-dark: #141414;
+  /* Publications */
+  --publications-primary-color: #F7BE59;
+  --publications-primary-color-dark: #DBA23C;
+  /* Talleres */
+  --workshops-primary-color: #3CD1DB;
+  --workshops-primary-color-dark: #33B0B8;
+  /* Contact */
+  --contact-primary-color: #3350B8;
+  --contact-primary-color-dark: #283E8C;
   /* Nez */
+
   --nez-primary-color: #397DFF;
   --nez-primary-color-dark: #356FE1;
   /* Chimalli */
@@ -22,6 +35,9 @@
   --vc-pgn-height:10px;
   --vc-pgn-width:10px;
   --vc-pgn-border-radius:50px;
+
+  /* --workshop-merida: url(/images/workshops/merida/00.jpg); */
+
   
 
 }
@@ -69,6 +85,37 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+.front-page__buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background: red; */
+}
+
+.front-page__buttons div{
+  margin-right: 10px;
+}
+
+.front-page__deliverable{
+  /* background: white; */
+  /* display: flex;
+  justify-content: center; */
+  color:white;
+  font-weight: bold ;
+  width: 150px;
+  /* border-radius: 5px; */
+  padding: 10px;
+  /* color: ; */
+}
+.front-page__obtained {
+  background: white;
+  width: 150px;
+  border-radius: 100px;
+  padding: 10px;
+  /* display: flex;
+  justify-content: center; */
+}
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -97,7 +144,7 @@ a{
   
   /* CSS */
   :root{
-  --color-black: red;
+  /* --color-black: red; */
 
   }
   

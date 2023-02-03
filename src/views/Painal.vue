@@ -3,13 +3,84 @@
   <Navbar :color="color" :dark_color="dark_color"></Navbar>  
   <PlatformFrontPage 
     title ="Servicio para el transporte y almacenamiento de datos médicos"
-    image="images/painal/painal.png"
+    image="/images/painal/painal.png"
     index="3"
     color ="painal-primary-color"
     dark_color ="painal-primary-dark-color"
-  />
+    image_width = "500"
+  >
+  <template v-slot:footer>
+          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+            Obtenido
+          </div>
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+            <Button title="Software" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+          </div>
+  </template>
+</PlatformFrontPage>
 
-  <Footer></Footer>
+    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
+                  <!-- <div class="bg--black"> -->
+                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+
+    <Section  :title="sections.section_1.title" :color="color">
+      <div class="pa--xl">
+        <p class="text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+        <div class="flex justify-content--center">
+          <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+        </div>
+      </div>
+    </Section>
+
+    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+        <template v-slot:part1>
+            <div>
+                <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
+                <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
+            </div>
+        </template>
+        <template v-slot:part2>
+            <div class ="flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+                <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
+                  <!-- <div class="bg--black"> -->
+                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                  <!-- </div> -->
+                </Slide>
+                <template #addons>
+                  <Navigation/>
+                  <Pagination/>
+                </template>
+              </Carousel>
+            </div>
+        </template>
+    </PortionSection>
+  <Footer/>
 </template>
 
 <script>
@@ -28,15 +99,52 @@ export default {
   data() {
       return {
             sections:{
-              resume:{
-                title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
-                text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sed repellat mollitia illum dolorum in corrupti ipsum voluptate possimus veniam, ut, voluptatem minima iste quo pariatur, est molestias quidem fugit ea molestiae amet suscipit? Obcaecati libero, non, vero, corporis tempore quidem sint consequuntur nesciunt quas aliquam aliquid molestias et distinctio! Quidem quaerat sint doloremque itaque quisquam mollitia aut perferendis iusto?"
-                // text: "Es un servicio de construcción de sistemas e-salud para el procesamiento de datos no-estructurados de forma inter e intra institucional.",
-                
+              section_0:{
+                title:"Servicio para el almacenamiento de datos médicos",
+                text:"Painal es un conjunto de servicios y sistemas desarrollados para que las organizaciones de salud y la comunidad científica puedan i) almacenar, distribuir y localizar sistemas o servicios de procesamiento a través de catálogos de servicios ii) generar soluciones que permitan brindar usabilidad costo-beneficio del almacenamiento y transporte de datos y iii) almacenar, publicar y transmitir repositorios de datos de manera local (intrainstitucional) y federada (interinstitucional) utilizando un modelo de publicación/suscripción.",
+                images:[
+                  {
+                    src:"/images/painal/section_0_0.png",
+                    alt:"PAINAL_0",
+                    width:"400"
+                  },
+                  {
+                    src:"/images/painal/section_0_1.png",
+                    alt:"PAINAL_0",
+                    width:"400"
+                  }
+                ]
+              },
+              section_1:{
+                title:"Servicio para el manejo, carga y descarga de servicios desde un catálogo/repositorio de servicios",
+                text:"Un sistema de distribución de contenidos federado (FCDS, por sus siglas en inglés) desarrollado para Painal y empleado para crear servicios de sincronización de datos médicos que son tecnológicamente agnósticos de la infraestructura, lo cual permite a las organizaciones desplegar sus servicios en cualquier nube privada, pública o híbrida.",
+                images:[
+                  {
+                    src:"/images/painal/section_1_0.png",
+                    alt:"PAINAL_0",
+                    width:"1000"
+                  },
+                ]
+              },
+              section_2:{
+                title:"Sistema federado para la distribución de contenidos y administración de requerimientos no funcionales.",
+                text:"Se presentan la arquitectura y los principales componentes del sistema, así como los esquemas basados en patrones paralelos en contenedores para preparar/recuperar los datos cuando se cargan/descargan a través del FCDS de Painal. Estos esquemas gestionan los requisitos no funcionales requeridos por las organizaciones para cumplir con las regulaciones impuestas por las organizaciones y los gobiernos.",
+                images:[
+                  {
+                    src:"/images/painal/section_2_1.png",
+                    alt:"PAINAL_0",
+                    width:"400"
+                  },
+                  {
+                    src:"/images/painal/section_2_0.png",
+                    alt:"PAINAL_0",
+                    width:"400"
+                  },
+                ]
               }
             },
           color :"painal-primary-color",
-          dark_color :"painal-primary-color-dark"
+          dark_color :"painal-primary-dark-color"
         // color : "bg--chimalli-primary-color"
       };
   },
