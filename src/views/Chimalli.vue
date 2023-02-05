@@ -28,8 +28,8 @@
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+                <h2 class="text-size--md mb--md">{{ sections.section_0.title }}</h2>
+                <p class="text-size--sm text-align--justify">{{ sections.section_0.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
@@ -51,7 +51,7 @@
 
     <Section  :title="sections.section_1.title" :color="color">
       <div class="pa--xl">
-        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+        <p class="mb--xl text-size--sm text-align--justify">{{ sections.section_1.text }}</p>
         <div class="flex justify-content--center">
           <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
         </div>
@@ -60,8 +60,8 @@
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
+                <h2 class="text-size--md mb--md">{{ sections.section_2.title }}</h2>
+                <p class="text-size--sm text-align--justify">{{ sections.section_2.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
@@ -83,7 +83,7 @@
 
     <Section  :title="sections.section_3.title" :color="color">
       <div class="pa--xl">
-        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_3.text }}</p>
+        <p class="mb--xl text-size--sm text-align--justify">{{ sections.section_3.text }}</p>
         <div class="flex justify-content--center">
           <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.alt"  :width="sections.section_3.images[0].width">
         </div>

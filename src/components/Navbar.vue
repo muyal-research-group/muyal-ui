@@ -53,20 +53,40 @@
             </ul>
         </div>
 
-        <div v-if="is_mobile" :class="{'menu__bars':true}" @click ="on_click_bars">
-            <div v-for="i in [0,1,2]" :class ="{'bar':true, ['bg--'+dark_color]:!is_scrolled, ['bg--'+color]:is_scrolled}"></div>
+        <div v-if="is_mobile" :class="{'menu__bars':true,}" @click ="on_click_bars">
+            <div v-for="i in [0,1,2]" :class ="{'bar':true, ['bg--'+dark_color]:!is_scrolled, ['bg--'+color]:is_scrolled, 'hide':hide_bar[i], ['cross-'+i]: i!=1 ? show_side_menu : false}"></div>
         </div>
     
     </div>
         
-    <div class="navbar-wrapper">
+    <div v-if="is_mobile" class="navbar-wrapper">
         <div :class ="{'overlay':true,'show':show_side_menu}" @click="on_click_bars">
             <nav :class ="{'side_menu':true, 'show':show_side_menu}">
                     <ul class="side_menu__items">
-                        <li class="side_menu__item">ITEM 1</li>
-                        <li class="side_menu__item">ITEM 2</li>
-                        <li class="side_menu__item">ITEM 3</li>
-                        <li class="side_menu__item">ITEM 4</li>
+                        <li class="side_menu__item">
+                            <router-link to="/">Inicio</router-link>
+                        </li>
+                        <li class="side_menu__item">
+                            <div class="side_menu__dropdown">
+                                <div class="flex justify-content--space-between">
+                                    <span class="side_menu__dropdown-text">Plataformas</span> 
+                                    <img :class="{'rotate-180':false}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15">
+                                </div>
+                                <ul :class="{'side_menu__dropdown-items':true ,'show':false}">
+                                    <li class="side_menu__subitem">
+                                        <router-link to="/nez">Nez</router-link>
+                                    </li>
+                                    <li class="side_menu__subitem"><router-link to="/chimalli">Chimalli</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/painal">Painal</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="side_menu__item"><router-link to="/use-case">Caso de uso</router-link></li>
+                        <li class="side_menu__item"><router-link to="/resources">Recursos</router-link></li>
+                        <li class="side_menu__item"><router-link to="/contact">Contacto</router-link></li>
                     </ul>
             </nav>
         </div>
@@ -101,7 +121,7 @@ export default {
     //     Button
     // },
     data(){
-        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false]}
+        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false],hide_bar:[!true,!true,!true]}
     },
     methods: {
         show_navbar: function () {
@@ -109,6 +129,7 @@ export default {
         }, 
         on_click_bars(){
             this.show_side_menu = !this.show_side_menu;
+            this.hide_bar[1]=!this.hide_bar[1];
         },
         on_hover(index){
             this.dropdowns_hover[index] = true;
@@ -127,25 +148,27 @@ export default {
 </script>
 
 <style scoped>
+.side_menu__dropdown-items{
+    list-style: none;
+    padding:15px;
+}
+.side_menu__subitem{
+    padding:10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.rotate-180{
+    transform: rotate(180deg);
+}
 .navbar-wrapper{
     position: fixed;
     width: 100vw;
     height: 100vh;
-    /* z-index: 100; */
-    /* background: red; */
 }
 .overlay {
     background: rgba(0,0,0,0.5);
-    /* background: red; */
     position: absolute;
     top:0;
     z-index: 1000;
-    /* right: 10px; */
-    /* right: 1000px; */
-    /* transform: right ease 400ms, opacity ease 400ms; */
-    /* opacity: 1; */
-    /* position: -100%; */
-    /* display: none; */
 }
 .overlay.show{
     width: 100vw;
@@ -155,6 +178,7 @@ export default {
     position: absolute;
     /* top:0; */
     /* left: 0; */
+    /* z-index: 1000000; */
     height: 100vh;
     width: 400px;
     background-color: white;
@@ -166,6 +190,7 @@ export default {
     left:0;
 }
 .side_menu__items{
+    padding:15px;
     /* background: red; */
 }
 .side_menu__item{
@@ -183,13 +208,31 @@ export default {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    /* background: red; */
 }
 .bar{
-    width: 50px;
-    height: 8px;
+    width: 40px;
+    height: 6px;
     margin-bottom: 5px;
     /* background: red; */
     border-radius: 5px;
+    opacity: 1;
+    transition: all ease 500ms;
+    /* transition:  rotate ease 400ms, translate ease 1000ms; */
+}
+.bar.hide{
+    opacity: 0;
+}
+.bar.cross-0 {
+    /* background: red !important; */
+    transform: rotate(40deg) translate(9px,10px);
+    /* height: 100px; */
+}
+.bar.cross-2 {
+    /* background: yellowgreen !important; */
+    /* width: 45px; */
+    transform:rotate(-40deg) translate(5px,-7px);
+    /* height: 100px; */
 }
 .navbar {
     height: 100px;
