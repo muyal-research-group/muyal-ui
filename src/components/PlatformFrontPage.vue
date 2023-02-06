@@ -1,6 +1,11 @@
 <template>
   <div :class="{['bg--'+color]:true, 'front-page-wrapper':true}">
-    <div class ="flex align-items--center front-page justify-content--center">
+    <div :class ="{
+        'flex':true,
+        'align-items--center':true ,
+        'front-page':true, 
+        'justify-content--center':is_mobile}
+    ">
         <img class="front-page__img" :src="image" :alt="title" :width="image_width">
         <div :class="{['w-'+title_width]:true}">
           <h1 :class="'text-size--'+title_size+' front-page__title text-color--'+text_color">{{ title }}</h1>
@@ -57,7 +62,7 @@ export default {
 .front-page__img{
   align-self: center;
   /* width: 40%; */
-  min-width: 400px;
+  /* min-width: 400px; */
 
 
 }

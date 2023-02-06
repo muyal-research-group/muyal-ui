@@ -8,7 +8,7 @@
     color ="nez-primary-color"
     dark_color ="nez-primary-dark-color"
     image_width = "500"
-    :title_size="is_mobile ? 'xl' : 'lg'"
+    :title_size="section_title_size"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -28,8 +28,14 @@
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div :class="{'mb--lg':is_mobile}">
-                <h1 :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile,'mb--md':true}">{{ sections.section_0.title }}</h1>
-                <p :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, 'text-align--justify':true}">{{ sections.section_0.text }}</p> 
+                  <!-- :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile,'mb--md':true}" -->
+                <h1 
+                  :class = "'mb--md text-size--'+section_title_size"
+                >{{ sections.section_0.title }}</h1>
+                  <!-- :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, '':truea}" -->
+                <p 
+                  :class="'text-align--justify text-size--'+section_text_size"
+                  >{{ sections.section_0.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
@@ -48,9 +54,12 @@
     </PortionSection>
 
 
-    <Section  :title="sections.section_1.title" :color="color" :title_size="is_mobile ? 'xl' : 'md' ">
+    <Section  :title="sections.section_1.title" :color="color" :title_size="section_title_size">
       <div class="pa--xl">
-        <p :class="{'mb--xl':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile ,'text-align--justify':true}">{{ sections.section_1.text }}</p>
+          <!-- :class="{'':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile ,'':true}" -->
+        <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+          >{{ sections.section_1.text }}</p>
         
         <div class="flex justify-content--center">
           <img :src="sections.section_1.images[0].src" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
@@ -72,20 +81,25 @@
               </Carousel>
             </div>
         </template>
+
         <template v-slot:part2>
             <div :class="{'mb--xl':is_mobile}">
-                <h2 :class="{'text-size--md':!is_mobile, 'text-size--xl':is_mobile,'mb--md':true}">{{ sections.section_2.title }}</h2>
-                <p :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile,'text-align--justify':true}">{{ sections.section_2.text }}</p> 
-            </div>
+                <h1 
+                :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_2.title }}</h1>
+                <p 
+                :class="'text-align--justify text-size--'+section_text_size"
+                >{{ sections.section_2.text }}</p> 
+            </div>''
         </template>
     </PortionSection>
 
-    <Section :title="sections.section_3.title" :color="color" :title_size="is_mobile ? 'xl' : 'md'">
+    <Section :title="sections.section_3.title" :color="color" :title_size="section_title_size">
       <div class="pa--xl">
-        <p :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile ,'text-align--justify':true}">{{ sections.section_3.text}}</p>
+        <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_3.text}}</p>
         
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.images[0].alt"  :width="sections.section_3.images[0].width">
+          <img :src="sections.section_3.images[0].src" :alt="sections.section_3.images[0].alt"  :width="sections.section_3.images[0].width">
         </div>
 
       </div>
@@ -107,8 +121,12 @@
         </template>
         <template v-slot:part1>
             <div>
-                <h1 :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile, 'mb--md':true}">{{ sections.section_4.title }}</h1>
-                <p :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, 'text-align--justify':true}">{{ sections.section_4.text }}</p> 
+                <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_4.title }}</h1>
+                <p 
+                  :class="'text-align--justify text-size--'+section_text_size"
+                >{{ sections.section_4.text }}</p> 
             </div>
         </template>
     </PortionSection>
@@ -142,26 +160,30 @@
 
         <template v-slot:part2>
             <div :class="{'mb--lg':is_mobile}">
-                <h1 :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile ,'mb--md':true}">{{ sections.section_6.title }}</h1>
-                <p :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, 'text-align--justify':true ,}">{{ sections.section_6.text }}</p> 
+                <h1  :class="'mb--md text-size--'+section_title_size">{{ sections.section_6.title }}</h1>
+                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_6.text }}</p> 
             </div>
         </template>
     </PortionSection>
 
-    <Section :title="sections.section_7.title" :color="color" :title_size ="is_mobile?'xl':'md'" >
+    <Section :title="sections.section_7.title" :color="color" :title_size ="section_title_size" >
       <div class="pa--xl">
-        <p :class="{'mb--xl':true, 'text-size--sm':!is_mobile,'text-size--xl':is_mobile, 'text-align--justify':true}">{{ sections.section_7.text}}</p>
+        <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+        >{{ sections.section_7.text}}</p>
         
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_7.images[0].src)" :alt="sections.section_7.images[0].alt"  :width="sections.section_7.images[0].width">
+          <img :src="sections.section_7.images[0].src" :alt="sections.section_7.images[0].alt"  :width="sections.section_7.images[0].width">
         </div>
 
       </div>
     </Section>
 
-    <Section :title="sections.section_8.title" :color="color" :title_size="is_mobile? 'xl':'md'">
+    <Section :title="sections.section_8.title" :color="color" :title_size="section_title_size">
       <div class="pa--xl">
-        <p :class="{'mb--xl':true, 'text-size--sm':!is_mobile,'text-size--xl':is_mobile, 'text-align--justify':true}">{{ sections.section_8.text}}</p>
+        <p 
+        :class="'mb--xl text-align--justify text-size--'+section_text_size"
+        >{{ sections.section_8.text}}</p>
         
         <div class="flex justify-content--center">
           <img :src="sections.section_8.images[0].src" :alt="sections.section_8.images[0].alt"  :width="sections.section_8.images[0].width">
@@ -186,8 +208,8 @@
         </template>
         <template v-slot:part2>
             <div :class="{'mb--lg':is_mobile}">
-                <h1 :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile ,'mb--md':true}">{{ sections.section_9.title }}</h1>
-                <p :class="{'text-size--sm':!is_mobile, 'text-size--lg':is_mobile, 'text-align--justify':true}">{{ sections.section_9.text }}</p> 
+                <h1 :class="'mb--md text-size--'+section_title_size">{{ sections.section_9.title }}</h1>
+                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_9.text }}</p> 
             </div>
         </template>
     </PortionSection>
@@ -226,7 +248,7 @@ export default {
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
       },
       section_text_size(){
-        return this.is_mobile ? 'sm' : 'xl'
+        return this.is_mobile ? 'xl' : 'sm'
       },
       section_title_size(){
         return this.is_mobile ? 'xl':'md'
@@ -301,7 +323,7 @@ export default {
               },
               section_4:{
                 title:"Muyal-Nez permite a los diseñadores agregar patrones de paralelismo implícito ",
-                text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos.",
+                text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos. con Muyal-Nez, el cual incluye un patrón manejador/trabajador. En este patrón los bloques de construccion (BC) para la detección de tumores son replicados para incrementar el rendimiento del sistemas de e-Salud.",
                 images:[
                   {
                     src:"/images/nez/section_4_0.png",

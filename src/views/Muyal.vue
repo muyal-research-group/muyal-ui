@@ -427,8 +427,10 @@ export default {
 
 /* WTF! */
 .carousel {
-    z-index: 10;
+    z-index: 0;
+    /* width: 100% !important; */
 }
+/* .carousel */
 
 .sections-wrapper{
     width: 100vw;

@@ -1,8 +1,8 @@
 @import './base.css';
 
-.carousel {
+/* .carousel {
   z-index: -1;
-}
+} */
 
 
 .bg--black {
@@ -157,9 +157,11 @@
   color: var(--text-color) !important; 
 }
 
+.text-size--xxs {
+  font-size: 0.5vw  !important;
+}
 .text-size--xs {
   font-size: 1vw  !important;
-  /* font-size: .5rem  !important; */
 }
 .text-size--sm {
   font-size: 1.5rem !important;

@@ -60,7 +60,7 @@
     </div>
         
     <div v-if="is_mobile" class="navbar-wrapper">
-        <div :class ="{'overlay':true,'show':show_side_menu}" @click="on_click_bars">
+        <div :class ="{'overlay':true,'show':show_side_menu}" >
             <nav :class ="{'side_menu':true, 'show':show_side_menu}">
                     <ul class="side_menu__items">
                         <li class="side_menu__item">
@@ -68,11 +68,11 @@
                         </li>
                         <li class="side_menu__item">
                             <div class="side_menu__dropdown">
-                                <div class="flex justify-content--space-between">
+                                <div class="flex justify-content--space-between"  @click="side_menu_dropdown(0)">
                                     <span class="side_menu__dropdown-text">Plataformas</span> 
-                                    <img :class="{'rotate-180':false}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15">
+                                    <img :class="{'rotate-180':dropdown_hide[0]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
-                                <ul :class="{'side_menu__dropdown-items':true ,'show':false}">
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-230px':true }">
                                     <li class="side_menu__subitem">
                                         <router-link to="/nez">Nez</router-link>
                                     </li>
@@ -85,7 +85,25 @@
 
                         </li>
                         <li class="side_menu__item"><router-link to="/use-case">Caso de uso</router-link></li>
-                        <li class="side_menu__item"><router-link to="/resources">Recursos</router-link></li>
+
+                        <li class="side_menu__item">
+                            <div class="side_menu__dropdown ">
+                                <div class="flex justify-content--space-between"  @click="side_menu_dropdown(1)">
+                                    <span class="side_menu__dropdown-text">Recursos</span> 
+                                    <img :class="{'rotate-180':dropdown_hide[1]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
+                                </div>
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
+                                    <li class="side_menu__subitem"><router-link to="/publications">Publicaciones</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/workshops">Talleres</router-link></li>
+                                    <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
+                                </ul>
+                            </div>
+
+                        </li>
+                        <!-- <li class="side_menu__item">
+                            <router-link to="/resources">Recursos</router-link>
+                        </li> -->
                         <li class="side_menu__item"><router-link to="/contact">Contacto</router-link></li>
                     </ul>
             </nav>
@@ -103,7 +121,7 @@ export default {
     },
   setup(){
       const breakpoints = useBreakpoints({
-          mobile:[320,768], // max-width: 600px
+          mobile:[240,768], // max-width: 600px
           table:[768,1024],
           desktop: [1281] // min-width: 601px
       });
@@ -121,7 +139,7 @@ export default {
     //     Button
     // },
     data(){
-        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false],hide_bar:[!true,!true,!true]}
+        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false],hide_bar:[!true,!true,!true,],dropdown_hide:[true,true]}
     },
     methods: {
         show_navbar: function () {
@@ -138,7 +156,11 @@ export default {
         on_leave(index){
             console.log("LEAVE "+index)
             this.dropdowns_hover[index] = false;
+        },
+        side_menu_dropdown(index){
+            this.dropdown_hide[index] = !this.dropdown_hide[index];
         }
+
     },
     mounted() {
         document.addEventListener('scroll', this.show_navbar)
@@ -151,10 +173,30 @@ export default {
 .side_menu__dropdown-items{
     list-style: none;
     padding:15px;
+    transition: all ease 400ms;
 }
+
+.dropdown-h-230px{
+    height: 230px;
+}
+.dropdown-h-100px{
+    height: 100px;
+}
+
+.side_menu__dropdown-items.hide{
+    position: absolute;
+    height: 0;
+    z-index: -100;
+    /* background: red; */
+}
+
 .side_menu__subitem{
     padding:10px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.side_menu__subitem:last-child{
+    border-bottom: none;
+    /* background: red; */
 }
 .rotate-180{
     transform: rotate(180deg);
@@ -163,6 +205,7 @@ export default {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    z-index: 10;
 }
 .overlay {
     background: rgba(0,0,0,0.5);
@@ -184,11 +227,14 @@ export default {
     background-color: white;
     left:-1000px;
     transition: left ease-in-out 700ms;
+    /* z-index: 100; */
+    /* background: red !important; */
     /* right: 10px; */
 }
 .side_menu.show {
     left:0;
 }
+
 .side_menu__items{
     padding:15px;
     /* background: red; */

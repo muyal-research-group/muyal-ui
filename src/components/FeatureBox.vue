@@ -29,10 +29,12 @@ export default {
 </script>
 <style scoped>
 .feature-box {
+    /* position: relative; */
     background: white;
     border-radius: 10px;
     width: 350px;
     padding: 40px;
+    /* z-index: -1; */
 }
 .feature-box:hover {
     cursor: pointer;
