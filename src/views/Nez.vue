@@ -40,7 +40,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
@@ -70,7 +70,7 @@
     <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
             <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_2.images" :key ="image.alt"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt" >
                 </Slide>
@@ -108,7 +108,7 @@
     <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_4.images" :key ="image.alt"> 
                     <img :src="(image.src)" :alt="image.alt" :width="image.width">
                 </Slide>
@@ -146,7 +146,7 @@
         
         <template v-slot:part1>
             <div class = "flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_6.images" :key ="image.alt"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
@@ -195,7 +195,7 @@
     <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
             <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_9.images" :key ="image.alt"> 
                     <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
@@ -213,7 +213,7 @@
             </div>
         </template>
     </PortionSection>
-  <Footer></Footer>
+  <Footer/>
 </template>
 
 <script>
@@ -554,8 +554,7 @@ button:hover {
   /* width: 300px !important; */
   /* background: red; */
 }
-.carousel__viewport{
-  width: 500px;
-  /* height: 600px; */
-}
+/* .carousel__viewport{
+  width: 600px;
+}  */
 </style>

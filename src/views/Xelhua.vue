@@ -39,7 +39,7 @@
       </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
               <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
@@ -76,7 +76,7 @@
       </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
               <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
@@ -113,7 +113,7 @@
     </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}"> 
               <Slide v-for="(image,index) in sections.section_4.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
@@ -150,7 +150,7 @@
     </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
               <Slide v-for="(image,index) in sections.section_6.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
@@ -455,12 +455,6 @@ button:hover {
 }
 .carousel__slide {
   padding: 10px;
-  /* width: 300px !important; */
-  /* background: red; */
-}
-.carousel__viewport{
-  width: 500px;
-  /* height: 600px; */
 }
 
 </style>

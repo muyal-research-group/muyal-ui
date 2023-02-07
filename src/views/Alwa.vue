@@ -38,10 +38,10 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :src="image.src" :alt="image.alt" :width="image.width">
                   <!-- </div> -->
                 </Slide>
                 <template #addons>

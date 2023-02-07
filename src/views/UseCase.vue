@@ -194,3 +194,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.carousel__viewport{
+  width: 500px;
+} 
+</style>

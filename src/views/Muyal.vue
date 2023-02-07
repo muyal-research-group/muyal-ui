@@ -42,7 +42,7 @@
         
         <Section :title = "sections.section_1.title" color="black" >
             <p class="pa--xl text-size--sm">{{ sections.section_1.text }}</p>
-             <carousel :breakpoints = "breakpoints">
+             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
                     <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
@@ -530,4 +530,8 @@ export default {
   border-radius: 5px;
   font-size: 1.5rem;
 }
+
+/* .carousel__viewport{
+  width: 1000px;
+}  */
 </style>

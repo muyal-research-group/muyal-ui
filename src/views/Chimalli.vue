@@ -40,10 +40,10 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay"  :style="{'width':'500px'}"  >
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :src="image.src" :alt="image.alt" :width="image.width">
                   <!-- </div> -->
                 </Slide>
                 <template #addons>
@@ -65,6 +65,7 @@
         </div>
       </div>
     </Section>
+
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
@@ -78,7 +79,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="image.src" :alt="image.alt" :width="image.width">
@@ -362,8 +363,11 @@ button:hover {
   /* width: 300px !important; */
   /* background: red; */
 }
-.carousel__viewport{
-  width: 500px;
+/* .carousel__viewport{ */
+  /* width: 500px; */
   /* height: 600px; */
-}
+/* } */
+/* .carousel__viewport{
+  width: 500px;
+}  */
 </style>
