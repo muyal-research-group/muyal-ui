@@ -172,7 +172,7 @@ export default {
 
           section_2:{
             title:"Visión artificial",
-            text:"Es  importante  destacar  que  el  tipo  de  aprendizaje  necesario  entrenar  un  modelo depende de la aplicación que se requiera. Por ejemplo, el aprendizaje no supervisado en imágenes médicas se suele utilizar para segmentar imágenes en los elementos que la componen, pero no se identifica cada elemento en la imagen, tiene como ventaja que  no se  requiere de  un  etiquetado  manual  previo,  ya  que  no se  especifica  a  qué clase pertenece cada segmento.",
+            text:"Es  importante  destacar  que  el  tipo  de  aprendizaje  necesario para entrenar  un  modelo, depende de la aplicación que se requiera. Por ejemplo, el aprendizaje no supervisado en imágenes médicas se suele utilizar para segmentar imágenes en los elementos que la componen, pero no se identifica cada elemento en la imagen, tiene como ventaja que  no se  requiere de  un  etiquetado  manual  previo,  ya  que  no se  especifica  a  qué clase pertenece cada segmento.",
             images:[
               {
                 src:"/images/use-case/section_2_0.png",
