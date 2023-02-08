@@ -9,20 +9,19 @@
     image_width = "500"
   >
   <template v-slot:footer>
-          <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
-          <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
-            Obtenido
-          </div> -->
-          <!-- <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Software" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
-          </div> -->
   </template>
 </PlatformFrontPage>
-  <Footer></Footer>
+  
+<div :class="{
+    'flex':true,
+    'flex-direction--row':!is_mobile,
+    'flex-direction--column':is_mobile,
+    'align-items--center':is_mobile,
+    'justify-content--center':!is_mobile,
+  }">
+  <ContactCard :class="{'w-100':is_mobile}" v-for = "c in contacts"  :profile_photo ="c.profile_photo" :fullname = "c.fullname" :position="c.position" :company="c.company" :company_address="c.company_address" :phone_number="c.phone_number" :email = "c.email" :key ="c.email" :web="c.web"/>
+</div>
+<Footer/>
 </template>
 
 <script>
@@ -31,30 +30,58 @@ import Navbar from '../components/Navbar.vue';
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Button from '../components/Button.vue';
+import ContactCard from '../components/ContactCard.vue';
 
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+// import 'vue3-carousel/dist/carousel.css'
+// import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
+import useBreakpoints from "vue-next-breakpoints";
 export default {
   components: {Footer,Card,PlatformFrontPage,
-    Carousel, Slide, Pagination, Navigation , Navbar,Button
+    // Carousel, Slide, Pagination, Navigation , 
+    Navbar,Button,
+    ContactCard
+  },
+  setup(){
+      const breakpoints = useBreakpoints({
+          mobile:[320,768], // max-width: 600px
+          table:[768,1024],
+          desktop: [1281] // min-width: 601px
+      });
+
+      return {
+          breakpoints
+      };
+  },
+  computed:{
+    is_mobile(){
+      return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+    }
   },
   data() {
       return {
-            sections:{
-              section_0:{
-                title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
-                text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sed repellat mollitia illum dolorum in corrupti ipsum voluptate possimus veniam, ut, voluptatem minima iste quo pariatur, est molestias quidem fugit ea molestiae amet suscipit? Obcaecati libero, non, vero, corporis tempore quidem sint consequuntur nesciunt quas aliquam aliquid molestias et distinctio! Quidem quaerat sint doloremque itaque quisquam mollitia aut perferendis iusto?",
-                images:[
-                  {
-                    src:"",
-                    alt:"",
-                    width:""
-                  }
-                ]
-                
-              }
+          contacts:[
+            {
+             profile_photo: "/images/contact/00.png",
+             fullname: "Dr. Miguel Morales Sandoval",
+             position: "Profesor / Investigador", 
+             company: "CINVESTAV",
+             company_address: "Parque Científico y Tecnológico TECNOTAM. Cd. Victoria, Tamaulipas",
+             phone_number: "(834) 107 0220 1134",
+             email: "miguel.morales@cinvestav.mx",
+             web:"https://www.tamps.cinvestav.mx/~mmorales/"
             },
+            {
+             profile_photo: "/images/contact/00.png",
+             fullname: "Dr. Jose Luis Gonzalez Compean",
+             position: "Profesor / Investigador", 
+             company: "CINVESTAV",
+             company_address: "Parque Científico y Tecnológico TECNOTAM. Cd. Victoria, Tamaulipas",
+             phone_number: "(834) 107 0220 1138",
+             email: "joseluis.gonzalez@cinvestav.mx",
+             web:"http://adaptivez.org.mx"
+            },
+          ],
           color :"contact-primary-color",
           dark_color :"contact-primary-dark-color",
         // color : "bg--chimalli-primary-color"

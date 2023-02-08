@@ -6,7 +6,7 @@
     index="4"
     color ="xelhua-primary-color"
     dark_color ="xelhua-primary-dark-color"
-    title_size ="text-size--lg"
+    :title_size ="section_title_size"
     image_width = "700"
     
   >
@@ -25,50 +25,26 @@
           </div>
   </template>
 </PlatformFrontPage>
+  
   <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
       <template v-slot:part1>
           <div>
-              <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
-              <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+              <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+              >{{ sections.section_0.title }}</h1>
+              <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+              >{{ sections.section_0.text }}</p> 
           </div>
       </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
               <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
               <template #addons>
-                <Navigation/>
-                <Pagination/>
-              </template>
-            </Carousel>
-          </div>
-      </template>
-  </PortionSection>
-  <Section  :title="sections.section_1.title" :color="color">
-    <div class="pa--xl">
-      <p class="text-size--md text-align--justify">{{ sections.section_1.text }}</p>
-      <div class="flex justify-content--center">
-        <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
-      </div>
-    </div>
-  </Section>
-  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-      <template v-slot:part1>
-          <div>
-              <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
-              <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
-          </div>
-      </template>
-      <template v-slot:part2>
-          <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
-              <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
-                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-              </Slide>
-              <template #addons>
-                <Navigation/>
+                <!-- <Navigation/> -->
                 <Pagination/>
               </template>
             </Carousel>
@@ -76,9 +52,48 @@
       </template>
   </PortionSection>
 
-  <Section  :title="sections.section_3.title" :color="color">
+  <Section  :title="sections.section_1.title" :color="color" :title_size = "section_title_size">
     <div class="pa--xl">
-      <p class="text-size--md text-align--justify">{{ sections.section_3.text }}</p>
+      <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+      >{{ sections.section_1.text }}</p>
+      <div class="flex justify-content--center">
+        <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+      </div>
+    </div>
+  </Section>
+  
+  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+      <template v-slot:part1>
+          <div>
+              <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+              >{{ sections.section_2.title }}</h1>
+              <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+              >{{ sections.section_2.text }}</p> 
+          </div>
+      </template>
+      <template v-slot:part2>
+          <div class ="flex justify-content--center align-items--center">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
+                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+              </Slide>
+              <template #addons>
+                <!-- <Navigation/> -->
+                <Pagination/>
+              </template>
+            </Carousel>
+          </div>
+      </template>
+  </PortionSection>
+
+  <Section  :title="sections.section_3.title" :color="color" :title_size = "section_title_size">
+    <div class="pa--xl">
+      <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+      >{{ sections.section_3.text }}</p>
       <div class="flex justify-content--center">
         <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.alt"  :width="sections.section_3.images[0].width">
       </div>
@@ -88,47 +103,59 @@
   <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
       <template v-slot:part1>
           <div>
-              <h2 class="text-size--lg mb--md">{{ sections.section_4.title }}</h2>
-              <p class="text-size--md text-align--justify">{{ sections.section_4.text }}</p> 
+              <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+              >{{ sections.section_4.title }}</h1>
+              <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+              >{{ sections.section_4.text }}</p> 
           </div>
     </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}"> 
               <Slide v-for="(image,index) in sections.section_4.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
               <template #addons>
-                <Navigation/>
+                <!-- <Navigation/> -->
                 <Pagination/>
               </template>
             </Carousel>
           </div>
       </template>
   </PortionSection>
-  <Section  :title="sections.section_5.title" :color="color">
+  
+  <Section  :title="sections.section_5.title" :color="color" :title_size = "section_title_size">
     <div class="pa--xl">
-      <p class="mb--xl  text-size--md text-align--justify">{{ sections.section_5.text }}</p>
+      <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+      >{{ sections.section_5.text }}</p>
       <div class="flex justify-content--center">
         <img :src="$resolve_image(sections.section_5.images[0].src)" :alt="sections.section_5.alt"  :width="sections.section_5.images[0].width">
       </div>
     </div>
   </Section>
+  
   <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
       <template v-slot:part1>
           <div>
-              <h2 class="text-size--lg mb--md">{{ sections.section_6.title }}</h2>
-              <p class="text-size--md text-align--justify">{{ sections.section_6.text }}</p> 
+              <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+              >{{ sections.section_6.title }}</h1>
+              <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+              >{{ sections.section_6.text }}</p> 
           </div>
     </template>
       <template v-slot:part2>
           <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
               <Slide v-for="(image,index) in sections.section_6.images" :key ="index"> 
                   <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
               </Slide>
               <template #addons>
-                <Navigation/>
+                <!-- <Navigation/> -->
                 <Pagination/>
               </template>
             </Carousel>
@@ -136,15 +163,18 @@
       </template>
   </PortionSection>
 
-  <Section  :title="sections.section_7.title" :color="color">
+  <Section  :title="sections.section_7.title" :color="color" :title_size = "section_title_size">
     <div class="pa--xl">
-      <p class="mb--xl  text-size--md text-align--justify">{{ sections.section_7.text }}</p>
+      <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+      >{{ sections.section_7.text }}</p>
       <div class="flex justify-content--center">
         <img :src="$resolve_image(sections.section_7.images[0].src)" :alt="sections.section_7.alt"  :width="sections.section_7.images[0].width">
       </div>
     </div>
   </Section>
-  <Footer></Footer>
+
+  <Footer/>
 </template>
 
 <script>
@@ -164,6 +194,12 @@ export default {
   computed: {
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+      },
+      section_text_size(){
+        return this.is_mobile ? 'xl' : 'sm'
+      },
+      section_title_size(){
+        return this.is_mobile ? 'xl':'md'
       }
   },
   setup(){
@@ -182,6 +218,7 @@ export default {
   },
   data() {
       return {
+        autoplay:'5000',
         sections:{
             section_0:{
               title:"Servicio de analítica/estadística de datos para acceso a datos publicados por instituciones de salud y/o por investigadores autorizados",
@@ -418,12 +455,6 @@ button:hover {
 }
 .carousel__slide {
   padding: 10px;
-  /* width: 300px !important; */
-  /* background: red; */
-}
-.carousel__viewport{
-  width: 500px;
-  /* height: 600px; */
 }
 
 </style>

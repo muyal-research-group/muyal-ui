@@ -1,13 +1,21 @@
 <template>
         <div class="flex justify-content--center pa--xl sectionv2-wrapper">
-            <div :class="{'flex':true, 'sectionv2-container':true, 'flex-direction--column':column, 'align-items--center':column, 'w-100':column} ">
-                <div :class="{['w-'+part1_width]:!column,'w-100':column}">
+            <div :class="{
+                'flex':true, 
+                'sectionv2-container':true, 
+                'flex-direction--column':column,
+                'flex-direction--column-reverse':invert ,
+                'align-items--center':column || invert, 
+                'justify-content--center':column || invert,
+                'w-100':column || invert
+            }">
+                <div :class="{['w-'+part1_width]:!column,'w-100':column || invert,'flex':true, 'jutify-content--center':true,'align-items--center':true}">
                     <slot :name="'part1'"></slot>
                     <!-- <img class="sectionv2__img" :width="image_width" :src="image_url" :alt="title"> -->
                 </div>
                 <!-- <div :class="'w-'+part2_width"> -->
                 <!-- <div class="flex flex-direction--column align-items--center sectionv2-title-wrapper sectionv2-1"> -->
-                <div :class="{['w-'+part2_width]:true, 'flex':true,'align-items--center':true,'justify-content--center':true}">
+                <div :class="{['w-'+part2_width]:!column,'w-100': column || invert, 'flex':true,'align-items--center':true,'justify-content--center':true}">
                     <slot :name="'part2'"></slot>
                     <!-- <h1 class="sectionv2-title">{{ title }}</h1>
                     <p class="text-size--md text-align--justify">{{ text }}</p> -->
@@ -20,11 +28,6 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
     props:["part1_width","part2_width","column","invert"],
-    computed:{
-        image_url(){
-            return new URL("../assets/"+this.image,import.meta.url).href
-        }
-    },
     components:{Carousel,Slide,Pagination,Navigation}
 }
 </script>

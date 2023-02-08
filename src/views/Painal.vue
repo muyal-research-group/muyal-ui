@@ -27,20 +27,24 @@
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+                <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_0.title }}</h1>
+                <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+                >{{ sections.section_0.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :src="image.src" :alt="image.alt" :width="image.width">
                   <!-- </div> -->
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -48,9 +52,11 @@
         </template>
     </PortionSection>
 
-    <Section  :title="sections.section_1.title" :color="color">
+    <Section  :title="sections.section_1.title" :color="color" :title_size = "section_title_size">
       <div class="pa--xl">
-        <p class="text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+        <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+        >{{ sections.section_1.text }}</p>
         <div class="flex justify-content--center">
           <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
         </div>
@@ -60,20 +66,22 @@
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
+                <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_2.title }}</h1>
+                <p 
+                :class="'text-align--justify  text-size--'+section_text_size"
+                >{{ sections.section_2.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
+                    <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -92,12 +100,25 @@ import Circle from "../components/Circle.vue"
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
+import useBreakpoints from "vue-next-breakpoints";
 export default {
   components:{Footer,Card,Section,Circle,PlatformFrontPage,
   Carousel, Slide, Pagination, Navigation ,Navbar
   },
+  setup(){
+      const breakpoints = useBreakpoints({
+          mobile:[320,768], // max-width: 600px
+          table:[768,1024],
+          desktop: [1281] // min-width: 601px
+      });
+
+      return {
+          breakpoints
+      };
+  },
   data() {
       return {
+            autoplay:"5000",
             sections:{
               section_0:{
                 title:"Servicio para el almacenamiento de datos médicos",
@@ -148,7 +169,17 @@ export default {
         // color : "bg--chimalli-primary-color"
       };
   },
-
+  computed: {
+      is_mobile(){
+        return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+      },
+      section_text_size(){
+        return this.is_mobile ? 'xl' : 'sm'
+      },
+      section_title_size(){
+        return this.is_mobile ? 'xl':'md'
+      }
+  }
 }
 </script>
 
@@ -273,8 +304,8 @@ button:hover {
   /* width: 300px !important; */
   /* background: red; */
 }
-.carousel__viewport{
+/* .carousel__viewport{
   width: 500px;
-  /* height: 600px; */
-}
+  min-width: 320px;
+} */
 </style>

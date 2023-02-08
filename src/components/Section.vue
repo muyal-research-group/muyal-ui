@@ -1,9 +1,9 @@
 <template>
   <section class ="section">
     <header :class ="'bg--'+color+' section__header'">
-        <h2 class="section__header__title">
+        <h1 :class="{'section__header__title':true,['text-size--'+title_size]:true}">
             {{ title }}
-        </h2>
+        </h1>
     </header>
     <div class="section__wrapper">
         <div class="section__body">
@@ -21,7 +21,8 @@
 export default {
     props:{
         title:String,
-        color: String
+        color: String,
+        title_size: String
         // body: String
     },
 

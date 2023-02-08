@@ -1,8 +1,15 @@
 <template>
-  <div :class=" 'bg--'+color+' front-page-wrapper'">
-    <div class ="front-page">
-        <img class="front-page__img" :src="$resolve_image(image)" :alt="title" :width="image_width">
-        <h2 :class="title_size+' front-page__title text-color--'+text_color">{{ title }}</h2>
+  <div :class="{['bg--'+color]:true, 'front-page-wrapper':true}">
+    <div :class ="{
+        'flex':true,
+        'align-items--center':true ,
+        'front-page':true, 
+        'justify-content--center':is_mobile}
+    ">
+        <img class="front-page__img" :src="image" :alt="title" :width="image_width">
+        <div :class="{['w-'+title_width]:true}">
+          <h1 :class="'text-size--'+title_size+' front-page__title text-color--'+text_color">{{ title }}</h1>
+        </div>
 
         <div class="front-page__container">
           <slot name ="footer"></slot>
@@ -17,12 +24,11 @@
 import Button from "../components/Button.vue";
 
 export default {
-    props:["title","image","index","color","dark_color","title_size",'image_width', 'text_color'],
+    props:["title","image","index","color","dark_color","title_size",'image_width', 'text_color','title_width'],
     methods: {
       on_click(btn_id){
           return ()=>{
 
-          console.log("AAAAH")
           }
       }
     },
@@ -56,7 +62,7 @@ export default {
 .front-page__img{
   align-self: center;
   /* width: 40%; */
-  min-width: 400px;
+  /* min-width: 400px; */
 
 
 }

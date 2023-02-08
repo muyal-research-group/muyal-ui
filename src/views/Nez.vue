@@ -8,6 +8,7 @@
     color ="nez-primary-color"
     dark_color ="nez-primary-dark-color"
     image_width = "500"
+    :title_size="section_title_size"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -26,21 +27,25 @@
 
     <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_0.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+            <div :class="{'mb--lg':is_mobile}">
+                  <!-- :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile,'mb--md':true}" -->
+                <h1 
+                  :class = "'mb--md text-size--'+section_title_size"
+                >{{ sections.section_0.title }}</h1>
+                  <!-- :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, '':truea}" -->
+                <p 
+                  :class="'text-align--justify text-size--'+section_text_size"
+                  >{{ sections.section_0.text }}</p> 
             </div>
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
+                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -49,43 +54,52 @@
     </PortionSection>
 
 
-    <Section  :title="sections.section_1.title" :color="color">
+    <Section  :title="sections.section_1.title" :color="color" :title_size="section_title_size">
       <div class="pa--xl">
-        <p class="text-size--md text-align--justify">{{ sections.section_1.text }}</p>
+          <!-- :class="{'':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile ,'':true}" -->
+        <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+          >{{ sections.section_1.text }}</p>
+        
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+          <img :src="sections.section_1.images[0].src" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
         </div>
       </div>
     </Section>
 
-    <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
+    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_2.images" :key ="image.alt"> 
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt" >
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
             </div>
         </template>
+
         <template v-slot:part2>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_2.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_2.text }}</p> 
-            </div>
+            <div :class="{'mb--xl':is_mobile}">
+                <h1 
+                :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_2.title }}</h1>
+                <p 
+                :class="'text-align--justify text-size--'+section_text_size"
+                >{{ sections.section_2.text }}</p> 
+            </div>''
         </template>
     </PortionSection>
 
-    <Section :title="sections.section_3.title" :color="color">
+    <Section :title="sections.section_3.title" :color="color" :title_size="section_title_size">
       <div class="pa--xl">
-        <p class="text-size--md text-align--justify">{{ sections.section_3.text}}</p>
+        <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_3.text}}</p>
         
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.images[0].alt"  :width="sections.section_3.images[0].width">
+          <img :src="sections.section_3.images[0].src" :alt="sections.section_3.images[0].alt"  :width="sections.section_3.images[0].width">
         </div>
 
       </div>
@@ -94,12 +108,12 @@
     <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_4.images" :key ="image.alt"> 
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :src="(image.src)" :alt="image.alt" :width="image.width">
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -107,88 +121,99 @@
         </template>
         <template v-slot:part1>
             <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_4.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_4.text }}</p> 
+                <h1 
+                  :class="'mb--md text-size--'+section_title_size"
+                >{{ sections.section_4.title }}</h1>
+                <p 
+                  :class="'text-align--justify text-size--'+section_text_size"
+                >{{ sections.section_4.text }}</p> 
             </div>
         </template>
     </PortionSection>
 
-    <Section :title="sections.section_5.title" :color="color">
+    <Section :title="sections.section_5.title" :color="color" :title_size="is_mobile ? 'xl':'md'">
       <div class="pa--xl">
-        <p class="text-size--md text-align--justify">{{ sections.section_5.text}}</p>
+        <p :class="{'mb--lg':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile, 'text-align--justify':true}">{{ sections.section_5.text}}</p>
         
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_5.images[0].src)" :alt="sections.section_5.images[0].alt"  :width="sections.section_5.images[0].width">
+          <img :src="sections.section_5.images[0].src" :alt="sections.section_5.images[0].alt"  :width="sections.section_5.images[0].width">
         </div>
 
       </div>
     </Section>
 
-    <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
+    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
+        
         <template v-slot:part1>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <div class = "flex justify-content--center align-items--center">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_6.images" :key ="image.alt"> 
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
             </div>
         </template>
+
         <template v-slot:part2>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_6.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_6.text }}</p> 
+            <div :class="{'mb--lg':is_mobile}">
+                <h1  :class="'mb--md text-size--'+section_title_size">{{ sections.section_6.title }}</h1>
+                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_6.text }}</p> 
             </div>
         </template>
     </PortionSection>
 
-    <Section :title="sections.section_7.title" :color="color">
+    <Section :title="sections.section_7.title" :color="color" :title_size ="section_title_size" >
       <div class="pa--xl">
-        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_7.text}}</p>
+        <p 
+          :class="'mb--xl text-align--justify text-size--'+section_text_size"
+        >{{ sections.section_7.text}}</p>
         
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_7.images[0].src)" :alt="sections.section_7.images[0].alt"  :width="sections.section_7.images[0].width">
-        </div>
-
-      </div>
-    </Section>
-    <Section :title="sections.section_8.title" :color="color">
-      <div class="pa--xl">
-        <p class="mb--xl text-size--md text-align--justify">{{ sections.section_8.text}}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_8.images[0].src)" :alt="sections.section_8.images[0].alt"  :width="sections.section_8.images[0].width">
+          <img :src="sections.section_7.images[0].src" :alt="sections.section_7.images[0].alt"  :width="sections.section_7.images[0].width">
         </div>
 
       </div>
     </Section>
 
-    <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
+    <Section :title="sections.section_8.title" :color="color" :title_size="section_title_size">
+      <div class="pa--xl">
+        <p 
+        :class="'mb--xl text-align--justify text-size--'+section_text_size"
+        >{{ sections.section_8.text}}</p>
+        
+        <div class="flex justify-content--center">
+          <img :src="sections.section_8.images[0].src" :alt="sections.section_8.images[0].alt"  :width="sections.section_8.images[0].width">
+        </div>
+
+      </div>
+    </Section>
+
+    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+            <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':'500px'}">
                 <Slide  v-for="image in sections.section_9.images" :key ="image.alt"> 
-                    <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
+                    <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
             </div>
         </template>
         <template v-slot:part2>
-            <div>
-                <h2 class="text-size--lg mb--md">{{ sections.section_9.title }}</h2>
-                <p class="text-size--md text-align--justify">{{ sections.section_9.text }}</p> 
+            <div :class="{'mb--lg':is_mobile}">
+                <h1 :class="'mb--md text-size--'+section_title_size">{{ sections.section_9.title }}</h1>
+                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_9.text }}</p> 
             </div>
         </template>
     </PortionSection>
-  <Footer></Footer>
+  <Footer/>
 </template>
 
 <script>
@@ -200,8 +225,10 @@ import Section from "../components/Section.vue"
 import Circle from "../components/Circle.vue"
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 import PortionSection from "../components/PortionSection.vue"
+// 
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+// 
 import useBreakpoints from "vue-next-breakpoints";
 
 export default {
@@ -213,36 +240,24 @@ export default {
         });
 
         return {
-            // If you want to use different key, feel free do do so, e.g.:
-            // mediaqueries: breakpoints
-            // and then use mediaqueries.desktop.matches etc.
             breakpoints
         };
     },
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
-      }
-            // this.breakpoints.mobile.on("enter", (mq) => {
-            //     console.log("Entered mobile breakpoint");
-            //     console.log("Media Query", mq);
-            //     this.is_
-            // });
-
-            // this.breakpoints.mobile.on("leave", (mq) => {
-            //     console.log("Left mobile breakpoint");
-            //     console.log("Media Query", mq);
-            //     this.items_to_show = 4
-            // });
-    },
-    methods:{
-      to_image(x){
-        return new URL(x,import.meta.url).href
+      },
+      section_text_size(){
+        return this.is_mobile ? 'xl' : 'sm'
+      },
+      section_title_size(){
+        return this.is_mobile ? 'xl':'md'
       }
     },
     data() {
         return {
             // is_mobile:true,
+            autoplay:'5000',
             color: "nez-primary-color",
             dark_color:"nez-primary-dark-color",
             sections:{
@@ -308,7 +323,7 @@ export default {
               },
               section_4:{
                 title:"Muyal-Nez permite a los diseñadores agregar patrones de paralelismo implícito ",
-                text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos.",
+                text:"El objetivo es permitir el procesamiento eficiente de los datos, replicando aquellos bloques de construcción que pueden generar un cuello de botella en el flujo de datos. con Muyal-Nez, el cual incluye un patrón manejador/trabajador. En este patrón los bloques de construccion (BC) para la detección de tumores son replicados para incrementar el rendimiento del sistemas de e-Salud.",
                 images:[
                   {
                     src:"/images/nez/section_4_0.png",
@@ -539,8 +554,7 @@ button:hover {
   /* width: 300px !important; */
   /* background: red; */
 }
-.carousel__viewport{
-  width: 500px;
-  /* height: 600px; */
-}
+/* .carousel__viewport{
+  width: 600px;
+}  */
 </style>

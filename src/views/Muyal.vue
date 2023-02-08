@@ -1,107 +1,77 @@
 <template>
-
-    <!-- <div class="global_wrapper"> -->
-
-    <Navbar/>
-    <div class="flex justify-content--center front-page-wrapper">
-        <div class ="front-page">
-            <div class="front-page__container">
-                <div class="front-page__logo">
-                    <img src="/images/muyal/muyal-white.png" alt="MUYAL_LOGO">
-                </div>
-                <div class="front-page__text-container">
-                <p class="front-page__text">
-                    Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.
-                </p>
-                </div>
-                <div class="front-page__project-number">
-                    <p>Proyecto numero: <b>41756</b></p>
-                </div>
-                <!-- <PlatformsNav></PlatformsNav> -->
-            </div>
-            <!-- <div class="separator"></div> -->
-        </div>
-    </div>
-    
+    <Navbar :color="color" :dark_color="dark_color"/>
+    <PlatformFrontPage 
+        :title ="is_mobile ?'Platforma Tecnologica para E-Salud': 'Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.'"
+        image="/images/muyal/3.png"
+        index="1"
+        color ="black"
+        dark_color ="white"
+        image_width = "500"
+        title_size ="sm"
+        title_width = "80"
+    >
+    <template v-slot:footer>
+        <!-- :class ="{'flex':is_mobile,'align-items--center':is_mobile,'justify-content--center':is_mobile}" -->
+            <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
+            <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+                Obtenido
+            </div> -->
+            <!-- <div class="mb--md front-page__buttons flex-wrap">
+                <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+                <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
+                <Button title="Software" :color="color" :dark_color="dark_color" />
+                <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
+                <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+            </div> -->
+    </template>
+    </PlatformFrontPage>
     <div class="sections-wrapper">
-        <PortionSection part1_width ="60" part2_width="40">
+        <PortionSection part1_width ="60" part2_width="40"  :invert="is_mobile">
             <template v-slot:part1>
-                <div class ="flex justify-content--center">
-                    <img :src="$resolve_image(sections.section_0.images[0].src)" :alt="sections.section_0.images[0].alt" :width="sections.section_0.images[0].width">
+                <div class ="flex justify-content--center align-items--center">
+                    <img :class="{'image-size__sm':!is_mobile,'image-size__lg':is_mobile}" :src="sections.section_0.images[0].src" :alt="sections.section_0.images[0].alt">
                 </div>
             </template>
             <template v-slot:part2>
-                <div>
-                    <h2 class="text-size--xl">{{ sections.section_0.title }}</h2>
-                    <p class="text-size--md text-align--justify">{{ sections.section_0.text }}</p> 
+                <div :class="{'mb--lg':is_mobile}">
+                    <h2 :class="{'text-size--md':!is_mobile , 'text-size--xl':is_mobile, 'mb--md':is_mobile}">{{ sections.section_0.title }}</h2>
+                    <p class="text-size--sm text-align--justify">{{ sections.section_0.text }}</p> 
                 </div>
             </template>
         </PortionSection>
         
-
-<!--         
-        <div class=" sectionv2-wrapper">
-            <div class="flex sectionv2-container">
-                <div class="sectionv2-2">
-                    <img width="500" src="@//muyal-color.png" alt="">
-                </div>
-                <div class="flex flex-direction--column align-items--center sectionv2-title-wrapper sectionv2-1">
-                    <h1 class="sectionv2-title">{{ sections.resume.title }}</h1>
-                    <p class="text-size--md text-align--justify">
-                    </p>
-                </div>
-            </div>
-        </div> -->
-        <!-- <Section class="bg--white"  :title = "sections.whatis.title" :color="sections.whatis.color" >
-            <div class="pa--lg flex justify-content--center align-items--center">
-                <div class="pa--md">
-                    <p class="text-size--md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias quia reprehenderit praesentium soluta fugit? Sit odio, inventore optio dolore omnis nisi tenetur maxime asperiores quod sed consequatur fuga rerum maiores.</p>
-                </div>
-                <div>
-                <img width="600" src="..//muyal_steps.png" alt="">
-                </div>
-            </div>
-        </Section> -->
-
         <Section :title = "sections.section_1.title" color="black" >
-            <p class="pa--xl text-size--md">{{ sections.section_1.text }}</p>
-             <carousel :items-to-show="items_to_show">
+            <p class="pa--xl text-size--sm">{{ sections.section_1.text }}</p>
+             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
-                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
+                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
                 <template #addons>
-                    <navigation />
+                    <!-- <navigation /> -->
                     <pagination />
                 </template>
             </carousel>
-            <!-- <div class="pa--xl flex jutify-content--center">
-                <div class="feature-boxes-wrapper">
-                    <FeatureBox v-for="fb in feature_boxes" :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" ></FeatureBox>
-                </div>
-            </div> -->
         </Section>
+        <!-- _______________________________________________________________ -->
+        <PortionSection part1_width ="60" part2_width="40" :column="is_mobile" >
+            <template v-slot:part2>
+                <div class ="flex justify-content--center align-items--center">
+                    <img :src="sections.section_2.images[0].src" :alt="sections.section_2.images[0].alt" :width="sections.section_2.images[0].width">
+                </div>
+            </template>
+            <template v-slot:part1>
+                <div :class="{'mb--lg':is_mobile}">
+                    <h2 :class="{'text-size--md':!is_mobile , 'text-size--xl':is_mobile, 'mb--md':is_mobile}">{{ sections.section_2.title }}</h2>
+                    <p class="text-size--sm text-align--justify">{{ sections.section_2.text }}</p> 
+                </div>
+            </template>
+        </PortionSection>
 
-        <Section :title ="sections.section_2.title" color ="black">
-            <div class="pa--xl flex flex-direction--column justify-content--center">
-                <div class="steps-wrapper">
-                        <div v-for="(value,key,index) in steps_descriptions" class="steps__item" :key="key">
-                            <div class="step__header">
-                                <h3 class="step__header__title">{{value.title}}</h3>
-                            </div>
-                            <div class="steps_descriptions">
-                                <div class ="steps_descriptions-inner">
-                                    <IconCard v-for="step in value.steps" :title ="step.title" :text = "step.text" :image = "step.image"  :key="step.title"/>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </Section>
     </div>
     
 
 
-    <Footer></Footer>
+    <Footer/>
 
 
 </template>
@@ -111,26 +81,22 @@ import FeatureBox from '../components/FeatureBox.vue';
 import IconCard from '../components/IconCard.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 import PortionSection from '../components/PortionSection.vue';
+import PlatformFrontPage from "../components/PlatformFrontPage.vue"
+
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+
 import useBreakpoints from "vue-next-breakpoints";
 import Navbar from '../components/Navbar.vue';
-
-
-// import { Glide, GlideSlide } from 'vue-glide-js'
-
-// import VueSlickCarousel from 'vue-slick-carousel'
-// import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// optional style for arrows & dots
-// import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 
 
 export default {
     setup(){
         const breakpoints = useBreakpoints({
-            mobile: 600, // max-width: 600px
-            desktop: [601] // min-width: 601px
+            mobile:[320,768], // max-width: 600px
+            table:[768,1024],
+            desktop: [1281] // min-width: 601px
         });
 
         return {
@@ -140,21 +106,28 @@ export default {
             breakpoints
         };
     },
-    created(){
-            this.breakpoints.mobile.on("enter", (mq) => {
-                console.log("Entered mobile breakpoint");
-                console.log("Media Query", mq);
-                this.items_to_show = 2
-            });
-
-            this.breakpoints.mobile.on("leave", (mq) => {
-                console.log("Left mobile breakpoint");
-                console.log("Media Query", mq);
-                this.items_to_show = 4
-            });
+    computed:{
+      is_mobile(){
+        return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+      }
     },
+    // created(){
+    //         this.breakpoints.mobile.on("enter", (mq) => {``
+    //             console.log("Entered mobile breakpoint");
+    //             console.log("Media Query", mq);
+    //             this.items_to_show = 2
+    //         });
+
+    //         this.breakpoints.mobile.on("leave", (mq) => {
+    //             console.log("Left mobile breakpoint");
+    //             console.log("Media Query", mq);
+    //             this.items_to_show = 4
+    //         });`
+    // },
     data() {
         return {
+            color:"black",
+            dark_color:"white",
             feature_boxes:[
                 {
                     title:"Nez: Servicio de consutrccion de sistemas e-Salud",
@@ -238,9 +211,25 @@ export default {
                     images:[]
                 },
                 section_2:{
-                    title:"Pasos para la creacion de sistemas de e-Salud",
-                    text:"",
-                    images:[]
+                    title:"Motivacion y justificacion",
+                    text:"La  atención  médica  en  México  es  crucial  para mejorar  el  bienestar  de  los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos,  etc.)  que deben  ser  procesados  rápidamente  (velocidad)  por  un  conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan  información útil  a  diferentes  repositorios  de datos  (veracidad-valor).  El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y Pemex”",
+                    images:[
+                        {
+                            src:"/images/muyal/section_2_0.png",
+                            alt:"MUYAL_0",
+                            width:"400"
+                        },
+                        {
+                            src:"/images/muyal/section_2_1.png",
+                            alt:"MUYAL_1",
+                            width:"400"
+                        },
+                        {
+                            src:"/images/muyal/section_2_2.png",
+                            alt:"MUYAL_2",
+                            width:"400"
+                        }
+                    ]
                 }
             },
             steps_descriptions:{
@@ -396,7 +385,23 @@ export default {
                     ]
                 }
             },
-            items_to_show:4,
+            breakpoints: {
+                // 700px and up
+                240: {
+                    itemsToShow: 1,
+                    snapAlign: 'center',
+                },
+                920: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 3,
+                    snapAlign: 'center',
+                },
+            }
+
             
         };
     },
@@ -410,7 +415,8 @@ export default {
         Slide,
         Pagination,
         Navigation,
-        Navbar
+        Navbar,
+        PlatformFrontPage
     }
 }
 </script>
@@ -418,6 +424,14 @@ export default {
 
 <style scoped>
 /* __________________________ */
+
+/* WTF! */
+.carousel {
+    z-index: 0;
+    /* width: 100% !important; */
+}
+/* .carousel */
+
 .sections-wrapper{
     width: 100vw;
     /* background: yellow; */
@@ -459,7 +473,7 @@ export default {
     max-width: fit-content;
 }
 
-.separator{
+/* .separator{
     background:#2F2F2F;
     width:100%;
     --size: 10px;
@@ -467,7 +481,7 @@ export default {
     position: absolute;
     top:calc(100% - var(--size));
     left:0;
-}
+} */
 
 .front-page-wrapper{
     /* background: red; */
@@ -516,4 +530,8 @@ export default {
   border-radius: 5px;
   font-size: 1.5rem;
 }
+
+/* .carousel__viewport{
+  width: 1000px;
+}  */
 </style>
