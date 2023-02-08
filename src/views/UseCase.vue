@@ -39,7 +39,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
@@ -79,7 +79,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
@@ -195,8 +195,5 @@ export default {
 }
 </script>
 
-<style scoped>
-.carousel__viewport{
-  width: 500px;
-} 
+<style scoped> 
 </style>
