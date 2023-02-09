@@ -4,6 +4,7 @@
   --color-black: #000;
   --text-color: #605F5F;
   --section-bg-color: #EEEEEE;
+  --light-grey:#EEE;
   /* USE CASE */
   --use-case-primary-color: #242424;
   --use-case-primary-color-dark: #141414;
@@ -17,7 +18,6 @@
   --contact-primary-color: #3350B8;
   --contact-primary-color-dark: #283E8C;
   /* Nez */
-
   --nez-primary-color: #397DFF;
   --nez-primary-color-dark: #356FE1;
   /* Chimalli */
@@ -35,6 +35,7 @@
   --vc-pgn-height:10px;
   --vc-pgn-width:10px;
   --vc-pgn-border-radius:50px;
+
 
   /* --workshop-merida: url(/images/workshops/merida/00.jpg); */
 

@@ -1,5 +1,5 @@
 <template>
-  <section class ="section">
+  <section :class ="'section'+' bg--'+background_color">
     <header :class ="'bg--'+color+' section__header'">
         <h1 :class="{'section__header__title':true,['text-size--'+title_size]:true}">
             {{ title }}
@@ -22,7 +22,11 @@ export default {
     props:{
         title:String,
         color: String,
-        title_size: String
+        title_size: String,
+        background_color:{
+            type:String,
+            default:"light-grey"
+        }
         // body: String
     },
 
@@ -54,7 +58,7 @@ export default {
   width: 100%;
   /* min-width: 1000px; */
   /* height: 100vh; */
-  background: var(--section-bg-color);
+  /* background: var(--section-bg-color); */
   /* display: flex; */
   /* flex-direction: column; */
   /* align-items: center; */

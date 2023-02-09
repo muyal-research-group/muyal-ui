@@ -18,6 +18,10 @@
   color: var(--color-white) !important;
 }
 
+.bg--light-grey{
+  background-color: var(--light-grey);
+}
+
 
 
 /*  */

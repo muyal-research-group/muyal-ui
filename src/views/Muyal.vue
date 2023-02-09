@@ -13,9 +13,10 @@
         index="1"
         :color ="color"
         :dark_color ="dark_color"
-        image_width = "500"
+        image_width = "600"
         title_size ="sm"
         title_width = "80"
+        text_color="black"
     >
     <template v-slot:footer>
         <!-- :class ="{'flex':is_mobile,'align-items--center':is_mobile,'justify-content--center':is_mobile}" -->
@@ -33,7 +34,7 @@
     </template>
     </PlatformFrontPage>
     <div class="sections-wrapper">
-        <PortionSection part1_width ="60" part2_width="40"  :invert="is_mobile">
+        <PortionSection part1_width ="60" part2_width="40"  :invert="is_mobile" :background_color="portion_bg_color">
             <template v-slot:part1>
                 <div class ="flex justify-content--center align-items--center">
                     <img :class="{'image-size__sm':!is_mobile,'image-size__lg':is_mobile}" :src="sections.section_0.images[0].src" :alt="sections.section_0.images[0].alt">
@@ -47,7 +48,7 @@
             </template>
         </PortionSection>
         
-        <Section :title = "sections.section_1.title" color="black" >
+        <Section :title = "sections.section_1.title" color="black" :background_color="section_bg_color">
             <p class="pa--xl text-size--sm">{{ sections.section_1.text }}</p>
              <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
@@ -60,7 +61,7 @@
             </carousel>
         </Section>
         <!-- _______________________________________________________________ -->
-        <PortionSection part1_width ="60" part2_width="40" :column="is_mobile" >
+        <PortionSection part1_width ="60" part2_width="40" :column="is_mobile" :background_color="portion_bg_color" >
             <template v-slot:part2>
                 <div class ="flex justify-content--center align-items--center">
                     <img :src="sections.section_2.images[0].src" :alt="sections.section_2.images[0].alt" :width="sections.section_2.images[0].width">
@@ -133,6 +134,8 @@ export default {
     // },
     data() {
         return {
+            section_bg_color:"white",
+            portion_bg_color:"light-grey",
             color:"white",
             dark_color:"black",
             feature_boxes:[

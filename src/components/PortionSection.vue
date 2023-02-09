@@ -1,5 +1,5 @@
 <template>
-        <div class="flex justify-content--center pa--xl sectionv2-wrapper">
+        <div :class="'flex justify-content--center pa--xl sectionv2-wrapper'+' bg--'+background_color">
             <div :class="{
                 'flex':true, 
                 'sectionv2-container':true, 
@@ -27,7 +27,28 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
-    props:["part1_width","part2_width","column","invert"],
+    props:{
+        part1_width:{
+            type: String,
+            default:"60",
+        },
+        part2_width:{
+            type: String,
+            default:"40",
+        },
+        column:{
+            type: Boolean,
+            default:false,
+        },
+        invert:{
+            type: Boolean,
+            default:false,
+        },
+        background_color:{
+            type: String,
+            default:"white"
+        }
+    },
     components:{Carousel,Slide,Pagination,Navigation}
 }
 </script>

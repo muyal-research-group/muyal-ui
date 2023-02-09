@@ -21,7 +21,8 @@
             <p :class ="{'sectionv3__subsection__text':true,'hide':hides[index], 'text-align--justify':true}">{{ subsection.text }}</p>
           </div>
       </div>
-          <iframe :class="{'sectionv3__subsection__video':true,'mt--md':true,'hide':hides[index]}" width="820" height="420" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+          <iframe :class="{'sectionv3__subsection__video':true,'mt--md':true,'hide':hides[index]}" width="820" height="420" :src="workshop.video"></iframe>
+          <!-- <iframe width="1280" height="720" src="" title="Vídeo Técnico Nez" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
     </div>
   </div>
   <Footer/>
@@ -54,6 +55,7 @@ export default {
             workshops:[
               {
                 title:"Taller de Monterrey",
+                video:"https://www.youtube.com/embed/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
                 image:{
                     src:"/images/workshops/monterrey/00.jpg",
                     alt:"MERIDA",
@@ -84,6 +86,7 @@ export default {
               },
               {
                 title:"Taller de Iztapalapa",
+                video:"https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
                 image:{
                     src:"/images/workshops/mexico/00.jpg",
                     alt:"IZTAPALAPA",
@@ -116,6 +119,7 @@ export default {
               },
               {
                 title:"Taller de Puebla",
+                video:"https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
                 image:{
                     src:"/images/workshops/puebla/00.jpg",
                     alt:"PUEBLA",
@@ -148,6 +152,7 @@ export default {
               },
               {
                 title:"Taller de Merida",
+                video:"https://drive.google.com/file/d/1d2y3bTufO8lXcNiy4a8-mt2XxMC7zJ0d/preview",
                 image:{
                     src:"/images/workshops/merida/00.jpg",
                     alt:"MERIDA",
