@@ -9,7 +9,7 @@
     />
     <PlatformFrontPage 
         :title ="is_mobile ?'Platforma Tecnologica para E-Salud': 'Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.'"
-        image="/images/muyal/3.png"
+        image="/images/muyal/3trz.png"
         index="1"
         :color ="color"
         :dark_color ="dark_color"
@@ -143,7 +143,7 @@ export default {
                         "Crea sistemas flexibles, portables, y modulares.",
                         "Tecnología propia e indepentiende del proveedor de hardware y software.",
                         "Usar los recursos de tu computadora al máximo.",
-                        "Servicios de conexión con Alwa, Zamná y Tekanaktli."
+                        "Servicios de conexión con Alwa, Chimalli y Painal."
                     ],
                     image:"/images/nez/nez.png",
                     hover_color:"#397DFF"
@@ -155,7 +155,7 @@ export default {
                         "Cumplé con las normas internacionales de manera automática y transparente.",
                         "Asegurar la confidencialidad de tus datos en cualquier lugar y momento.",
                         "Registra eficientemente las operaciones realizadas en la blockchain.",
-                        "Servicios de conexión con Tekanaktli y Alwa."
+                        "Servicios de conexión con Painal y Alwa."
                     ],
                     image:"/images/chimalli/chimalli.png",
                     hover_color:"#48D951"
@@ -180,7 +180,7 @@ export default {
                         "No requieres programas las aplicaciones, solo utilizar alguna disponible en el catálogo de servicios.",
                         "Combina diferentes servicios de preparación, análisis y visualización de datos.",
                         "Despliega aplicaciones de análisis de datos tolerantes a fallos.",
-                        "Servicios de conexión con Alwa, Zamná y Tekanaktli."
+                        "Servicios de conexión con Alwa, Chimalli y Painal."
                     ],
                     image:"/images/xelhua/xelhua.png",
                     hover_color: "#F25362"
@@ -194,7 +194,7 @@ export default {
                         "Base de datos generados a partir del análisis de los datos.",
                         "Aplicaciones de seguridad, analítica, procesamiento y acceso a datos.",
                         "Base de datos a-Prevenir.",
-                        "Servicios de conexión con Xelhua, Zamná y Tekanaktli.",
+                        "Servicios de conexión con Xelhua, Chimalli y Painal.",
                     ],
                     image:"/images/alwa/alwa.png",
                     hover_color: "#FF9237"
@@ -202,7 +202,7 @@ export default {
             ],
             sections: {
                 section_0:{
-                    title: "¿Qué es Muyal-ilal?",
+                    title: "¿Qué es Muyal-Ilal?",
                     text: "Crea  sistemas de  analítica  (big  data)  basados  en  inteligencia  artificial  para  convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de  decisiones  o  asistencia  a  diagnósticos. ",
                     images:[
                         {
@@ -214,12 +214,12 @@ export default {
                 },
                 section_1:{
                     title:"Plataformas",
-                    text:"Muyal esta conformado de cinco plataformas que proporcionan servicios entre los cuales se encuentran creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).",
+                    text:"Muyal esta conformado por cinco plataformas que proporcionan servicios entre los cuales se encuentran: creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).",
                     images:[]
                 },
                 section_2:{
                     title:"Motivacion y justificacion",
-                    text:"La  atención  médica  en  México  es  crucial  para mejorar  el  bienestar  de  los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos,  etc.)  que deben  ser  procesados  rápidamente  (velocidad)  por  un  conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan  información útil  a  diferentes  repositorios  de datos  (veracidad-valor).  El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y Pemex”",
+                    text:"La  atención  médica  en  México  es  crucial  para mejorar  el  bienestar  de  los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos,  etc.)  que deben  ser  procesados  rápidamente  (velocidad)  por  un  conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan  información útil  a  diferentes  repositorios  de datos  (veracidad-valor).  El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y Pemex”.",
                     images:[
                         {
                             src:"/images/muyal/section_2_0.png",

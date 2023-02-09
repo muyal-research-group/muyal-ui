@@ -73,7 +73,7 @@ export default {
             },
             {
              profile_photo: "/images/contact/00.png",
-             fullname: "Dr. Jose Luis Gonzalez Compean",
+             fullname: "Dr. Jose Luis González Compeán",
              position: "Profesor / Investigador", 
              company: "CINVESTAV",
              company_address: "Parque Científico y Tecnológico TECNOTAM. Cd. Victoria, Tamaulipas",
