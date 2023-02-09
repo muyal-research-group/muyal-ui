@@ -39,7 +39,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
@@ -79,7 +79,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
@@ -172,7 +172,7 @@ export default {
 
           section_2:{
             title:"Visión artificial",
-            text:"Es  importante  destacar  que  el  tipo  de  aprendizaje  necesario  entrenar  un  modelo depende de la aplicación que se requiera. Por ejemplo, el aprendizaje no supervisado en imágenes médicas se suele utilizar para segmentar imágenes en los elementos que la componen, pero no se identifica cada elemento en la imagen, tiene como ventaja que  no se  requiere de  un  etiquetado  manual  previo,  ya  que  no se  especifica  a  qué clase pertenece cada segmento.",
+            text:"Es  importante  destacar  que  el  tipo  de  aprendizaje  necesario para entrenar  un  modelo, depende de la aplicación que se requiera. Por ejemplo, el aprendizaje no supervisado en imágenes médicas se suele utilizar para segmentar imágenes en los elementos que la componen, pero no se identifica cada elemento en la imagen, tiene como ventaja que  no se  requiere de  un  etiquetado  manual  previo,  ya  que  no se  especifica  a  qué clase pertenece cada segmento.",
             images:[
               {
                 src:"/images/use-case/section_2_0.png",
@@ -195,8 +195,5 @@ export default {
 }
 </script>
 
-<style scoped>
-.carousel__viewport{
-  width: 500px;
-} 
+<style scoped> 
 </style>

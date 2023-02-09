@@ -122,7 +122,7 @@ export default {
             sections:{
               section_0:{
                 title:"Servicio para el almacenamiento de datos médicos",
-                text:"Painal es un conjunto de servicios y sistemas desarrollados para que las organizaciones de salud y la comunidad científica puedan i) almacenar, distribuir y localizar sistemas o servicios de procesamiento a través de catálogos de servicios ii) generar soluciones que permitan brindar usabilidad costo-beneficio del almacenamiento y transporte de datos y iii) almacenar, publicar y transmitir repositorios de datos de manera local (intrainstitucional) y federada (interinstitucional) utilizando un modelo de publicación/suscripción.",
+                text:"Painal es un conjunto de servicios y sistemas desarrollados para que las organizaciones de salud y la comunidad científica puedan: i) almacenar, distribuir y localizar sistemas o servicios de procesamiento a través de catálogos de servicios, ii) generar soluciones que permitan brindar usabilidad costo-beneficio del almacenamiento y transporte de datos y, iii) almacenar, publicar y transmitir repositorios de datos de manera local (intrainstitucional) y federada (interinstitucional) utilizando un modelo de publicación/suscripción.",
                 images:[
                   {
                     src:"/images/painal/section_0_0.png",
