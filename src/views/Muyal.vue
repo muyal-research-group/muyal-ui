@@ -1,11 +1,18 @@
 <template>
-    <Navbar :color="color" :dark_color="dark_color"/>
+    <Navbar 
+    :color="color" 
+    :dark_color="dark_color" 
+    :text_color_normal ="'black'" 
+    :text_color_scrolled="'black'" 
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
+    />
     <PlatformFrontPage 
         :title ="is_mobile ?'Platforma Tecnologica para E-Salud': 'Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.'"
         image="/images/muyal/3.png"
         index="1"
-        color ="black"
-        dark_color ="white"
+        :color ="color"
+        :dark_color ="dark_color"
         image_width = "500"
         title_size ="sm"
         title_width = "80"
@@ -126,8 +133,8 @@ export default {
     // },
     data() {
         return {
-            color:"black",
-            dark_color:"white",
+            color:"white",
+            dark_color:"black",
             feature_boxes:[
                 {
                     title:"Nez: Servicio de consutrccion de sistemas e-Salud",

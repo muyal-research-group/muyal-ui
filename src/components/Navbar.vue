@@ -1,10 +1,10 @@
 
 <template >
                 <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
-    <div :class="{'navbar':true, 'pa--lg':true,'bg--white':is_scrolled,'elevated':is_scrolled,['bg--'+color]:!is_scrolled, 'justify-content--space-between':is_mobile}">
+    <div :class="{'navbar':true, 'pa--lg':true,'elevated':is_scrolled,[background_color]:true, 'justify-content--space-between':is_mobile}">
         <router-link to="/"> 
             <img 
-                :src="is_scrolled ? '/images/muyal/muyal-black.png' : '/images/muyal/muyal-white.png'" 
+                :src="is_scrolled ? scrolled_logo : normal_logo" 
                 id="navbar__logo" 
                 :class="{'navbar__logo':true}"
             >
@@ -14,11 +14,11 @@
             <ul class="navbar__items__ul">
                 <li :class="{'navbar__item':true}">
                     <router-link class="navbar__link" to="/"> 
-                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Inicio</span>
+                        <span :class="{[text_color]:true }">Inicio</span>
                     </router-link>
                 </li>
                 <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
                         <router-link to="/nez">Nez</router-link>
                         <router-link to="/chimalli">Chimalli</router-link>
@@ -28,26 +28,21 @@
                     </div>
                 </li>
                 
-                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
+                <li :class="{'navbar__item':true,[text_color]:true}"> 
                     <router-link class="navbar__link" to="/use-case">
-                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Caso de uso</span>
+                        <span :class="{[text_color]:true}">Caso de uso</span>
                     </router-link>
                 </li>
                 <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(1)"  @mouseleave="on_leave(1)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}">
                         <router-link to="/resources/publications"  >Publicaciones</router-link >
                         <router-link to="/resources/workshops" >Tallares</router-link>
                     </div>
                 </li>
-                <!-- <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">
-                    <router-link to="/resources">
-                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Recursos</span>
-                    </router-link>
-                </li> -->
-                <li :class="{'navbar__item':true,'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}"> 
+                <li :class="{'navbar__item':true,[text_color]:true}"> 
                     <router-link class="navbar__link" to="/contact">
-                        <span :class="{'text-color--white':!is_scrolled, 'text-color--black':is_scrolled}">Conctacto</span>
+                        <span :class="{[text_color]:true}">Conctacto</span>
                     </router-link>
                 </li>
             </ul>
@@ -117,7 +112,23 @@ import useBreakpoints from "vue-next-breakpoints";
 export default {
     props: {
         color: String,
-        dark_color: String
+        dark_color: String,
+        text_color_normal:{
+            type:String,
+            default: "white"
+        },
+        text_color_scrolled:{
+            type:String,
+            default:"black"
+        },
+        scrolled_logo:{
+            type:String, 
+            default: "/images/muyal/muyal-black.png"
+        },
+        normal_logo:{
+            type:String,
+            default:"/images/muyal/muyal-white.png"
+        }
     },
   setup(){
       const breakpoints = useBreakpoints({
@@ -131,6 +142,12 @@ export default {
       };
   },
   computed:{
+    background_color(){
+        return !this.is_scrolled ? "bg--"+this.color : "bg--white"
+    },
+    text_color(){
+        return !this.is_scrolled ? "text-color--"+this.text_color_normal : "text-color--"+this.text_color_scrolled
+    },
     is_mobile(){
       return this.breakpoints.mobile.matches || this.breakpoints.table.matches
     }
