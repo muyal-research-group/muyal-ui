@@ -23,6 +23,10 @@
       </div>
           <iframe :class="{'sectionv3__subsection__video':true,'mt--md':true,'hide':hides[index]}" width="820" height="420" :src="workshop.video"></iframe>
           <!-- <iframe width="1280" height="720" src="" title="Vídeo Técnico Nez" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+          <!-- <iframe width="1280" height="720" src="" title="Taller de Telemedicina y Ciencia de Datos 19 de agosto 2022 - Parte 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+      <!-- <iframe width="1280" height="720" src="" title="Big Data en Salud. Plataforma Muyal-Ilal / Sistema de visualización /  Tecnologías emergente 1." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+      <!-- <iframe width="1280" height="720" src="" title="Taller de Big Data en Salud. Conferencia 4: Plataforma tecnológica; y Demostración 2: Muyal-Nez." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+      <!-- <iframe width="1280" height="720" src="" title="Taller BigData: Bienvenida; Mesa de discusión; Proyecto Muyal-Ilal; Proyecto Invitado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
     </div>
   </div>
   <Footer/>
@@ -55,7 +59,7 @@ export default {
             workshops:[
               {
                 title:"Taller de Monterrey",
-                video:"https://www.youtube.com/embed/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
+                video:"https://www.youtube.com/embed/evuQWSMtvqI",
                 image:{
                     src:"/images/workshops/monterrey/00.jpg",
                     alt:"MERIDA",
@@ -64,29 +68,29 @@ export default {
                 subsections:[
                   {
                     title:"Ciencia y salud",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    text:"En los talleres impartidos se tocaron temas relevantes para la ciencia y la salud. Principalmente como la ciencia puede mejorar las tareas realizadas centros medicos facilitando la comunicacion entre todos los departamentos involucrados.",
                     image:"/images/workshops/monterrey/01.png"
                   },
                   {
                     title:"Nez un servicio para la construcción de sistemas de ciencia de datos",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    text:"La facilidad de construir sistemas para ciencias de datos nunca habia sido tan facil, siguiendo un principio de acoplamiento de bloques de construccion para realizar flujos de trabajo para grandes sistemas de ciencias de datos enfocado en ambitos medicos surge Nez revolucionando la manera en la que se diseñan sistemas, dando caracteristicas fundamentales como la agnosticidad permitiendole desplegar los sistemas en diversas infraestructuras.",
                     image:"/images/workshops/monterrey/02.png"
                   },
                   {
                     title:"Chimalli un servicio para el cumplimiento de normas en el intercambio de datos",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    text:"La seguridad es un aspecto importante en el intercambio de datos, sin lugar a duda mantener los servicios de seguridad a los datos clinicos es un reto en el cual el servicio Chimalli sobresale cumpliendo las normas en el intercambio de datos.",
                     image:"/images/workshops/monterrey/03.png"
                   },
                   {
                     title:"Xelhua un sevicio para creacion de sistemas de ciencia de datos estructurados",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    text:"Los datos estructurados nos permiten condensar informacion relevante sobre algun fenemono manteniendo una estructura el servicio de Xelhua permite realizar la creacion de sistemas para obtener diversos productos utilizando como entrada multiples fuentes de datos estructurados.",
                     image:"/images/workshops/monterrey/04.png"
                   }
                 ]
               },
               {
                 title:"Taller de Iztapalapa",
-                video:"https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
+                video:"https://www.youtube.com/embed/RAdiXrki6WM",
                 image:{
                     src:"/images/workshops/mexico/00.jpg",
                     alt:"IZTAPALAPA",
@@ -94,32 +98,32 @@ export default {
                 }, 
                 subsections:[
                   {
-                    title:"Subsection 1",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Sistemas de visualizacion de los principales problemas de salud",
+                    text:"Diversos invitados que muestran su talento mediante talleres como la Dra. Lina Sofia Palacio Mejia, que impartio el tema de visualizacion de los problemas de la salud.",
                     image:"/images/workshops/mexico/1.jpg"
 
                   },
                   {
-                    title:"Subsection 2",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Plataforma tecnológica para la gestión de datos de eSalud: Muyal-Ilal",
+                    text:"Una plataforma unica en su tipo que permite la gestion, aseguramiento, intercambio y preservacion de grandes volumenes de datos en salud Muyal-Ilal esta presentacion fue impartida por el Dr. Jose Luis Gonzalez Compean.",
                     image:"/images/workshops/mexico/02.jpg"
                   },
                   {
-                    title:"Subsection 3",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Aseguramiento de datos en aplicaciones de eSalud",
+                    text:"La seguridad es un aspecto sumamente importante principalmente en aplicaciones que comparten datos clinicos que son sensibles y que se intercambian entre varios sistemas.",
                     image:"/images/workshops/mexico/03.jpg"
 
                   },
                   {
-                    title:"Subsection 4",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Taller de cómputo en y almacenamiento en la nube para ciencia de datos",
+                    text:"Los talleres impartidos por profesionales altamente capacitados en temas de cómputo y almacenamiento en la nube para ciencia de datos compartieron su conocimiento sobre la salud, la ciencia y como se pueden unir para obtener mejores resultados.",
                     image:"/images/workshops/mexico/4.jpg"
                   }
                 ]
               },
               {
                 title:"Taller de Puebla",
-                video:"https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi",
+                video:"https://www.youtube.com/embed/dZoMnN8e6x0",
                 image:{
                     src:"/images/workshops/puebla/00.jpg",
                     alt:"PUEBLA",
@@ -127,24 +131,24 @@ export default {
                 }, 
                 subsections:[
                   {
-                    title:"Subsection 1",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Tecnologias emergentes",
+                    text:"",
                     image:"/images/workshops/puebla/1.jpg"
 
                   },
                   {
-                    title:"Subsection 2",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Aseguramiento de datos mediante sobres digitales: Caso de aplicación en eSalud",
+                    text:"",
                     image:"/images/workshops/puebla/02.jpg"
                   },
                   {
-                    title:"Subsection 3",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"",
+                    text:"",
                     image:"/images/workshops/puebla/03.jpg"
                   },
                   {
-                    title:"Subsection 4",
-                    text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
+                    title:"Almacenamiento datos sensibles en eSalud",
+                    text:"",
                     image:"/images/workshops/puebla/04.jpg"
                   }
 
@@ -152,9 +156,9 @@ export default {
               },
               {
                 title:"Taller de Merida",
-                video:"https://drive.google.com/file/d/1d2y3bTufO8lXcNiy4a8-mt2XxMC7zJ0d/preview",
+                video:"https://www.youtube.com/embed/oqIc_zJFMyM",
                 image:{
-                    src:"/images/workshops/merida/00.jpg",
+                    src:"/images/workshops/merida/000.jpg",
                     alt:"MERIDA",
                     width:0
                 },
@@ -162,24 +166,24 @@ export default {
                   {
                     title:"Subsection 1",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/merida/01.jpg"
+                    image:"/images/workshops/merida/0.jpg"
 
                   },
 
                   {
                     title:"Subsection 2",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/merida/01.jpg"
+                    image:"/images/workshops/merida/1.jpg"
                   },
                   {
                     title:"Subsection 3",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/merida/01.jpg"
+                    image:"/images/workshops/merida/2.jpg"
                   },
                   {
                     title:"Subsection 4",
                     text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, explicabo neque! Accusantium blanditiis deserunt ex consequuntur soluta, quo impedit ipsa quisquam ducimus quasi ea cum nobis, maiores placeat? Sapiente nesciunt vel veniam exercitationem facilis dolorem laboriosam omnis reiciendis quas debitis?",
-                    image:"/images/workshops/merida/01.jpg"
+                    image:"/images/workshops/merida/3.jpg"
                   }
                 ]
               }

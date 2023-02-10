@@ -18,7 +18,7 @@
                     </router-link>
                 </li>
                 <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}">Plataformas</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}">Servicios</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
                         <router-link to="/nez">Nez</router-link>
                         <router-link to="/chimalli">Chimalli</router-link>
@@ -64,7 +64,7 @@
                         <li class="side_menu__item">
                             <div class="side_menu__dropdown">
                                 <div class="flex justify-content--space-between"  @click="side_menu_dropdown(0)">
-                                    <span class="side_menu__dropdown-text">Plataformas</span> 
+                                    <span class="side_menu__dropdown-text">Servicios</span> 
                                     <img :class="{'rotate-180':dropdown_hide[0]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-230px':true }">
