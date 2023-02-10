@@ -1,5 +1,14 @@
 <template>
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage 
     title ="Caso de uso: Flujo para detección asistida para cáncer de huesos largos"
     image="/images/use-case/use-case.png"
@@ -39,14 +48,14 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': carousel_width}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
                   <!-- </div> -->
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -79,14 +88,14 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': '500px'}">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width': carousel_width}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
                   <!-- </div> -->
                 </Slide>
                 <template #addons>
-                  <Navigation/>
+                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -133,6 +142,9 @@ export default {
       },
       section_title_size(){
         return this.is_mobile ? 'xl':'md'
+      },
+      carousel_width(){
+        return this.is_mobile ? '350px':'500px'
       }
     },
   data() {

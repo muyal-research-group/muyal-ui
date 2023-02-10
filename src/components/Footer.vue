@@ -6,7 +6,7 @@
         <div class="footer__header"></div>
         <div class="footer">
             <img class="mb--md" src="/images/muyal/muyal-black.png">
-            <p :class="{['text-size--'+text_size]:true}"> Contáctanos a través de nuestros diferentes canales y conoce más sobre la Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
+            <p :class="{['text-size--'+text_size]:true,'text-align--justify':true}"> Contáctanos a través de nuestros diferentes canales y conoce más sobre la Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
             
             <div class="footer__icons mb--md">
                 <a class="flex justify-content--center align-items--center circle" href="https://www.facebook.com/cinvestav.lti" target="_blank">
@@ -35,7 +35,7 @@ import useBreakpoints from "vue-next-breakpoints";
   export default {
     setup(){
         const breakpoints = useBreakpoints({
-            mobile:[320,768], // max-width: 600px
+            mobile:[240,768], // max-width: 600px
             tablet:[768,1024],
             desktop: [1281] // min-width: 601px
         });
@@ -52,7 +52,7 @@ import useBreakpoints from "vue-next-breakpoints";
             return !this.breakpoints.mobile.matches && this.breakpoints.tablet.matches
         },
         text_size(){
-            return this.is_mobile ? "xl" : "xs"
+            return this.is_mobile ? "lg" : "xs"
         }
     },
   }

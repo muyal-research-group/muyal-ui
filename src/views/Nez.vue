@@ -1,6 +1,17 @@
 <template>
 
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
+    <!-- :color="color" 
+    :dark_color="dark_color"  -->
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
     image="/images/nez/nez.png"
@@ -40,7 +51,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
@@ -70,7 +81,7 @@
     <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
             <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide  v-for="image in sections.section_2.images" :key ="image.alt"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt" >
                 </Slide>
@@ -108,7 +119,7 @@
     <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide  v-for="image in sections.section_4.images" :key ="image.alt"> 
                     <img :src="(image.src)" :alt="image.alt" :width="image.width">
                 </Slide>
@@ -146,7 +157,7 @@
         
         <template v-slot:part1>
             <div class = "flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide  v-for="image in sections.section_6.images" :key ="image.alt"> 
                     <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
                 </Slide>
@@ -195,7 +206,7 @@
     <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
         <template v-slot:part1>
             <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':carousel_width}">
                 <Slide  v-for="image in sections.section_9.images" :key ="image.alt"> 
                     <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
@@ -252,6 +263,9 @@ export default {
       },
       section_title_size(){
         return this.is_mobile ? 'xl':'md'
+      },
+      carousel_width(){
+        return this.is_mobile ? '350px':'500px'
       }
     },
     data() {

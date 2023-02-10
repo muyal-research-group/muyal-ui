@@ -1,7 +1,7 @@
 
 <template >
                 <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
-    <div :class="{'navbar':true, 'pa--lg':true,'elevated':is_scrolled,[background_color]:true, 'justify-content--space-between':is_mobile}">
+    <div :class="{'navbar':true, 'pa--lg':true,'elevated':is_scrolled,[_background_color]:true, 'justify-content--space-between':is_mobile}">
         <router-link to="/"> 
             <img 
                 :src="is_scrolled ? scrolled_logo : normal_logo" 
@@ -20,11 +20,11 @@
                 <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
                     <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}">Servicios</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
-                        <router-link to="/nez">Nez</router-link>
-                        <router-link to="/chimalli">Chimalli</router-link>
-                        <router-link to="/painal">Painal</router-link>
-                        <router-link to="/xelhua">Xelhua</router-link>
-                        <router-link to="/alwa">Alwa</router-link>
+                        <router-link to="/services/nez">Nez</router-link>
+                        <router-link to="/services/chimalli">Chimalli</router-link>
+                        <router-link to="/services/painal">Painal</router-link>
+                        <router-link to="/services/xelhua">Xelhua</router-link>
+                        <router-link to="/services/alwa">Alwa</router-link>
                     </div>
                 </li>
                 
@@ -49,7 +49,7 @@
         </div>
 
         <div v-if="is_mobile" :class="{'menu__bars':true,}" @click ="on_click_bars">
-            <div v-for="i in [0,1,2]" :class ="{'bar':true, ['bg--'+dark_color]:!is_scrolled, ['bg--'+color]:is_scrolled, 'hide':hide_bar[i], ['cross-'+i]: i!=1 ? show_side_menu : false}"></div>
+            <div v-for="i in [0,1,2]" :class ="{'bar':true, [_bars_color]:true , 'hide':hide_bar[i], ['cross-'+i]: i!=1 ? show_side_menu : false}"></div>
         </div>
     
     </div>
@@ -69,12 +69,12 @@
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-230px':true }">
                                     <li class="side_menu__subitem">
-                                        <router-link to="/nez">Nez</router-link>
+                                        <router-link to="/services/nez">Nez</router-link>
                                     </li>
-                                    <li class="side_menu__subitem"><router-link to="/chimalli">Chimalli</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/painal">Painal</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/services/chimalli">Chimalli</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/services/painal">Painal</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/services/xelhua">Xelhua</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/services/alwa">Alwa</router-link></li>
                                 </ul>
                             </div>
 
@@ -88,8 +88,8 @@
                                     <img :class="{'rotate-180':dropdown_hide[1]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
-                                    <li class="side_menu__subitem"><router-link to="/publications">Publicaciones</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/workshops">Talleres</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/resources/publications">Publicaciones</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li>
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
                                 </ul>
@@ -111,8 +111,24 @@ import useBreakpoints from "vue-next-breakpoints";
 // import Button from "../components/Button.vue"
 export default {
     props: {
-        color: String,
-        dark_color: String,
+        // color: String,
+        // dark_color: String,
+        bars_color:{
+            type: String, 
+            default: "black",
+        },
+        scrolled_bars_color:{
+            type: String, 
+            default: "black",
+        },
+        background_color:{
+            type:String,
+            default:"white"
+        },
+        scrolled_background_color:{
+            type:String,
+            default:"white"
+        },
         text_color_normal:{
             type:String,
             default: "white"
@@ -142,11 +158,15 @@ export default {
       };
   },
   computed:{
-    background_color(){
-        return !this.is_scrolled ? "bg--"+this.color : "bg--white"
+    _background_color(){
+        return 'bg--' + (!this.is_scrolled ? this.background_color : this.scrolled_background_color)
+        // "bg--"+this.color : "bg--white"
     },
+    _bars_color(){
+        return 'bg--'+(this.is_scrolled ? this.bars_color : this.scrolled_bars_color)
+    },  
     text_color(){
-        return !this.is_scrolled ? "text-color--"+this.text_color_normal : "text-color--"+this.text_color_scrolled
+        return "text-color--"+ (!this.is_scrolled ? this.text_color_normal : this.text_color_scrolled)
     },
     is_mobile(){
       return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -222,7 +242,7 @@ export default {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 10;
+    /* z-index: 10; */
 }
 .overlay {
     background: rgba(0,0,0,0.5);

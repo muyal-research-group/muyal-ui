@@ -1,5 +1,14 @@
 <template>
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage 
     title ="Talleres"
     image="/images/workshops/workshops.png"
@@ -132,23 +141,23 @@ export default {
                 subsections:[
                   {
                     title:"Tecnologias emergentes",
-                    text:"",
+                    text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus ratione fuga maxime voluptatem consectetur magnam sunt, ipsa voluptatibus debitis incidunt reprehenderit hic deleniti unde. Numquam neque perferendis unde aliquam itaque sit recusandae nisi labore fugiat. Minima temporibus facilis expedita nobis.",
                     image:"/images/workshops/puebla/1.jpg"
 
                   },
                   {
                     title:"Aseguramiento de datos mediante sobres digitales: Caso de aplicación en eSalud",
-                    text:"",
+                    text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus ratione fuga maxime voluptatem consectetur magnam sunt, ipsa voluptatibus debitis incidunt reprehenderit hic deleniti unde. Numquam neque perferendis unde aliquam itaque sit recusandae nisi labore fugiat. Minima temporibus facilis expedita nobis.",
                     image:"/images/workshops/puebla/02.jpg"
                   },
                   {
-                    title:"",
-                    text:"",
+                    title:"Caso de aplicación en eSlud para la creación de sistemas de ciencia de datos en eSalud.",
+                    text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus ratione fuga maxime voluptatem consectetur magnam sunt, ipsa voluptatibus debitis incidunt reprehenderit hic deleniti unde. Numquam neque perferendis unde aliquam itaque sit recusandae nisi labore fugiat. Minima temporibus facilis expedita nobis.",
                     image:"/images/workshops/puebla/03.jpg"
                   },
                   {
                     title:"Almacenamiento datos sensibles en eSalud",
-                    text:"",
+                    text:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus ratione fuga maxime voluptatem consectetur magnam sunt, ipsa voluptatibus debitis incidunt reprehenderit hic deleniti unde. Numquam neque perferendis unde aliquam itaque sit recusandae nisi labore fugiat. Minima temporibus facilis expedita nobis.",
                     image:"/images/workshops/puebla/04.jpg"
                   }
 

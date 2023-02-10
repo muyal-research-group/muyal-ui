@@ -1,5 +1,14 @@
 <template>
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage 
     title ="Contacto"
     image="/images/contact/contact.png"
@@ -13,11 +22,12 @@
 </PlatformFrontPage>
   
 <div :class="{
+    // 'w-100':true,
     'flex':true,
     'flex-direction--row':!is_mobile,
     'flex-direction--column':is_mobile,
     'align-items--center':is_mobile,
-    'justify-content--center':!is_mobile,
+    'justify-content--center':true,
   }">
   <ContactCard :class="{'w-100':is_mobile}" v-for = "c in contacts"  :profile_photo ="c.profile_photo" :fullname = "c.fullname" :position="c.position" :company="c.company" :company_address="c.company_address" :phone_number="c.phone_number" :email = "c.email" :key ="c.email" :web="c.web"/>
 </div>
@@ -89,6 +99,11 @@ export default {
   },
 }
 </script>
+<style scoped> 
+/* .x{
+  width: 100vw;
+} */
+</style>
 <!-- <template>
     <h1>PUBLICATIONS</h1>
 </template>

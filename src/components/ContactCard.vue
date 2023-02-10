@@ -26,8 +26,8 @@ export default {
 </script>
 <style scoped>
 .contact{
-    
     width: 450px;
+    max-width: 100%;
     /* height: 500px; */
     /* height: 300px; */
     background: white;

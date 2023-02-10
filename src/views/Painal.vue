@@ -1,6 +1,15 @@
 <template>
   
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>  
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage 
     title ="Servicio para el transporte y almacenamiento de datos médicos"
     image="/images/painal/painal.png"
@@ -8,6 +17,7 @@
     color ="painal-primary-color"
     dark_color ="painal-primary-dark-color"
     image_width = "500"
+    :title_size = "section_title_size"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -37,7 +47,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
                   <!-- <div class="bg--black"> -->
                     <img :src="image.src" :alt="image.alt" :width="image.width">
@@ -76,7 +86,7 @@
         </template>
         <template v-slot:part2>
             <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':'500px'}">
+              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
                     <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
@@ -178,6 +188,9 @@ export default {
       },
       section_title_size(){
         return this.is_mobile ? 'xl':'md'
+      },
+      carousel_width(){
+        return this.is_mobile ? '350px':'500px'
       }
   }
 }

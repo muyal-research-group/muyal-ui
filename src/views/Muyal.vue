@@ -4,6 +4,10 @@
     :dark_color="dark_color" 
     :text_color_normal ="'black'" 
     :text_color_scrolled="'black'" 
+    :background_color="'white'" 
+    :scrolled_background_color="'white'"
+    :bars_color="'black'"
+    :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
     />
@@ -42,15 +46,15 @@
             </template>
             <template v-slot:part2>
                 <div :class="{'mb--lg':is_mobile}">
-                    <h2 :class="{'text-size--md':!is_mobile , 'text-size--xl':is_mobile, 'mb--md':is_mobile}">{{ sections.section_0.title }}</h2>
-                    <p class="text-size--sm text-align--justify">{{ sections.section_0.text }}</p> 
+                    <h2 :class="{['text-size--'+title_size]:true, 'mb--md':is_mobile}">{{ sections.section_0.title }}</h2>
+                    <p :class="{['text-size--'+text_size]:true, 'text-align--justify':true}">{{ sections.section_0.text }}</p> 
                 </div>
             </template>
         </PortionSection>
         
         <Section :title = "sections.section_1.title" color="black" :background_color="section_bg_color">
-            <p class="pa--xl text-size--sm">{{ sections.section_1.text }}</p>
-             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints">
+            <p :class="{'pa--xl':true, ['text-size--'+text_size]:true,'text-align--justify':true}">{{ sections.section_1.text }}</p>
+             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints" :wrap-around="true" :autoplay="4000">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
                     <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
@@ -69,40 +73,35 @@
             </template>
             <template v-slot:part1>
                 <div :class="{'mb--lg':is_mobile}">
-                    <h2 :class="{'text-size--md':!is_mobile , 'text-size--xl':is_mobile, 'mb--md':is_mobile}">{{ sections.section_2.title }}</h2>
-                    <p class="text-size--sm text-align--justify">{{ sections.section_2.text }}</p> 
+                    <h2 :class="{['text-size--'+title_size]:true  , 'mb--md':is_mobile}">{{ sections.section_2.title }}</h2>
+                    <p :class="{['text-size--'+text_size]:true, 'text-align--justify':true}">{{ sections.section_2.text }}</p> 
                 </div>
             </template>
         </PortionSection>
 
     </div>
-    
-
-
     <Footer/>
 
 
 </template>
 
 <script>
+
 import FeatureBox from '../components/FeatureBox.vue';
 import IconCard from '../components/IconCard.vue';
 import PlatformsNav from '../components/PlatformsNav.vue';
 import PortionSection from '../components/PortionSection.vue';
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
-
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
-
 import useBreakpoints from "vue-next-breakpoints";
 import Navbar from '../components/Navbar.vue';
-
 
 
 export default {
     setup(){
         const breakpoints = useBreakpoints({
-            mobile:[320,768], // max-width: 600px
+            mobile:[240,768], // max-width: 600px
             table:[768,1024],
             desktop: [1281] // min-width: 601px
         });
@@ -117,6 +116,12 @@ export default {
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+      },
+      title_size(){
+        return this.is_mobile ? 'xxl' : 'md';
+      },
+      text_size(){
+        return this.is_mobile ? 'lg' : 'sm';
       }
     },
     // created(){

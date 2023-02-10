@@ -182,6 +182,13 @@
 .text-size--xl {
   font-size: 4vw  !important;
 }
+.text-size--xxl {
+  font-size: 4.5vw  !important;
+}
+.text-size--xxxl {
+  font-size: 5vw  !important;
+}
+
 .text-align--justify {
   text-align: justify;
 }

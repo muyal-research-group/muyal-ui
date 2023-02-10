@@ -11,27 +11,27 @@ const router = createRouter({
       component: MuyalView
     },
     {
-      path: '/nez',
+      path: '/services/nez',
       name: 'nez',
       component: () => import('../views/Nez.vue')
     },
     {
-      path: '/chimalli',
+      path: '/services/chimalli',
       name: 'chimalli',
       component: () => import('../views/Chimalli.vue')
     },
     {
-      path: '/painal',
+      path: '/services/painal',
       name: 'painal',
       component: () => import('../views/Painal.vue')
     },
     {
-      path: '/xelhua',
+      path: '/services/xelhua',
       name: 'xelhua',
       component: () => import('../views/Xelhua.vue')
     },
     {
-      path: '/alwa',
+      path: '/services/alwa',
       name: 'alwa',
       component: () => import('../views/Alwa.vue')
     },

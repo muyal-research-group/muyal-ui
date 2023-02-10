@@ -1,5 +1,14 @@
 <template>
-  <Navbar :color="color" :dark_color="dark_color"></Navbar>
+  <Navbar 
+    :text_color_normal ="'white'" 
+    :text_color_scrolled="'white'" 
+    :background_color="color" 
+    :scrolled_background_color="'white'"
+    :bars_color="dark_color"
+    :scrolled_bars_color="'white'"
+    :scrolled_logo= "'/images/muyal/muyal-black.png'"
+    :normal_logo = "'/images/muyal/muyal-white.png'"
+  /> 
   <PlatformFrontPage title="Publicaciones" image="/images/publications/publications.png" index="6" :color="color"
     :dark_color="dark_color" image_width="500">
     <template v-slot:footer>
@@ -16,15 +25,15 @@
           </div> -->
     </template>
   </PlatformFrontPage>
-  <div class="pa--xl publications-wrapper">
-    <div v-for="publication in publications" :class="{ 'pa--md': true, 'publication': true, 'w-100': is_mobile }"
+  <div :class="{'pa--lg':true, 'publications-wrapper':true}">
+    <div v-for="publication in publications" :class="{ 'pa--sm': true, 'publication': true, 'w-100': is_mobile , 'h-mobile':is_mobile }"
       @click="on_click(publication)">
       <div class="publication__img-wrapper">
         <img class="publication__img" src="/images/publications/publication.png" alt="">
       </div>
-      <div class="publication__desc">
-        <h2 class="publication__title">{{ publication.title }}</h2>
-        <span class="publication__subtitle">{{ publication.subtitle }}</span>
+      <div :class="{'publication__desc':true, 'flex':true,'flex-direction--column':true,'justify-content--space-between':true}">
+        <h2 :class="{'publication__title':true,['text-size--'+title_size]:true}">{{ publication.title }}</h2>
+        <span :class="{'publication__subtitle':true,['text-size--'+subtitle_size]:true}">{{ publication.subtitle }}</span>
       </div>
     </div>
   </div>
@@ -61,6 +70,12 @@ export default {
   computed: {
     is_mobile() {
       return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+    },
+    title_size(){
+      return this.is_mobile ? "lg":"sm"
+    },
+    subtitle_size(){
+      return this.is_mobile ? "md" :"xs"
     }
   },
   components: {
@@ -116,6 +131,14 @@ export default {
 }
 </script>
 <style scoped>
+.h-mobile{
+  height: auto !important;
+  /* height: 100px !important; */
+}
+.h-desktop{
+  height: auto !important;
+  /* height: 200; */
+}
 .publications-wrapper {
   height: auto;
   display: flex;
@@ -128,7 +151,7 @@ export default {
 .publication {
   background: #f3f3f3;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 150px;
+  height: 200px;
   border-radius: 10px;
   display: flex;
   width: 50%;
