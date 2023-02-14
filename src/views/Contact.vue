@@ -1,13 +1,13 @@
 <template>
   <Navbar 
     :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
+    :text_color_scrolled="'black'" 
     :background_color="color" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
     title ="Contacto"
@@ -16,6 +16,8 @@
     :color ="color"
     :dark_color ="dark_color"
     image_width = "500"
+    :circle_color="dark_color"
+    text_color="white"
   >
   <template v-slot:footer>
   </template>

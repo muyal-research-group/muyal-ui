@@ -1,13 +1,13 @@
 <template>
   <Navbar 
     :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
+    :text_color_scrolled="'black'" 
     :background_color="color" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
     title ="Sistema agnóstico en la nube para la construcción de soluciones de big data basada en el diseño de servicios de ciencia de datos de alta disponibilidad y tolerante a fallos"
@@ -16,7 +16,9 @@
     color ="xelhua-primary-color"
     dark_color ="xelhua-primary-dark-color"
     :title_size ="section_title_size"
+    text_color ="white"
     image_width = "700"
+    circle_color ="xelhua-primary-dark-color"
     
   >
   <template v-slot:footer>
@@ -26,162 +28,31 @@
             Obtenido
           </div>
           <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Software" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1QtYI7PKRMtYNM-kfZ2vRyyzs8RWXXieV/view?usp=share_link')" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1rp38q5_OaUj7I7aFgrTdbwwdB7E5kLUV/view?usp=share_link')" />
+            <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/-kJGvP4iQhY?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/5mTK0dv8CcI?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
           </div>
   </template>
 </PlatformFrontPage>
-  
-  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-      <template v-slot:part1>
-          <div>
-              <h1 
-                  :class="'mb--md text-size--'+section_title_size"
-              >{{ sections.section_0.title }}</h1>
-              <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-              >{{ sections.section_0.text }}</p> 
-          </div>
-      </template>
-      <template v-slot:part2>
-          <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-              <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-              </Slide>
-              <template #addons>
-                <!-- <Navigation/> -->
-                <Pagination/>
-              </template>
-            </Carousel>
-          </div>
-      </template>
-  </PortionSection>
-
-  <Section  :title="sections.section_1.title" :color="color" :title_size = "section_title_size">
-    <div class="pa--xl">
-      <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-      >{{ sections.section_1.text }}</p>
+  <SimpleSection title="Servicios de analitica de datos de la salud" subtitle="">
+    <template v-slot:body>
       <div class="flex justify-content--center">
-        <img :src="$resolve_image(sections.section_1.images[0].src)" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+          <img src="/images/xelhua/xelhua-0.png" alt="" width="800">
       </div>
-    </div>
-  </Section>
-  
-  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-      <template v-slot:part1>
-          <div>
-              <h1 
-                  :class="'mb--md text-size--'+section_title_size"
-              >{{ sections.section_2.title }}</h1>
-              <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-              >{{ sections.section_2.text }}</p> 
-          </div>
-      </template>
-      <template v-slot:part2>
-          <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-              <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
-                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-              </Slide>
-              <template #addons>
-                <!-- <Navigation/> -->
-                <Pagination/>
-              </template>
-            </Carousel>
-          </div>
-      </template>
-  </PortionSection>
-
-  <Section  :title="sections.section_3.title" :color="color" :title_size = "section_title_size">
-    <div class="pa--xl">
-      <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-      >{{ sections.section_3.text }}</p>
-      <div class="flex justify-content--center">
-        <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.alt"  :width="sections.section_3.images[0].width">
-      </div>
-    </div>
-  </Section>
-
-  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-      <template v-slot:part1>
-          <div>
-              <h1 
-                  :class="'mb--md text-size--'+section_title_size"
-              >{{ sections.section_4.title }}</h1>
-              <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-              >{{ sections.section_4.text }}</p> 
-          </div>
     </template>
-      <template v-slot:part2>
-          <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}"> 
-              <Slide v-for="(image,index) in sections.section_4.images" :key ="index"> 
-                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-              </Slide>
-              <template #addons>
-                <!-- <Navigation/> -->
-                <Pagination/>
-              </template>
-            </Carousel>
-          </div>
-      </template>
-  </PortionSection>
-  
-  <Section  :title="sections.section_5.title" :color="color" :title_size = "section_title_size">
-    <div class="pa--xl">
-      <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-      >{{ sections.section_5.text }}</p>
-      <div class="flex justify-content--center">
-        <img :src="$resolve_image(sections.section_5.images[0].src)" :alt="sections.section_5.alt"  :width="sections.section_5.images[0].width">
+  </SimpleSection>
+  <Separator type="xelhua"/>
+  <SimpleSection title="Características de Xelhua" subtitle="">
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+          <img v-for="i in [0,1,2,3]" :src="`/images/xelhua/xel-${i}.png`" alt="" width="800" class="mb--md">
       </div>
-    </div>
-  </Section>
-  
-  <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-      <template v-slot:part1>
-          <div>
-              <h1 
-                  :class="'mb--md text-size--'+section_title_size"
-              >{{ sections.section_6.title }}</h1>
-              <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-              >{{ sections.section_6.text }}</p> 
-          </div>
     </template>
-      <template v-slot:part2>
-          <div class ="flex justify-content--center align-items--center">
-            <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-              <Slide v-for="(image,index) in sections.section_6.images" :key ="index"> 
-                  <img :src="$resolve_image(image.src)" :alt="image.alt" :width="image.width">
-              </Slide>
-              <template #addons>
-                <!-- <Navigation/> -->
-                <Pagination/>
-              </template>
-            </Carousel>
-          </div>
-      </template>
-  </PortionSection>
-
-  <Section  :title="sections.section_7.title" :color="color" :title_size = "section_title_size">
-    <div class="pa--xl">
-      <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-      >{{ sections.section_7.text }}</p>
-      <div class="flex justify-content--center">
-        <img :src="$resolve_image(sections.section_7.images[0].src)" :alt="sections.section_7.alt"  :width="sections.section_7.images[0].width">
-      </div>
-    </div>
-  </Section>
+  </SimpleSection>
+  <Separator type="xelhua"/>
+  
 
   <Footer/>
 </template>
@@ -192,14 +63,16 @@ import Navbar from '../components/Navbar.vue';
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
-import Circle from "../components/Circle.vue"
+// import Circle from "../components/Circle.vue"
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 import useBreakpoints from "vue-next-breakpoints";
+import Separator from '../components/Separator.vue';
+import SimpleSection from '../components/SimpleSection.vue';
 
 export default {
-  components:{Footer,Card,Section,Circle,Carousel, Slide, Pagination, Navigation ,PlatformFrontPage,Navbar},
+  components:{ Footer, Card, Section, Carousel, Slide, Pagination, Navigation, PlatformFrontPage, Navbar, Separator, SimpleSection },
   computed: {
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -208,7 +81,7 @@ export default {
         return this.is_mobile ? 'xl' : 'sm'
       },
       section_title_size(){
-        return this.is_mobile ? 'xl':'md'
+        return this.is_mobile ? 'sm':'lg'
       },
 
       carousel_width(){
@@ -348,6 +221,11 @@ export default {
         dark_color : "xelhua-primary-dark-color"
       };
   },
+  methods:{
+      on_click(url){
+        window.open(url,"_blank")
+      }
+  }
 }
 </script>
 

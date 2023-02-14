@@ -51,9 +51,19 @@ const router = createRouter({
       component: () => import('../views/Contact.vue')
     },
     {
-      path: '/use-case',
-      name: 'use-case',
-      component: () => import('../views/UseCase.vue')
+      path: '/use-case/cancer',
+      name: 'use-case-1',
+      component: () => import('../views/UseCase1.vue')
+    },
+    {
+      path: '/use-case/diabetes',
+      name: 'use-case-2',
+      component: () => import('../views/UseCase2.vue')
+    },
+    {
+      path: '/use-case/mortality',
+      name: 'use-case-3',
+      component: () => import('../views/UseCase3.vue')
     },
   ],
   scrollBehavior(to, from, savedPosition) {

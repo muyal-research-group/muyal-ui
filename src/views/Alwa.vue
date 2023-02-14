@@ -1,13 +1,13 @@
 <template>
   <Navbar 
     :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
+    :text_color_scrolled="'black'" 
     :background_color="color" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
     title ="Bases de datos producidad por sistemas de e-Salud"
@@ -17,6 +17,8 @@
     dark_color ="alwa-primary-dark-color"
     image_width = "500"
     :title_size = "section_title_size"
+    circle_color="alwa-primary-dark-color"
+    text_color="white"
   >
   
   <template v-slot:footer>
@@ -34,7 +36,7 @@
   </template>
 </PlatformFrontPage>
 
-    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+    <!-- <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
                 <h1 
@@ -49,9 +51,7 @@
             <div class ="flex justify-content--center align-items--center">
               <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':carousel_width}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
                     <img :src="image.src" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
                 </Slide>
                 <template #addons>
                   <Navigation/>
@@ -71,7 +71,7 @@
           <img :src="sections.section_1.images[0].src" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
         </div>
       </div>
-    </Section>
+    </Section> -->
   <Footer/>
 </template>
 

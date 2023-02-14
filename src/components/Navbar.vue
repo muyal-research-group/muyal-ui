@@ -2,13 +2,19 @@
 <template >
                 <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
     <div :class="{'navbar':true, 'pa--lg':true,'elevated':is_scrolled,[_background_color]:true, 'justify-content--space-between':is_mobile}">
-        <router-link to="/"> 
-            <img 
-                :src="is_scrolled ? scrolled_logo : normal_logo" 
-                id="navbar__logo" 
-                :class="{'navbar__logo':true}"
-            >
-        </router-link>
+        <div>
+            <router-link to="/"> 
+                <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true}">
+                    <img 
+                        :src="is_scrolled ? scrolled_logo : normal_logo" 
+                        id="navbar__logo" 
+                        :class="{'navbar__logo':true}"
+                    >
+                </div>
+            </router-link>
+            <!-- <div :class="{'circle':true, ['bg--'+]:true, 'pa--xs':true}">
+            </div> -->
+        </div>
 
         <div :class="{'navbar__items':true,'hide':is_mobile}">
             <ul class="navbar__items__ul">
@@ -18,31 +24,44 @@
                     </router-link>
                 </li>
                 <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}">Servicios</span>
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(0)">Servicios</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
                         <router-link to="/services/nez">Nez</router-link>
-                        <router-link to="/services/chimalli">Chimalli</router-link>
-                        <router-link to="/services/painal">Painal</router-link>
                         <router-link to="/services/xelhua">Xelhua</router-link>
-                        <router-link to="/services/alwa">Alwa</router-link>
+                        <!-- <router-link to="/services/painal">Painal</router-link> -->
+                        <router-link to="/services/chimalli">Chimalli</router-link>
+                        <!-- <router-link to="/services/alwa">Alwa</router-link> -->
                     </div>
                 </li>
                 
-                <li :class="{'navbar__item':true,[text_color]:true}"> 
+                
+                <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[2]}" @mouseover="on_hover(2)" >
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(2)">Casos de uso</span>
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[2], }"  @mouseleave="on_leave(2)">
+                        <router-link to="/use-case/cancer"> Caso uso 1 (HADCHL)</router-link>
+                        <router-link to="/use-case/diabetes"> Caso uso 2 (Diabetes)</router-link>
+                        <router-link to="/use-case/mortality"> Caso uso 3 (Mortalidad)</router-link>
+                        <!-- <router-link to="/services/xelhua">Xelhua</router-link> -->
+                        <!-- <router-link to="/services/painal">Painal</router-link> -->
+                        <!-- <router-link to="/services/chimalli">Chimalli</router-link> -->
+                        <!-- <router-link to="/services/alwa">Alwa</router-link> -->
+                    </div>
+                </li>
+                <!-- <li :class="{'navbar__item':true,[text_color]:true}"> 
                     <router-link class="navbar__link" to="/use-case">
                         <span :class="{[text_color]:true}">Caso de uso</span>
                     </router-link>
-                </li>
-                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(1)"  @mouseleave="on_leave(1)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true,'navbar__dropdown__list':true,'dropbtn':true}">Recursos</span>
-                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}">
+                </li> -->
+                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(1)"   >
+                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true,'navbar__dropdown__list':true,'dropbtn':true}" @mouseleave="on_leave(1)">Recursos</span>
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}" @mouseleave="on_leave(1)">
                         <router-link to="/resources/publications"  >Publicaciones</router-link >
-                        <router-link to="/resources/workshops" >Tallares</router-link>
+                        <!-- <router-link to="/resources/workshops" >Talleres</router-link> -->
                     </div>
                 </li>
                 <li :class="{'navbar__item':true,[text_color]:true}"> 
                     <router-link class="navbar__link" to="/contact">
-                        <span :class="{[text_color]:true}">Conctacto</span>
+                        <span :class="{[text_color]:true}">Contacto</span>
                     </router-link>
                 </li>
             </ul>
@@ -71,10 +90,10 @@
                                     <li class="side_menu__subitem">
                                         <router-link to="/services/nez">Nez</router-link>
                                     </li>
-                                    <li class="side_menu__subitem"><router-link to="/services/chimalli">Chimalli</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/services/painal">Painal</router-link></li>
                                     <li class="side_menu__subitem"><router-link to="/services/xelhua">Xelhua</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/services/alwa">Alwa</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/services/chimalli">Chimalli</router-link></li>
+                                    <!-- <li class="side_menu__subitem"><router-link to="/services/painal">Painal</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/services/alwa">Alwa</router-link></li> -->
                                 </ul>
                             </div>
 
@@ -89,7 +108,7 @@
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
                                     <li class="side_menu__subitem"><router-link to="/resources/publications">Publicaciones</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li>
+                                    <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
                                 </ul>
@@ -144,6 +163,10 @@ export default {
         normal_logo:{
             type:String,
             default:"/images/muyal/muyal-white.png"
+        },
+        circle_color:{
+            type:String,
+            default: "light-grey-1"
         }
     },
   setup(){
@@ -163,7 +186,7 @@ export default {
         // "bg--"+this.color : "bg--white"
     },
     _bars_color(){
-        return 'bg--'+(this.is_scrolled ? this.bars_color : this.scrolled_bars_color)
+        return 'bg--'+(!this.is_scrolled ? this.bars_color : this.scrolled_bars_color)
     },  
     text_color(){
         return "text-color--"+ (!this.is_scrolled ? this.text_color_normal : this.text_color_scrolled)
@@ -176,7 +199,7 @@ export default {
     //     Button
     // },
     data(){
-        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false],hide_bar:[!true,!true,!true,],dropdown_hide:[true,true]}
+        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false,false],hide_bar:[!true,!true,!true,],dropdown_hide:[true,true,true]}
     },
     methods: {
         show_navbar: function () {
@@ -185,6 +208,12 @@ export default {
         on_click_bars(){
             this.show_side_menu = !this.show_side_menu;
             this.hide_bar[1]=!this.hide_bar[1];
+            if(this.show_side_menu)
+                document.body.classList.add('prevent-scroll')
+            else
+              document.body.classList.remove('prevent-scroll')
+
+
         },
         on_hover(index){
             this.dropdowns_hover[index] = true;
@@ -242,7 +271,9 @@ export default {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    /* z-index: 10; */
+    z-index: 1000;
+    overflow-y: hidden;
+    /* overflow-y: ; */
 }
 .overlay {
     background: rgba(0,0,0,0.5);
@@ -325,7 +356,7 @@ export default {
     /* position: absolute; */
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10000;
     /* background: red; */
     /* padding: 20px; */
     /* padding: 60px; */

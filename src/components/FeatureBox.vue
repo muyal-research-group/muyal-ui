@@ -30,7 +30,8 @@ export default {
 <style scoped>
 .feature-box {
     /* position: relative; */
-    background: white;
+    background: rgba(0, 0,0,0.01);
+    border: thin dashed rgba(0,0,0,0.1);
     border-radius: 10px;
     width: 350px;
     padding: 40px;

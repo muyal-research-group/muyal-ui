@@ -1,16 +1,16 @@
 <template>
   <Navbar 
-    :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
-    :background_color="color" 
+    :text_color_normal ="'black'" 
+    :text_color_scrolled="'black'" 
+    :background_color="'white'" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage title="Publicaciones" image="/images/publications/publications.png" index="6" :color="color"
-    :dark_color="dark_color" image_width="500">
+    :dark_color="dark_color" image_width="500" :circle_color="dark_color" text_color="white">
     <template v-slot:footer>
       <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
       <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">

@@ -4,13 +4,14 @@
     :dark_color="dark_color"  -->
   <Navbar 
     :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
-    :background_color="color" 
+    :text_color_scrolled="'black'" 
+    :background_color="'nez-primary-color'" 
     :scrolled_background_color="'white'"
-    :bars_color="dark_color"
-    :scrolled_bars_color="'white'"
+    bars_color="white"
+    scrolled_bars_color="black"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
+
   /> 
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
@@ -18,8 +19,10 @@
     index="1"
     color ="nez-primary-color"
     dark_color ="nez-primary-dark-color"
-    image_width = "500"
+    image_width = "350"
     :title_size="section_title_size"
+    circle_color="nez-primary-dark-color"
+    text_color="white"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -27,203 +30,100 @@
             Obtenido
           </div>
           <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Software" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
+            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1LRvydHG08d-gaFA6uz2PTViUfwAnBFmZ/view?usp=share_link')" />
+            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1ek5v_M9nE_wWw38YqDaUo-BCeEOg_ORl/view?usp=share_link')" />
+            <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
+            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color"  @on_click="on_click('https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
+            <Button title="Infografia general" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/6NO9x7Ec-50?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
           </div>
   </template>
 </PlatformFrontPage>
+<SimpleSection title="Servicio de construcción automático de sistemas
+ e-salud para el manejo de datos y contenidos en la práctica médica" subtitle="">
+ <template v-slot:body>
+  <div class="badge-wrapper">
 
-    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-        <template v-slot:part1>
-            <div :class="{'mb--lg':is_mobile}">
-                  <!-- :class="{'text-size--md':!is_mobile,'text-size--xl':is_mobile,'mb--md':true}" -->
-                <h1 
-                  :class = "'mb--md text-size--'+section_title_size"
-                >{{ sections.section_0.title }}</h1>
-                  <!-- :class="{'text-size--sm':!is_mobile,'text-size--lg':is_mobile, '':truea}" -->
-                <p 
-                  :class="'text-align--justify text-size--'+section_text_size"
-                  >{{ sections.section_0.text }}</p> 
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-                <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-    </PortionSection>
-
-
-    <Section  :title="sections.section_1.title" :color="color" :title_size="section_title_size">
-      <div class="pa--xl">
-          <!-- :class="{'':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile ,'':true}" -->
-        <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-          >{{ sections.section_1.text }}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="sections.section_1.images[0].src" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
-        </div>
+    <div class="flex justify-content--center align-items--center">
+      <div class="badge-container flex ">
+          <div class="flex justify-content--center align-items--center">
+            <div class=" badge__index">1</div>
+          </div>
+          <p class="badge__text"><b>Crea</b> tus bloques de construccion sin necesidad de programar aplicaciones extras.</p>
       </div>
-    </Section>
+      <img src="/images/nez/nez-0.png" alt="" width="200">
+    </div>
 
-    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
-        <template v-slot:part1>
-            <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-                <Slide  v-for="image in sections.section_2.images" :key ="image.alt"> 
-                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt" >
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-
-        <template v-slot:part2>
-            <div :class="{'mb--xl':is_mobile}">
-                <h1 
-                :class="'mb--md text-size--'+section_title_size"
-                >{{ sections.section_2.title }}</h1>
-                <p 
-                :class="'text-align--justify text-size--'+section_text_size"
-                >{{ sections.section_2.text }}</p> 
-            </div>''
-        </template>
-    </PortionSection>
-
-    <Section :title="sections.section_3.title" :color="color" :title_size="section_title_size">
-      <div class="pa--xl">
-        <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_3.text}}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="sections.section_3.images[0].src" :alt="sections.section_3.images[0].alt"  :width="sections.section_3.images[0].width">
-        </div>
-
+    <div class="flex justify-content--center align-items--center">
+      <img src="/images/nez/nez-1.png" alt="" width="200">
+      <div class="badge-container flex ">
+          <div class="flex justify-content--center align-items--center">
+            <div class=" badge__index">2</div>
+          </div>
+          <p class="badge__text"><b>Une</b> tus bloques y crea un sistema de eSalud</p>
       </div>
-    </Section>
-
-    <PortionSection part1_width ="40" part2_width="60" :column="is_mobile">
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-                <Slide  v-for="image in sections.section_4.images" :key ="image.alt"> 
-                    <img :src="(image.src)" :alt="image.alt" :width="image.width">
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-        <template v-slot:part1>
-            <div>
-                <h1 
-                  :class="'mb--md text-size--'+section_title_size"
-                >{{ sections.section_4.title }}</h1>
-                <p 
-                  :class="'text-align--justify text-size--'+section_text_size"
-                >{{ sections.section_4.text }}</p> 
-            </div>
-        </template>
-    </PortionSection>
-
-    <Section :title="sections.section_5.title" :color="color" :title_size="is_mobile ? 'xl':'md'">
-      <div class="pa--xl">
-        <p :class="{'mb--lg':is_mobile,'text-size--sm':!is_mobile,'text-size--lg':is_mobile, 'text-align--justify':true}">{{ sections.section_5.text}}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="sections.section_5.images[0].src" :alt="sections.section_5.images[0].alt"  :width="sections.section_5.images[0].width">
+    </div>
+    
+    <div class="flex justify-content--center align-items--center">
+    <div class="badge-container flex ">
+        <div class="flex justify-content--center align-items--center">
+          <div class=" badge__index">3</div>
         </div>
+        <p class="badge__text"><b>Despliega</b> tu servicio en la nube o tu computadora personal </p>
+    </div>
+      <img src="/images/nez/nez-2.png" alt="" width="200">
+    </div>
 
-      </div>
-    </Section>
+  </div>
+  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatibus inventore iusto nesciunt iure nam neque aperiam molestias unde corporis aspernatur, in, sit eius. Iusto ducimus obcaecati adipisci. Porro facilis necessitatibus incidunt explicabo saepe ut consequatur, quos laborum rerum neque vero adipisci obcaecati ullam quia beatae dolorum harum! Suscipit, ratione!</p> -->
+ </template>
+</SimpleSection>
+<Separator type="nez"/>
+<SimpleSection title="Maneja y comparte tus servicios de e-salud" subtitle="">
+  <template v-slot:body>
+    <div class="flex justify-content--center align-items--center flex-direction--column">
+      <p class="mb--md">Sistemas de e-salud intra-institucionales</p>
+      <img src="/images/nez/nez-00.png" alt="" width="500">
+    </div>
+  </template>
+</SimpleSection>
+<Separator type="nez"/>
+<SimpleSection title="" subtitle="Puedes compartir tu servicio de e-salud, y los datos generados, entre:">
+<template v-slot:body>
+    <p></p>
+    <div class="flex justify-content--center">
+    <ListTable 
+      class="mr--md"
+      title="Multiples usuarios" 
+      image="/images/nez/multi-user.png" 
+      :items="[
+          'Sistemas de compartición de imagenología.',
+          'Datos de múltiples fuentes (sensores, y bases de datos).',
+          'Medición de signos vitales.',
+      ]"
+    />
+    <ListTable 
+      title="Múltiples niveles de atención" 
+      image="/images/nez/clinic.png" 
+      :items="[
+          'Diagnósticos',
+          'Imagenología',
+          'Métricas de pacientes',
+      ]"
+    />
+    </div>
 
-    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
-        
-        <template v-slot:part1>
-            <div class = "flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-                <Slide  v-for="image in sections.section_6.images" :key ="image.alt"> 
-                    <img :class="{'w-50':is_mobile,'w-100':!is_mobile}" :src="image.src" :alt="image.alt">
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-
-        <template v-slot:part2>
-            <div :class="{'mb--lg':is_mobile}">
-                <h1  :class="'mb--md text-size--'+section_title_size">{{ sections.section_6.title }}</h1>
-                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_6.text }}</p> 
-            </div>
-        </template>
-    </PortionSection>
-
-    <Section :title="sections.section_7.title" :color="color" :title_size ="section_title_size" >
-      <div class="pa--xl">
-        <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-        >{{ sections.section_7.text}}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="sections.section_7.images[0].src" :alt="sections.section_7.images[0].alt"  :width="sections.section_7.images[0].width">
-        </div>
-
-      </div>
-    </Section>
-
-    <Section :title="sections.section_8.title" :color="color" :title_size="section_title_size">
-      <div class="pa--xl">
-        <p 
-        :class="'mb--xl text-align--justify text-size--'+section_text_size"
-        >{{ sections.section_8.text}}</p>
-        
-        <div class="flex justify-content--center">
-          <img :src="sections.section_8.images[0].src" :alt="sections.section_8.images[0].alt"  :width="sections.section_8.images[0].width">
-        </div>
-
-      </div>
-    </Section>
-
-    <PortionSection part1_width ="40" part2_width="60" :invert="is_mobile">
-        <template v-slot:part1>
-            <div :class ="{'flex':true, 'justify-content--center':true, 'align-items--center':true}">
-              <Carousel :items-to-show="1" :wrap-around="false" snapAlign="start" :style="{'width':carousel_width}">
-                <Slide  v-for="image in sections.section_9.images" :key ="image.alt"> 
-                    <img :src="image.src" :alt="image.alt" :width="image.width">
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div :class="{'mb--lg':is_mobile}">
-                <h1 :class="'mb--md text-size--'+section_title_size">{{ sections.section_9.title }}</h1>
-                <p :class="'text-align--justify text-size--'+section_text_size">{{ sections.section_9.text }}</p> 
-            </div>
-        </template>
-    </PortionSection>
+</template>
+</SimpleSection>
+<Separator type="nez"/>
+<SimpleSection title="" subtitle="">
+  <template v-slot:body>
+    <div class="flex justify-content--center align-items--center flex-direction--column">
+      <p class="mb--md">Sistemas de e-salud inter-institucionales</p>
+      <img src="/images/nez/nez-01.png" alt="" width="500">
+    </div>
+  </template>
+</SimpleSection>
+<Separator type="nez"/>
   <Footer/>
 </template>
 
@@ -233,7 +133,7 @@ import Button from "../components/Button.vue"
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
-import Circle from "../components/Circle.vue"
+// import Circle from "../components/Circle.vue"
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 import PortionSection from "../components/PortionSection.vue"
 // 
@@ -241,6 +141,9 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 // 
 import useBreakpoints from "vue-next-breakpoints";
+import SimpleSection from '../components/SimpleSection.vue';
+import Separator from '../components/Separator.vue';
+import ListTable from '../components/ListTable.vue';
 
 export default {
     setup(){
@@ -254,6 +157,11 @@ export default {
             breakpoints
         };
     },
+    methods:{
+        on_click(url){
+          window.open(url,"_blank")
+        }
+    },
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -262,7 +170,7 @@ export default {
         return this.is_mobile ? 'xl' : 'sm'
       },
       section_title_size(){
-        return this.is_mobile ? 'xl':'md'
+        return this.is_mobile ? 'md':'xl'
       },
       carousel_width(){
         return this.is_mobile ? '350px':'500px'
@@ -274,6 +182,7 @@ export default {
             autoplay:'5000',
             color: "nez-primary-color",
             dark_color:"nez-primary-dark-color",
+            separator_size:10,
             sections:{
               section_0:{
                 title:"Crea sistemas de e-Salud en minutos para el manejo de datos y contenidos médicos",
@@ -440,13 +349,41 @@ export default {
             },
         };
     },
-    components: {PlatformFrontPage, PortionSection,Footer, Card, Section, Circle,Button,
-      Carousel,Slide,Pagination,Navigation, Navbar
-    }
+    components: { PlatformFrontPage, PortionSection, Footer, Card, Section, Button, Carousel, Slide, Pagination, Navigation, Navbar, SimpleSection, Separator, ListTable }
 }
 </script>
 
 <style >
+
+
+
+.badge-container{
+  display: flex;
+  align-items: center;
+  background: var(--light-grey-1);
+  padding: 20px;
+  /* width: 1000px; */
+  width: 650px;
+  border-radius: 10px;
+}
+.badge__index {
+  background: var(--light-grey-3);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --size:50px;
+  width: var(--size);
+  height: var(--size);
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.badge__text{
+  font-size: 16px;
+  text-align: justify;
+}
+
 p {
   text-align: center;
 }
@@ -497,11 +434,6 @@ p {
   flex-direction: column;
 }
 
-.separador {
-  background-color: var(--nez-primary-color-dark);
-  height: 5px;
-  width: 100%;
-}
 
 
 .icon {
@@ -523,23 +455,6 @@ button:hover {
   background-color: #8fafee;
 }
 
-.resaltar {
-  align-self: center;
-  background-color: white;
-  border-radius: 10px;
-  margin-top: 20px;
-  width: 200px;
-  height: 30px;
-}
-
-.resaltar-blue {
-  align-self: center;
-  background-color: #356FE1;
-  border-radius: 10px;
-  margin-top: 20px;
-  width: 200px;
-  height: 50px;
-}
 
 .container-gray {
   align-self: center;
@@ -550,11 +465,6 @@ button:hover {
   height: 30px;
 }
 
-.resaltar p {
-  text-align: center;
-  color: #397DFF;
-  font-style: normal;
-}
 
 .resaltar-blue p {
   margin-top: 10px;

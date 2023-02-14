@@ -1,120 +1,76 @@
 <template>
 
-  <Navbar 
-    :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
-    :background_color="color" 
-    :scrolled_background_color="'white'"
-    :bars_color="dark_color"
-    :scrolled_bars_color="'white'"
-    :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
-  /> 
-  <PlatformFrontPage 
-    title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
-    image="/images/chimalli/chimalli.png"
-    index="2"
-    color ="chimalli-primary-color"
-    dark_color ="chimalli-primary-dark-color"
-    image_width = "500"
-    :title_size = "section_title_size"
-  >
-  <template v-slot:footer>
+    <Navbar 
+      :text_color_normal ="'white'" 
+      :text_color_scrolled="'black'" 
+      :background_color="'chimalli-primary-color'" 
+      :scrolled_background_color="'white'"
+      :bars_color="dark_color"
+      :scrolled_bars_color="'white'"
+      :scrolled_logo= "'/images/muyal/muyal-black.png'"
+      :normal_logo = "'/images/muyal/muyal-black.png'"
+    /> 
+    <PlatformFrontPage 
+      title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
+      image="/images/chimalli/chimalli.png"
+      index="2"
+      color ="chimalli-primary-color"
+      dark_color ="chimalli-primary-dark-color"
+      image_width = "500"
+      :title_size = "section_title_size"
+      text_color ="white"
+      circle_color="chimalli-primary-dark-color"
+    >
+    <template v-slot:footer>
 
-          <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
-          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
-            Obtenido
-          </div>
-
-          <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
-            <Button title="Software" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" />
-          </div>
-  </template>
-</PlatformFrontPage>
-
-    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-        <template v-slot:part1>
-            <div>
-                <h1 
-                :class="'mb--md text-size--'+section_title_size"
-                >{{ sections.section_0.title }}</h1>
-                <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-                >{{ sections.section_0.text }}</p> 
-
+            <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
+            <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+              Obtenido
             </div>
-        </template>
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay"  :style="{'width':carousel_width}"  >
-                <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
-                    <img :src="image.src" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-    </PortionSection>
 
-    <Section  :title="sections.section_1.title" :color="color" :title_size="section_title_size">
-      <div class="pa--xl">
-        <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-        >{{ sections.section_1.text }}</p>
+            <div class="mb--md front-page__buttons flex-wrap">
+              <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1jwLAYuWCvnlD03SzPzNo-YjVT3JRU0dQ/view?usp=share_link')" />
+              <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1cJNC80CM7HgBY-qRj_1m_NY1MMEi8dQb/view?usp=share_link')"/>
+              <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
+              <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/PdHZVucYxXk?list=PLImGqhUs3WnusWlO0_H8HyozWH89D1y1x')" />
+              <!-- <Button title="Infografia general" :color="color" :dark_color="dark_color" /> -->
+            </div>
+    </template>
+  </PlatformFrontPage>
+  <SimpleSection title="Servicio de confiabilidad y transporte de datos sensibles" :title_size="section_title_size" subtitle="">
+    <template v-slot:body>
         <div class="flex justify-content--center">
-          <img :src="sections.section_1.images[0].src" :alt="sections.section_1.alt"  :width="sections.section_1.images[0].width">
+          <img src="/images/chimalli/chimalli-0.png" alt="CHIMALLI_0">
         </div>
-      </div>
-    </Section>
-
-    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
-        <template v-slot:part1>
-            <div>
-                <h1 
-                :class="'mb--md text-size--'+section_title_size"
-                >{{ sections.section_2.title }}</h1>
-                <p 
-                :class="'text-align--justify  text-size--'+section_text_size"
-                >{{ sections.section_2.text }}</p> 
-            </div>
-        </template>
-        <template v-slot:part2>
-            <div class ="flex justify-content--center align-items--center">
-              <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
-                <Slide v-for="(image,index) in sections.section_2.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
-                    <img :src="image.src" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
-                </Slide>
-                <template #addons>
-                  <!-- <Navigation/> -->
-                  <Pagination/>
-                </template>
-              </Carousel>
-            </div>
-        </template>
-    </PortionSection>
-
-    <Section  :title="sections.section_3.title" :color="color" :title_size="section_title_size">
-      <div class="pa--xl">
-        <p 
-          :class="'mb--xl text-align--justify text-size--'+section_text_size"
-        >{{ sections.section_3.text }}</p>
+    </template>
+  </SimpleSection>
+  <Separator type="chimalli"/>
+  <SimpleSection title="Servicios de seguridad informática" :title_size="section_title_size" subtitle="">
+    <template v-slot:body>
         <div class="flex justify-content--center">
-          <img :src="$resolve_image(sections.section_3.images[0].src)" :alt="sections.section_3.alt"  :width="sections.section_3.images[0].width">
+          <img src="/images/chimalli/chimalli-1.png" alt="CHIMALLI_0" width="900">
         </div>
-      </div>
-    </Section>
-  <Footer></Footer>
+    </template>
+  </SimpleSection>
+  <Separator type="chimalli"/>
+  <SimpleSection title="Servicios de trazabilidad" :title_size="section_title_size" subtitle="">
+    <template v-slot:body>
+        <div class="flex justify-content--center align-items--center flex-direction--column">
+          <img class="mb--lg" src="/images/chimalli/chimalli-2.png" alt="CHIMALLI_0" width="900">
+          <div class="flex flex-direction--column">
+            <h3 :class="{'text-size--sm':true}">El servicio de chimalli permite a sus usuarios la: </h3>
+            <ul>
+              <li :class="{['text-size--'+section_text_size]:true}">Gestión automática de contratos inteligentes. </li>
+              <li :class="{['text-size--'+section_text_size]:true}">Gestión automática de transacciones.</li>
+              <li :class="{['text-size--'+section_text_size]:true}">Verificabilidad de transacciones de forma confidencial.</li>
+            </ul>
+
+          </div>
+        </div>
+    </template>
+  </SimpleSection>
+  <Separator type="chimalli"/>
+  <Footer/>
 </template>
 
 <script>
@@ -122,7 +78,6 @@
 import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Section from "../components/Section.vue"
-import Circle from "../components/Circle.vue"
 import PortionSection from "../components/PortionSection.vue"
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 
@@ -130,6 +85,8 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import Navbar from "../components/Navbar.vue"
 import useBreakpoints from "vue-next-breakpoints";
+import Separator from "../components/Separator.vue"
+import SimpleSection from "../components/SimpleSection.vue"
 export default {
   setup(){
       const breakpoints = useBreakpoints({
@@ -142,7 +99,7 @@ export default {
           breakpoints
       };
   },
-  components:{ Footer, Card, Section, Circle, PortionSection, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar },
+  components:{ Footer, Card, Section, PortionSection, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Separator, SimpleSection },
 
   data() {
         return {
@@ -219,13 +176,19 @@ export default {
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
       },
       section_text_size(){
-        return this.is_mobile ? 'xl' : 'sm'
+        return this.is_mobile ? 'md' : 'sm'
       },
       section_title_size(){
-        return this.is_mobile ? 'xl':'md'
+        return this.is_mobile ? 'sm':'lg'
       },
       carousel_width(){
         return this.is_mobile ? '350px':'500px'
+      }
+  },
+  methods:{
+
+      on_click(url){
+        window.open(url,"_blank")
       }
   }
   // data(){
@@ -317,23 +280,23 @@ button:hover {
   background-color: #8fafee;
 }
 
-.resaltar {
+/* .resaltar {
   align-self: center;
   background-color: white;
   border-radius: 10px;
   margin-top: 20px;
   width: 200px;
   height: 30px;
-}
+} */
 
-.resaltar-blue {
+/* .resaltar-blue {
   align-self: center;
   background-color: #356FE1;
   border-radius: 10px;
   margin-top: 20px;
   width: 200px;
   height: 50px;
-}
+} */
 
 .container-gray {
   align-self: center;
@@ -357,14 +320,14 @@ button:hover {
   font-style: normal;
 }
 
-.circle {
+/* .circle {
   background-color: #356FE1;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   align-self: center;
   padding: auto;
-}
+} */
 
 .circle h2 {
   color: white;

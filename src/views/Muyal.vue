@@ -17,10 +17,11 @@
         index="1"
         :color ="color"
         :dark_color ="dark_color"
-        image_width = "600"
-        title_size ="sm"
+        image_width = "450"
+        title_size ="xl"
         title_width = "80"
         text_color="black"
+        :invert="true"
     >
     <template v-slot:footer>
         <!-- :class ="{'flex':is_mobile,'align-items--center':is_mobile,'justify-content--center':is_mobile}" -->
@@ -37,49 +38,52 @@
             </div> -->
     </template>
     </PlatformFrontPage>
-    <div class="sections-wrapper">
-        <PortionSection part1_width ="60" part2_width="40"  :invert="is_mobile" :background_color="portion_bg_color">
-            <template v-slot:part1>
-                <div class ="flex justify-content--center align-items--center">
-                    <img :class="{'image-size__sm':!is_mobile,'image-size__lg':is_mobile}" :src="sections.section_0.images[0].src" :alt="sections.section_0.images[0].alt">
-                </div>
-            </template>
-            <template v-slot:part2>
-                <div :class="{'mb--lg':is_mobile}">
-                    <h2 :class="{['text-size--'+title_size]:true, 'mb--md':is_mobile}">{{ sections.section_0.title }}</h2>
-                    <p :class="{['text-size--'+text_size]:true, 'text-align--justify':true}">{{ sections.section_0.text }}</p> 
-                </div>
-            </template>
-        </PortionSection>
-        
-        <Section :title = "sections.section_1.title" color="black" :background_color="section_bg_color">
-            <p :class="{'pa--xl':true, ['text-size--'+text_size]:true,'text-align--justify':true}">{{ sections.section_1.text }}</p>
-             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints" :wrap-around="true" :autoplay="4000">
+    <Separator />
+    <SimpleSection title="Componentes principales: Servicios" subtitle="">
+        <template v-slot:body>
+            <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints" :wrap-around="true" :autoplay="5000" :pauseAutoplayOnHover="true">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
                     <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
                 <template #addons>
-                    <!-- <navigation /> -->
                     <pagination />
                 </template>
             </carousel>
-        </Section>
-        <!-- _______________________________________________________________ -->
-        <PortionSection part1_width ="60" part2_width="40" :column="is_mobile" :background_color="portion_bg_color" >
-            <template v-slot:part2>
-                <div class ="flex justify-content--center align-items--center">
-                    <img :src="sections.section_2.images[0].src" :alt="sections.section_2.images[0].alt" :width="sections.section_2.images[0].width">
+        </template>
+    </SimpleSection>
+    
+    <Separator/>
+    <SimpleSection title ="Estrategias de acción" subtitle="Para cumplir con los objetivos del presente proyecto se han establecido las siguientes líneas de acción.">
+        <template v-slot:body>
+            <div class="flex justify-content--center" :style="{'position':'relative','z-index':'1000'}">
+                <div class="cards-wrapper">
+                    <Card v-for="o in objectives" :title="o.title" color="light-grey-1">
+                        <template v-slot:content>
+                            <p>{{ o.content }}</p>
+                        </template>
+                    </Card>
                 </div>
-            </template>
-            <template v-slot:part1>
-                <div :class="{'mb--lg':is_mobile}">
-                    <h2 :class="{['text-size--'+title_size]:true  , 'mb--md':is_mobile}">{{ sections.section_2.title }}</h2>
-                    <p :class="{['text-size--'+text_size]:true, 'text-align--justify':true}">{{ sections.section_2.text }}</p> 
+            </div>
+        </template>
+    </SimpleSection>
+    <Separator/>
+    <SimpleSection title="" subtitle="">
+        <template v-slot:body >
+            <div :class="{'flex':true,'flex-direction--column-reverse':is_mobile,'align-items--center':is_mobile ,'justify-content--center':true}">
+                <div :class="{'mr--md':!is_mobile, 'w-40':!is_mobile,'w-100':is_mobile, 'flex':true, 'justify-content--center':true}">
+                    <div class="circle bg--light-grey-1 flex justify-content--center">
+                        <img width="400" src="/images/muyal/mexico.png" alt="Mexico">
+                    </div>
                 </div>
-            </template>
-        </PortionSection>
+                <div :class="{'w-60':!is_mobile,'w-100':is_mobile,'mb--xl':true}">
+                    <h1 class="text-size--xl">Relevancia Nacional</h1>
+                    <p class="text-size--sm text-align--justify">El beneficio inmediato de este proyecto sería que los médicos y radiólogos dispondrán de nuevas herramientas para la monitorización de sus pacientes, mientras que estos últimos tomarían conciencia del cuidado de su salud, incluyendo trastornos musculoesqueléticos y enfermedades crónico degenerativas como diabetes, hipertensión, EPOC, etc.</p>
+                </div>
+            </div>
+        </template>
+    </SimpleSection>
 
-    </div>
+    <Separator/>
     <Footer/>
 
 
@@ -96,10 +100,16 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import useBreakpoints from "vue-next-breakpoints";
 import Navbar from '../components/Navbar.vue';
+import Separator from "../components/Separator.vue";
+import SimpleSection from '../components/SimpleSection.vue';
+import Card from '../components/Card.vue'
+import { useNavbarStore } from '../stores/counter';
 
 
 export default {
     setup(){
+        // const navbar_store = useNavbarStore();
+
         const breakpoints = useBreakpoints({
             mobile:[240,768], // max-width: 600px
             table:[768,1024],
@@ -110,7 +120,8 @@ export default {
             // If you want to use different key, feel free do do so, e.g.:
             // mediaqueries: breakpoints
             // and then use mediaqueries.desktop.matches etc.
-            breakpoints
+            breakpoints,
+            // navbar_store
         };
     },
     computed:{
@@ -122,7 +133,10 @@ export default {
       },
       text_size(){
         return this.is_mobile ? 'lg' : 'sm';
-      }
+      }, 
+    //   prevent_scroll(){
+        // return this.navbar_store.
+    //   }
     },
     // created(){
     //         this.breakpoints.mobile.on("enter", (mq) => {``
@@ -415,32 +429,67 @@ export default {
                     itemsToShow: 3,
                     snapAlign: 'center',
                 },
-            }
+            },
+            objectives:[
+                {
+                    title:"Objectivo 1",
+                    content: "El grupo del CINVESTAV Tamaulipas estará encargado de crear, diseñar y desarrollar los servicios de la plataforma digital. Para esto, se realizará un estudio documental de las normas aplicables desde la perspectiva de cada uno de los grupos participantes para poder definir los requerimientos funcionales y no funcionales que deben cumplir los servicios a diseñar y desarrollar. Y considerar especialmente a los relacionados con los casos de uso planteados."
+                },
+                {
+                    title:"Objectivo 2",
+                    content:"El CINVESTAV Tamaulipas en conjunto con el grupo de la UAM trabajará en el levantamiento de requerimientos del grupo del INR para utilizar el diseño de la plataforma correspondiente al objetivo 1, y desarrollar los servicios que permitan adquisición, intercambio, almacenamiento y preservación de datos clínicos y de imágenes radiológicas (PACS)."
+                },
+                {
+                    title:"Objectivo 3",
+                    content:"Se diseñará y documentará el caso de uso de una red de distribución automática y almacenamiento seguro de imágenes y datos clínicos (PACS) siguiendo estándares tales como DICOM y Hl7 considerando las particularidades de operación del INR. Esta documentación servirá como base para el diseño correspondiente al objetivo particular 2."
+                },
+                {
+                    title:"Objectivo 4",
+                    content:"El grupo de CICESE diseñará y documentará el caso de estudio de tele-auscultación y tele-espirometría para definir los servicios, requerimientos funcionales y no funcionales que deberán ser proporcionados por la plataforma digital propuesta en este proyecto. Considerando los requerimientos definidos, el CICESE integrará y desarrollará en el sistema a-Prevenir© los bloques tecnológicos necesarios para desplegar el caso de estudio planteado. En conjunto con el CINVESTAV Tamaulipas, diseñará y desarrollará los mecanismos de interconexión entre el sistema a-Prevenir© para tele-auscultación y tele-espirometría con la plataforma digital. Los cuales serán probados en condiciones de laboratorio antes de la fase de despliegue."
+                },
+                {
+                    title:"Objectivo 5",
+                    content:"En conjunto con el INR el grupo del CINVESTAV Tamaulipas diseñará y documentará el conjunto de servicios necesarios para analítica en línea y de visualización en sistemas de información geográfica. Considerando los requerimientos definidos, el CINVESTAV Tamaulipas en conjunto con el INR desarrollará los servicios de analítica para desplegar el caso de estudio planteado en la plataforma digital. Los cuales serán probados en condiciones de laboratorio antes de la fase de despliegue."
+                },
+                {
+                    title:"Objectivo 6",
+                    content:"Las instituciones involucradas en el proyecto documentarán los servicios, tipos de datos y aplicaciones que pueden ser desplegadas utilizando la plataforma digital propuesta en este proyecto. De manera adicional, se documentará la metodología de acceso y utilización del repositorio para publicar datos anónimos y agregar algoritmos debidamente preparados para su uso para consumir en forma controlada los datos publicados y obtener información útil."
+                },
+            ]
 
             
         };
     },
    components: {
-        PlatformsNav,
-        FeatureBox,
-        PortionSection,
-        IconCard,
-        // ____
-        Carousel,
-        Slide,
-        Pagination,
-        Navigation,
-        Navbar,
-        PlatformFrontPage
-    }
+    PlatformsNav,
+    FeatureBox,
+    PortionSection,
+    IconCard,
+    Card,
+    // ____
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+    Navbar,
+    PlatformFrontPage,
+    Separator,
+    SimpleSection
+}
 }
 </script>
 
 
 <style scoped>
 /* __________________________ */
-
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+}
 /* WTF! */
+
 .carousel {
     z-index: 0;
     /* width: 100% !important; */

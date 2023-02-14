@@ -2,13 +2,13 @@
   
   <Navbar 
     :text_color_normal ="'white'" 
-    :text_color_scrolled="'white'" 
-    :background_color="color" 
+    :text_color_scrolled="'black'" 
+    :background_color="'painal-primary-color'" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
-    :normal_logo = "'/images/muyal/muyal-white.png'"
+    :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
     title ="Servicio para el transporte y almacenamiento de datos médicos"
@@ -18,6 +18,8 @@
     dark_color ="painal-primary-dark-color"
     image_width = "500"
     :title_size = "section_title_size"
+    text_color="white"
+    circle_color="painal-primary-dark-color"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -34,7 +36,7 @@
   </template>
 </PlatformFrontPage>
 
-    <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
+    <!-- <PortionSection  part1_width ="40" part2_width="60" :column="is_mobile">
         <template v-slot:part1>
             <div>
                 <h1 
@@ -49,12 +51,9 @@
             <div class ="flex justify-content--center align-items--center">
               <Carousel :items-to-show="1" :wrap-around="true" snapAlign="start" :autoplay="autoplay" :style="{'width':carousel_width}">
                 <Slide v-for="(image,index) in sections.section_0.images" :key ="index"> 
-                  <!-- <div class="bg--black"> -->
                     <img :src="image.src" :alt="image.alt" :width="image.width">
-                  <!-- </div> -->
                 </Slide>
                 <template #addons>
-                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
@@ -91,13 +90,12 @@
                     <img :src="image.src" :alt="image.alt" :width="image.width">
                 </Slide>
                 <template #addons>
-                  <!-- <Navigation/> -->
                   <Pagination/>
                 </template>
               </Carousel>
             </div>
         </template>
-    </PortionSection>
+    </PortionSection> -->
   <Footer/>
 </template>
 

@@ -3,7 +3,7 @@
 </script>
 <template>
     <div class="footer-wrapper"> 
-        <div class="footer__header"></div>
+        <!-- <div class="footer__header"></div> -->
         <div class="footer">
             <img class="mb--md" src="/images/muyal/muyal-black.png">
             <p :class="{['text-size--'+text_size]:true,'text-align--justify':true}"> Contáctanos a través de nuestros diferentes canales y conoce más sobre la Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
@@ -52,7 +52,7 @@ import useBreakpoints from "vue-next-breakpoints";
             return !this.breakpoints.mobile.matches && this.breakpoints.tablet.matches
         },
         text_size(){
-            return this.is_mobile ? "lg" : "xs"
+            return this.is_mobile ? "sm" : "xs"
         }
     },
   }

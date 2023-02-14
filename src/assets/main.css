@@ -8,20 +8,33 @@
 .bg--black {
   background: var(--color-black) !important;
 }
+
 .text-color--black{
   color: var(--color-black) !important;
 }
+
 .bg--white {
   background: var(--color-white) !important;
 }
+
 .text-color--white{
   color: var(--color-white) !important;
 }
 
+
 .bg--light-grey{
   background-color: var(--light-grey);
 }
+.bg--light-grey-1{
+  background-color: var(--light-grey-1);
+}
 
+.text-color--light-grey-2 {
+  color: var(--light-grey-2) !important; 
+}
+.prevent-scroll{
+  overflow-y: hidden;
+}
 
 
 /*  */
@@ -165,30 +178,38 @@
   font-size: 0.5vw  !important;
 }
 .text-size--xs {
-  font-size: 1vw  !important;
+  /* font-size: 1vw  !important; */
+  font-size: 12px  !important;
 }
 .text-size--sm {
-  font-size: 1.5rem !important;
-  /* font-size: 1rem !important; */
+  /* font-size: 1.5rem !important; */
+  font-size: 16px !important;
 }
 .text-size--md {
-  font-size: 2vw!important;
+  /* font-size: 2vw!important; */
+  font-size: 18px !important;
   /* font-size: 1.5rem !important; */
 }
 .text-size--lg {
+  font-size: 24px !important;
   /* font-size: 2rem !important; */
-  font-size: 3vw !important;
+  /* font-size: 3vw !important; */
 }
 .text-size--xl {
-  font-size: 4vw  !important;
+  /* font-size: 4vw  !important; */
+  font-size: 32px  !important;
 }
 .text-size--xxl {
-  font-size: 4.5vw  !important;
+  /* font-size: 4.5vw  !important; */
+  font-size: 42px  !important;
 }
 .text-size--xxxl {
   font-size: 5vw  !important;
 }
 
+.font-weight--bold{
+  font-weight: bold;
+}
 .text-align--justify {
   text-align: justify;
 }
