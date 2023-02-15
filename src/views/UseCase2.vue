@@ -15,7 +15,7 @@
     index="6"
     color ="use-case-primary-color"
     dark_color ="use-case-primary-dark-color"
-    image_width = "500"
+    image_width = "300"
     :title_size="section_title_size"
     text_color="white"
     circle_color="use-case-primary-dark-color"
@@ -39,11 +39,32 @@
 </PlatformFrontPage>
   <SimpleSection title="Estudio basado en aprendizaje automático para la clasificación de subtipos de diabetes mellitus tipo 2" subtitle="">
     <template v-slot:body>
-        <p>
+      <div class="flex flex-direction--column align-items--center">
+        <img class="mb--md" src="/images/use-case/fig1.png" alt="USE_CASE" width="350">
+        <p :class="{'w-60':!is_mobile,'w-100':is_mobile}">
           La diabetes mellitus tipo 2 (DMT2) es una enfermedad crónica que representa el mayor número 1 de casos de diabetes y supone una carga preocupante para los sistemas sanitarios.
           Recientemente, un análisis basado en datos 2 que exploraba la heterogeneidad de la diabetes halló cinco subtipos que se asociaban a riesgos de desarrollar 3 patologías relacionadas y respuestas al tratamiento.
         </p>
-
+      </div>
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
+  <SimpleSection title="" subtitle="">
+    <template v-slot:body>
+      <div class="flex flex-direction--column align-items--center">
+        <img class="mb--md" src="/images/use-case/methodology-1.png" alt="USE_CASE" width="550">
+        <ul :class="{'w-60':!is_mobile,'w-100':is_mobile}">
+          <li><b>La depuración de datos</b> consistió en sustituir algunos valores no válidos por ceros para representar los valores ausentes.</li>
+          <li><b>Proceso de imputación</b> para asignar valores a los datos que faltan y a las variables necesarias en registros que, de otro modo, se descartarían. Cuando se manejan datos, es muy probable que falten algunos valores por muchas circunstancias, como que los participantes en la encuesta no hayan respondido a las preguntas, por lo que sus respuestas no se han podido incluir en el conjunto de datos, o que no se hayan podido analizar las muestras de laboratorio.</li>
+          <li>
+            <b>Procedimiento de imputación</b>
+             de características multivariantes, que infiere valores ausentes basándose en valores disponibles en otros atributos.
+          </li>
+          <li>Para mantener sólo los registros que cumplían los criterios de selección: a) ser un paciente diagnosticado, o b) tener Glucosa2 >= 200 (mg/dL), o c) tener HbA_1C >= 6,5 (%). En cada atributo se eliminaron los valores extremos, es decir, los valores que se apartaban más de cinco desviaciones estándar de su media.</li>
+          <!-- La diabetes mellitus tipo 2 (DMT2) es una enfermedad crónica que representa el mayor número 1 de casos de diabetes y supone una carga preocupante para los sistemas sanitarios. -->
+          <!-- Recientemente, un análisis basado en datos 2 que exploraba la heterogeneidad de la diabetes halló cinco subtipos que se asociaban a riesgos de desarrollar 3 patologías relacionadas y respuestas al tratamiento. -->
+        </ul>
+      </div>
     </template>
   </SimpleSection>
   <Separator type="use-case"/>
@@ -85,7 +106,7 @@ export default {
         return this.is_mobile ? 'xl' : 'sm'
       },
       section_title_size(){
-        return this.is_mobile ? 'xl':'md'
+        return this.is_mobile ? 'lg':'md'
       },
       carousel_width(){
         return this.is_mobile ? '350px':'500px'

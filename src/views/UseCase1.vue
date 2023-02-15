@@ -10,7 +10,7 @@
     :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
-    title ="Caso de uso: Flujo para detección asistida para cáncer de huesos largos"
+    title ="Caso de uso: Herramienta de apoyo para el diagnóstico de cáncer de hueso largo"
     image="/images/use-case/use-case.png"
     index="6"
     color ="use-case-primary-color"
@@ -38,6 +38,25 @@
 
 </PlatformFrontPage>
   <Separator type="use-case"/>
+  <SimpleSection title="Herramienta de apoyo para el diagnóstico de cáncer de hueso largo" subtitle="Muyal-Ilal - Casos de estudio"> 
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+        <div class="mb--md image-grid">
+          <img src="/images/use-case/px1_90.png" alt="">
+          <img src="/images/use-case/px1_107.png" alt="">
+          <img src="/images/use-case/px2_104.png" alt="">
+          <img src="/images/use-case/px3_99.png" alt="">
+        </div>
+      <div :class="{'w-60':!is_mobile,'w-100':is_mobile}">
+        <p class="text-align--justify">
+           El presente proyecto no tiene la intención de sustituir al personal capacitado, sino proporcionarle una ayuda indicando las imágenes en las que podría existir algún tumor primario en hueso largo o secundario en pulmones en caso de presentar metástasis, y la región en la que se ubica. Dado que los tumores presentan diferentes características dependiendo de la parte del cuerpo en la que se desarrollen, es necesario generar un modelo diferente para cada uno
+        </p>
+      </div>
+      </div>
+
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
   <Footer/>
 </template>
 
@@ -54,8 +73,9 @@ import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 
 import useBreakpoints from "vue-next-breakpoints";
 import Separator from '../components/Separator.vue';
+import SimpleSection from '../components/SimpleSection.vue';
 export default {
-  components: { Footer, Card, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Button, Separator },
+  components: { Footer, Card, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Button, Separator, SimpleSection },
     setup(){
         const breakpoints = useBreakpoints({
             mobile:[320,768], // max-width: 600px
@@ -75,7 +95,7 @@ export default {
         return this.is_mobile ? 'xl' : 'sm'
       },
       section_title_size(){
-        return this.is_mobile ? 'xl':'md'
+        return this.is_mobile ? 'sm':'md'
       },
       carousel_width(){
         return this.is_mobile ? '350px':'500px'
@@ -142,4 +162,15 @@ export default {
 </script>
 
 <style scoped> 
+.image-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 10px;
+  row-gap: 10px;
+  /* height: 1000px; */
+}
+.image-grid img{
+  width: 200px;
+  border-radius: 10px;
+}
 </style>

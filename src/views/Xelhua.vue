@@ -47,13 +47,19 @@
   <SimpleSection title="Características de Xelhua" subtitle="">
     <template v-slot:body>
       <div class="flex justify-content--center align-items--center flex-direction--column">
-          <img v-for="i in [0,1,2,3]" :src="`/images/xelhua/xel-${i}.png`" alt="" width="800" class="mb--md">
+          <img v-for="i in [0,1,2,3]" :src="`/images/xelhua/xel-${i}.png`" alt="" width="500" class="mb--md">
       </div>
     </template>
   </SimpleSection>
   <Separator type="xelhua"/>
-  
+  <!-- <SimpleSection title="" subtitle="">
+    <template v-slot:body>
+      <iframe src="/html/States.html" height="1000" width="100%" title="Iframe Example"></iframe>
 
+    </template>
+  </SimpleSection> -->
+
+  <Separator type="xelhua"/>
   <Footer/>
 </template>
 
@@ -229,7 +235,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
 p {
   text-align: center;
 }

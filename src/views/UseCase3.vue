@@ -10,12 +10,12 @@
     :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage 
-    title ="Caso de uso: Mortalidad"
+    title ="Caso de uso: Mortalidad por enfermedades"
     image="/images/use-case/use-case-3.png"
     index="6"
     color ="use-case-primary-color"
     dark_color ="use-case-primary-dark-color"
-    image_width = "500"
+    image_width = "300"
     :title_size="section_title_size"
     text_color="white"
     circle_color="use-case-primary-dark-color"
@@ -36,7 +36,15 @@
 
 
 
-</PlatformFrontPage>
+  </PlatformFrontPage>
+  <Separator type="use-case"/>
+  <SimpleSection title="" subtitle="">
+    <template v-slot:body> 
+        <div class="wrap">
+          <iframe class="iframe" frameborder="no" scrolling="auto" src="/html/Plot7.html"  title=""></iframe>
+        </div>
+    </template>
+  </SimpleSection>
   <Separator type="use-case"/>
   <Footer/>
 </template>
@@ -54,8 +62,9 @@ import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 
 import useBreakpoints from "vue-next-breakpoints";
 import Separator from '../components/Separator.vue';
+import SimpleSection from '../components/SimpleSection.vue';
 export default {
-  components: { Footer, Card, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Button, Separator },
+  components: { Footer, Card, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Button, Separator, SimpleSection },
     setup(){
         const breakpoints = useBreakpoints({
             mobile:[320,768], // max-width: 600px
@@ -142,4 +151,34 @@ export default {
 </script>
 
 <style scoped> 
+.wrap{
+  /* position: relative; */
+  display: block;
+  width: 100%;
+  height: auto;
+  /* height: auto; */
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.iframe{
+  display: block;
+  height: 600px;
+  width: 650px;
+  /* position: absolute; */
+  /* transform: scale(1); */
+  /* transform-origin: 0; */
+  /* width: 6000px; */
+  /* height: 500px; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* padding: 100px; */
+  /* zoom: ; */
+  /* width: 1000px; */
+  /* height: 1000px; */
+  /* 
+  height: 100vh; */
+}
 </style>
