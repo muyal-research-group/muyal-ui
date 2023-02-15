@@ -59,7 +59,7 @@
           <div class="flex justify-content--center align-items--center">
             <div class=" badge__index">2</div>
           </div>
-          <p class="badge__text"><b>Une</b> tus bloques y crea un sistema de eSalud</p>
+          <p class="badge__text"><b>Une</b> tus bloques y crea un sistema de e-Salud</p>
       </div>
     </div>
     
@@ -123,6 +123,48 @@
     </div>
   </template>
 </SimpleSection>
+<Separator type="nez"/>
+<SimpleSection title="Sistema de manejo de catálogos de servicios" subtitle="">
+  <template v-slot:body>
+    <div class="flex justify-content--center align-items--center flex-direction--column">
+      <p class="mb--md">Interfaces para el control y acceso al catálogo de sistemas de e-Salud.</p>
+      <img src="/images/nez/nez-10.png" alt="" width="500">
+    </div>
+  </template>
+</SimpleSection>
+
+<SimpleSection title="" subtitle="">
+<template v-slot:body>
+    <p></p>
+    <div class="flex justify-content--center">
+    <ListTable 
+      class="mr--md"
+      title="Reutiliza" 
+      image="/images/nez/section_0_0.png" 
+      :items="[
+          'Datos, aplicaciones, Sistemas de e-Salud.',
+      ]"
+    />
+    <ListTable 
+      class="mr--md"
+      title="Comparte" 
+      image="/images/nez/multi-user.png" 
+      :items="[
+          'Tus resultados con profesionales de la salud de tu organización o de otra organización',
+      ]"
+    />
+    <ListTable 
+      title="Accede" 
+      image="/images/nez/section_6_0.png" 
+      :items="[
+          'A tus datos, aplicaciones y sistemas de e-Salud en cualquier lugar y momento.',
+      ]"
+    />
+    </div>
+
+</template>
+</SimpleSection>
+
 <Separator type="nez"/>
   <Footer/>
 </template>
