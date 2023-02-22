@@ -83,7 +83,7 @@
                 <div class="cards-wrapper">
                     <Card v-for="o in objectives" :title="o.title" color="light-grey-1">
                         <template v-slot:content>
-                            <p>{{ o.content }}</p>
+                            <p class="text-align--justify">{{ o.content }}</p>
                         </template>
                     </Card>
                 </div>
@@ -443,27 +443,27 @@ export default {
             },
             objectives:[
                 {
-                    title:"Objectivo 1",
+                    title:"Objetivo 1",
                     content: "El grupo del CINVESTAV Tamaulipas estará encargado de crear, diseñar y desarrollar los servicios de la plataforma digital. Para esto, se realizará un estudio documental de las normas aplicables desde la perspectiva de cada uno de los grupos participantes para poder definir los requerimientos funcionales y no funcionales que deben cumplir los servicios a diseñar y desarrollar. Y considerar especialmente a los relacionados con los casos de uso planteados."
                 },
                 {
-                    title:"Objectivo 2",
+                    title:"Objetivo 2",
                     content:"El CINVESTAV Tamaulipas en conjunto con el grupo de la UAM trabajará en el levantamiento de requerimientos del grupo del INR para utilizar el diseño de la plataforma correspondiente al objetivo 1, y desarrollar los servicios que permitan adquisición, intercambio, almacenamiento y preservación de datos clínicos y de imágenes radiológicas (PACS)."
                 },
                 {
-                    title:"Objectivo 3",
+                    title:"Objetivo 3",
                     content:"Se diseñará y documentará el caso de uso de una red de distribución automática y almacenamiento seguro de imágenes y datos clínicos (PACS) siguiendo estándares tales como DICOM y Hl7 considerando las particularidades de operación del INR. Esta documentación servirá como base para el diseño correspondiente al objetivo particular 2."
                 },
                 {
-                    title:"Objectivo 4",
-                    content:"El grupo de CICESE diseñará y documentará el caso de estudio de tele-auscultación y tele-espirometría para definir los servicios, requerimientos funcionales y no funcionales que deberán ser proporcionados por la plataforma digital propuesta en este proyecto. Considerando los requerimientos definidos, el CICESE integrará y desarrollará en el sistema a-Prevenir© los bloques tecnológicos necesarios para desplegar el caso de estudio planteado. En conjunto con el CINVESTAV Tamaulipas, diseñará y desarrollará los mecanismos de interconexión entre el sistema a-Prevenir© para tele-auscultación y tele-espirometría con la plataforma digital. Los cuales serán probados en condiciones de laboratorio antes de la fase de despliegue."
+                    title:"Objetivo 4",
+                    content:"El grupo de CICESE diseñará y documentará el caso de estudio de tele-auscultación y tele-espirometría para definir los servicios, requerimientos funcionales y no funcionales que deberán ser proporcionados por la plataforma digital propuesta en este proyecto. Considerando los requerimientos definidos, el CICESE integrará y desarrollará en el sistema a-Prevenir© los bloques tecnológicos necesarios para desplegar el caso de estudio planteado. En conjunto con el CINVESTAV Tamaulipas, diseñará y desarrollará los mecanismos de interconexión entre el sistema a-Prevenir© para tele-auscultación y tele-espirometría con la plataforma digital."
                 },
                 {
-                    title:"Objectivo 5",
+                    title:"Objetivo 5",
                     content:"En conjunto con el INR el grupo del CINVESTAV Tamaulipas diseñará y documentará el conjunto de servicios necesarios para analítica en línea y de visualización en sistemas de información geográfica. Considerando los requerimientos definidos, el CINVESTAV Tamaulipas en conjunto con el INR desarrollará los servicios de analítica para desplegar el caso de estudio planteado en la plataforma digital. Los cuales serán probados en condiciones de laboratorio antes de la fase de despliegue."
                 },
                 {
-                    title:"Objectivo 6",
+                    title:"Objetivo 6",
                     content:"Las instituciones involucradas en el proyecto documentarán los servicios, tipos de datos y aplicaciones que pueden ser desplegadas utilizando la plataforma digital propuesta en este proyecto. De manera adicional, se documentará la metodología de acceso y utilización del repositorio para publicar datos anónimos y agregar algoritmos debidamente preparados para su uso para consumir en forma controlada los datos publicados y obtener información útil."
                 },
             ]

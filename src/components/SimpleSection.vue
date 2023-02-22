@@ -19,3 +19,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+/* .simple_section { */
+    /* position: relative; */
+    /* z-index: 1000; */
+/* } */
+</style>

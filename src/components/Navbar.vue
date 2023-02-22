@@ -239,10 +239,29 @@ export default {
         on_click_bars(){
             this.show_side_menu = !this.show_side_menu;
             this.hide_bar[1]=!this.hide_bar[1];
-            if(this.show_side_menu)
+            let simple_sections = document.getElementsByClassName("simple_section")
+            if(this.show_side_menu){
                 document.body.classList.add('prevent-scroll')
-            else
+                // let simple_sections = document.getElementsByClassName("simple_section")
+                for(let i =0; i<simple_sections.length;i++){
+                    let element = simple_sections.item(i)
+                    console.log(element)
+                    element.classList.remove("to_front")
+                    element.classList.add("to_back")
+                }
+            }
+            else{
               document.body.classList.remove('prevent-scroll')
+                setTimeout(()=>{
+                for(let i =0; i<simple_sections.length;i++){
+                    let element = simple_sections.item(i)
+                    console.log(element)
+                    element.classList.remove("to_back")
+                    element.classList.add("to_front")
+                }
+
+                },1000)
+            }
 
 
         },
