@@ -29,11 +29,9 @@
             </div>
 
             <div class="mb--md front-page__buttons flex-wrap">
-              <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1jwLAYuWCvnlD03SzPzNo-YjVT3JRU0dQ/view?usp=share_link')" />
-              <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1cJNC80CM7HgBY-qRj_1m_NY1MMEi8dQb/view?usp=share_link')"/>
-              <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
-              <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/PdHZVucYxXk?list=PLImGqhUs3WnusWlO0_H8HyozWH89D1y1x')" />
-              <!-- <Button title="Infografia general" :color="color" :dark_color="dark_color" /> -->
+              <Button text="Poster cualitativo"  color="#3CB443" hover_color="$3CB443" @on_click="on_click('https://drive.google.com/file/d/1jwLAYuWCvnlD03SzPzNo-YjVT3JRU0dQ/view?usp=share_link')" />
+              <Button text="Poster cuantitativo" color="#3CB443" hover_color="$3CB443" @on_click="on_click('https://drive.google.com/file/d/1cJNC80CM7HgBY-qRj_1m_NY1MMEi8dQb/view?usp=share_link')"/>
+              <Button text="Infografia tecnica"  color="#3CB443" hover_color="$3CB443" @on_click="on_click('https://youtu.be/PdHZVucYxXk?list=PLImGqhUs3WnusWlO0_H8HyozWH89D1y1x')" />
             </div>
     </template>
   </PlatformFrontPage>
@@ -190,7 +188,8 @@ export default {
       on_click(url){
         window.open(url,"_blank")
       }
-  }
+  },
+
   // data(){
   //   return {
   //   }

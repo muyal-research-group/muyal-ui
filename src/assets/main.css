@@ -273,6 +273,9 @@
   margin-bottom: 40px;
 }
 /*  RIGHT */
+.mr--xs{
+  margin-right: 10px;
+}
 .mr--sm{
   margin-right: 15px;
 }

@@ -44,18 +44,21 @@ export default {
 .separator--nez {
      background-image:
         linear-gradient(to right, var(--nez-primary-color),var(--nez-primary-color)), /* gradient 1 as solid color */
+        linear-gradient(to right, var(--nez-primary-color-dark), var(--nez-primary-color-dark)), /* gradient 2 as solid color */
+        linear-gradient(to right, var(--nez-primary-color),var(--nez-primary-color)), /* gradient 1 as solid color */
         linear-gradient(to right, var(--nez-primary-color-dark), var(--nez-primary-color-dark)); /* gradient 2 as solid color */
     background-repeat: no-repeat; /* same as no-repeat, no-repeat, no-repeat */
     background-position:
         0 0, /* gradient 1 */
-        20px 0; /* gradient 2 */
-        /* 40px 0, gradient 3 */
-        /* 60px 0; image position */
+        20px 0, /* gradient 2 */
+        40px 0,
+        60px 0;
+
     background-size:
-        55% var(--size),
-        100% var(--size);
-        /* 75% var(--size), */
-        /* 100%  var(--size); */
+        25% var(--size),
+        50% var(--size),
+        75% var(--size),
+        100%  var(--size);
 }
 .separator--xelhua {
      background-image:
@@ -133,6 +136,42 @@ export default {
         linear-gradient(to right, var(--use-case-primary-color-dark), var(--use-case-primary-color-dark)), /* gradient 2 as solid color */
         linear-gradient(to right, var(--use-case-primary-color),var(--use-case-primary-color)), /* gradient 1 as solid color */
         linear-gradient(to right, var(--use-case-primary-color-dark), var(--use-case-primary-color-dark)); /* gradient 2 as solid color */
+    background-repeat: no-repeat; /* same as no-repeat, no-repeat, no-repeat */
+    background-position:
+        0 0, /* gradient 1 */
+        20px 0, /* gradient 2 */
+        40px 0,
+        60px 0; 
+    background-size:
+        25% var(--size),
+        50% var(--size),
+        75% var(--size),
+        100%  var(--size);
+}
+.separator--publications{
+     background-image:
+        linear-gradient(to right, var(--publications-primary-color),var(--publications-primary-color)), /* gradient 1 as solid color */
+        linear-gradient(to right, var(--publications-primary-color-dark), var(--publications-primary-color-dark)), /* gradient 2 as solid color */
+        linear-gradient(to right, var(--publications-primary-color),var(--publications-primary-color)), /* gradient 1 as solid color */
+        linear-gradient(to right, var(--publications-primary-color-dark), var(--publications-primary-color-dark)); /* gradient 2 as solid color */
+    background-repeat: no-repeat; /* same as no-repeat, no-repeat, no-repeat */
+    background-position:
+        0 0, /* gradient 1 */
+        20px 0, /* gradient 2 */
+        40px 0,
+        60px 0; 
+    background-size:
+        25% var(--size),
+        50% var(--size),
+        75% var(--size),
+        100%  var(--size);
+}
+.separator--contact{
+     background-image:
+        linear-gradient(to right, var(--contact-primary-color),var(--contact-primary-color)), /* gradient 1 as solid color */
+        linear-gradient(to right, var(--contact-primary-color-dark), var(--contact-primary-color-dark)), /* gradient 2 as solid color */
+        linear-gradient(to right, var(--contact-primary-color),var(--contact-primary-color)), /* gradient 1 as solid color */
+        linear-gradient(to right, var(--contact-primary-color-dark), var(--contact-primary-color-dark)); /* gradient 2 as solid color */
     background-repeat: no-repeat; /* same as no-repeat, no-repeat, no-repeat */
     background-position:
         0 0, /* gradient 1 */

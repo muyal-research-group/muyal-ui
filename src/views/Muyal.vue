@@ -11,19 +11,43 @@
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
     />
-    <PlatformFrontPage 
+    <div ref="banner" class="front-page-v2 pa--xl flex justify-content--center align-items--center flex-direction--column">
+        <img :class="{'mb--lg':true}" :style="{'z-index':100}" src="/images/muyal/muyal-white.png" width="300" alt="">
+        <p :style="{'z-index':100}" :class="{'w-60':!is_mobile,'front-page-v2--title':true, 'text-align--center':!is_mobile,'text-align--justify':is_mobile,'mb--lg':true}">Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
+        <div :style="{'z-index':100}" class="flex">
+            <Button 
+                class="mr--xs" 
+                text="Ver más" 
+                color="black" 
+                hover_color="white" 
+                text_color="white"
+                hover_text_color="black"
+                @on_click="navigate('/')"
+            />
+            <Button 
+                text="Contacto" 
+                color="black" 
+                hover_color="white" 
+                text_color="white"
+                hover_text_color="black"
+                @on_click="navigate('/contact')"
+            />
+        </div>
+    </div>
+
+    <!-- <PlatformFrontPage 
         :title ="is_mobile ?'Platforma Tecnologica para E-Salud': 'Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.'"
         image="/images/muyal/3trz.png"
         index="1"
         :color ="color"
         :dark_color ="dark_color"
-        image_width = "450"
-        title_size ="xl"
+        image_width = "350"
+        title_size ="lg"
         title_width = "80"
         text_color="black"
         :invert="true"
-    >
-    <template v-slot:footer>
+    > -->
+    <!-- <template v-slot:footer> -->
         <!-- :class ="{'flex':is_mobile,'align-items--center':is_mobile,'justify-content--center':is_mobile}" -->
             <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
             <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
@@ -36,8 +60,8 @@
                 <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
                 <Button title="Infografia general" :color="color" :dark_color="dark_color" />
             </div> -->
-    </template>
-    </PlatformFrontPage>
+    <!-- </template> -->
+    <!-- </PlatformFrontPage> -->
     <Separator />
     <SimpleSection title="Componentes principales: Servicios" subtitle="">
         <template v-slot:body>
@@ -72,7 +96,7 @@
             <div :class="{'flex':true,'flex-direction--column-reverse':is_mobile,'align-items--center':is_mobile ,'justify-content--center':true}">
                 <div :class="{'mr--md':!is_mobile, 'w-40':!is_mobile,'w-100':is_mobile, 'flex':true, 'justify-content--center':true}">
                     <div class="circle bg--light-grey-1 flex justify-content--center">
-                        <img width="400" src="/images/muyal/mexico.png" alt="Mexico">
+                        <img width="230" src="/images/muyal/mexico.png" alt="Mexico">
                     </div>
                 </div>
                 <div :class="{'w-60':!is_mobile,'w-100':is_mobile,'mb--xl':true}">
@@ -103,8 +127,8 @@ import Navbar from '../components/Navbar.vue';
 import Separator from "../components/Separator.vue";
 import SimpleSection from '../components/SimpleSection.vue';
 import Card from '../components/Card.vue'
-import { useNavbarStore } from '../stores/counter';
-
+// import { useNavbarStore } from '../stores/counter';
+import Button from '../components/Button.vue';
 
 export default {
     setup(){
@@ -138,19 +162,6 @@ export default {
         // return this.navbar_store.
     //   }
     },
-    // created(){
-    //         this.breakpoints.mobile.on("enter", (mq) => {``
-    //             console.log("Entered mobile breakpoint");
-    //             console.log("Media Query", mq);
-    //             this.items_to_show = 2
-    //         });
-
-    //         this.breakpoints.mobile.on("leave", (mq) => {
-    //             console.log("Left mobile breakpoint");
-    //             console.log("Media Query", mq);
-    //             this.items_to_show = 4
-    //         });`
-    // },
     data() {
         return {
             section_bg_color:"white",
@@ -460,6 +471,15 @@ export default {
             
         };
     },
+   methods:{
+        navigate(path){
+            if(path=="/"){
+                window.scrollTo({top:this.$refs.banner.clientHeight,behavior:"smooth"})
+            }else{
+                this.$router.push(path)
+            }
+        }
+   },
    components: {
     PlatformsNav,
     FeatureBox,
@@ -474,7 +494,8 @@ export default {
     Navbar,
     PlatformFrontPage,
     Separator,
-    SimpleSection
+    SimpleSection,
+    Button
 }
 }
 </script>
@@ -482,6 +503,26 @@ export default {
 
 <style scoped>
 /* __________________________ */
+.front-page-v2{
+    margin-top: 100px;
+    /* background-color: rgba(0, 0,0, .1); */
+    position: relative;
+    background: url(/images/muyal/banner.jpg);
+    color:white;
+
+}
+
+.front-page-v2:after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0,0, 0.7);
+    /* z-index: 100; */
+}
 .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(2,1fr);

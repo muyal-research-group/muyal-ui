@@ -5,7 +5,7 @@
     :background_color="'white'" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
-    :scrolled_bars_color="'white'"
+    :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
@@ -22,9 +22,12 @@
   >
   <template v-slot:footer>
           <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
-          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
-            Obtenido
-          </div>
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button text="Datos provenientes de las bases NHANES y ENSANUT" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <Button text="Algoritmos de aprendizaje automático SVM, KNN y perceptrón multicapa" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <Button text="Calculadoras de riesgo cardiovascular" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <Button text="Calculadoras de riesgo de Diabetes Mellitus" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+          </div> 
           <!-- <div class="mb--md front-page__buttons flex-wrap">
             <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
             <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
@@ -64,6 +67,34 @@
           <!-- La diabetes mellitus tipo 2 (DMT2) es una enfermedad crónica que representa el mayor número 1 de casos de diabetes y supone una carga preocupante para los sistemas sanitarios. -->
           <!-- Recientemente, un análisis basado en datos 2 que exploraba la heterogeneidad de la diabetes halló cinco subtipos que se asociaban a riesgos de desarrollar 3 patologías relacionadas y respuestas al tratamiento. -->
         </ul>
+      </div>
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
+  <SimpleSection title="Resultados de la clasificación" subtitle="">
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+        <p class="text-aling--justify mb--md">Resultados de clasificación por clase para los distintos esquemas y algoritmos. Modelos entrenados con validación bootstrap en el conjunto de datos LD1 . Clase 0: MARD, Clase 1: MORD, Clase 2: SIDD, Clase 3: SIRD.</p>
+        <img class="mb--md" src="/images/use-case/nelson_pelon_table.png" width="500" alt="">
+        <p class="mb--lg">
+          Proporción de observaciones de clases de T2DM. (A) Nuestro esquema de voto mayoritario con modelos entrenados con el conjunto de datos LD1. (B) Clasificación del conjunto de datos de prueba utilizando el modelo HOMA2 basado en insulina desarrollado por [1]. (C) Resultados de clustering reportados en [2] con su conjunto de datos ANDIS.
+        </p>
+        <img src="/images/use-case/use-case_2/Testset_PieCharts-1.png" width="500" alt="piechart">
+      </div>
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
+  <SimpleSection title="Referencias" subtitle="">
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+        <ul class="references">
+          <li class="reference__item mb--sm">1. Bello-Chavolla OY, Bahena-López JP, Vargas-Vázquez A Group of Study CAIPaDi, et alClinical characterization of data-driven diabetes subgroups in Mexicans using a reproducible machine learning approachBMJ Open Diabetes Research and Care 2020;8:e001550. doi: <a class="reference__link" href="10.1136/bmjdrc-2020-001550">10.1136/bmjdrc-2020-001550</a></li>
+          <li class="reference__item">2. Ahlqvist E, Storm P, Käräjämäki A, Martinell M, Dorkhan M, Carlsson A, Vikman P, Prasad RB, Aly DM, Almgren P, Wessman Y, Shaat N, Spégel P, Mulder H, Lindholm E, Melander O, Hansson O, Malmqvist U, Lernmark Å, Lahti K, Forsén T, Tuomi T, Rosengren AH, Groop L. Novel subgroups of adult-onset diabetes and their association with outcomes: a data-driven cluster analysis of six variables. Lancet Diabetes Endocrinol. 2018 May;6(5):361-369. doi: <a class="reference__link" href="10.1016/S2213-8587(18)30051-2">10.1016/S2213-8587(18)30051-2</a> . Epub 2018 Mar 5. PMID: 29503172.</li>
+        </ul>
+        <!-- <p class="mb--lg">
+          Proporción de observaciones de clases de T2DM. (A) Nuestro esquema de voto mayoritario con modelos entrenados con el conjunto de datos LD1. (B) Clasificación del conjunto de datos de prueba utilizando el modelo HOMA2 basado en insulina desarrollado por [1]. (C) Resultados de clustering reportados en [2] con su conjunto de datos ANDIS.
+        </p> -->
+        <!-- <img src="/images/use-case/use-case_2/Testset_PieCharts-1.png" width="500" alt="piechart"> -->
       </div>
     </template>
   </SimpleSection>
@@ -173,4 +204,11 @@ export default {
 </script>
 
 <style scoped> 
+.reference__link{
+  color: rgb(57, 168, 247);
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 </style>

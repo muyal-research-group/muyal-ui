@@ -71,7 +71,7 @@ export default {
 }
 .circle{
   position: absolute;
-  top:-550px;
+  top:-370px;
   /* background: red; */
   /* height: 100vh; */
   height: 100vh;

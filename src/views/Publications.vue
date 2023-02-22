@@ -10,7 +10,7 @@
     :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
   <PlatformFrontPage title="Publicaciones" image="/images/publications/publications.png" index="6" :color="color"
-    :dark_color="dark_color" image_width="500" :circle_color="dark_color" text_color="white">
+      :dark_color="dark_color" image_width="250" :circle_color="dark_color" text_color="white">
     <template v-slot:footer>
       <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
       <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
@@ -37,6 +37,7 @@
       </div>
     </div>
   </div>
+<Separator type="publications"/>
   <Footer />
 
 </template>
@@ -52,6 +53,7 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import PlatformFrontPage from "../components/PlatformFrontPage.vue"
 import useBreakpoints from "vue-next-breakpoints";
+import Separator from '../components/Separator.vue'
 export default {
   setup() {
     const breakpoints = useBreakpoints({
@@ -72,7 +74,7 @@ export default {
       return this.breakpoints.mobile.matches || this.breakpoints.table.matches
     },
     title_size(){
-      return this.is_mobile ? "lg":"sm"
+      return this.is_mobile ? "lg":"md"
     },
     subtitle_size(){
       return this.is_mobile ? "md" :"xs"
@@ -80,7 +82,7 @@ export default {
   },
   components: {
     Footer, Card, PlatformFrontPage,
-    Carousel, Slide, Pagination, Navigation, Navbar, Button
+    Carousel, Slide, Pagination, Navigation, Navbar, Button,Separator
   },
 
   methods: {
@@ -122,6 +124,82 @@ export default {
           subtitle: "IEEE Transactions on Services Computing. Q1 [EN REVISIÓN].",
           url: "https://onedrive.live.com/view.aspx?resid=F35B1229369E20D3!50816"
         },
+        {
+          title:"Modelado Funcional de Contenedores Virtuales Docker.",
+          subtitle:"Hinojosa-Tijerina, M., Gonzalez-Compean, J. L., and Lopez-Arevalo, I. 2021.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40GSLmGpLB75ilyeg?e=z2hu6m"
+        },
+        {
+          title:"Método de construcción enfocado en contenedores virtuales para la composición de sistemas distribuidos y paralelos para el procesamiento de grandes volúmenes de datos.",
+          subtitle:"Hugo G. Reyes-Anastacio, J. L. Gonzalez-Compeán, and Victor J. Sosa-Sosa. 2021-2022.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40NBvaL1CmSaZ6uwQ?e=fmQYMO"
+        },
+        {
+          title:"Método de construcción de servicios de seguridad informática para sistemas de continuidad en infraestructurasheterogéneas de cómputo.",
+          subtitle:"Catherine A. Torres-Charles,J. L.Gonzalez-Compeán, and Miguel Morales-Sandoval. 2021-2022",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40MU0yUFWbzDJ1DPA?e=pBJxHb"
+        },
+        {
+          title:"Construcción de sistemas auto-adaptables en la nube mediante patrones dinámicos.",
+          subtitle:"Genaro J. Sánchéz-Gallegos, J. L. Gonzalez-Compeán, and Jesus Carretero. 2021-2022.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40H6klc1GJ3iwd87g?e=eacHqv"
+        },
+        {
+          title:"Método adaptativo-reactivo de replicación para sistemas de almacenamiento de alta disponibilidad.",
+          subtitle:"Jesus I. Castillo-Barrios, J. L. Gonzalez-Compeán, and Iván López-Arévalo. 2021-2022.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg48UddXP-1oyS6HUHA?e=zk9nfG"
+        },
+        {
+          title:"Método de orquestación para servicios de fusión de datos definidos por variables espaciotemporales.",
+          subtitle:"José C. Morín-García, J. L. Gonzalez-Compeán, and Iván López-Arévalo. 2021-2022.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg4x8JJuoKKXA1xB2tw?e=OJWPbF"
+        },
+        {
+          title:"Carrizales-Espinoza, D., Sánchez-Gallegos, D. D., Gonzalez-Compean, J. L., Carretero, J., & Marcelin-Jimenez, R. (2022, March). SeRSS: a storage mesh architecture to build serverless reliable storage services.",
+          subtitle:"In 2022 30th Euromicro International Conference on Parallel, Distributed and Network-based Processing (PDP) (pp. 88-91). IEEE.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg4x-AKnE7VazxZKo3Q?e=cMAnI0"
+        },
+        {
+          title:"Torres-Charles, C. A., Carrizales-Espinoza, D. E., Sanchez-Gallegos, D. D., Gonzalez-Compean, J. L., Morales-Sandoval, M., & Carretero, J. (2022, September). SecMesh: An efficient information security method for stream processing in edge-fog-cloud.",
+          subtitle:"In Proceedings of the 2022 7th International Conference on Cloud Computing and Internet of Things (pp. 8-16).",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40DyzmvUEUV-_9xnA?e=WwI3uZ"
+        },
+        {
+          title:"Garcia, J. C. M., Lugo, J. A. B., Compean, J. L. G., Arevalo, I. L., Carretero, J., & Oropeza, M. C. (2022, September). Data and task orchestration defined by spatio-temporal variables for healthcare data science services.",
+          subtitle:"In Proceedings of the 9th International Conference on Bioinformatics Research and Applications (pp. 95-101).",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40IdVrgbgkyekVkHA?e=dVWRza "
+        },
+        {
+          title:"Sanchez-Gallegos, G., Sánchez-Gallegos, D. D., Gonzalez-Compean, J. L., & Carretero, J. (2022, May). On the building of self-adaptable systems to efficiently manage medical data.",
+          subtitle:"In 2022 22nd IEEE International Symposium on Cluster, Cloud and Internet Computing (CCGrid) (pp. 985-992). IEEE.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg4x7QQuVe8i5k1mJzA?e=fW8IeA"
+        },
+        {
+          title:"Lopez-Arevalo, I., Gonzalez-Compean, J. L., Hinojosa-Tijerina, M., Martinez-Rendon, C., Montella, R., & Martinez-Rodriguez, J. L.",
+          subtitle:"(2021). A wot-based method for creating digital sentinel twins of iot devices. Sensors, 21(16), 5531.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40Bd2NuMZVWlab4gw?e=27bi6x"
+        },
+        {
+          title:"Carrizales-Espinoza, D., Sanchez-Gallegos, D. D., Gonzalez-Compean, J. L., & Carretero, J. (2022). FedFlow: A federated platform to build secure sharing and synchronization services for health dataflows.",
+          subtitle:"Computing, 1-19.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40ERxR0jtjMzXgk0A?e=OKcGRO  "
+        },
+        {
+          title:"On the Efficient Delivery and Storage of IoT Data in Edge-Fog-Cloud Environments. Lopez-Arevalo, I., Gonzalez-Compean, J. L., Hinojosa-Tijerina, M., Martinez-Rendon, C., Montella, R., & Martinez-Rodriguez, J. L.",
+          subtitle:"(2021). A wot-based method for creating digital sentinel twins of iot devices. Sensors, 21(16), 5531.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40F4gD8Kk7KYhk-SQ?e=3rAymn"
+        },
+        {
+          title:"Sanchez-Gallegos, D. D., Gonzalez-Compean, J. L., Carretero, J., Marin, H., Tchernykh, A., & Montella, R. (2022). PuzzleMesh: A puzzle model to build mesh of agnostic services for edge-fog-cloud.",
+          subtitle:"IEEE Transactions on Services Computing.",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg40A5To4DDOuuy8hBg?e=geahtv"
+        },
+        {
+          title:"Xel: A cloud-agnostic data platform for the design-driven building of high-availability data science services (2023). Juan Armando Barrón Lugo, Jose luis Gonzalez, Ivan Lopez-Arevalo, Jesus Carretero and Jose L. Martinez-Rodriguez.",
+          subtitle:"Future Generation Computer Systems.(bajo revisiones menores en preparación para publicación)",
+          url:"https://1drv.ms/b/s!AtMgnjYpElvzg5YVJoRy-6lqt9XtyQ?e=uzbR2H"
+        },
+
       ],
       color: "publications-primary-color",
       dark_color: "publications-primary-dark-color",
@@ -151,10 +229,12 @@ export default {
 .publication {
   background: #f3f3f3;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 200px;
+  /* height: 200px; */
+  height: auto;
   border-radius: 10px;
   display: flex;
-  width: 50%;
+  /* width: 500px; */
+  width: 60%;
   margin-bottom: 10px;
 }
 
@@ -165,11 +245,11 @@ export default {
 }
 
 .publication__title {
-  font-size: 22px;
+  /* font-size: 18px; */
 }
 
 .publication__subtitle {
-  font-size: 14px;
+  /* font-size: 12px; */
   color: #7e7e7e;
 }
 
@@ -177,14 +257,20 @@ export default {
   /* background: red; */
   padding: 5px;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
+  /* align-items: ce; */
   margin-right: 20px;
+  width: 10%;
+  
 
 }
-
+.publication__desc {
+  width: 90%;
+}
 .publication__img {
-  width: 80px;
+  /* width: 80px; */
+  width: 50px;
 }
 </style>
 <!-- <template>

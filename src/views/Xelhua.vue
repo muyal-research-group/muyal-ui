@@ -28,11 +28,10 @@
             Obtenido
           </div>
           <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1QtYI7PKRMtYNM-kfZ2vRyyzs8RWXXieV/view?usp=share_link')" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1rp38q5_OaUj7I7aFgrTdbwwdB7E5kLUV/view?usp=share_link')" />
-            <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/-kJGvP4iQhY?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/5mTK0dv8CcI?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
+            <Button text="Poster cualitativo" :color="'#B22B38'" :hover_color="'#B22B38'" @on_click="on_click('https://drive.google.com/file/d/1QtYI7PKRMtYNM-kfZ2vRyyzs8RWXXieV/view?usp=share_link')" />
+            <Button text="Poster cuantitativo" :color="'#B22B38'" :hover_color="'#B22B38'"  @on_click="on_click('https://drive.google.com/file/d/1rp38q5_OaUj7I7aFgrTdbwwdB7E5kLUV/view?usp=share_link')" />
+            <Button text="Infografia tecnica" :color="'#B22B38'" :hover_color="'#B22B38'"  @on_click="on_click('https://youtu.be/-kJGvP4iQhY?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
+            <Button text="Infografia general" :color="'#B22B38'" :hover_color="'#B22B38'" @on_click="on_click('https://youtu.be/5mTK0dv8CcI?list=PLImGqhUs3Wnvxj0U16fpnYtQ_CD_xYQad')" />
           </div>
   </template>
 </PlatformFrontPage>
@@ -59,7 +58,7 @@
     </template>
   </SimpleSection> -->
 
-  <Separator type="xelhua"/>
+  <!-- <Separator type="xelhua"/> -->
   <Footer/>
 </template>
 
@@ -224,7 +223,8 @@ export default {
             }
         },
         color : "xelhua-primary-color",
-        dark_color : "xelhua-primary-dark-color"
+        dark_color : "xelhua-primary-dark-color",
+        // color_hex 
       };
   },
   methods:{

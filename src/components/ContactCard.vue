@@ -21,7 +21,7 @@
 </template>
 <script>
 export default {
-    props:["profile_photo","fullname","position","company","company_address","phone_number","email","web"]
+    props:["profile_photo","fullname","position","company","company_address","phone_number","email","web"], 
 }
 </script>
 <style scoped>
@@ -33,6 +33,7 @@ export default {
     background: white;
     padding: 50px;
     border-radius: 5px;
+    border: thin solid rgba(0,0,0,0.1);
     transition: box-shadow ease 300ms;
 }
 .contact:hover{
@@ -51,11 +52,11 @@ export default {
 }
 .contact__desc{}
 .contact__fullname{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 .contact__position{
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: rgba(0,0,0,0.3);
 }
 .contact__work{

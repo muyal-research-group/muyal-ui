@@ -2,9 +2,9 @@
 <template >
                 <!-- :src=" $resolve_image(is_scrolled ? 'assets/images/muyal/muyal-black.png' : 'assets/images/muyal/muyal-white.png')"  -->
     <div :class="{'navbar':true, 'pa--lg':true,'elevated':is_scrolled,[_background_color]:true, 'justify-content--space-between':is_mobile}">
-        <div>
+        <div class="flex">
             <router-link to="/"> 
-                <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true}">
+                <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true,'mr--xs':true}">
                     <img 
                         :src="is_scrolled ? scrolled_logo : normal_logo" 
                         id="navbar__logo" 
@@ -12,6 +12,20 @@
                     >
                 </div>
             </router-link>
+                <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true, 'mr--xs':true}">
+                    <img 
+                        src="/images/conacyt.png" 
+                        id="navbar__logo" 
+                        :class="{'navbar__logo':true}"
+                    >
+                </div>
+                <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true}">
+                    <img 
+                        src="/images/cinvestav.png" 
+                        id="navbar__logo" 
+                        :class="{'navbar__logo':true}"
+                    >
+                </div>
             <!-- <div :class="{'circle':true, ['bg--'+]:true, 'pa--xs':true}">
             </div> -->
         </div>
@@ -30,7 +44,7 @@
                         <router-link to="/services/xelhua">Xelhua</router-link>
                         <!-- <router-link to="/services/painal">Painal</router-link> -->
                         <router-link to="/services/chimalli">Chimalli</router-link>
-                        <!-- <router-link to="/services/alwa">Alwa</router-link> -->
+                        <!-- <router-link to="/alwa">Alwa</router-link> -->
                     </div>
                 </li>
                 
@@ -86,7 +100,7 @@
                                     <span class="side_menu__dropdown-text">Servicios</span> 
                                     <img :class="{'rotate-180':dropdown_hide[0]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
-                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-230px':true }">
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-150px':true }">
                                     <li class="side_menu__subitem">
                                         <router-link to="/services/nez">Nez</router-link>
                                     </li>
@@ -98,7 +112,24 @@
                             </div>
 
                         </li>
-                        <li class="side_menu__item"><router-link to="/use-case">Caso de uso</router-link></li>
+                        <!-- <li class="side_menu__item"><router-link to="/use-case">Caso de uso</router-link></li> -->
+                        <li class="side_menu__item">
+                            <div class="side_menu__dropdown ">
+                                <div class="flex justify-content--space-between"  @click="side_menu_dropdown(2)">
+                                    <span class="side_menu__dropdown-text">Casos de uso</span> 
+                                    <img :class="{'rotate-180':dropdown_hide[2]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
+                                </div>
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[2], 'dropdown-h-150px':true }">
+                                    <li class="side_menu__subitem"><router-link to="/use-case/cancer">Caso uso 1 (HADCHL)</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/use-case/diabetes">Caso uso 2 (Diabetes)</router-link></li>
+                                    <li class="side_menu__subitem"><router-link to="/use-case/mortality">Caso uso 3 (Mortalidad)</router-link></li>
+                                    <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
+                                </ul>
+                            </div>
+
+                        </li>
 
                         <li class="side_menu__item">
                             <div class="side_menu__dropdown ">
@@ -106,7 +137,7 @@
                                     <span class="side_menu__dropdown-text">Recursos</span> 
                                     <img :class="{'rotate-180':dropdown_hide[1]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
-                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-50px':true }">
                                     <li class="side_menu__subitem"><router-link to="/resources/publications">Publicaciones</router-link></li>
                                     <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
@@ -245,8 +276,14 @@ export default {
 .dropdown-h-230px{
     height: 230px;
 }
+.dropdown-h-50px{
+    height: 50px;
+}
 .dropdown-h-100px{
     height: 100px;
+}
+.dropdown-h-150px{
+    height: 150px;
 }
 
 .side_menu__dropdown-items.hide{
@@ -367,9 +404,17 @@ export default {
     display: none;
 }
 
-.navbar__logo {
-    --size:50px;
+.navbar__logo-wrapper{
+    --size:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: var(--size);
+    width: var(--size);
+}
+.navbar__logo {
+    --size:40px;
+    /* height: var(--size); */
     width: var(--size);
     /* margin-left: 20px; */
     /* float: left; */

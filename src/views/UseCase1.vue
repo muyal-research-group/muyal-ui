@@ -5,7 +5,7 @@
     :background_color="'white'" 
     :scrolled_background_color="'white'"
     :bars_color="dark_color"
-    :scrolled_bars_color="'white'"
+    :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
   /> 
@@ -15,28 +15,44 @@
     index="6"
     color ="use-case-primary-color"
     dark_color ="use-case-primary-dark-color"
-    image_width = "500"
+    image_width = "300"
     :title_size="section_title_size"
     text_color="white"
     circle_color="use-case-primary-dark-color"
   >
   <template v-slot:footer>
           <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
-          <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
+          <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
             Obtenido
-          </div>
-          <!-- <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
+          </div> -->
+          
+          <div class="mb--md front-page__buttons flex-wrap">
+            <Button text="Estudios completos de 355 pacientes" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <Button text="Modelos con 3 diferentes redes neuronales" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <Button text="The Cancer Imaging Archive" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
+            <!-- <Button text="Dato relevante 4" color="white" text_color="black" :dark_color="dark_color" btn_width="200" /> -->
+          </div> 
+          <!-- 
             <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
             <Button title="Software" :color="color" :dark_color="dark_color" />
             <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
             <Button title="Infografia general" :color="color" :dark_color="dark_color" />
-          </div> -->
+        -->
   </template>
 
 
 
 </PlatformFrontPage>
+  <Separator type="use-case"/>
+  <SimpleSection title="Servicio de detección: Video informativo" subtitle=""> 
+    <template v-slot:body>
+      <div class="flex justify-content--center">
+        <iframe src="https://drive.google.com/file/d/19n-2p-6HQ6PLSqANAxJ5Cu0EnY8CKON8/preview" 
+        :width="is_mobile ?'100%' :'1000px'" 
+        :height="video_height" allow="autoplay"></iframe>
+      </div>
+    </template>
+  </SimpleSection>
   <Separator type="use-case"/>
   <SimpleSection title="Herramienta de apoyo para el diagnóstico de cáncer de hueso largo" subtitle="Muyal-Ilal - Casos de estudio"> 
     <template v-slot:body>
@@ -50,6 +66,47 @@
       <div :class="{'w-60':!is_mobile,'w-100':is_mobile}">
         <p class="text-align--justify">
            El presente proyecto no tiene la intención de sustituir al personal capacitado, sino proporcionarle una ayuda indicando las imágenes en las que podría existir algún tumor primario en hueso largo o secundario en pulmones en caso de presentar metástasis, y la región en la que se ubica. Dado que los tumores presentan diferentes características dependiendo de la parte del cuerpo en la que se desarrollen, es necesario generar un modelo diferente para cada uno
+        </p>
+      </div>
+      </div>
+
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
+  <SimpleSection title="Preparación de imágenes" subtitle=""> 
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+        <div class="mb--md image-grid">
+          <img src="/images/use-case/tumor-0.png" alt="">
+          <img src="/images/use-case/tumor-1.png" alt="">
+          <!-- <img src="/images/use-case/px2_104.png" alt=""> -->
+          <!-- <img src="/images/use-case/px3_99.png" alt=""> -->
+        </div>
+      <div :class="{'w-60':!is_mobile,'w-100':is_mobile}">
+        <p class="text-align--justify">
+          Se aplican diferentes transformaciones a la imagen original (a) para obtener una imagen similar, pero con apariencia diferente (b). Además, es posible recortar la región tumoral y agregar en una imagen diferente del mismo paciente a la que se le aplican las mismas transformaciones aleatorias para obtener una nueva muestra completamente diferente
+           <!-- El presente proyecto no tiene la intención de sustituir al personal capacitado, sino proporcionarle una ayuda indicando las imágenes en las que podría existir algún tumor primario en hueso largo o secundario en pulmones en caso de presentar metástasis, y la región en la que se ubica. Dado que los tumores presentan diferentes características dependiendo de la parte del cuerpo en la que se desarrollen, es necesario generar un modelo diferente para cada uno -->
+        </p>
+      </div>
+      </div>
+
+    </template>
+  </SimpleSection>
+  <Separator type="use-case"/>
+  <SimpleSection title="Entrenamiento" subtitle=""> 
+    <template v-slot:body>
+      <div class="flex justify-content--center align-items--center flex-direction--column">
+        <!-- <div class="mb--md image-grid"> -->
+          <img src="/images/use-case/tumor_2.png" alt="" width="250">
+          <!-- <img src="/images/use-case/tumor-1.png" alt=""> -->
+          <!-- <img src="/images/use-case/px2_104.png" alt=""> -->
+          <!-- <img src="/images/use-case/px3_99.png" alt=""> -->
+        <!-- </div> -->
+      <div :class="{'w-60':!is_mobile,'w-100':is_mobile}">
+        <p class="text-align--justify">
+          El sistema presentado ha sido entrenado para identificar masas en huesos y pulmones, pero nuevos modelos pueden ser entrenados para identificar otros tipos de tumores. Por defecto se proporcionan los modelos con los hiperparámetros que mejores resultados han proporcionado. 
+          <!-- Se aplican diferentes transformaciones a la imagen original (a) para obtener una imagen similar, pero con apariencia diferente (b). Además, es posible recortar la región tumoral y agregar en una imagen diferente del mismo paciente a la que se le aplican las mismas transformaciones aleatorias para obtener una nueva muestra completamente diferente -->
+           <!-- El presente proyecto no tiene la intención de sustituir al personal capacitado, sino proporcionarle una ayuda indicando las imágenes en las que podría existir algún tumor primario en hueso largo o secundario en pulmones en caso de presentar metástasis, y la región en la que se ubica. Dado que los tumores presentan diferentes características dependiendo de la parte del cuerpo en la que se desarrollen, es necesario generar un modelo diferente para cada uno -->
         </p>
       </div>
       </div>
@@ -78,7 +135,7 @@ export default {
   components: { Footer, Card, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Button, Separator, SimpleSection },
     setup(){
         const breakpoints = useBreakpoints({
-            mobile:[320,768], // max-width: 600px
+            mobile:[240,768], // max-width: 600px
             table:[768,1024],
             desktop: [1281] // min-width: 601px
         });
@@ -90,6 +147,16 @@ export default {
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
+      },
+      video_height(){
+        if (this.breakpoints.mobile.matches){
+          return '150px'
+        }
+        else if (this.breakpoints.table.matches){
+          return '400px'
+        } else {
+          return '500px'
+        }
       },
       section_text_size(){
         return this.is_mobile ? 'xl' : 'sm'

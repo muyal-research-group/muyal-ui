@@ -30,11 +30,10 @@
             Obtenido
           </div>
           <div class="mb--md front-page__buttons flex-wrap">
-            <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1LRvydHG08d-gaFA6uz2PTViUfwAnBFmZ/view?usp=share_link')" />
-            <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" @on_click="on_click('https://drive.google.com/file/d/1ek5v_M9nE_wWw38YqDaUo-BCeEOg_ORl/view?usp=share_link')" />
-            <!-- <Button title="Software" :color="color" :dark_color="dark_color" /> -->
-            <Button title="Infografia tecnica" :color="color" :dark_color="dark_color"  @on_click="on_click('https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
-            <Button title="Infografia general" :color="color" :dark_color="dark_color" @on_click="on_click('https://youtu.be/6NO9x7Ec-50?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
+            <Button text="Poster cualitativo" color="#356FE1" hover="#356FE1"   @on_click="on_click('https://drive.google.com/file/d/1LRvydHG08d-gaFA6uz2PTViUfwAnBFmZ/view?usp=share_link')" />
+            <Button text="Poster cuantitativo" color="#356FE1" hover="#356FE1"  @on_click="on_click('https://drive.google.com/file/d/1ek5v_M9nE_wWw38YqDaUo-BCeEOg_ORl/view?usp=share_link')" />
+            <Button text="Infografia tecnica" color="#356FE1" hover="#356FE1"   @on_click="on_click('https://youtu.be/Vl0RGlYaQVs?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
+            <Button text="Infografia general" color="#356FE1" hover="#356FE1"   @on_click="on_click('https://youtu.be/6NO9x7Ec-50?list=PLImGqhUs3WnuwAkpfwRGhDrD2WEcaFHVi')"/>
           </div>
   </template>
 </PlatformFrontPage>
@@ -89,7 +88,7 @@
 <Separator type="nez"/>
 <SimpleSection title="" subtitle="Puedes compartir tu servicio de e-salud, y los datos generados, entre:">
 <template v-slot:body>
-    <p></p>
+    <!-- <p></p> -->
     <div class="flex justify-content--center">
     <ListTable 
       class="mr--md"
@@ -135,10 +134,10 @@
 
 <SimpleSection title="" subtitle="">
 <template v-slot:body>
-    <p></p>
-    <div class="flex justify-content--center">
+    <!-- <p></p> -->
+    <div :class="{'flex':true, 'justify-content--center':true,'flex-direction--column':is_mobile,'align-items--center':is_mobile}">
     <ListTable 
-      class="mr--md"
+      :class="{'mr--md':!is_mobile}"
       title="Reutiliza" 
       image="/images/nez/section_0_0.png" 
       :items="[
@@ -146,7 +145,7 @@
       ]"
     />
     <ListTable 
-      class="mr--md"
+      :class="{'mr--md':!is_mobile}"
       title="Comparte" 
       image="/images/nez/multi-user.png" 
       :items="[

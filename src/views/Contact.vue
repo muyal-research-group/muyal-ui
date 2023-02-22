@@ -15,7 +15,7 @@
     index="6"
     :color ="color"
     :dark_color ="dark_color"
-    image_width = "500"
+    image_width = "200"
     :circle_color="dark_color"
     text_color="white"
   >
@@ -33,6 +33,7 @@
   }">
   <ContactCard :class="{'w-100':is_mobile}" v-for = "c in contacts"  :profile_photo ="c.profile_photo" :fullname = "c.fullname" :position="c.position" :company="c.company" :company_address="c.company_address" :phone_number="c.phone_number" :email = "c.email" :key ="c.email" :web="c.web"/>
 </div>
+<Separator type="contact"/>
 <Footer/>
 </template>
 
@@ -43,6 +44,7 @@ import Footer from "../components/Footer.vue"
 import Card from "../components/Card.vue"
 import Button from '../components/Button.vue';
 import ContactCard from '../components/ContactCard.vue';
+import Separator from '../components/Separator.vue';
 
 // import 'vue3-carousel/dist/carousel.css'
 // import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
@@ -52,7 +54,7 @@ export default {
   components: {Footer,Card,PlatformFrontPage,
     // Carousel, Slide, Pagination, Navigation , 
     Navbar,Button,
-    ContactCard
+    ContactCard,Separator
   },
   setup(){
       const breakpoints = useBreakpoints({
@@ -75,6 +77,16 @@ export default {
           contacts:[
             {
              profile_photo: "/images/contact/00.png",
+             fullname: "Dr. Jose Luis González Compeán",
+             position: "Responsable Técnico del proyecto", 
+             company: "CINVESTAV",
+             company_address: "Parque Científico y Tecnológico TECNOTAM. Cd. Victoria, Tamaulipas",
+             phone_number: "(834) 107 0220 1138",
+             email: "joseluis.gonzalez@cinvestav.mx",
+             web:"http://adaptivez.org.mx"
+            },
+            {
+             profile_photo: "/images/contact/00.png",
              fullname: "Dr. Miguel Morales Sandoval",
              position: "Profesor / Investigador", 
              company: "CINVESTAV",
@@ -82,23 +94,14 @@ export default {
              phone_number: "(834) 107 0220 1134",
              email: "miguel.morales@cinvestav.mx",
              web:"https://www.tamps.cinvestav.mx/~mmorales/"
-            },
-            {
-             profile_photo: "/images/contact/00.png",
-             fullname: "Dr. Jose Luis González Compeán",
-             position: "Profesor / Investigador", 
-             company: "CINVESTAV",
-             company_address: "Parque Científico y Tecnológico TECNOTAM. Cd. Victoria, Tamaulipas",
-             phone_number: "(834) 107 0220 1138",
-             email: "joseluis.gonzalez@cinvestav.mx",
-             web:"http://adaptivez.org.mx"
-            },
+            }
           ],
           color :"contact-primary-color",
           dark_color :"contact-primary-dark-color",
         // color : "bg--chimalli-primary-color"
       };
   },
+  // components:{}
 }
 </script>
 <style scoped> 
