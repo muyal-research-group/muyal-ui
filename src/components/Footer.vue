@@ -5,23 +5,23 @@
     <div class="footer-wrapper"> 
         <!-- <div class="footer__header"></div> -->
         <div class="footer">
-            <img class="mb--md" src="/images/muyal/muyal-black.png">
+            <img @load="on_load" class="mb--md" src="/images/muyal/muyal-black.png">
             <p :class="{['text-size--'+text_size]:true,'text-align--justify':true}"> Contáctanos a través de nuestros diferentes canales y conoce más sobre la Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
             
             <div class="footer__icons mb--md">
                 <a class="flex justify-content--center align-items--center circle" href="https://www.facebook.com/cinvestav.lti" target="_blank">
                     <!-- <div >  -->
-                        <img src="/images/icons/facebook-icon-1.svg"> 
+                        <img @load="on_load"  src="/images/icons/facebook-icon-1.svg"> 
                     <!-- </div>  -->
                 </a>
                 <a class="flex justify-content--center align-items--center circle" href="#">
                     <!-- <div > -->
-                        <img src="/images/icons/instagram-glyph-1.svg">
+                        <img @load="on_load" src="/images/icons/instagram-glyph-1.svg">
                     <!-- </div> -->
                 </a>
                 <a class="flex justify-content--center align-items--center circle" href="#">
                     <!-- <div> -->
-                        <img src="/images/icons/twitter-6.svg">
+                        <img @load="on_load" src="/images/icons/twitter-6.svg">
                     <!-- </div> -->
                 </a>
             </div>
@@ -44,6 +44,11 @@ import useBreakpoints from "vue-next-breakpoints";
             breakpoints
         };
     },
+    data(){
+        return {
+            loaded_components: 0
+        }
+    },
     computed:{
         is_mobile(){
             return this.breakpoints.mobile.matches || this.breakpoints.tablet.matches
@@ -52,9 +57,18 @@ import useBreakpoints from "vue-next-breakpoints";
             return !this.breakpoints.mobile.matches && this.breakpoints.tablet.matches
         },
         text_size(){
-            return this.is_mobile ? "sm" : "xs"
+            return this.is_mobile ? "xs" : "xs"
         }
     },
+    methods:{
+        on_load(){
+            this.loaded_components+=1 
+
+            if(this.loaded_components==4){
+                this.$emit("loading")
+            }
+        }
+    }
   }
 
 </script>

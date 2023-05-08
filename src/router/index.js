@@ -75,6 +75,7 @@ const router = createRouter({
 
 router.beforeEach((to,from)=>{
     document.body.classList.remove('prevent-scroll')
+    
 });
 
 export default router

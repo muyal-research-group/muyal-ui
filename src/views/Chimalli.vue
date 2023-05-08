@@ -1,5 +1,8 @@
 <template>
 
+    <transition name="loading">
+        <Loader v-if="loading"/>
+    </transition>
     <Navbar 
       :text_color_normal ="'white'" 
       :text_color_scrolled="'black'" 
@@ -9,8 +12,10 @@
       :scrolled_bars_color="'white'"
       :scrolled_logo= "'/images/muyal/muyal-black.png'"
       :normal_logo = "'/images/muyal/muyal-black.png'"
+      @loading="on_load"
     /> 
-    <PlatformFrontPage 
+
+  <PlatformFrontPage 
       title ="Servicio de acceso a servicios de e-salud y/o sistemas de analítica"
       image="/images/chimalli/chimalli.png"
       index="2"
@@ -20,6 +25,7 @@
       :title_size = "section_title_size"
       text_color ="white"
       circle_color="chimalli-primary-dark-color"
+      @loading="on_load"
     >
     <template v-slot:footer>
 
@@ -33,12 +39,14 @@
               <Button text="Poster cuantitativo" color="#3CB443" hover_color="$3CB443" @on_click="on_click('https://drive.google.com/file/d/1cJNC80CM7HgBY-qRj_1m_NY1MMEi8dQb/view?usp=share_link')"/>
               <Button text="Infografia tecnica"  color="#3CB443" hover_color="$3CB443" @on_click="on_click('https://youtu.be/PdHZVucYxXk?list=PLImGqhUs3WnusWlO0_H8HyozWH89D1y1x')" />
             </div>
+
     </template>
   </PlatformFrontPage>
+  
   <SimpleSection title="Servicio de confiabilidad y transporte de datos sensibles" :title_size="section_title_size" subtitle="">
     <template v-slot:body>
         <div class="flex justify-content--center">
-          <img src="/images/chimalli/chimalli-0.png" alt="CHIMALLI_0">
+          <img @load="on_load" src="/images/chimalli/chimalli-0.png" alt="CHIMALLI_0">
         </div>
     </template>
   </SimpleSection>
@@ -46,7 +54,7 @@
   <SimpleSection title="Servicios de seguridad informática" :title_size="section_title_size" subtitle="">
     <template v-slot:body>
         <div class="flex justify-content--center">
-          <img src="/images/chimalli/chimalli-1.png" alt="CHIMALLI_0" width="900">
+          <img @load="on_load" src="/images/chimalli/chimalli-1.png" alt="CHIMALLI_0" width="900">
         </div>
     </template>
   </SimpleSection>
@@ -54,7 +62,7 @@
   <SimpleSection title="Servicios de trazabilidad" :title_size="section_title_size" subtitle="">
     <template v-slot:body>
         <div class="flex justify-content--center align-items--center flex-direction--column">
-          <img class="mb--lg" src="/images/chimalli/chimalli-2.png" alt="CHIMALLI_0" width="900">
+          <img @load="on_load"  class="mb--lg" src="/images/chimalli/chimalli-2.png" alt="CHIMALLI_0" width="900">
           <div class="flex flex-direction--column">
             <h3 :class="{'text-size--sm':true}">El servicio de chimalli permite a sus usuarios la: </h3>
             <ul>
@@ -97,10 +105,17 @@ export default {
           breakpoints
       };
   },
+  // mounted(){
+  //     this.$nextTick(()=>{
+  //         this.loading=false;
+  //     })
+  // },
   components:{ Footer, Card, Section, PortionSection, PlatformFrontPage, Carousel, Slide, Pagination, Navigation, Navbar, Separator, SimpleSection },
 
   data() {
         return {
+            loaded_components:0,
+            loading:true,
             autoplay:'5000',
             sections:{
               section_0:{
@@ -187,6 +202,13 @@ export default {
 
       on_click(url){
         window.open(url,"_blank")
+      },
+      on_load(){
+        this.loaded_components+=1;
+        // console.log("LOAD_COMPONENT",this.loaded_components)
+        if(this.loaded_components==5){
+          this.loading=false
+        }
       }
   },
 

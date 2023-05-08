@@ -1,7 +1,8 @@
 <template>
+    <transition name="loading">
+        <Loader v-if="loading"/>
+    </transition>
     <Navbar 
-    :color="color" 
-    :dark_color="dark_color" 
     :text_color_normal ="'black'" 
     :text_color_scrolled="'black'" 
     :background_color="'white'" 
@@ -10,11 +11,12 @@
     :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    @loading="on_load"
     />
     <div ref="banner" class="front-page-v2 pa--xl flex justify-content--center align-items--center flex-direction--column">
-        <img :class="{'mb--lg':true}" :style="{'z-index':100}" src="/images/muyal/muyal-white.png" width="300" alt="">
+        <img @load="on_load"  :class="{'mb--lg':true}" :style="{'z-index':100}" src="/images/muyal/muyal-white.png" width="300" alt="">
         <p :style="{'z-index':100}" :class="{'w-60':!is_mobile,'front-page-v2--title':true, 'text-align--center':!is_mobile,'text-align--justify':is_mobile,'mb--lg':true}">Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
-        <div :style="{'z-index':100}" class="flex">
+        <div  :class="{'front-page-v2__btns':true,'flex':true,'to_front':true}">
             <Button 
                 class="mr--xs" 
                 text="Ver más" 
@@ -34,40 +36,12 @@
             />
         </div>
     </div>
-
-    <!-- <PlatformFrontPage 
-        :title ="is_mobile ?'Platforma Tecnologica para E-Salud': 'Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.'"
-        image="/images/muyal/3trz.png"
-        index="1"
-        :color ="color"
-        :dark_color ="dark_color"
-        image_width = "350"
-        title_size ="lg"
-        title_width = "80"
-        text_color="black"
-        :invert="true"
-    > -->
-    <!-- <template v-slot:footer> -->
-        <!-- :class ="{'flex':is_mobile,'align-items--center':is_mobile,'justify-content--center':is_mobile}" -->
-            <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
-            <!-- <div :class="'mb--sm flex justify-content--center'+' text-color--'+color+' front-page__obtained'">
-                Obtenido
-            </div> -->
-            <!-- <div class="mb--md front-page__buttons flex-wrap">
-                <Button title="Poster cualitativo" :color="color" :dark_color="dark_color" />
-                <Button title="Poster cuantitativo" :color="color" :dark_color="dark_color" />
-                <Button title="Software" :color="color" :dark_color="dark_color" />
-                <Button title="Infografia tecnica" :color="color" :dark_color="dark_color" />
-                <Button title="Infografia general" :color="color" :dark_color="dark_color" />
-            </div> -->
-    <!-- </template> -->
-    <!-- </PlatformFrontPage> -->
     <Separator />
     <SimpleSection title="Componentes principales: Servicios" subtitle="">
         <template v-slot:body>
             <carousel :style="{'width':'100%'}"  :breakpoints = "breakpoints" :wrap-around="true" :autoplay="5000" :pauseAutoplayOnHover="true">
                 <slide v-for="fb in feature_boxes" :key="fb.title">
-                    <FeatureBox :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
+                    <FeatureBox  :image="fb.image" :title = "fb.title" :items ="fb.items" :hover_color="fb.hover_color" />
                 </slide>
                 <template #addons>
                     <pagination />
@@ -96,7 +70,7 @@
             <div :class="{'flex':true,'flex-direction--column-reverse':is_mobile,'align-items--center':is_mobile ,'justify-content--center':true}">
                 <div :class="{'mr--md':!is_mobile, 'w-40':!is_mobile,'w-100':is_mobile, 'flex':true, 'justify-content--center':true}">
                     <div class="circle bg--light-grey-1 flex justify-content--center">
-                        <img width="230" src="/images/muyal/mexico.png" alt="Mexico">
+                        <img @load="on_load" width="230" src="/images/muyal/mexico.png" alt="Mexico">
                     </div>
                 </div>
                 <div :class="{'w-60':!is_mobile,'w-100':is_mobile,'mb--xl':true}">
@@ -106,9 +80,33 @@
             </div>
         </template>
     </SimpleSection>
-
     <Separator/>
-    <Footer/>
+    <SimpleSection title="" subtitle="">
+        <template v-slot:body>
+            <div :class="{'flex':true,'flex-direction--column':is_mobile}">
+                <div :class="{'w-60':!is_mobile,'w-100':is_mobile,'flex':true,'flex-direction--column':true,'justify-content--space-between':true,'align-items--center':true}">
+                    <div>
+                        <h1 :class="{'mb--md':true,'text-size--xxl':!is_mobile,'text-align--justify':true}">BIGDATA EN SALUD TECNOLOGÍAS EMERGENTES Y APLICACIONES</h1>
+                        <p :class="{'mb--md':true,'text-align--justify':true}">
+                            <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum saepe, illum, dicta quia suscipit magni doloremque dolorum quibusdam porro hic quas est assumenda ratione, maiores molestias itaque quis expedita veritatis amet voluptates odit et quaerat nihil minus. Accusantium, porro repellendus. -->
+                            En este libro de Big Data en Salud Tecnologías Emergentes y Aplicaciones, se presentan al lector las tecnologias emergentes métodos, algoritmos, aplicaciones y contribuciones de la comunidad científico-académica que trabaja en el desarrollo de Big Data en Salud, abarcando tecnologías para la adquisición de datos en salud, su procesamiento, almacenamiento, distribución, manejo, acceso y uso. El libro brinda una visión de la complejidad detrás de los sistemas de ciencia de datos en salud y una ruta que permita a científicos, tecnólogos, estudiantes y público en general, conocer y adentrarse en el área de Big Data en Salud, la cual es critica para avanzar de manera significativa hacia una inteligencia de datos en el sector salud, que se traduzca en una mejor atención sanitaria y permita diseñar politicas de salud preventivas efectivas.
+                        </p>
+                    </div>
+                    <div class="w-50">
+                        <Button @on_click="download_book" text="Descargar aquí" hover_color="#454545" />
+                    </div>
+                </div>
+                <div :class="{'w-40':!is_mobile,'w-100':is_mobile,'flex':true,'justify-content--center':true,'align-items--center':true}">
+                    <div class="book flex" @click="download_book">
+                        <div class="book__spine"></div>
+                        <img class="book_cover" src="/images/muyal/book_cover.png" alt="" width="400">
+                    </div>
+                </div>
+            </div>
+        </template>
+    </SimpleSection>
+    <Separator/>
+    <Footer @loading="on_load"/>
 
 
 </template>
@@ -129,25 +127,25 @@ import SimpleSection from '../components/SimpleSection.vue';
 import Card from '../components/Card.vue'
 // import { useNavbarStore } from '../stores/counter';
 import Button from '../components/Button.vue';
+import Loader from "../components/Loader.vue"
+// import { onBeforeRouteLeave } from 'vue-router';
 
 export default {
     setup(){
-        // const navbar_store = useNavbarStore();
-
         const breakpoints = useBreakpoints({
             mobile:[240,768], // max-width: 600px
             table:[768,1024],
             desktop: [1281] // min-width: 601px
         });
-
         return {
-            // If you want to use different key, feel free do do so, e.g.:
-            // mediaqueries: breakpoints
-            // and then use mediaqueries.desktop.matches etc.
             breakpoints,
-            // navbar_store
         };
     },
+    // mounted(){
+    //     this.$nextTick(()=>{
+    //         this.loading=false;
+    //     })
+    // },
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -164,10 +162,17 @@ export default {
     },
     data() {
         return {
+            book_url:"http://muyal.tamps.cinvestav.mx/resources/libro.pdf",
+            loaded_components:0,
+            total_components:4,
             section_bg_color:"white",
             portion_bg_color:"light-grey",
             color:"white",
             dark_color:"black",
+            images:[
+
+            ],
+            loading: true,
             feature_boxes:[
                 {
                     title:"Nez: Servicio de consutrccion de sistemas e-Salud",
@@ -233,198 +238,6 @@ export default {
                     hover_color: "#FF9237"
                 }
             ],
-            sections: {
-                section_0:{
-                    title: "¿Qué es Muyal-Ilal?",
-                    text: "Crea  sistemas de  analítica  (big  data)  basados  en  inteligencia  artificial  para  convertir datos (históricos estadísticos, notas clínicas, datos de dispositivos médicos, imagenología etc.) en información. Nez y Xelhua guían al personal médico para crear, en minutos sin requerir licencias ni conocimientos tecnológicos o de programación, sistemas de e-salud para soportar procesos de toma de  decisiones  o  asistencia  a  diagnósticos. ",
-                    images:[
-                        {
-                            src:"/images/muyal/section_0_0.png",
-                            alt:"MUYAL_0",
-                            width:"600"
-                        }
-                    ]
-                },
-                section_1:{
-                    title:"Plataformas",
-                    text:"Muyal esta conformado por cinco plataformas que proporcionan servicios entre los cuales se encuentran: creacion de sistemas de e-Salud(Nez), analisis estadisticos (Xelhua), comparticion de datos (Painal), servicios de seguridad (Chimalli) y repositorios FAIR (Alwa).",
-                    images:[]
-                },
-                section_2:{
-                    title:"Motivacion y justificacion",
-                    text:"La  atención  médica  en  México  es  crucial  para mejorar  el  bienestar  de  los ciudadanos. Esta práctica profesional produce escenarios de grandes volúmenes de datos (big data) producidos por diversas fuentes heterogéneas (sensores, dispositivos médicos,  etc.)  que deben  ser  procesados  rápidamente  (velocidad)  por  un  conjunto heterogéneo de sistemas de expedientes clínicos electrónicos o SECE(variedad) que entregan  información útil  a  diferentes  repositorios  de datos  (veracidad-valor).  El Plan Nacionalde desarrollo2019-2024describe las dimensiones de este escenario: “afinales de 2018, el IMSS contaba con 68.5 millones de derechohabientes, el ISSSTE con más de 13 millones, IMSS-Secretaría de Bienestar con un total de 13 millones, asícomo 2 millones de Sedena, Semar y Pemex”.",
-                    images:[
-                        {
-                            src:"/images/muyal/section_2_0.png",
-                            alt:"MUYAL_0",
-                            width:"400"
-                        },
-                        {
-                            src:"/images/muyal/section_2_1.png",
-                            alt:"MUYAL_1",
-                            width:"400"
-                        },
-                        {
-                            src:"/images/muyal/section_2_2.png",
-                            alt:"MUYAL_2",
-                            width:"400"
-                        }
-                    ]
-                }
-            },
-            steps_descriptions:{
-                step1:{
-                    title:"1. Crea sistemas e-Salud",
-                    steps:[
-                        {
-                            title:"1. Elige los componentes de tu flujo de datos",
-                            text:"Descubrimiento y reusabilidad de servicios de ciencia de datos disponibles en Muyal-Nez",
-                            image:"/images/icons/elige.svg"
-                        },
-
-                        {
-                            title:"2. Integra los componentes",
-                            text:"Integración de software automática e instalación en Muyal-Nez inmediata.",
-                            image:"/images/icons/savefile.svg"
-                        },
-                        {
-                            title:"3. Despliega el sistema",
-                            text:"Nez permite la creación de sistemas de ciencia de datos no estructurados orientada al diseño funcional.",
-                            image:"/images/icons/rocket.svg"
-                        },
-                        {
-                            title:"4. Procesa datos",
-                            text:"Recibe cualquier tipo de dato no estructurado. Ciencia de datos como servicio, y construcción de sistemas paso a paso en la nube.",
-                            image:"/images/icons/engrane.svg"
-                        },
-
-                    ]
-                },
-                step2:{
-                    title:"2. Analiza tus datos",
-                    steps:[
-                        {
-                            title:"1. Explora y procesa datos estructurados",
-                            text:"Recibe cualquier tipo de dato estructurado y lo conecta automáticamente con servicios de analítica.",
-                            image:"/images/icons/search_folder.svg"
-                        },
-                        {
-                            title:"2. Diseña tus flujos de datos",
-                            text:"Xelhua cuenta con un catálogo de servicios para aprendizaje maquina previamente configurados. Además, es posible utilizar aplicaciones de fusión e integración de datos",
-                            image:"/images/icons/elige.svg"
-                        },
-                        {
-                            title:"3. Analiza resultados",
-                            text:"Xelhua proporciona soporte para visualizar datos en mapas de manera sencilla.",
-                            image:"/images/icons/Diagrama.svg"
-                        },
-                        {
-                            title:"4. Comparte",
-                            text:"Xelhua te permite compartir los flujos de datos que has diseñado, así como los resultados que has obtenido.",
-                            image:"/images/icons/share.svg"
-                        }
-                    ]
-                },
-                step3:{
-                    title:"3. Asegura tus datos",
-                    steps:[
-                        {
-                            title:"1. Control de acesso",
-                            text:"Chimalli permite el manejo automático de llaves  y huellas criptográficas.",
-                            image:"/images/icons/access.svg"
-                        },
-                        {
-                            title:"2. Privacidad",
-                            text:"Integra a tus sistemas los servicios criptográficos de Chimalli. Chimalli asegura el anonimato de los datos, así como la confidencialidad mediante el cifrado de los datos entrantes y salientes de los sistemas de e-Salud. Además, permite detectar alteraciones en los datos.",
-                            image:"/images/icons/laptop_segura.svg"
-                        },
-                        {
-                            title:"3. Confiabilidad",
-                            text:"Chimalli también provee confiabilidad, la cual se consigue mediante mecanismos de tolerancia a fallos. La confiabilidad se aplica para mitigar los problemas causados por las deficiencias de la infraestructura donde se procesan y almacenan los datos.",
-                            image:"/images/icons/desktop.svg"
-                        },
-                        {
-                            title:"4. Trazabilidad",
-                            text:"Creación automática de una red blockchain para cada sistema de ciencia de datos. Chimalli permite la gestión automática de contratos inteligentes, la gestión automática de transacciones y la verificabilidad de transacciones de forma confidencial.",
-                            image:"/images/icons/red.svg"
-                        }
-                    ]
-                },
-
-                step4:{
-                    title:"4. Comparte tus datos",
-                    steps:[
-                        {
-                            title:"1. Comparte",
-                            text:"Painal cuenta con esquemas de publicación y suscripción de catálogos (fuentes de datos, información y conocimiento).",
-                            image:"/images/icons/uploap_document_green.svg"
-                        },
-                        {
-                            title:"2. Almacena",
-                            text:"Painal cuenta con un sistema de almacenamiento en la nube tolerante a fallos.",
-                            image:"/images/icons/guardar.svg"
-                        },
-                        {
-                            title:"3. Transporte de datos",
-                            text:"Crea sistemas intra e inter institucionales. Painal te permite compartir datos de forma interna y externa, es decir, dentro de una misma instirución y hacia otras.",
-                            image:"/images/icons/mails.svg"
-                        },
-                        {
-                            title:"4. Distribuye",
-                            text:"Los servicios de logística de Painal permiten realizar el intercambio de datos de un sistema de ciencia de datos.", 
-                            image:"/images/icons/folder-yellow-open.svg"
-                        }
-                    ]
-                },
-
-                step5:{
-                    title:"5. Entrega tus datos",
-                    steps:[
-                        {
-                            title:"1. Descarga y desempaca",
-                            text:"Chimalli hacen factible que las instituciones de salud, profesionales de la salud, pacientes y/o comunidad científica pueda acceder a servicios de e-salud y/o sistemas de analítica.",
-                            image:"/images/icons/download_document_green.svg"
-                        },
-                        {
-                            title:"2. Consume",
-                            text:"Chimalli te permite obtener información útil (sin comprometer la seguridad de los datos) que ayude a mejorar la toma de decisiones en escenarios de cuidado de la salud.",
-                            image:"/images/icons/document_encrypted.svg"
-                        },
-                        {
-                            title:"3. Verifica",
-                            text:"Chimalli permite detectar alteraciones en los datos. Todo esto se consigue mediante esquemas de criptografía de siguiente generación, lo que permite el manejo de datos como objetos seguros.",
-                            image:"/images/icons/access.svg"
-                        },
-                    
-                    ]
-                },
-
-                step6:{
-                    title:"6. Deposita en repositorios",
-                    steps:[
-                        {
-                            title:"1. Descarga",
-                            text:"Aplicativos de seguridad para proporcionar integridad, tolerancia a fallas, trazabilidad, entre otros. Aplicativos analítica para machine o deep learning, estadística y mining. Aplicativos de procesamiento para realizar correcciones, 3dmesh, codificadores. Fuentesde datos como data lakes, warehouse, cvs.",
-                            image:"/images/icons/document-save-as.svg"
-                        },
-                        {
-                            title:"2. Usa",
-                            text:"Patrones de publicación y subscripción, API para programadores, Interfaces para productores/consumidores, Carpetas de diseño, Código fuente de algoritmos de integración.",
-                            image:"/images/icons/folder-yellow-open.svg"
-                        },
-                        {
-                            title:"3. Comparte",
-                            text:"Comparte tus resultados, flujos de ciencia de datos, aplicaciones y software de manera fácil y sencilla.",
-                            image:"/images/icons/share.svg"
-                        },
-                        {
-                            title:"4. Visualiza",
-                            text:"Visualiza tus recursos y resultados fácilmente.",
-                            image:"/images/icons/desktop.svg"
-                        }
-                    ]
-                }
-            },
             breakpoints: {
                 // 700px and up
                 240: {
@@ -466,20 +279,30 @@ export default {
                     title:"Objetivo 6",
                     content:"Las instituciones involucradas en el proyecto documentarán los servicios, tipos de datos y aplicaciones que pueden ser desplegadas utilizando la plataforma digital propuesta en este proyecto. De manera adicional, se documentará la metodología de acceso y utilización del repositorio para publicar datos anónimos y agregar algoritmos debidamente preparados para su uso para consumir en forma controlada los datos publicados y obtener información útil."
                 },
-            ]
+            ],
 
             
         };
     },
-   methods:{
+    methods:{
         navigate(path){
             if(path=="/"){
                 window.scrollTo({top:this.$refs.banner.clientHeight,behavior:"smooth"})
             }else{
                 this.$router.push(path)
             }
+        },
+        download_book(){
+            window.open(this.book_url,'_blank');
+        },
+        on_load(){
+            // console.log("LOADED COMPONENT")
+            this.loaded_components+=1;
+            if(this.total_components == this.loaded_components){
+                this.loading=false;
+            }
         }
-   },
+    },
    components: {
     PlatformsNav,
     FeatureBox,
@@ -495,7 +318,8 @@ export default {
     PlatformFrontPage,
     Separator,
     SimpleSection,
-    Button
+    Button,
+    Loader
 }
 }
 </script>
@@ -503,6 +327,21 @@ export default {
 
 <style scoped>
 /* __________________________ */
+.book{
+    box-shadow: 0px 5px 10px 2px rgba(0,0,0,.5);
+    transition: all ease 400ms;
+    height: 100%;
+    /* width: 100%; */
+}
+.book:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+.book__spine{
+    background: #242424;
+    width: 30px;
+    /* height: 100%; */
+}
 .front-page-v2{
     margin-top: 100px;
     /* background-color: rgba(0, 0,0, .1); */

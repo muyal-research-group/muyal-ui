@@ -1,7 +1,7 @@
 <template>
     <div :style="styleObject" class="pa--md flex flex-direction--column align-items--center feature-box">
         <div class="feature-box__image-wrapper">
-            <img class="feature-box__image" width="150" :src="$resolve_image(image)" :alt="title">
+            <img   class="feature-box__image" width="150" :src="image" :alt="title">
         </div>
         <div class="feature-box__title-wrapper">
             <h2 class="feature-box__title">{{ title }}</h2>

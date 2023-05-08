@@ -1,7 +1,7 @@
 <template>
     <div class="table">
       <header class="bg--nez-primary-color pa--xs table-header flex justify-content--space-between align-items--center">
-        <img :src="image" alt="" width="50">
+        <img @load="on_load" :src="image" alt="" width="50">
         <p class="text-color--white font-weight--bold  w-90">{{ title }} </p>
       </header>
       <div class="pa--md table-body">
@@ -19,6 +19,11 @@ export default {
         title:{type:String,default:"TALBE_TITLE"},
         image:{type:String,default:"/images/nez/multi-user.png"},
         items:{type:[String],default:[]}
+    },
+    methods:{
+      on_load(){
+        this.$emit("loading")
+      }
     }
 }
 </script>

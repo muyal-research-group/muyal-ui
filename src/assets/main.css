@@ -43,6 +43,10 @@
   position: relative;
   z-index: 1000;
 }
+.to_front-max{
+  position: relative;
+  z-index: 10000 !important;
+}
 
 
 /*  */
@@ -439,6 +443,17 @@ width: 100% !important;
   width: 45vw !important;
 }
 
+
+.loading-enter-active, .loading-leave-active {
+  transition: opacity 1s;
+}
+
+.loading-enter-to, .loading-leave {
+  opacity: 1;
+}
+.loading-enter, .loading-leave-to{
+  opacity: 0;
+}
 /* #app {
   max-width: 1280px;
   margin: 0 auto;

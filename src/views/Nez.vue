@@ -1,5 +1,8 @@
 <template>
 
+    <transition name="loading">
+        <Loader v-if="loading"/>
+    </transition>
     <!-- :color="color" 
     :dark_color="dark_color"  -->
   <Navbar 
@@ -11,7 +14,7 @@
     scrolled_bars_color="black"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
-
+    @loading="on_load"
   /> 
   <PlatformFrontPage 
     title ="Servicio de construcción de sistemas e-salud"
@@ -23,6 +26,7 @@
     :title_size="section_title_size"
     circle_color="nez-primary-dark-color"
     text_color="white"
+    @loading="on_load"
   >
   <template v-slot:footer>
           <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span>
@@ -49,11 +53,11 @@
           </div>
           <p class="badge__text"><b>Crea</b> tus bloques de construccion sin necesidad de programar aplicaciones extras.</p>
       </div>
-      <img src="/images/nez/nez-0.png" alt="" width="200">
+      <img @load="on_load" src="/images/nez/nez-0.png" alt="" width="200">
     </div>
 
     <div class="flex justify-content--center align-items--center">
-      <img src="/images/nez/nez-1.png" alt="" width="200">
+      <img @load="on_load" src="/images/nez/nez-1.png" alt="" width="200">
       <div class="badge-container flex ">
           <div class="flex justify-content--center align-items--center">
             <div class=" badge__index">2</div>
@@ -69,7 +73,7 @@
         </div>
         <p class="badge__text"><b>Despliega</b> tu servicio en la nube o tu computadora personal </p>
     </div>
-      <img src="/images/nez/nez-2.png" alt="" width="200">
+      <img @load="on_load" src="/images/nez/nez-2.png" alt="" width="200">
     </div>
 
   </div>
@@ -81,11 +85,12 @@
   <template v-slot:body>
     <div class="flex justify-content--center align-items--center flex-direction--column">
       <p class="mb--md">Sistemas de e-salud intra-institucionales</p>
-      <img src="/images/nez/nez-00.png" alt="" width="500">
+      <img @load="on_load" src="/images/nez/nez-00.png" alt="" width="500">
     </div>
   </template>
 </SimpleSection>
 <Separator type="nez"/>
+<!--  -->
 <SimpleSection title="" subtitle="Puedes compartir tu servicio de e-salud, y los datos generados, entre:">
 <template v-slot:body>
     <!-- <p></p> -->
@@ -99,6 +104,7 @@
           'Datos de múltiples fuentes (sensores, y bases de datos).',
           'Medición de signos vitales.',
       ]"
+      @loading="on_load"
     />
     <ListTable 
       title="Múltiples niveles de atención" 
@@ -108,26 +114,30 @@
           'Imagenología',
           'Métricas de pacientes',
       ]"
+      @loading="on_load"
     />
     </div>
 
 </template>
 </SimpleSection>
+<!--  -->
 <Separator type="nez"/>
 <SimpleSection title="" subtitle="">
   <template v-slot:body>
     <div class="flex justify-content--center align-items--center flex-direction--column">
       <p class="mb--md">Sistemas de e-salud inter-institucionales</p>
-      <img src="/images/nez/nez-01.png" alt="" width="500">
+      <img @load="on_load" src="/images/nez/nez-01.png" alt="" width="500">
     </div>
   </template>
 </SimpleSection>
+
 <Separator type="nez"/>
+
 <SimpleSection title="Sistema de manejo de catálogos de servicios" subtitle="">
   <template v-slot:body>
     <div class="flex justify-content--center align-items--center flex-direction--column">
       <p class="mb--md">Interfaces para el control y acceso al catálogo de sistemas de e-Salud.</p>
-      <img src="/images/nez/nez-10.png" alt="" width="500">
+      <img @load="on_load" src="/images/nez/nez-10.png" alt="" width="500">
     </div>
   </template>
 </SimpleSection>
@@ -143,6 +153,7 @@
       :items="[
           'Datos, aplicaciones, Sistemas de e-Salud.',
       ]"
+      @loading="on_load"
     />
     <ListTable 
       :class="{'mr--md':!is_mobile}"
@@ -151,6 +162,7 @@
       :items="[
           'Tus resultados con profesionales de la salud de tu organización o de otra organización',
       ]"
+      @loading="on_load"
     />
     <ListTable 
       title="Accede" 
@@ -158,6 +170,7 @@
       :items="[
           'A tus datos, aplicaciones y sistemas de e-Salud en cualquier lugar y momento.',
       ]"
+      @loading="on_load"
     />
     </div>
 
@@ -165,7 +178,7 @@
 </SimpleSection>
 
 <Separator type="nez"/>
-  <Footer/>
+  <Footer @loading="on_load"/>
 </template>
 
 <script>
@@ -187,6 +200,12 @@ import Separator from '../components/Separator.vue';
 import ListTable from '../components/ListTable.vue';
 
 export default {
+    
+    // mounted(){
+    //     this.$nextTick(()=>{
+    //         this.loading=false;
+    //     })
+    // },
     setup(){
         const breakpoints = useBreakpoints({
             mobile:[320,768], // max-width: 600px
@@ -201,6 +220,13 @@ export default {
     methods:{
         on_click(url){
           window.open(url,"_blank")
+        },
+        on_load(){
+          this.loaded_components += 1;
+          // console.log("LOAD_COMPNENTS",this.loaded_components)
+          if(this.loaded_components == 14){
+            this.loading=false;
+          }
         }
     },
     computed:{
@@ -220,6 +246,8 @@ export default {
     data() {
         return {
             // is_mobile:true,
+            loaded_components:0,
+            loading:true,
             autoplay:'5000',
             color: "nez-primary-color",
             dark_color:"nez-primary-dark-color",

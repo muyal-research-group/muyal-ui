@@ -1,4 +1,7 @@
 <template>
+  <transition name="loading">
+      <Loader v-if="loading"/>
+  </transition>
   <Navbar 
     :text_color_normal ="'black'" 
     :text_color_scrolled="'black'" 
@@ -8,6 +11,7 @@
     :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    @loading="on_load"
   /> 
   <PlatformFrontPage 
     title ="Caso de uso: Herramienta de apoyo para el diagnóstico de cáncer de hueso largo"
@@ -19,6 +23,7 @@
     :title_size="section_title_size"
     text_color="white"
     circle_color="use-case-primary-dark-color"
+    @loading="on_load"
   >
   <template v-slot:footer>
           <!-- <span :class="'flex justify-content--center mb--sm front-page__deliverable'">Entregable {{ index }}</span> -->
@@ -26,7 +31,7 @@
             Obtenido
           </div> -->
           
-          <div class="mb--md front-page__buttons flex-wrap">
+          <div :style="{'z-index':'100'}" class="mb--md front-page__buttons flex-wrap">
             <Button text="Estudios completos de 355 pacientes" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
             <Button text="Modelos con 3 diferentes redes neuronales" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
             <Button text="The Cancer Imaging Archive" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
@@ -42,12 +47,13 @@
 
 
 
-</PlatformFrontPage>
+  </PlatformFrontPage>
   <Separator type="use-case"/>
+  
   <SimpleSection title="Servicio de detección: Video informativo" subtitle=""> 
     <template v-slot:body>
       <div class="flex justify-content--center">
-        <iframe src="https://drive.google.com/file/d/19n-2p-6HQ6PLSqANAxJ5Cu0EnY8CKON8/preview" 
+        <iframe @load="on_load" src="https://drive.google.com/file/d/19n-2p-6HQ6PLSqANAxJ5Cu0EnY8CKON8/preview" 
         :width="is_mobile ?'100%' :'1000px'" 
         :height="video_height" allow="autoplay"></iframe>
       </div>
@@ -58,10 +64,10 @@
     <template v-slot:body>
       <div class="flex justify-content--center align-items--center flex-direction--column">
         <div class="mb--md image-grid">
-          <img src="/images/use-case/px1_90.png" alt="">
-          <img src="/images/use-case/px1_107.png" alt="">
-          <img src="/images/use-case/px2_104.png" alt="">
-          <img src="/images/use-case/px3_99.png" alt="">
+          <img @load="on_load" src="/images/use-case/px1_90.png" alt="">
+          <img @load="on_load" src="/images/use-case/px1_107.png" alt="">
+          <img @load="on_load" src="/images/use-case/px2_104.png" alt="">
+          <img @load="on_load" src="/images/use-case/px3_99.png" alt="">
         </div>
       <div :class="{'w-60':!is_mobile,'w-100':is_mobile}">
         <p class="text-align--justify">
@@ -77,8 +83,8 @@
     <template v-slot:body>
       <div class="flex justify-content--center align-items--center flex-direction--column">
         <div class="mb--md image-grid">
-          <img src="/images/use-case/tumor-0.png" alt="">
-          <img src="/images/use-case/tumor-1.png" alt="">
+          <img @load="on_load" src="/images/use-case/tumor-0.png" alt="">
+          <img @load="on_load" src="/images/use-case/tumor-1.png" alt="">
           <!-- <img src="/images/use-case/px2_104.png" alt=""> -->
           <!-- <img src="/images/use-case/px3_99.png" alt=""> -->
         </div>
@@ -97,7 +103,7 @@
     <template v-slot:body>
       <div class="flex justify-content--center align-items--center flex-direction--column">
         <!-- <div class="mb--md image-grid"> -->
-          <img src="/images/use-case/tumor_2.png" alt="" width="250">
+          <img @load="on_load" src="/images/use-case/tumor_2.png" alt="" width="250">
           <!-- <img src="/images/use-case/tumor-1.png" alt=""> -->
           <!-- <img src="/images/use-case/px2_104.png" alt=""> -->
           <!-- <img src="/images/use-case/px3_99.png" alt=""> -->
@@ -114,7 +120,7 @@
     </template>
   </SimpleSection>
   <Separator type="use-case"/>
-  <Footer/>
+  <Footer @loading="on_load"/>
 </template>
 
 <script>
@@ -144,6 +150,12 @@ export default {
             breakpoints
         };
     },
+
+    // mounted(){
+    //     this.$nextTick(()=>{
+    //         this.loading=false;
+    //     })
+    // },
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -168,8 +180,10 @@ export default {
         return this.is_mobile ? '350px':'500px'
       }
     },
-  data() {
-      return {
+    data() {
+        return {
+        loading:true,
+        loaded_components:0,
         autoplay:'5000',
         sections:{
           section_0:{
@@ -224,7 +238,16 @@ export default {
         color : "use-case-primary-color",
         dark_color : "use-case-primary-dark-color"
       };
-  },
+    },
+    methods:{
+      on_load(){
+        this.loaded_components+=1;
+        console.log("LOAD_COMPONENT",this.loaded_components)
+        if(this.loaded_components==11){
+          this.loading=false
+        }
+      }
+    }
 }
 </script>
 

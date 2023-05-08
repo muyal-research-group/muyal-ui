@@ -1,4 +1,8 @@
 <template>
+  <transition name="loading">
+      <Loader v-if="loading"/>
+  </transition>
+
   <Navbar 
     :text_color_normal ="'white'" 
     :text_color_scrolled="'black'" 
@@ -8,6 +12,7 @@
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    @loading="on_load"
   /> 
   <PlatformFrontPage 
     title ="Contacto"
@@ -18,6 +23,7 @@
     image_width = "200"
     :circle_color="dark_color"
     text_color="white"
+    @loading="on_load"
   >
   <template v-slot:footer>
   </template>
@@ -31,10 +37,10 @@
     'align-items--center':is_mobile,
     'justify-content--center':true,
   }">
-  <ContactCard :class="{'w-100':is_mobile}" v-for = "c in contacts"  :profile_photo ="c.profile_photo" :fullname = "c.fullname" :position="c.position" :company="c.company" :company_address="c.company_address" :phone_number="c.phone_number" :email = "c.email" :key ="c.email" :web="c.web"/>
+  <ContactCard @loading="on_load" :class="{'w-100':is_mobile}" v-for = "c in contacts"  :profile_photo ="c.profile_photo" :fullname = "c.fullname" :position="c.position" :company="c.company" :company_address="c.company_address" :phone_number="c.phone_number" :email = "c.email" :key ="c.email" :web="c.web"/>
 </div>
 <Separator type="contact"/>
-<Footer/>
+<Footer @loading="on_load"/>
 </template>
 
 <script>
@@ -72,8 +78,15 @@ export default {
       return this.breakpoints.mobile.matches || this.breakpoints.table.matches
     }
   },
+
+  // mounted(){
+  //     this.$nextTick(()=>{
+  //         this.loading=false;
+  //     })
+  // },
   data() {
       return {
+          loaded_components:0,
           contacts:[
             {
              profile_photo: "/images/contact/00.png",
@@ -98,9 +111,20 @@ export default {
           ],
           color :"contact-primary-color",
           dark_color :"contact-primary-dark-color",
+          loading:true
         // color : "bg--chimalli-primary-color"
       };
   },
+  methods:{
+
+      on_load(){
+        this.loaded_components+=1;
+        // console.log("LOAD_COMPONENT",this.loaded_components)
+        if(this.loaded_components==5){
+          this.loading=false
+        }
+      },
+  }
   // components:{}
 }
 </script>

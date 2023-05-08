@@ -6,6 +6,7 @@
             <router-link to="/"> 
                 <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true,'mr--xs':true}">
                     <img 
+                        @load="image_load"
                         :src="is_scrolled ? scrolled_logo : normal_logo" 
                         id="navbar__logo" 
                         :class="{'navbar__logo':true}"
@@ -14,6 +15,7 @@
             </router-link>
                 <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true, 'mr--xs':true}">
                     <img 
+                        @load="image_load"
                         src="/images/conacyt.png" 
                         id="navbar__logo" 
                         :class="{'navbar__logo':true}"
@@ -21,6 +23,7 @@
                 </div>
                 <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true}">
                     <img 
+                        @load="image_load"
                         src="/images/cinvestav.png" 
                         id="navbar__logo" 
                         :class="{'navbar__logo':true}"
@@ -70,6 +73,8 @@
                     <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true,'navbar__dropdown__list':true,'dropbtn':true}" @mouseleave="on_leave(1)">Recursos</span>
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}" @mouseleave="on_leave(1)">
                         <router-link to="/resources/publications"  >Publicaciones</router-link >
+                        <a @click="download_report" href="#">Reporte técnico final</a>
+                        <!-- <router-link to="/resources/publicati"  >Publicaciones</router-link > -->
                         <!-- <router-link to="/resources/workshops" >Talleres</router-link> -->
                     </div>
                 </li>
@@ -87,7 +92,7 @@
     
     </div>
         
-    <div v-if="is_mobile" class="navbar-wrapper">
+    <div v-if="is_mobile" class="navbar-wrapper" id="navbar-wrapper">
         <div :class ="{'overlay':true,'show':show_side_menu}" >
             <nav :class ="{'side_menu':true, 'show':show_side_menu}">
                     <ul class="side_menu__items">
@@ -137,8 +142,10 @@
                                     <span class="side_menu__dropdown-text">Recursos</span> 
                                     <img :class="{'rotate-180':dropdown_hide[1]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
-                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-50px':true }">
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
                                     <li class="side_menu__subitem"><router-link to="/resources/publications">Publicaciones</router-link></li>
+                                    <li @click="download_report" class="side_menu__subitem"><a href="#">Reporte técnico final</a></li>
+                                    
                                     <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
@@ -230,9 +237,28 @@ export default {
     //     Button
     // },
     data(){
-        return {is_scrolled:false,show_side_menu:false,dropdowns_hover:[false,false,false],hide_bar:[!true,!true,!true,],dropdown_hide:[true,true,true]}
+        return {
+            tech_report_url:"http://muyal.tamps.cinvestav.mx/resources/reporte_tecnico.pdf",
+            is_scrolled:false,
+            show_side_menu:false,
+            dropdowns_hover:[false,false,false],
+            hide_bar:[!true,!true,!true,],
+            dropdown_hide:[true,true,true],
+            total_images: 3,
+            loaded_images:0,
+            // loading:true
+        }
     },
     methods: {
+        image_load(){
+            this.loaded_images+=1;
+            if(this.total_images == this.loaded_images){
+                this.$emit("loading")
+            }
+        },
+        download_report(){
+            window.open(this.tech_report_url,"_blank")
+        },
         show_navbar: function () {
             this.is_scrolled = window.scrollY > 0
         }, 
@@ -240,25 +266,41 @@ export default {
             this.show_side_menu = !this.show_side_menu;
             this.hide_bar[1]=!this.hide_bar[1];
             let simple_sections = document.getElementsByClassName("simple_section")
+            let navbar_wrapper = document.getElementById("navbar-wrapper")
+            // let front_page_v2 = document.getElementsByClassName("front-page-v2__btns");
+             
+            console.log(navbar_wrapper)
             if(this.show_side_menu){
                 document.body.classList.add('prevent-scroll')
                 // let simple_sections = document.getElementsByClassName("simple_section")
-                for(let i =0; i<simple_sections.length;i++){
-                    let element = simple_sections.item(i)
-                    console.log(element)
-                    element.classList.remove("to_front")
-                    element.classList.add("to_back")
-                }
+                // for(let i =0; i<simple_sections.length;i++){
+                //     let element = simple_sections.item(i)
+                //     console.log(element)
+                //     element.classList.remove("to_front")
+                //     element.classList.add("to_back")
+                // }
+                navbar_wrapper.classList.add("to_front-max")
+                navbar_wrapper.classList.remove("to_back")
+                // let e = front_page_v2.item(0)
+                // e.remove("to_front")
+                // e.add("to_back")
+                
+
             }
             else{
               document.body.classList.remove('prevent-scroll')
                 setTimeout(()=>{
-                for(let i =0; i<simple_sections.length;i++){
-                    let element = simple_sections.item(i)
-                    console.log(element)
-                    element.classList.remove("to_back")
-                    element.classList.add("to_front")
-                }
+                    // for(let i =0; i<simple_sections.length;i++){
+                    //     let element = simple_sections.item(i)
+                    //     console.log(element)
+                    //     element.classList.remove("to_back")
+                    //     element.classList.add("to_front")
+                    // }
+                    navbar_wrapper.classList.add("to_back")
+                    navbar_wrapper.classList.remove("to_front-max")
+                    // let e = front_page_v2.item(0)
+                    // e.remove("to_back")
+                    // e.add("to_front")
 
                 },1000)
             }
@@ -270,7 +312,7 @@ export default {
         //  alert("HOVER ON: "+index)
         },
         on_leave(index){
-            console.log("LEAVE "+index)
+            // console.log("LEAVE "+index)
             this.dropdowns_hover[index] = false;
         },
         side_menu_dropdown(index){
@@ -327,19 +369,18 @@ export default {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 1000;
     overflow-y: hidden;
-    /* overflow-y: ; */
 }
 .overlay {
     background: rgba(0,0,0,0.5);
     position: absolute;
     top:0;
-    z-index: 1000;
+    /* z-index: 1000; */
 }
 .overlay.show{
     width: 100vw;
     height: 100vh;
+    /* z-index: 100000; */
 }
 .side_menu{
     position: absolute;

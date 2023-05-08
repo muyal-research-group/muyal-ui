@@ -3,7 +3,7 @@
 
         <div class="contact">
             <div class="flex justify-content--center contact__image-container">
-                <img class="contact__image" :src="profile_photo" :alt="email">
+                <img @load="$emit('loading')" class="contact__image" :src="profile_photo" :alt="email">
             </div> 
             <div class="flex flex-direction--column align-items--center contact__desc">
                 <span class="mt--md contact__fullname">{{ fullname }}</span>

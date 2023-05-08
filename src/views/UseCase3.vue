@@ -1,4 +1,7 @@
 <template>
+  <transition name="loading">
+      <Loader v-if="loading"/>
+  </transition>
   <Navbar 
     :text_color_normal ="'black'" 
     :text_color_scrolled="'black'" 
@@ -8,9 +11,11 @@
     :scrolled_bars_color="'black'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    @loading="on_load"
   /> 
+    <!-- title ="Caso de uso: Mortalidad por enfermedades" -->
   <PlatformFrontPage 
-    title ="Caso de uso: Mortalidad por enfermedades"
+    title ="Caso de uso: Estudio exploratorio sobre causas de mortalidad en Mexico de 2000-2020. Tasas ajustadas."
     image="/images/use-case/death.png"
     index="6"
     color ="use-case-primary-color"
@@ -19,9 +24,10 @@
     :title_size="section_title_size"
     text_color="white"
     circle_color="use-case-primary-dark-color"
+    @loading="on_load"
   >
   <template v-slot:footer>
-          <div class="mb--md front-page__buttons flex-wrap">
+          <div :style="{'z-index':'100'}" class="mb--md front-page__buttons flex-wrap">
             <Button text="Enfermedades categorizadas por el CIE-10" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
             <Button text="Temporal 2000 al 2020" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
             <Button text="Conteo del territorio mexicano por cada enfermedad" color="white" text_color="black" :dark_color="dark_color" btn_width="200" />
@@ -41,7 +47,7 @@
   </PlatformFrontPage>
   <Separator type="use-case"/>
 
-  <SimpleSection title ="Tasas de mortalidad (100k hab.) de cáncer hígado (C22)" subtitle="Para habitantes de 0 a 65+ años">
+  <SimpleSection title ="Ejemplo de tasas de mortalidad (100k hab.) de cáncer hígado (C22)" subtitle="Para habitantes de 0 a 65+ años">
     <template v-slot:body>
         <p class="text-align--justify">Sistema de procesamiento de grandes volúmenes de datos (ciencia de datos y big data) basado en algoritmos exploratorios para la creación de productos de información para soportar un servicio de búsqueda y recuperación de información geoespacial-temporal sobre mortalidad por causas de enfermedad. Este sistema produjo más de 21 mil productos incluyendo mapas geoespaciales, histogramas y regresiones logísticas de tasas ajustadas de mortalidad por un temporal de 20 años para cada tipo de enfermedad para los sexos registrados y para cada rango de edad, de tal suerte que los ciudadanos y la comunidad pueden consultar el impacto de cada enfermedad para su sexo, rango de edad y estado de residencia. Este sistema será utilizado por tres proyectos para la consulta de información y será transferido a la secretaría de salud del gobierno de Veracruz.</p>
           <div :class="{
@@ -53,33 +59,33 @@
 
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-              <iframe  @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_0-4.html"  title=""></iframe>
+              <iframe  @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_0-4.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-              <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}"  frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_5-14.html"  title=""></iframe>
+              <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}"  frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_5-14.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_15-24.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_15-24.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_25-44.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_25-44.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_45-64.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020_45-64.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020__65.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/Cancer_c22/mapa_cancer_c22_2000_2020__65.html"  title=""></iframe>
             </div>
           </div>
     </template>
   </SimpleSection>
   <Separator type="use-case"/>
-  <SimpleSection title="Tasa de mortalidad (100k hab.) de cancer gástrico" subtitle="Habitantes de 0 años a 65+ años">
+  <SimpleSection title="Ejemplo de tasa de mortalidad (100k hab.) de cancer gástrico" subtitle="Habitantes de 0 años a 65+ años">
     <template v-slot:body> 
           <div :class="{
             'wrap':true,
@@ -90,27 +96,27 @@
 
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-              <iframe  @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_00_04.html"  title=""></iframe>
+              <iframe  @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_00_04.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-              <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}"  frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_05_14.html"  title=""></iframe>
+              <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}"  frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_05_14.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_15_24.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_15_24.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_25_44.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_25_44.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_45_64.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_45_64.html"  title=""></iframe>
             </div>
             <div :class="{'iframe-wrapper':true,'load':!show_map}">
               <span class="loading-text" v-if="!show_map">Cargando...</span>
-            <iframe @load="on_load"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020__65.html"  title=""></iframe>
+            <iframe @load="on_load_map"  :class="{'iframe':true,'show':show_map,'load':!show_map}" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020__65.html"  title=""></iframe>
             </div>
             <!-- <iframe class="iframe" frameborder="no" scrolling="no" src="/html/mapa_cancer_gastrico_mortality/mapa_cancer_gastrico_2000_2020_general.html"  title=""></iframe> -->
           </div>
@@ -119,7 +125,7 @@
   
   
   <Separator type="use-case"/>
-  <Footer/>
+  <Footer @loading="on_load"/>
 </template>
 
 <script>
@@ -150,13 +156,26 @@ export default {
         };
     },
     methods:{
-      on_load(e){
-        console.log("FULL_LOAD ",e)
+
+      on_load(){
+        this.loaded_components+=1;
+        // console.log("LOAD_COMPONENT",this.loaded_components)
+        if(this.loaded_components==3){
+          this.loading=false
+        }
+      },
+      on_load_map(e){
+        // console.log("FULL_LOAD ",e)
         // setTimeout(()=>{
         this.show_map =true;
         // },10000)
       }
     },
+    // mounted(){
+    //     this.$nextTick(()=>{
+    //         this.loading=false;
+    //     })
+    // },
     computed:{
       is_mobile(){
         return this.breakpoints.mobile.matches || this.breakpoints.table.matches
@@ -173,7 +192,9 @@ export default {
     },
   data() {
       return {
+        loaded_components:0,
         autoplay:'5000',
+        loading:true,
         sections:{
           section_0:{
             title:"Detección de nódulos en pulmón y flujo para la detección asistida para cáncer de huesos largo",

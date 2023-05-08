@@ -14,7 +14,7 @@
           'front-page-logo':true,
           'flex-direction--column-reverse':invert
         }">
-        <img class="front-page__img" :src="image" :alt="title" :width="image_width">
+        <img @load="on_load" class="front-page__img" :src="image" :alt="title" :width="image_width">
         <div :class="{['w-'+title_width]:true}">
           <h1 :class="'text-size--'+title_size+' front-page__title text-color--'+text_color">{{ title }}</h1>
         </div>
@@ -49,11 +49,14 @@ export default {
       // "title","image","index","color","dark_color","title_size",'image_width', 'text_color','title_width','circle_color'
     },
     methods: {
-      on_click(btn_id){
-          return ()=>{
-
-          }
+      on_load(){
+        this.$emit("loading")
       }
+      // on_click(btn_id){
+      //     return ()=>{
+
+      //     }
+      // }
     },
     // computed:{
     //     image_url(){
@@ -74,8 +77,8 @@ export default {
   top:-370px;
   /* background: red; */
   /* height: 100vh; */
-  height: 100vh;
-  width: 120vw;
+  height: 700px;
+  width: 100%;
   z-index: 1;
 }
 .front-page-wrapper{

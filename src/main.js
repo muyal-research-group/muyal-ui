@@ -13,6 +13,7 @@ import ContactCard from "./components/ContactCard.vue";
 import Separator from './components/Separator.vue';
 import SimpleSection from './components/SimpleSection.vue';
 import ListTable from './components/ListTable.vue'
+import Loader from './components/Loader.vue'
 
 import App from './App.vue';
 import router from './router';
@@ -54,6 +55,6 @@ app.component("ContactCard",ContactCard);
 app.component("Separator",Separator);
 app.component("SimpleSection",SimpleSection);
 app.component("ListTable",ListTable)
-// app.component("Carrousel",Carousel)
+app.component("Loader",Loader)
 
 app.mount('#app')

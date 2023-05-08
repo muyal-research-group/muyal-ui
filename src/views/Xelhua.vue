@@ -1,4 +1,7 @@
 <template>
+  <transition name="loading">
+      <Loader v-if="loading"/>
+  </transition>
   <Navbar 
     :text_color_normal ="'white'" 
     :text_color_scrolled="'black'" 
@@ -8,6 +11,7 @@
     :scrolled_bars_color="'white'"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    @loading="on_load"
   /> 
   <PlatformFrontPage 
     title ="Sistema agnóstico en la nube para la construcción de soluciones de big data basada en el diseño de servicios de ciencia de datos de alta disponibilidad y tolerante a fallos"
@@ -19,7 +23,7 @@
     text_color ="white"
     image_width = "700"
     circle_color ="xelhua-primary-dark-color"
-    
+    @loading="on_load"
   >
   <template v-slot:footer>
 
@@ -38,7 +42,7 @@
   <SimpleSection title="Servicios de analitica de datos de la salud" subtitle="">
     <template v-slot:body>
       <div class="flex justify-content--center">
-          <img src="/images/xelhua/xelhua-0.png" alt="" width="800">
+          <img @load="on_load" src="/images/xelhua/xelhua-0.png" alt="" width="800">
       </div>
     </template>
   </SimpleSection>
@@ -46,7 +50,7 @@
   <SimpleSection title="Características de Xelhua" subtitle="">
     <template v-slot:body>
       <div class="flex justify-content--center align-items--center flex-direction--column">
-          <img v-for="i in [0,1,2,3]" :src="`/images/xelhua/xel-${i}.png`" alt="" width="500" class="mb--md">
+          <img @load="on_load" v-for="i in [0,1,2,3]" :src="`/images/xelhua/xel-${i}.png`" alt="" width="500" class="mb--md">
       </div>
     </template>
   </SimpleSection>
@@ -109,6 +113,8 @@ export default {
   },
   data() {
       return {
+        loading:true,
+        loaded_components:0,
         autoplay:'5000',
         sections:{
             section_0:{
@@ -230,8 +236,20 @@ export default {
   methods:{
       on_click(url){
         window.open(url,"_blank")
+      },
+      on_load(){
+        this.loaded_components+=1;
+        // console.log("LOAD_COMPONENT",this.loaded_components)
+        if(this.loaded_components==7){
+          this.loading=false
+        }
       }
-  }
+  },
+  // mounted(){
+  //     this.$nextTick(()=>{
+  //         this.loading=false;
+  //     })
+  // },
 }
 </script>
 
