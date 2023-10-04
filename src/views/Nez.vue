@@ -14,6 +14,8 @@
     scrolled_bars_color="black"
     :scrolled_logo= "'/images/muyal/muyal-black.png'"
     :normal_logo = "'/images/muyal/muyal-black.png'"
+    dropdown_arrow_color="white"
+    dropdown_arrow_color_hover="black"
     @loading="on_load"
   /> 
   <PlatformFrontPage 

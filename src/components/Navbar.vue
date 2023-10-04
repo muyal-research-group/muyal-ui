@@ -16,7 +16,7 @@
                 <div :class="{'bg--light-grey-1':true,'pa--xs':true,'circle':true,'navbar__logo-wrapper':true, 'mr--xs':true}">
                     <img 
                         @load="image_load"
-                        src="/images/conacyt.png" 
+                        src="/images/conahcyt.png" 
                         id="navbar__logo" 
                         :class="{'navbar__logo':true}"
                     >
@@ -29,8 +29,6 @@
                         :class="{'navbar__logo':true}"
                     >
                 </div>
-            <!-- <div :class="{'circle':true, ['bg--'+]:true, 'pa--xs':true}">
-            </div> -->
         </div>
 
         <div :class="{'navbar__items':true,'hide':is_mobile}">
@@ -41,7 +39,28 @@
                     </router-link>
                 </li>
                 <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[0]}" @mouseover="on_hover(0)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(0)">Servicios</span>
+                    <!-- <div :class="{'flex':true}"> -->
+
+                        <div :class="{'flex':true,'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(0)">
+                            <span :class="{'mr--xs':true}">Servicios</span>
+                            <img 
+                                :class="{'rotate-180':!dropdowns_hover[0]}" 
+                                :src="!dropdowns_hover[0] ? dropdown_arrow_src:dropdown_arrow_hover_src" 
+                                alt="DOWN"
+                                width="12" 
+                            >
+                        </div>
+                        <!-- <div :class="{'flex':true,'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(0)">
+                            <span :class="{'mr--xs':true}"> Servicios</span>
+                            
+                            <img 
+                                :class="{'rotate-180':!dropdowns_hover[0]}" 
+                                :src="dropdowns_hover[0] ? '/images/icons/arrow-down_black.svg' : '/images/icons/arrow-down_white.svg'" 
+                                alt="DOWN"
+                                width="12" 
+                            >
+                        </div> -->
+                    <!-- </div> -->
                     <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[0], }"  @mouseleave="on_leave(0)">
                         <router-link to="/services/nez">Nez</router-link>
                         <router-link to="/services/xelhua">Xelhua</router-link>
@@ -52,9 +71,22 @@
                 </li>
                 
                 
-                <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[2]}" @mouseover="on_hover(2)" >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(2)">Casos de uso</span>
-                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[2], }"  @mouseleave="on_leave(2)">
+                <li :class="{'navbar__dropdown':true,'show':dropdowns_hover[1]}" @mouseover="on_hover(1)" >
+                    
+                        <div :class="{'flex':true,'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(1)">
+                            <span :class="{'mr--xs':true}">Casos de uso</span>
+                            <img 
+                                :class="{'rotate-180':!dropdowns_hover[1]}" 
+                                :src="!dropdowns_hover[1] ? dropdown_arrow_src:dropdown_arrow_hover_src" 
+                                alt="DOWN"
+                                width="12" 
+                            >
+                        </div>
+                    <!-- <div :class="{'flex':true}"> -->
+                        <!-- <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(2)">Casos de uso</span>
+                        <img :class="{'rotate-180':!dropdowns_hover[2]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="12" > -->
+                    <!-- </div> -->
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1], }"  @mouseleave="on_leave(1)">
                         <router-link to="/use-case/cancer"> Caso uso 1 (HADCHL)</router-link>
                         <router-link to="/use-case/diabetes"> Caso uso 2 (Diabetes)</router-link>
                         <router-link to="/use-case/mortality"> Caso uso 3 (Mortalidad)</router-link>
@@ -64,20 +96,42 @@
                         <!-- <router-link to="/services/alwa">Alwa</router-link> -->
                     </div>
                 </li>
-                <!-- <li :class="{'navbar__item':true,[text_color]:true}"> 
-                    <router-link class="navbar__link" to="/use-case">
-                        <span :class="{[text_color]:true}">Caso de uso</span>
-                    </router-link>
-                </li> -->
-                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(1)"   >
-                    <span :class="{'navbar__item':true,'navbar__link':true,[text_color]:true,'navbar__dropdown__list':true,'dropbtn':true}" @mouseleave="on_leave(1)">Recursos</span>
-                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[1]}" @mouseleave="on_leave(1)">
-                        <router-link to="/resources/publications"  >Publicaciones</router-link >
-                        <a @click="download_report" href="#">Reporte técnico final</a>
-                        <!-- <router-link to="/resources/publicati"  >Publicaciones</router-link > -->
-                        <!-- <router-link to="/resources/workshops" >Talleres</router-link> -->
+                
+                
+                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(2)"   >
+
+                        <div :class="{'flex':true,'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(2)">
+                            <span :class="{'mr--xs':true}">Observatorios</span>
+                            <img 
+                                :class="{'rotate-180':!dropdowns_hover[2]}" 
+                                :src="!dropdowns_hover[2] ? dropdown_arrow_src:dropdown_arrow_hover_src" 
+                                alt="DOWN"
+                                width="12" 
+                            >
+                        </div>
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[2]}" @mouseleave="on_leave(2)">
+                        <router-link to="/oca">OCA</router-link>
+                        <router-link to="/oca-veracruz">Veracruz</router-link>
                     </div>
                 </li>
+                
+                <li :class="{'navbar__dropdown':true, }" @mouseover="on_hover(3)"   >
+
+                    <div :class="{'flex':true,'navbar__item':true,'navbar__link':true,[text_color]:true ,'navbar__dropdown__list':true,'dropbtn':true}"  @mouseleave="on_leave(3)">
+                        <span :class="{'mr--xs':true}">Recursos</span>
+                        <img 
+                            :class="{'rotate-180':!dropdowns_hover[3]}" 
+                            :src="!dropdowns_hover[3] ? dropdown_arrow_src:dropdown_arrow_hover_src" 
+                            alt="DOWN"
+                            width="12" 
+                        >
+                    </div>
+                    <div :class="{'navbar__dropdown-content':true, 'show':dropdowns_hover[3]}" @mouseleave="on_leave(3)">
+                        <router-link to="/resources/publications"  >Publicaciones</router-link >
+                        <a @click="download_report" href="#">Reporte técnico final</a>
+                    </div>
+                </li>
+
                 <li :class="{'navbar__item':true,[text_color]:true}"> 
                     <router-link class="navbar__link" to="/contact">
                         <span :class="{[text_color]:true}">Contacto</span>
@@ -92,25 +146,27 @@
     
     </div>
         
-    <div v-if="is_mobile" class="navbar-wrapper" id="navbar-wrapper">
+    <div v-if="is_mobile" class="navbar-wrapper to_back" id="navbar-wrapper">
         <div :class ="{'overlay':true,'show':show_side_menu}" >
             <nav :class ="{'side_menu':true, 'show':show_side_menu}">
                     <ul class="side_menu__items">
                         <li class="side_menu__item">
-                            <router-link to="/">Inicio</router-link>
+                            <router-link class="side_menu__item--link" to="/">Inicio</router-link>
+                            <!-- <v-tab to="/s" class="side_menu__item--link">Inicio</v-tab> -->
                         </li>
                         <li class="side_menu__item">
                             <div class="side_menu__dropdown">
                                 <div class="flex justify-content--space-between"  @click="side_menu_dropdown(0)">
                                     <span class="side_menu__dropdown-text">Servicios</span> 
+                                    
                                     <img :class="{'rotate-180':dropdown_hide[0]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[0], 'dropdown-h-150px':true }">
                                     <li class="side_menu__subitem">
-                                        <router-link to="/services/nez">Nez</router-link>
+                                        <router-link class="side_menu__item--link" to="/services/nez">Nez</router-link>
                                     </li>
-                                    <li class="side_menu__subitem"><router-link to="/services/xelhua">Xelhua</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/services/chimalli">Chimalli</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/services/xelhua">Xelhua</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/services/chimalli">Chimalli</router-link></li>
                                     <!-- <li class="side_menu__subitem"><router-link to="/services/painal">Painal</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/services/alwa">Alwa</router-link></li> -->
                                 </ul>
@@ -125,15 +181,34 @@
                                     <img :class="{'rotate-180':dropdown_hide[2]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[2], 'dropdown-h-150px':true }">
-                                    <li class="side_menu__subitem"><router-link to="/use-case/cancer">Caso uso 1 (HADCHL)</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/use-case/diabetes">Caso uso 2 (Diabetes)</router-link></li>
-                                    <li class="side_menu__subitem"><router-link to="/use-case/mortality">Caso uso 3 (Mortalidad)</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link"  to="/use-case/cancer">Caso uso 1 (HADCHL)</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/use-case/diabetes">Caso uso 2 (Diabetes)</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/use-case/mortality">Caso uso 3 (Mortalidad)</router-link></li>
                                     <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
                                 </ul>
                             </div>
 
+                        </li>
+                        <li class="side_menu__item">
+                            <div class="side_menu__dropdown ">
+                                <div class="flex justify-content--space-between"  @click="side_menu_dropdown(3)">
+                                    <span class="side_menu__dropdown-text">Observatorios</span> 
+                                    <img :class="{'rotate-180':dropdown_hide[3]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
+                                </div>
+                                <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[3], 'dropdown-h-150px':true }">
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link"  to="/oca">OCA</router-link></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/oca-veracruz">Veracruz</router-link></li>
+                                    <!-- <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/use-case/mortality">Caso uso 3 (Mortalidad)</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
+                                    <!-- <li class="side_menu__subitem"><router-link to="/alwa">Alwa</router-link></li> -->
+                                </ul>
+                            </div>
+                            <!-- <div class="flex justify-content--space-between">
+                                <router-link class="side_menu__item--link" to="/oca">OCA</router-link> <span class="tag tag--new">New!</span>
+                            </div> -->
                         </li>
 
                         <li class="side_menu__item">
@@ -143,8 +218,8 @@
                                     <img :class="{'rotate-180':dropdown_hide[1]}" src="/images/icons/arrow-down.svg" alt="DOWN" width="15" >
                                 </div>
                                 <ul :class="{'side_menu__dropdown-items':true ,'hide':dropdown_hide[1], 'dropdown-h-100px':true }">
-                                    <li class="side_menu__subitem"><router-link to="/resources/publications">Publicaciones</router-link></li>
-                                    <li @click="download_report" class="side_menu__subitem"><a href="#">Reporte técnico final</a></li>
+                                    <li class="side_menu__subitem"><router-link class="side_menu__item--link" to="/resources/publications">Publicaciones</router-link></li>
+                                    <li @click="download_report" class="side_menu__subitem"><a  class="side_menu__item--link" @click="download_report" href="#">Reporte técnico final</a></li>
                                     
                                     <!-- <li class="side_menu__subitem"><router-link to="/resources/workshops">Talleres</router-link></li> -->
                                     <!-- <li class="side_menu__subitem"><router-link to="/xelhua">Xelhua</router-link></li> -->
@@ -156,7 +231,7 @@
                         <!-- <li class="side_menu__item">
                             <router-link to="/resources">Recursos</router-link>
                         </li> -->
-                        <li class="side_menu__item"><router-link to="/contact">Contacto</router-link></li>
+                        <li class="side_menu__item"><router-link class="side_menu__item--link" to="/contact">Contacto</router-link></li>
                     </ul>
             </nav>
         </div>
@@ -205,6 +280,14 @@ export default {
         circle_color:{
             type:String,
             default: "light-grey-1"
+        },
+        dropdown_arrow_color:{
+            type: String,
+            default:"black"
+        },
+        dropdown_arrow_color_hover:{
+            type: String,
+            default:"black"
         }
     },
   setup(){
@@ -222,6 +305,12 @@ export default {
     _background_color(){
         return 'bg--' + (!this.is_scrolled ? this.background_color : this.scrolled_background_color)
         // "bg--"+this.color : "bg--white"
+    },
+    dropdown_arrow_src(){
+        return `/images/icons/arrow-down_${this.dropdown_arrow_color}.svg`
+    },
+    dropdown_arrow_hover_src(){
+        return `/images/icons/arrow-down_${this.dropdown_arrow_color_hover}.svg`
     },
     _bars_color(){
         return 'bg--'+(!this.is_scrolled ? this.bars_color : this.scrolled_bars_color)
@@ -242,10 +331,11 @@ export default {
             is_scrolled:false,
             show_side_menu:false,
             dropdowns_hover:[false,false,false],
-            hide_bar:[!true,!true,!true,],
-            dropdown_hide:[true,true,true],
+            hide_bar:[!true,!true,!true],
+            dropdown_hide:[true,true,true,true],
             total_images: 3,
             loaded_images:0,
+            // _dropdown_arrow_color:'black' 
             // loading:true
         }
     },
@@ -309,10 +399,10 @@ export default {
         },
         on_hover(index){
             this.dropdowns_hover[index] = true;
-        //  alert("HOVER ON: "+index)
+            // this._dropdown_arrow_color   = this.dropdown_arrow_color_hover
         },
         on_leave(index){
-            // console.log("LEAVE "+index)
+            // this._dropdown_arrow_color   = this.dropdown_arrow_color
             this.dropdowns_hover[index] = false;
         },
         side_menu_dropdown(index){
@@ -328,6 +418,23 @@ export default {
 </script>
 
 <style scoped>
+.tag{
+    background:rgb(207, 207, 207);
+    padding: 4px;
+    /* width: 40px; */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag--new{
+    background-color: rgb(237, 36, 36) !important;
+    color: white !important;
+    font-size: 10px;
+    font-weight: bold;
+    width: 40px;
+    height: 20px;
+}
 .side_menu__dropdown-items{
     list-style: none;
     padding:15px;
@@ -404,7 +511,16 @@ export default {
     padding:15px;
     /* background: red; */
 }
+.side_menu__item--link{
+    /* background: red;  */
+    display: block; 
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
 .side_menu__item{
+    /* background: red; */
+    cursor: pointer;
     padding: 15px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     text-decoration: none;
@@ -497,6 +613,10 @@ export default {
     display: flex;
     color:white;
     /* background: red; */
+}
+.navbar__item--highlight {
+    /* background: red !important; */
+    border: 1px dashed gray;
 }
 .navbar__item {
     display: block;

@@ -65,6 +65,21 @@ const router = createRouter({
       name: 'use-case-3',
       component: () => import('../views/UseCase3.vue')
     },
+    {
+      path: '/oca',
+      name: 'oca',
+      component: () => import('../views/ocas/OCA.vue')
+    },
+    {
+      path: '/oca-veracruz',
+      name: 'oca-veracruz',
+      component: () => import('../views/ocas/OCA_veracruz.vue')
+    },
+    {
+      path:'/observatories',
+      name:"observatory",
+      component: ()=>import("../views/observatories/Index.vue")
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top

@@ -93,7 +93,7 @@
                         </p>
                     </div>
                     <div class="w-50">
-                        <Button @on_click="download_book" text="Descargar aquí" hover_color="#454545" />
+                        <Button   @on_click="download_book" text="Descargar aquí" hover_color="#454545" />
                     </div>
                 </div>
                 <div :class="{'w-40':!is_mobile,'w-100':is_mobile,'flex':true,'justify-content--center':true,'align-items--center':true}">

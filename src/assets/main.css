@@ -37,7 +37,7 @@
 }
 .to_back{
   position: relative;
-  z-index: 1;
+  z-index: -100;
 }
 .to_front{
   position: relative;
@@ -402,16 +402,16 @@ width: 100% !important;
 }
 
 .justify-content--center {
-  justify-content: center;
-}
+  justify-content: center !important;
+ }
 .justify-content--space-between {
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 .justify-content--space-around {
-  justify-content: space-around;
+  justify-content: space-around !important;
 }
 .justify-content--space-evenly{
-  justify-content: space-evenly;
+  justify-content: space-evenly !important
 }
 .align-items--center{
   align-items: center;
@@ -423,7 +423,6 @@ width: 100% !important;
 .align-items--start{
   align-items: flex-start;
 }
-
 .align-items--stretch{
   align-items: stretch;
 }

@@ -78,7 +78,7 @@ export default {
   /* background: red; */
   /* height: 100vh; */
   height: 700px;
-  width: 100%;
+  width: 120%;
   z-index: 1;
 }
 .front-page-wrapper{
