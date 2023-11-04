@@ -76,7 +76,7 @@ const router = createRouter({
       component: () => import('../views/ocas/OCA_veracruz.vue')
     },
     {
-      path:'/observatories',
+      path:'/observatories/:observatory_id',
       name:"observatory",
       component: ()=>import("../views/observatories/Index.vue")
     }

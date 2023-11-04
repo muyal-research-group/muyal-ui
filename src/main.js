@@ -23,6 +23,11 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
+import {
+  VDataTable,
+  VDataTableServer,
+  VDataTableVirtual,
+} from "vuetify/labs/VDataTable";
 
 import App from './App.vue';
 import router from './router';
@@ -34,7 +39,7 @@ const light_theme = {
   colors: {
     background: '#fff',
     surface: '#FFFFFF',
-    primary: '#6200EE',
+    primary: '#1E88E5',
     'primary-darken-1': '#3700B3',
     secondary: '#03DAC6',
     'secondary-darken-1': '#018786',
@@ -47,7 +52,12 @@ const light_theme = {
 const app = createApp(App);
 
 const vuetify = createVuetify({
-  components,
+  components:{
+     VDataTable,
+    VDataTableServer,
+    VDataTableVirtual,
+    ...components
+  },
   directives,
   // defaultTheme: "light_theme"
   theme:{
