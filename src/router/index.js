@@ -76,9 +76,19 @@ const router = createRouter({
       component: () => import('../views/ocas/OCA_veracruz.vue')
     },
     {
+      path:'/observatories/',
+      name:"observatory-index",
+      component: ()=>import("../views/observatories/Index.vue")
+    },
+    {
+      path:'/observatories/language',
+      name:"observatory_lang",
+      component: ()=>import("../views/observatories/Searcher.vue")
+    },
+    {
       path:'/observatories/:observatory_id',
       name:"observatory",
-      component: ()=>import("../views/observatories/Index.vue")
+      component: ()=>import("../views/observatories/ObservatoryDetail.vue")
     }
   ],
   scrollBehavior(to, from, savedPosition) {

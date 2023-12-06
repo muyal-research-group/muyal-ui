@@ -1,468 +1,418 @@
 <template>
  <v-layout class="rounded rounded-md">
     <!-- <v-app-bar title="Observatorios"></v-app-bar> -->
-    <v-app-bar :elevation="1" :title="observatory['title']">
+    
+
+
+    <v-app-bar :elevation="9" title="Observatorios">
      <template v-slot:prepend>
       <router-link to="/">
         <v-btn icon="mdi-arrow-left"></v-btn>
       </router-link>
     </template>
     <template v-slot:append>
-        <v-btn icon="mdi-magnify" @click="on_search_click"></v-btn>
+        <!-- <v-btn icon="mdi-heart"></v-btn> -->
 
-        <!-- <v-btn icon="mdi-magnify"></v-btn> -->
+        <div class="mr-3">
+        <v-btn class="mr-3" icon="mdi-account"></v-btn>
+          <span >
+            {{ user.first_name }} {{ user.last_name }}
+          </span>
+        </div>
+        <v-btn v-show="!auth"  @click="on_login_click">Iniciar sesión</v-btn>
+        <v-btn v-show="auth" @click="on_logout_click" icon="mdi-logout"></v-btn>
 
         <!-- <v-btn icon="mdi-dots-vertical"></v-btn> -->
     </template>
     </v-app-bar>
 
-    <v-navigation-drawer 
-    width="400" 
-    v-model="left_drawer"
-    >
-    <v-toolbar title="Filtros de búsqueda">
-          <v-btn @click="on_left_drawer_click" icon>
-            <v-icon>mdi-close</v-icon>
-        </v-btn>
-    </v-toolbar>
-      <v-list v-if="!is_loading">
-        
-        <v-list-item v-for="(catalog,index) in catalogs" :title="catalog['name']">
+
+    <v-main class="d-flex" style="max-height:100vh; min-height: 300px;">
             
-            <v-select
-                v-if="!manual_search"
-                v-model="selectedValues[index]"
-                clearable
-                chips
-                :menu-props="{ eager: true }"
-                label="Selecciona un valor"
-                :items="catalog['values']"
-                return-object
+            <v-container class="" v-if="observatories.length >0">
+              <v-row
+                v-for="observatories in observatory_rows" 
+                class="mb-6"
+              >
+      <v-col
+            v-for="observatory in observatories"
+            md="4"
+      >
+        <v-sheet class="pa-2 ma-2">
+          <v-card
+            :disabled="!auth"
+            class="mx-auto"
+            max-width="400"
+           >
+            <v-img
+          :src="observatory['image_url']"
+            height="200px"
+            cover
+            @click="on_observatory_click(observatory)"
+            ></v-img>
+
+            <v-card-title
+            @click="on_observatory_click(observatory)"
             >
-        </v-select>
-            <v-autocomplete
-            v-else
-            label="Escribe un valor"
-            v-model="selectedValues[index]"
-            :items="catalog.values"
-                return-object
-            ></v-autocomplete>
-            <!-- <template v-slot:item="{ item }">
-                {{ item.text }}
-            </template> -->
-        </v-list-item>
-        <v-checkbox label="Búsqueda manual" v-model="manual_search"></v-checkbox>
-        <v-list-item>
-            <v-btn @click="find_products_on_click" class="full-width" variant="flat" color="primary" size="large">Buscar</v-btn>
-        </v-list-item>
-        <!-- 
-        <v-list-item title="Año">
-            <v-select
-                clearable
-                chips
-                label="Select"
-                :items="[
-                    '2023',
-                    '2022',
-                    '2021',
-                    ]"
-            ></v-select>
-        </v-list-item>
-        <v-list-item title="Estado">
-            <v-select
-                clearable
-                chips
-                label="Select"
-                :items="[
-                    'Tamaulipas',
-                    'Estado 2',
-                    'Estado 3',
-                    ]"
-            ></v-select>
-        </v-list-item> -->
-      </v-list>
-      <div v-else>
-         <v-progress-linear
-      indeterminate
-      color="primary-darken-2"
-    ></v-progress-linear>
-      </div>
-    </v-navigation-drawer>
+              {{ observatory["title"] }}  
+            </v-card-title>
 
-    <v-main class="d-flex align-center justify-center" style="max-height:1000px; min-height: 300px;">
-    <!-- <v-main class="d-flex align-center justify-center" style="max-height:1000px; min-height: 300px;"> -->
-        
-        <v-carousel  
-                v-if="should_render_products"
-                v-model="current_product_index"
-                @change="on_carousel_change"
-                height="700px"
-                show-arrows="hover"
-                hide-delimiters
+            <v-card-subtitle>
+            {{ observatory["levels"]  }} {{ observatory["levels_desc"] }}
+            <!-- 1,000 miles of wonder -->
+            </v-card-subtitle>
+
+                <v-card-actions>
+
+          <v-rating
+    hover
+    :length="5"
+    :size="32"
+    active-color="primary"
+  /> 
+                <!-- <v-btn
+                    color="orange-lighten-2"
+                    variant="text"
                 >
-                    <v-carousel-item
-                    v-for="product in products"
-                    cover
-                    >
+                    Explore
+                </v-btn> -->
 
-                    <div class="d-flex justify-center iframe-full">
-                        <iframe 
-                        class="iframe-full"
-                        :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${product.key}`"
-                        frameborder="0"
-                        allowfullscreen
-                        ></iframe>
-                    </div>
+                <v-spacer></v-spacer>
 
-                    </v-carousel-item>
-        </v-carousel>
-        
-        <div
-            v-else-if="show_list && products.length>0"
-        >
-        
-        <v-data-table
-            v-if="!main_is_loading"
-            :headers="headers"
-            :items="products"
-        >
-            <template v-slot:item.actions="{ item }">
+                <v-btn
+                    :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="on_description_click"
+                ></v-btn>
+                </v-card-actions>
 
-                <v-icon
-                    size="small"
-                    class="me-2"
-                    @click="on_show_product_click(item)"
-                >
-                    mdi-eye
-                </v-icon>
-                <v-icon
-                    size="small"
-                    class="me-2"
-                    @click="on_download_product_click(item)"
-                >
-                    mdi-cloud-download
-                </v-icon>
-            </template>
-        </v-data-table>
-        <div v-else>
-            <span>Buscando productos...</span>
-            <v-progress-linear
-        indeterminate
-        color="primary-darken-2"
-        ></v-progress-linear>
-        </div>
-        
-        <v-dialog 
-            v-model="dialog"
-            fullscreen
-        >
-        <v-card>
-            <v-card-text>
-                <!-- Texto -->
-                    <div class="d-flex justify-center iframe-full">
-                        <iframe 
-                        class="iframe-full"
-                        :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${current_product.key}`"
-                        frameborder="0"
-                        allowfullscreen
-                        ></iframe>
-                    </div>
+                <v-expand-transition>
+                <div v-show="show">
+                    <v-divider></v-divider>
 
-            </v-card-text>
-            <v-card-actions >
-                <v-btn 
-                @click="dialog=false" 
-                block 
-                        variant="flat"
-
-                color="red"
-                prepend-icon="mdi-close-octagon-outline"
-                >
-                       <template v-slot:prepend>
-                        <v-icon color="error"></v-icon>
-                    </template>
-
-                    Cerrar
-                </v-btn>
-            </v-card-actions>
-        </v-card>
-
-        </v-dialog>
-        </div>
-        
-        <div class="d-flex flex-column justify-center align-center" style="height:600px" v-else>
-            <img src="/images/no_products.png" alt="NO_PRODUCTS" width="200">
-            <span>Ningún producto que coincida con su consulta.</span>
-        </div>
-        <!-- 
-            <v-list 
-        lines="two"
-            v-else-if="show_list && products.length>0"
-        >
-      <v-list-subheader inset>Productos</v-list-subheader>
-
-        <v-list-item
-            v-for="(product,index) in products"
-            :key="product.product_name"
-            :title="product.product_name"
-            :subtitle="product.description"
-        >
-            <template v-slot:prepend>
-            <v-avatar color="grey-lighten-1">
-                <v-icon color="white">
-                    {{ get_icon(product.kind) }}
-                </v-icon>
-            </v-avatar>
-            </template>
-
-            <template v-slot:append>
-            <v-btn
-                color="grey-lighten-1"
-                icon="mdi-cloud-download"
-                variant="text"
-                @click="on_download_product_click"
-            ></v-btn>
-            <v-btn
-                color="grey-lighten-1"
-                icon="mdi-eye"
-                variant="text"
-                @click="on_show_product_click(index)"
-            >
-        </v-btn>
-                <v-dialog
-                    v-model="dialogs[index]"
-                    width="auto"
-                >
-                    <v-card>
                     <v-card-text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      {{ observatory["description"] }}
                     </v-card-text>
-                    <v-card-actions>
-                        <v-btn color="primary" block @click="dialogs[index]=false">Close Dialog</v-btn>
-                    </v-card-actions>
-                    </v-card>
-                </v-dialog>
-            </template>
-        </v-list-item>
-        </v-list> -->
-    </v-main>
-    <v-navigation-drawer location="right"
-        width="400" 
-        v-model="right_drawer"
+                </div>
+                </v-expand-transition>
+          </v-card>
+
+    </v-sheet>
+      </v-col>
+    </v-row>
+
+  </v-container>
+  <v-container v-else class="d-flex flex-column align-center justify-center" style="height:600px;">
+    <!-- <v-row> -->
+    <div class="mb-3">
+      <v-img src="/images/error-404.png" alt="NOT_FOUND" cover :width="100"></v-img>
+    </div>
+    <div>
+      <p class="not-found-text">No hay ningún observatorio.</p>
+    </div>
+    <!-- </v-row> -->
+
+  </v-container>
+    <v-dialog
+        v-model="xolo_dialog"
+          fullscreen
+          :scrim="false"
+          transition="dialog-bottom-transition"
     >
-    <v-toolbar title="Descripción del producto">
-          <v-btn @click="on_right_drawer_click" icon>
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-    </v-toolbar>
-      <v-list>
-        <v-list-item title="">
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+        <v-card>
+            <v-toolbar
+              dark
+              color="black"
+            >
+          <v-btn
+            icon
+            dark
+            @click="xolo_dialog = false"
+          >
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Xolo: Autenticación por contraseña</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+          </v-toolbar-items>
+        </v-toolbar>
+
+        <v-list
+          lines="two"
+          subheader
+        >
+        </v-list>
+        <v-container
+        ma-0 pa-0 
+        fluid
+        style="width:600px;height:90vh"
+        >
+        <div
+        style="height: 400px;">
+        <p>Ingrese sus credenciales para continuar</p>
+        <v-text-field
+          v-model="username"
+          color="black"
+          label="Nombre de usuario"
+          variant="underlined"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="password"
+          color="black"
+          type="password"
+          label="Contraseña"
+          variant="underlined"
+        ></v-text-field>
+        <v-btn
+          :loading="xolo_loading"
+          block
+          color="black"
+          @click="on_auth_click"
+        >
+          Iniciar sesión
+        </v-btn>
+
+        </div>
+      </v-container>
+        <v-footer
+        class="justify-center bg-grey-lighten-4"
+        >
+        <p class="mr-3 footer-text-0">Powered by <b class="footer-text-1">Xolo</b></p>
+        <v-img max-width="35px"  src="/images/xolo/logo.png">
+        </v-img>
+        
+
+      </v-footer>
+      </v-card>
+    </v-dialog>
+
+        <!-- <h1>INDEX</h1> -->
+    </v-main>
   </v-layout>
 </template>
 
 <script setup>
+// import router from '../../router';
 import { onBeforeMount,onMounted,ref,computed,watchEffect } from 'vue';
 import {useRoute,useRouter} from 'vue-router'
+
 const router = useRouter()
-const $route = useRoute()
-const catalogs = ref([])
-const __catalogs = ref([])
-const observatory = ref({})
-const selectedValues = ref([]);
-const products = ref([])
-const left_drawer = ref(true)
-const right_drawer = ref(false)
-const should_render_products = ref(false)
-const current_product = ref(null)
-const current_product_index = ref(0)
-const show_list = ref(true)
-const dialog = ref(false)
-const manual_search = ref(false)
+const observatories = ref([])
 const is_loading = ref(true)
-const main_is_loading = ref(true)
-const headers = ref([
-    {
-        title:"Nombre",
-        align:"start",
-        sortable:false,
-        key:"product_name"
-    },
+const auth = ref(false) 
+const initial_user = {"username":"Guest", "profile_photo":"","first_name":"Invitado","last_name":""}
+const user = ref(initial_user)
+const show = ref(false);
+const username = ref("")
+const password = ref("")
+const xolo_loading = ref(false)
+const xolo_dialog = ref(false)
 
-    {
-        title:"Tipo",
-        align:"start",
-        sortable:false,
-        key:"kind"
-    },
-    {
-        title:"Perfil",
-        align:"start",
-        sortable:false,
-        key:"profile"
-    },
-    { title: 'Acciones', key: 'actions', sortable: false },
 
-])
-
-const host = import.meta.env.VITE_APP_OCA_API_IP_ADDR
-const port = import.meta.env.VITE_APP_OCA_API_PORT
-const protocol = import.meta.env.VITE_APP_OCA_API_PROTOCOL
 const env = import.meta.env.VITE_APP_OCA_ENV
-const base_url = `${protocol}://${host}${env =="dev"? `:${port}` : "" }`
-// console.log("HOST",host)
-// console.log("PORT",port)
-// console.log("PROTOCOL",protocol)
-// console.log("BASE_URL",base_url)
-const on_right_drawer_click=  ()=>{
-    right_drawer.value=false
-}
-const on_left_drawer_click=  ()=>{
-    left_drawer.value=false
-}
-const click_on_product = (product)=>{
-    window.open(product,"_blank")   
-}
-const on_carousel_change = ()=>{
-    console.log("CAROUSEL_CHANGE")
-}
-const on_search_click = ()=>{
-    // if(left_drawer != left_drawer) {
-    left_drawer.value=true
-    // }
-    // if(right_drawer!= t_drawer) {
-    // right_drawer.value=true
-    // }
-
-}
-const on_show_product_click= (item)=>{
-    dialog.value=true
-    current_product.value= item
-    // dialogs.value[item.key] = true
-
-// console.log("INDEX",index)
-}
-const on_download_product_click= (item)=>{
-    window.open(`https://alpha.tamps.cinvestav.mx/mictlanx/${item.key}`,"_blank")   
-}
-const get_icon = (kind)=>{
-    if (kind.includes("reports")) {
-        return "mdi-table"
-    }else if (kind.includes("maps")){
-        return "mdi-map"
+const xolo_port = env == "dev" ? `:${import.meta.env.VITE_APP_XOLO_API_PORT}` : ""
+const xolo_host = env == "dev" ? "localhost" : import.meta.env.VITE_APP_XOLO_API_IP_ADDR
+const port = env == "dev" ? `:${import.meta.env.VITE_APP_OCA_API_PORT}` : ""
+const host = env == "dev" ? "localhost" : import.meta.env.VITE_APP_OCA_API_IP_ADDR
+const protocol = env =="dev" ? "http" : "https"
+      // / const host = "localhost"
+      // const port = 5000
+const max_columns = 3
+const observatory_rows = computed(()=>{
+  const n = observatories.value.length
+  if (n>0 ){
+    const max_rows = Math.ceil(n/max_columns)
+    if (max_rows <= 1) {
+       return [ 
+        observatories.value.map(x=>{
+          const levels = x["catalogs"].length
+          return { 
+            "key":x["key"],
+            "title":x["title"],
+            "description":x["description"],
+            "levels":levels,
+            "levels_desc":  levels > 1 ? "Niveles" : "Nivel",
+            "image_url":x["image_url"]
+          }
+        } )  
+      ]
     }else {
-        return "mdi-chart-scatter-plot"
+      const result = []
+      for(let i =0; i<max_rows; i++) {
+        const start_index = (i*(max_columns) )
+        const end_index   = max_columns*(i+1)
+        const observatories_per_row = observatories.value.slice(start_index,end_index).map(x=>{
+          const levels = x["catalogs"].length
+          return { 
+            "key":x["key"],
+            "title":x["title"],
+            "description":x["description"],
+            "levels":levels,
+            "levels_desc":  levels > 1 ? "Niveles" : "Nivel",
+            "image_url":x["image_url"]
+          }
+        })
+        console.log(observatories_per_row)
+        result.push(observatories_per_row)
+        // observatory_rows.value.push(observatories_per_row)
+        // .concat(observatories_per_row)
+      }
+      console.log("RESULT",result)
+      return result
+      // return [observatories.value.map(x=>{
+
+      //     return { "title":x["title"],"levels":x["catalogs"].length}
+      // })]
     }
-}
-const find_products_on_click= async () =>{
-    // const query_params=""
-    
-    // console.log(selectedValues.value)
-    main_is_loading.value=true
-    const x = selectedValues.value
-    .filter(y=>{
-        // console.log(y,y!==null)
-        return y !== null
-    }).map(z=>{
-        // console.log(z)
-        return z.value
-    }).join(",")
-    // console.log("X",x)
-
-    
-    // const port = import.meta.env.VUE_APP_OCA_API_PORT
-    // console.log("HOST",host,"PORT",port)
-    const url = `${base_url}/products/filter?levels=${x}`
-    const response = await fetch(url).then(x=>x.json())
-    
-    // should_render_products.value = response.length > 0
-    // dialogs.value = Array(response.length).fill(false)
-    products.value = response
-    // console.log(url)
-    setTimeout(()=>{
-        main_is_loading.value=false
-    },1000)
-    // console.log(response)
-    // console.log("FIND",selectedValues.value)
-}
-
-
-onBeforeMount(async ()=>{
-    try {
-        // const base_url = `${host}:${port}`
-        const observatory_id = $route.params.observatory_id
-        // console.log("GET OBSERVATORY", observatory_id)
-        const observatory_response = await fetch(`${base_url}/observatories/${observatory_id}`).then(x=>x.json())
-        // console.log(observatory_response)
-        observatory.value = observatory_response
-        // const data_json = await response.json()
-        const catalogs_objects = observatory_response["catalogs"]
-        const _catalogs = []
-        for(let i =0; i < catalogs_objects.length; i++){
-            const catalog = catalogs_objects[i];
-            // console.log("Catalog",catalog)
-            const catalog_response = await fetch(`${base_url}/catalogs/${catalog["catalog_key"]}`).then(x=>x.json())
-            // console.log("CATALOG_RESPONSE",catalog_response)
-            _catalogs.push(catalog_response)
-        }
-        __catalogs.value = Object.freeze(_catalogs)
-        catalogs.value=  Object.freeze(__catalogs.value.map(x=>{ 
-                const items = x["items"]
-                const values = items.map(item =>{
-                    return {
-                        value:item["name"],
-                        title:item["display_name"],
-                        item: item
-                    }
-                })
-                // console.log("VALUES",values)
-                return {
-                    "name":x["display_name"],
-                    "values":values
-                } 
-            })
-        )
-        is_loading.value = false
-
-    } catch (error) {
-        alert("OBSERVATORY_NOT_FOUND")
-        router.push("/")
-    }
+  }
+  return []
 })
 
-// const computed_catalogs = computed(()=>{
-//         console.log("COMPUTED", __catalogs.value)
-//         return 
-// __catalogs.value.map(x=>{ 
-//             const items = x["items"]
-//             const values = items.map(item =>{
-//                 return {
-//                     value:item["name"],
-//                     title:item["display_name"],
-//                     item: item
-//                 }
-//             })
-//             console.log("VALUES",values)
-//             return {
-//                 "name":x["display_name"],
-//                 "values":values
-//             } 
-//         })
-// })
-// watchEffect(() => {
-//   __catalogs.value; // This will trigger the computed property
-// });
+
+// const range= (n) =>{
+//       return Array.from({ length: n }, (_, index) => index);
+// }
+
+
+const on_logout_click = async ()=> {
+  auth.value=false
+  localStorage.removeItem("access_token")
+  localStorage.removeItem("secret")
+  localStorage.removeItem("user.username")
+  localStorage.removeItem("user.first_name")
+  localStorage.removeItem("user.last_name")
+  localStorage.removeItem("user.profile_photo")
+  localStorage.removeItem("user.email")
+  user.value=initial_user
+  observatories.value=[]
+}
+const on_auth_click = async () =>{
+  // console.log("SEND ",username.value, password.value)
+  try {
+    console.log("ON_AUTH_CLICK")
+    xolo_loading.value=true
+    const body = JSON.stringify(
+      {
+        "username": username.value.trim(),
+        "password": password.value.trim(),
+    })
+    // console.log(body)
+    const response = await (fetch(`${protocol}://${xolo_host}${xolo_port}/api/v4/users/auth`,{
+      method:"POST",
+      body: body,
+      headers: {"Content-Type":"application/json"}
+    })) 
+
+    if(response.status!= 200) {
+      throw "Xolo: Incorrent username or password - 403 UNAUTHORIZED"
+    }
+    // if (response.status != 200){
+
+    // }
+    const data = await response.json()
+    // console.log("RESPPOONSE",response)
+
+    localStorage.setItem("user.username",data["username"] ?? "guest")
+    localStorage.setItem("user.first_name",data["first_name"] ?? "Guest" )
+    localStorage.setItem("user.last_name",data["last_name"] ?? "Guest")
+    localStorage.setItem("user.email",data["email"] ?? "guest@test.com")
+    localStorage.setItem("user.profile_photo",data["profile_photo"] ?? "https://www.eldersinsurance.com.au/images/person1.png?width=368&height=278&crop=1")
+    localStorage.setItem("access_token",data["access_token"] ?? "ACCESS_TOKEN")
+    localStorage.setItem("secret",data["temporal_secret"] ?? "SECRET")
+
+    await get_observatories()
+    auth.value=true
+    xolo_loading.value=false
+    xolo_dialog.value=false;
+    user.value = data
+  } catch (error) {
+    alert("Xolo: Incorrect username or password - UNAUTHORIZED")
+    xolo_loading.value=false
+    user.value=initial_user
+    auth.value=false
+  }
+    // const username_predicate = username.length <= 0 || username=="USERNAME" ||
+    // if ()  {
+        // router.push("/observatories")
+        // xolo_dialog.value=true
+        // auth.value=false
+        // user.value=initial_user
+    // }
+  // console.log("REPSONSE",response)
+}
+const on_login_click = ()=>{
+  xolo_dialog.value = !xolo_dialog.value
+}
+
+const on_description_click = ()=>{
+
+    if(auth.value){
+      show.value =!show.value;
+    }
+}
+const on_observatory_click = (o)=>{
+    // console.log("BLCIK",o)
+    router.push(`/observatories/${o["key"]}`)
+}
+
+const get_observatories = async ()=>{
+      console.log("Getting observatories...")
+
+      user.value = {
+        "username":localStorage.getItem("user.username"),
+        "first_name":localStorage.getItem("user.first_name"),
+        "last_name": localStorage.getItem("user.last_name"),
+        "profile_photo": localStorage.getItem("user.profile_photo"),
+      }
+      auth.value=true
+
+
+      const observatories_url = `${protocol}://${host}${port}/observatories`
+      const obs = await fetch(observatories_url,{"method":"GET","headers":{"Content-Type":"application/json"}}).then(x=>x.json());
+      observatories.value= obs
+}
+onBeforeMount(async ()=>{
+  try {
+
+    const access_token = localStorage.getItem("access_token") ?? ""
+    const secret = localStorage.getItem("secret") ?? ""
+    const username = localStorage.getItem("user.username") ?? ""
+
+    const body = JSON.stringify({
+        "access_token":access_token,
+        "username":username,
+        "secret":secret,
+    })
+    const verify_response = await fetch(`${protocol}://${xolo_host}${xolo_port}/api/v4/users/verify`,{
+        method:"POST",
+        body:body,
+      headers: {"Content-Type":"application/json"}
+    })
+    if (verify_response.status != 204 || access_token.length <=0 || access_token == "ACCESS_TOKEN" | secret.length <= 0 || secret=="SECRET"){
+      console.error("Xolo: 403 UNAUTHORIZED")
+      auth.value=false
+      xolo_dialog.value=true
+      observatories.value = []
+      return
+    }else{
+      await get_observatories()
+      is_loading.value=false
+    }
+  } catch (error) {
+    alert(error)
+  }
+})
 </script>
 <style scoped>
-
-.iframe-full {
-    width: 100%;
-    height: 100%;
+.not-found-text{
+  font-size: 24px;
 }
-.full-width{
-    width: 100%;
+.footer-text-0 {
+  font-weight: lighter;
+}
+.footer-text-1 {
+  font-weight: bold;
+  color: rgb(87, 87, 87);
 }
 .test {
     background: blue;
