@@ -14,7 +14,7 @@
     @loading="on_load"
     />
     <div ref="banner" class="front-page-v2 pa--xl flex justify-content--center align-items--center flex-direction--column">
-        <img @load="on_load"  :class="{'mb--lg':true}" :style="{'z-index':100}" src="/images/muyal/muyal-white.png" width="300" alt="">
+        <img @load="on_load"  :class="{'mb--lg':true}" :style="{'z-index':100}" src="/images/burrito.png" width="150" alt="">
         <p :style="{'z-index':100}" :class="{'w-60':!is_mobile,'front-page-v2--title':true, 'text-align--center':!is_mobile,'text-align--justify':is_mobile,'mb--lg':true}">Plataforma tecnológica para la gestión, aseguramiento, intercambio y preservación de grandes volúmenes de datos en salud y construcción de un repositorio nacional de servicios de análisis de datos de salud.</p>
         <div  :class="{'front-page-v2__btns':true,'flex':true,'to_front':true}">
             <Button 
