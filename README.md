@@ -58,16 +58,14 @@ This subsection describes the folder structure of the web applications, the foll
 ## Deployment
 1.  Build the docker image using the following command:
 ``` sh
-docker build -t <image_name> .
+docker build -f ./Dockerfile -t muyal-ui .
 ```
-Replace the placerholder <image_name> (e.g muyal-app)
-``` sh
-docker build -t muyal-app .
-```
-  2. Run the docker container using the created docker image:
+2. Run the docker container using the created docker image:
   ``` sh
-docker run --name <container_name> -d -p <host_port>:<docker_port> muyal-app
-```
+	docker run --name <container_name> -d -p <host_port>:<docker_port> muyal-ui
+	```
 Replace the placeholders <container_name> which represents the name of the virtual container, <host_port> represents the port of the host machine and the <docker_port> must be 80 port.
 
-That's it.
+That's it, enjoy it.
+
+
