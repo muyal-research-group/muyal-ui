@@ -27,26 +27,65 @@
     </v-toolbar>
       <v-list v-if="!is_loading">
         
-        <v-list-item v-for="(catalog,index) in catalogs" :title="catalog['name']">
-            
-            <v-select
-                v-if="!manual_search"
+        <v-list-item v-for="(catalog,index) in catalogs" :title="catalog['title']">
+            <div v-if="catalog['kind']=='INTEREST'">
+                <v-select
+                    v-if="!manual_search"
+                    v-model="selectedValues[index]"
+                    clearable
+                    chips
+                    :menu-props="{ eager: true }"
+                    label="Selecciona un valor"
+                    :items="catalog['values']"
+                    return-object
+                >
+                </v-select>
+                <v-autocomplete
+                v-else
+                label="Escribe un valor"
                 v-model="selectedValues[index]"
-                clearable
-                chips
-                :menu-props="{ eager: true }"
-                label="Selecciona un valor"
-                :items="catalog['values']"
-                return-object
+                :items="catalog.values"
+                    return-object
+                ></v-autocomplete>
+        </div>
+        <div v-else-if="catalog['kind']=='SPATIAL' ">
+                <v-select
+                    v-if="!manual_search"
+                    v-model="spatial_value"
+                    clearable
+                    chips
+                    :menu-props="{ eager: true }"
+                    label="Selecciona un valor"
+                    :items="catalog['values']"
+                    return-object
+                >
+                </v-select>
+                <v-autocomplete
+                v-else
+                label="Escribe un valor"
+                v-model="spatial_value"
+                :items="catalog.values"
+                    return-object
+                ></v-autocomplete>
+        </div>
+        <div class="d-flex" v-else-if="catalog['kind']=='TEMPORAL' ">
+            
+            <v-number-input
+            control-variant="stacked"
+            :max="2024"
+            :min="1970"
+            v-model="temporal_min_value"
+            :model-value="temporal_min_value">
+        </v-number-input>
+            <v-number-input
+            control-variant="stacked"
+            :max="2024"
+            :min="1970"
+            v-model="temporal_max_value"
+            :model-value="temporal_max_value"
             >
-        </v-select>
-            <v-autocomplete
-            v-else
-            label="Escribe un valor"
-            v-model="selectedValues[index]"
-            :items="catalog.values"
-                return-object
-            ></v-autocomplete>
+        </v-number-input>
+        </div>
             <!-- <template v-slot:item="{ item }">
                 {{ item.text }}
             </template> -->
@@ -55,31 +94,7 @@
         <v-list-item>
             <v-btn @click="find_products_on_click" class="full-width" variant="flat" color="primary" size="large">Buscar</v-btn>
         </v-list-item>
-        <!-- 
-        <v-list-item title="Año">
-            <v-select
-                clearable
-                chips
-                label="Select"
-                :items="[
-                    '2023',
-                    '2022',
-                    '2021',
-                    ]"
-            ></v-select>
-        </v-list-item>
-        <v-list-item title="Estado">
-            <v-select
-                clearable
-                chips
-                label="Select"
-                :items="[
-                    'Tamaulipas',
-                    'Estado 2',
-                    'Estado 3',
-                    ]"
-            ></v-select>
-        </v-list-item> -->
+  
       </v-list>
       <div v-else>
          <v-progress-linear
@@ -108,11 +123,12 @@
                     <div class="d-flex justify-center iframe-full">
                         <iframe 
                         class="iframe-full"
-                        :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${product.key}`"
+                        :src="`${product.url}`"
                         frameborder="0"
                         allowfullscreen
                         ></iframe>
                     </div>
+                        <!-- :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${product.key}`" -->
 
                     </v-carousel-item>
         </v-carousel>
@@ -126,22 +142,31 @@
             :headers="headers"
             :items="products"
         >
+            <template v-slot:item="{item}">
+                <tr @click="on_click_product(item)">
+                    <td>{{ item.product_name }}</td>
+                    <td>{{ item.profile }}</td>
+                    <td>
+                    <v-icon
+                        size="small"
+                        class="me-2"
+                        @click="on_show_product_click(item)"
+                    >
+                        mdi-eye
+                    </v-icon>
+                    <v-icon
+                        size="small"
+                        class="me-2"
+                        @click="on_download_product_click(item)"
+                    >
+                        mdi-cloud-download
+                    </v-icon>
+                    </td>
+                    <!-- <td>{{ item.profile }}</td> -->
+                </tr>
+            </template>
             <template v-slot:item.actions="{ item }">
 
-                <v-icon
-                    size="small"
-                    class="me-2"
-                    @click="on_show_product_click(item)"
-                >
-                    mdi-eye
-                </v-icon>
-                <v-icon
-                    size="small"
-                    class="me-2"
-                    @click="on_download_product_click(item)"
-                >
-                    mdi-cloud-download
-                </v-icon>
             </template>
         </v-data-table>
         <div v-else>
@@ -156,13 +181,14 @@
             v-model="dialog"
             fullscreen
         >
+                        <!-- :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${current_product.key}`" -->
         <v-card>
             <v-card-text>
                 <!-- Texto -->
                     <div class="d-flex justify-center iframe-full">
                         <iframe 
                         class="iframe-full"
-                        :src="`https://alpha.tamps.cinvestav.mx/mictlanx/${current_product.key}`"
+                        :src="`${MICTLANX_URL}/${current_product.pid}`"
                         frameborder="0"
                         allowfullscreen
                         ></iframe>
@@ -194,58 +220,6 @@
             <img src="/images/no_products.png" alt="NO_PRODUCTS" width="200">
             <span>Ningún producto que coincida con su consulta.</span>
         </div>
-        <!-- 
-            <v-list 
-        lines="two"
-            v-else-if="show_list && products.length>0"
-        >
-      <v-list-subheader inset>Productos</v-list-subheader>
-
-        <v-list-item
-            v-for="(product,index) in products"
-            :key="product.product_name"
-            :title="product.product_name"
-            :subtitle="product.description"
-        >
-            <template v-slot:prepend>
-            <v-avatar color="grey-lighten-1">
-                <v-icon color="white">
-                    {{ get_icon(product.kind) }}
-                </v-icon>
-            </v-avatar>
-            </template>
-
-            <template v-slot:append>
-            <v-btn
-                color="grey-lighten-1"
-                icon="mdi-cloud-download"
-                variant="text"
-                @click="on_download_product_click"
-            ></v-btn>
-            <v-btn
-                color="grey-lighten-1"
-                icon="mdi-eye"
-                variant="text"
-                @click="on_show_product_click(index)"
-            >
-        </v-btn>
-                <v-dialog
-                    v-model="dialogs[index]"
-                    width="auto"
-                >
-                    <v-card>
-                    <v-card-text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-btn color="primary" block @click="dialogs[index]=false">Close Dialog</v-btn>
-                    </v-card-actions>
-                    </v-card>
-                </v-dialog>
-            </template>
-        </v-list-item>
-        </v-list> -->
-
     </v-main>
     
 
@@ -336,7 +310,10 @@ import {useRoute,useRouter} from 'vue-router'
 const user = ref({})
 const router = useRouter()
 const $route = useRoute()
+const temporal_min_value = ref(1970)
+const temporal_max_value = ref(2024)
 const catalogs = ref([])
+const spatial_value = ref()
 const __catalogs = ref([])
 const observatory = ref({})
 const selectedValues = ref([]);
@@ -364,15 +341,16 @@ const headers = ref([
         title:"Nombre",
         align:"start",
         sortable:false,
+
         key:"product_name"
     },
 
-    {
-        title:"Tipo",
-        align:"start",
-        sortable:false,
-        key:"kind"
-    },
+    // {
+    //     title:"Description",
+    //     align:"start",
+    //     sortable:false,
+    //     key:"description"
+    // },
     {
         title:"Perfil",
         align:"start",
@@ -384,22 +362,29 @@ const headers = ref([
 ])
 
 const protocol = import.meta.env.VITE_APP_OCA_API_PROTOCOL
+const MICTLANX_URL = import.meta.env.VITE_MICTLANX_URL
 const env = import.meta.env.VITE_APP_OCA_ENV
 const port = env == "dev" ? `:${import.meta.env.VITE_APP_OCA_API_PORT}` : ""
 const host = env == "dev" ? "localhost" : import.meta.env.VITE_APP_OCA_API_IP_ADDR
 const xolo_port = env == "dev" ? `:${import.meta.env.VITE_APP_XOLO_API_PORT}` : ""
 const xolo_host = env == "dev" ? "localhost" : import.meta.env.VITE_APP_XOLO_API_IP_ADDR
-
 const base_url = `${protocol}://${host}${port}`
-console.log("BASE_URL",base_url)
+
+// console.log("BASE_URL",base_url)
 // console.log("HOST",host)
 // console.log("PORT",port)
 // console.log("PROTOCOL",protocol)
 // console.log("BASE_URL",base_url)
+const on_click_product = (item)=>{
+    // console.log(-"PRODUCT_CLCIK", item)
+    // console.log("OBID",observatory)
+    const obid = observatory.value.obid
+    router.push(`/observatories/${obid}/products/${item.pid}`)
+}
 const  closeErrorAlert = (toggle)=>{
-    console.log("BEFORE_CLOSE ALERT")
+    //console.log("BEFORE_CLOSE ALERT")
     toggle()
-    console.log("CLOSE ALERT")
+    //console.log("CLOSE ALERT")
     
 }
 const on_right_drawer_click=  ()=>{
@@ -412,8 +397,9 @@ const click_on_product = (product)=>{
     window.open(product,"_blank")   
 }
 const on_carousel_change = ()=>{
-    console.log("CAROUSEL_CHANGE")
+    // console.log("CAROUSEL_CHANGE")
 }
+
 const on_search_click = ()=>{
     // if(left_drawer != left_drawer) {
     left_drawer.value=true
@@ -431,7 +417,9 @@ const on_show_product_click= (item)=>{
 // console.log("INDEX",index)
 }
 const on_download_product_click= (item)=>{
-    window.open(`https://alpha.tamps.cinvestav.mx/mictlanx/${item.key}`,"_blank")   
+    // window.open(`https://alpha.tamps.cinvestav.mx/mictlanx/${item.key}`,"_blank")   
+    // window.open(`${MICTLANX_URL}/${item.pid}`,"_blank")   
+    window.open(item.url,"_blank")
 }
 const get_icon = (kind)=>{
     if (kind.includes("reports")) {
@@ -447,30 +435,59 @@ const find_products_on_click= async () =>{
     
     // console.log(selectedValues.value)
     main_is_loading.value=true
-    const x = selectedValues.value
+    const xs = selectedValues.value
     .filter(y=>{
         // console.log(y,y!==null)
         return y !== null
     }).map(z=>{
-        // console.log(z)
-        return z.value
-    }).join(",")
+        // console.log(z.item)
+        return {"value":z.item.value}
+    })
+    // .join(",")
     // console.log("X",x)
 
     
+    const observatory_id = $route.params.observatory_id
     // const port = import.meta.env.VUE_APP_OCA_API_PORT
     // console.log("HOST",host,"PORT",port)
-    const url = `${base_url}/products/filter?levels=${x}`
-    console.log("URL",url)
-    const response = await fetch(url).then(x=>x.json())
     
+    
+    const url      = `${base_url}/observatories/${observatory_id}/products/nid`
+    // const url   = `${base_url}/products/filter?levels=${x}&tags=${observatory_id}`
+    // console.log("URL",url)
+    // console.log("SELECTED",xs)
+    // console.log("INTEREST",xs)
+    const selected_spatial_value = spatial_value.value.item.value
+
+    const query_body = {
+                "interest":xs,
+                "temporal":{
+                    "low":temporal_min_value.value,
+                    "high":temporal_max_value.value
+                },
+                "spatial":{
+                    "country":"*",
+                    "state":selected_spatial_value,
+                    "municipality":"*"
+                }
+    }
+
+    
+    console.log("BODY",query_body)
+    const response = await fetch(url,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(query_body)
+    },
+    ).then(x=>x.json())
+    // console.log("PRODUCTS",response)
     // should_render_products.value = response.length > 0
     // dialogs.value = Array(response.length).fill(false)
     products.value = response
     // console.log(url)
-    setTimeout(()=>{
-        main_is_loading.value=false
-    },1000)
+    // setTimeout(()=>{
+    main_is_loading.value=false
+    // },1000)
     // console.log(response)
     // console.log("FIND",selectedValues.value)
 }
@@ -494,14 +511,16 @@ onBeforeMount(async ()=>{
             "username":username,
             "secret":secret,
         })
-        console.log(body)
-        const verify_response = await fetch(`${protocol}://${xolo_host}${xolo_port}/api/v4/users/verify`,{
+        // console.log(body)
+        const XOLO_VERIFY_URL = `${protocol}://${xolo_host}${xolo_port}/api/v4/users/verify`
+        // console.log("XOLO_RLVRERYF",XOLO_VERIFY_URL)
+        const verify_response = await fetch(XOLO_VERIFY_URL,{
             method:"POST",
             body:body,
             headers: {"Content-Type":"application/json"}
         })
         
-        console.log(verify_response)
+        // console.log(verify_response,verify_response.status)
         if (verify_response.status != 204){
 
             router.push("/observatories")
@@ -509,7 +528,10 @@ onBeforeMount(async ()=>{
         // console.log(verify_response)
 
 
-        const observatory_response = await fetch(`${base_url}/observatories/${observatory_id}`).then(x=>x.json())
+        const GET_OBSERVATORY_URL = `${base_url}/observatories/${observatory_id}`
+        // console.log("GET_OURL", GET_OBSERVATORY_URL)
+        const observatory_response = await fetch(GET_OBSERVATORY_URL).then(x=>x.json())
+        // console.log("RESPONSE",observatory_response)
         observatory.value = observatory_response
         const catalogs_objects = observatory_response["catalogs"]
         
@@ -517,10 +539,11 @@ onBeforeMount(async ()=>{
         for(let i =0; i < catalogs_objects.length; i++){
             const catalog = catalogs_objects[i];
             // console.log("Catalog",catalog)
-            const catalog_response = await fetch(`${base_url}/catalogs/${catalog["catalog_key"]}`).then(x=>x.json())
+            const catalog_response = await fetch(`${base_url}/catalogs/${catalog["cid"]}`).then(x=>x.json())
             // console.log("CATALOG_RESPONSE",catalog_response)
             _catalogs.push(catalog_response)
         }
+        // console.log(_catalogs)
         __catalogs.value = Object.freeze(_catalogs)
         catalogs.value=  Object.freeze(__catalogs.value.map(x=>{ 
                 const items = x["items"]
@@ -531,10 +554,11 @@ onBeforeMount(async ()=>{
                         item: item
                     }
                 })
-                // console.log("VALUES",values)
+                // console.log("X",x["kind"])
                 return {
-                    "name":x["display_name"],
-                    "values":values
+                    "title":x["display_name"],
+                    "values":values,
+                    "kind":x["kind"]
                 } 
             })
         )
@@ -549,35 +573,14 @@ onBeforeMount(async ()=>{
 })
 
 watch(observatory_not_found, ()=>{
-    console.log("HAS CHANGED", observatory_not_found.value)
+    // console.log("HAS CHANGED", observatory_not_found.value)
     setTimeout(()=>{
-        console.log("REEEEEEEEEEEEEEEEEIRECTTT!")
+        // console.log("REEEEEEEEEEEEEEEEEIRECTTT!")
         router.push("/observatories")
     },1500)
 })
 
-// const computed_catalogs = computed(()=>{
-//         console.log("COMPUTED", __catalogs.value)
-//         return 
-// __catalogs.value.map(x=>{ 
-//             const items = x["items"]
-//             const values = items.map(item =>{
-//                 return {
-//                     value:item["name"],
-//                     title:item["display_name"],
-//                     item: item
-//                 }
-//             })
-//             console.log("VALUES",values)
-//             return {
-//                 "name":x["display_name"],
-//                 "values":values
-//             } 
-//         })
-// })
-// watchEffect(() => {
-//   __catalogs.value; // This will trigger the computed property
-// });
+
 </script>
 <style scoped>
 

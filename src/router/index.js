@@ -86,9 +86,19 @@ const router = createRouter({
       component: ()=>import("../views/observatories/Searcher.vue")
     },
     {
+      path:'/observatories/:observatory_id/products/:product_id',
+      name:"product_detail",
+      component: ()=>import("../views/observatories/ProductDetail.vue")
+    },
+    {
       path:'/observatories/:observatory_id',
       name:"observatory",
       component: ()=>import("../views/observatories/ObservatoryDetail.vue")
+    },
+    {
+      path:'/mictlanx',
+      name:"mictlanx-index",
+      component: ()=>import("../views/mictlanx/Index.vue")
     }
   ],
   scrollBehavior(to, from, savedPosition) {

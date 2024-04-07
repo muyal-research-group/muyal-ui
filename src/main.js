@@ -15,23 +15,16 @@ import SimpleSection from './components/SimpleSection.vue';
 import ListTable from './components/ListTable.vue'
 import Loader from './components/Loader.vue'
 import { VueStars } from "vue-stars"
-
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
-
-import {
-  VDataTable,
-  VDataTableServer,
-  VDataTableVirtual,
-} from "vuetify/labs/VDataTable";
+import { VNumberInput } from 'vuetify/labs/VNumberInput'
 
 import App from './App.vue';
 import router from './router';
-// import Vue from "vue";
 import './assets/main.css';
 
 const light_theme = {
@@ -53,9 +46,10 @@ const app = createApp(App);
 
 const vuetify = createVuetify({
   components:{
-     VDataTable,
-    VDataTableServer,
-    VDataTableVirtual,
+    VNumberInput,
+    //  VDataTable,
+    // VDataTableServer,
+    // VDataTableVirtual,
     ...components
   },
   directives,
@@ -120,5 +114,5 @@ app.component("Separator",Separator);
 app.component("SimpleSection",SimpleSection);
 app.component("ListTable",ListTable)
 app.component("Loader",Loader)
-
+// app.component("VNumberInput",VNumberInput)
 app.mount('#app')

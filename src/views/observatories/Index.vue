@@ -220,14 +220,17 @@ const protocol = env =="dev" ? "http" : "https"
 const max_columns = 3
 const observatory_rows = computed(()=>{
   const n = observatories.value.length
+  console.log("N",n,"COMPUTED_OBS",observatories.value)
   if (n>0 ){
     const max_rows = Math.ceil(n/max_columns)
+    console.log("MAX_WORS",max_rows)
     if (max_rows <= 1) {
        return [ 
         observatories.value.map(x=>{
+          console.log("OBS",x)
           const levels = x["catalogs"].length
           return { 
-            "key":x["key"],
+            "key":x["obid"],
             "title":x["title"],
             "description":x["description"],
             "levels":levels,
@@ -244,7 +247,7 @@ const observatory_rows = computed(()=>{
         const observatories_per_row = observatories.value.slice(start_index,end_index).map(x=>{
           const levels = x["catalogs"].length
           return { 
-            "key":x["key"],
+            "key":x["obid"],
             "title":x["title"],
             "description":x["description"],
             "levels":levels,
@@ -320,7 +323,9 @@ const on_auth_click = async () =>{
     localStorage.setItem("access_token",data["access_token"] ?? "ACCESS_TOKEN")
     localStorage.setItem("secret",data["temporal_secret"] ?? "SECRET")
 
-    await get_observatories()
+    let obs = await get_observatories()
+    observatories.value= obs
+
     auth.value=true
     xolo_loading.value=false
     xolo_dialog.value=false;
@@ -351,25 +356,30 @@ const on_description_click = ()=>{
     }
 }
 const on_observatory_click = (o)=>{
-    // console.log("BLCIK",o)
+    console.log("BLCIK",o)
     router.push(`/observatories/${o["key"]}`)
 }
 
 const get_observatories = async ()=>{
-      console.log("Getting observatories...")
+      try {
+        console.log("Getting observatories...")
 
-      user.value = {
-        "username":localStorage.getItem("user.username"),
-        "first_name":localStorage.getItem("user.first_name"),
-        "last_name": localStorage.getItem("user.last_name"),
-        "profile_photo": localStorage.getItem("user.profile_photo"),
+        user.value = {
+          "username":localStorage.getItem("user.username"),
+          "first_name":localStorage.getItem("user.first_name"),
+          "last_name": localStorage.getItem("user.last_name"),
+          "profile_photo": localStorage.getItem("user.profile_photo"),
+        }
+        auth.value=true
+
+
+        const observatories_url = `${protocol}://${host}${port}/observatories`
+        const obs = await fetch(observatories_url,{"method":"GET","headers":{"Content-Type":"application/json"}}).then(x=>x.json());
+        return obs
+      // return 
+      }catch (error) {
+        return []
       }
-      auth.value=true
-
-
-      const observatories_url = `${protocol}://${host}${port}/observatories`
-      const obs = await fetch(observatories_url,{"method":"GET","headers":{"Content-Type":"application/json"}}).then(x=>x.json());
-      observatories.value= obs
 }
 onBeforeMount(async ()=>{
   try {
@@ -395,7 +405,9 @@ onBeforeMount(async ()=>{
       observatories.value = []
       return
     }else{
-      await get_observatories()
+      let obs = await get_observatories()
+      console.log("OBNSS",obs)
+      observatories.value= obs
       is_loading.value=false
     }
   } catch (error) {
